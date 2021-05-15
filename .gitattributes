@@ -1,0 +1,21 @@
+*.ps1 text eol=crlf
+*.txt text eol=crlf
+*.gitignore text eol=lf
+*.tf text eol=lf
+*.tfvars text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+*.go text eol=lf
+go.mod text eol=lf
+*.md text eol=lf
+*.rb text eol=lf
+*.py text eol=lf
+*.gz  binary
+*.ico binary
+*.jpg binary
+*.pdf binary
+*.png binary
+*.PNG binary
+*.tar binary
+*.zip binary
