@@ -26,10 +26,9 @@ steps:
   - |
     cd 0-bootstrap    
     terraform init
-    export TF_LOG=debug
     terraform plan
 
 artifacts:
   objects:
     location: 'gs://${_ARTIFACT_BUCKET_NAME}/terraform/cloudbuild/plan/${BUILD_ID}'
-    paths: ['cloudbuild-tf-plan.yaml']
+    paths: ['0-bootstrap/cloudbuild-tf-plan.yaml']
