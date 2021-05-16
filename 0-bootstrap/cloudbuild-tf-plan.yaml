@@ -23,6 +23,7 @@ steps:
   args:
   - -c
   - |
+      terraform init
       terraform plan
 
 artifacts:
