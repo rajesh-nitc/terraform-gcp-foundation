@@ -26,6 +26,7 @@ steps:
   - |
     cd 0-bootstrap    
     terraform init
+    export TF_LOG=debug
     terraform plan
 
 artifacts:
