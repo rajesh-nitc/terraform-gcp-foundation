@@ -9,7 +9,7 @@ steps:
   name: gcr.io/cloud-builders/git
   args: ['fetch', '--unshallow']
 
-  - id: 'setup'
+- id: 'setup'
   name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/terraform
   entrypoint: /bin/bash
   args:
