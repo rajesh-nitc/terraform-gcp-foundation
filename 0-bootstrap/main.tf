@@ -206,7 +206,7 @@ resource "google_folder_iam_member" "folder_tf_compute_security_resource_admin" 
   member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
 }
 
-# Required to allow cloud build to access artifact repo with impersonation.
+# Required to allow cloud build to access artifactory repo with impersonation.
 resource "google_artifact_registry_repository_iam_member" "registry_access_with_impersonation" {
   provider = google-beta
   project  = module.cloudbuild_bootstrap.cloudbuild_project_id
