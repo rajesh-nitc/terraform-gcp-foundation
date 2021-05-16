@@ -5,9 +5,6 @@ substitutions:
   _TF_SA_EMAIL: 'org-terraform@prj-b-seed-6949.iam.gserviceaccount.com'
   _ARTIFACT_BUCKET_NAME: 'prj-cloudbuild-artifacts-1b60'
 steps:
-# - id: 'clone'
-#   name: gcr.io/cloud-builders/git
-#   args: ['fetch', '--unshallow']
 
 - id: 'setup'
   name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/terraform
