@@ -28,25 +28,25 @@ output "org_audit_logs_project_id" {
   description = "The org audit logs project ID"
 }
 
-output "org_billing_logs_project_id" {
-  value       = module.org_billing_logs.project_id
-  description = "The org billing logs project ID"
-}
+# output "org_billing_logs_project_id" {
+#   value       = module.org_billing_logs.project_id
+#   description = "The org billing logs project ID"
+# }
 
-output "org_secrets_project_id" {
-  value       = module.org_secrets.project_id
-  description = "The org secrets project ID"
-}
+# output "org_secrets_project_id" {
+#   value       = module.org_secrets.project_id
+#   description = "The org secrets project ID"
+# }
 
-output "interconnect_project_id" {
-  value       = module.interconnect.project_id
-  description = "The Dedicated Interconnect project ID"
-}
+# output "interconnect_project_id" {
+#   value       = module.interconnect.project_id
+#   description = "The Dedicated Interconnect project ID"
+# }
 
-output "scc_notifications_project_id" {
-  value       = module.scc_notifications.project_id
-  description = "The SCC notifications project ID"
-}
+# output "scc_notifications_project_id" {
+#   value       = module.scc_notifications.project_id
+#   description = "The SCC notifications project ID"
+# }
 
 output "dns_hub_project_id" {
   value       = module.dns_hub.project_id

@@ -105,9 +105,9 @@ module "bigquery_destination" {
   Billing logs (Export configured manually)
 *****************************************/
 
-resource "google_bigquery_dataset" "billing_dataset" {
-  dataset_id    = "billing_data"
-  project       = module.org_billing_logs.project_id
-  friendly_name = "GCP Billing Data"
-  location      = var.default_region
-}
+# resource "google_bigquery_dataset" "billing_dataset" {
+#   dataset_id    = "billing_data"
+#   project       = module.org_billing_logs.project_id
+#   friendly_name = "GCP Billing Data"
+#   location      = var.default_region
+# }
