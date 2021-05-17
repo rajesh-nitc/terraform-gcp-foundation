@@ -1,6 +1,6 @@
 # gcp-foundation 
 
-gcp-foundation monorepo configured with Cloudbuild GitHub App triggers for each subfolder. Triggers are created manually to avoid making changes in the official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation). 
+gcp-foundation monorepo (for quick testing purposes) configured with Cloudbuild GitHub App triggers for each subfolder. Triggers are created manually to avoid making changes in the official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation). 
 
 ## 0-bootstrap
 1. Comment out backend.tf, provider.tf and apply terraform manually
@@ -15,6 +15,10 @@ gcp-foundation monorepo configured with Cloudbuild GitHub App triggers for each 
 1. Creating 2 projects: logging and dns hub until quota increase
 1. Not creating hub n spoke projects until quota increase
 1. Disabled audit data access logs and not sending log exports to cloud storage and pubsub
+
+## 2-environments
+1. Create triggers
+2. Creating development host project only
 
 ## findings
 1. terraform sa and cloudbuild sa both needs permissions on a bucket or artifactory repo in case of impersonation
