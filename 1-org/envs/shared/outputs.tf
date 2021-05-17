@@ -48,10 +48,10 @@ output "org_audit_logs_project_id" {
 #   description = "The SCC notifications project ID"
 # }
 
-output "dns_hub_project_id" {
-  value       = module.dns_hub.project_id
-  description = "The DNS hub project ID"
-}
+# output "dns_hub_project_id" {
+#   value       = module.dns_hub.project_id
+#   description = "The DNS hub project ID"
+# }
 
 output "base_net_hub_project_id" {
   value       = try(module.base_network_hub[0].project_id, null)
