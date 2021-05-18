@@ -14,17 +14,14 @@
  * limitations under the License.
  */
 
-module "env" {
-  source = "../../modules/env_baseline"
+locals {
+  parent_id        = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  env              = "common"
+  environment_code = "c"
+  bgp_asn_number   = var.enable_partner_interconnect ? "16550" : "64514"
+}
 
-  env              = "development"
-  environment_code = "d"
-
-  parent_id                 = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
-  org_id                    = var.org_id
-  billing_account           = var.billing_account
-  terraform_service_account = var.terraform_service_account
-  # monitoring_workspace_users = var.monitoring_workspace_users
-  project_prefix = var.project_prefix
-  folder_prefix  = var.folder_prefix
+data "google_active_folder" "common" {
+  display_name = "${var.folder_prefix}-${local.env}"
+  parent       = local.parent_id
 }
