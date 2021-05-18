@@ -25,6 +25,7 @@ This repo provisions limited projects because of [billing-quota-increase](https:
 1. Creating development host project only and not restricted host project
 
 ## 3-networks
+1. Deploy shared environment manually
 1. Create triggers
 1. Creating development shared vpc only and not restricted shared vpc
 
