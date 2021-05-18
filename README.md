@@ -15,21 +15,19 @@ This repo provisions limited projects because of [billing-quota-increase](https:
 1. To make 0-bootstrap work on cloudbuild: Added additional roles to tf sa and added a role to cloudbuild sa to access artifactory repo 
 
 ## 1-org
-1. Create triggers
 1. Creating 2 projects: logging and dns hub until quota increase
 1. Not creating hub n spoke projects until quota increase
 1. Disabled audit data access logs and not sending log exports to cloud storage and pubsub
 
 ## 2-environments
-1. Create triggers
 1. Creating development host project only and not restricted host project
 
 ## 3-networks
 1. Deploy shared environment manually
-1. Create triggers
 1. Creating development shared vpc only and not restricted shared vpc
 
 ## 4-projects
-1. Deploy cloudbuild project for bu1 in common folder manually
-1. Create triggers
+1. Deploy cloudbuild project for bu1 in common folder manually i.e. 1 cloudbuild project per bu
+1. Reusing the tf runner image from seed project
+1. Keeping 1 bucket for tf state and 1 bucket for cb artifacts for bu1 - for now
 1. Allow Project SA to access TF state bucket - is this required? : need to check
