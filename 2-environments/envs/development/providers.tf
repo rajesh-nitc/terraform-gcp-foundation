@@ -1,9 +1,9 @@
 provider "google" {
-  impersonate_service_account = "org-terraform@prj-b-seed-6949.iam.gserviceaccount.com"
+  impersonate_service_account = var.terraform_service_account
 }
 
 provider "google-beta" {
-  impersonate_service_account = "org-terraform@prj-b-seed-6949.iam.gserviceaccount.com"
+  impersonate_service_account = var.terraform_service_account
 }
 
 

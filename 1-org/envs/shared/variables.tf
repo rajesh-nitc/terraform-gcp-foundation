@@ -150,7 +150,7 @@ variable "dns_hub_project_alert_pubsub_topic" {
 variable "dns_hub_project_budget_amount" {
   description = "The amount to use as the budget for the DNS hub project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "base_net_hub_project_alert_spent_percents" {
@@ -168,7 +168,7 @@ variable "base_net_hub_project_alert_pubsub_topic" {
 variable "base_net_hub_project_budget_amount" {
   description = "The amount to use as the budget for the base net hub project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "restricted_net_hub_project_alert_spent_percents" {
@@ -186,7 +186,7 @@ variable "restricted_net_hub_project_alert_pubsub_topic" {
 variable "restricted_net_hub_project_budget_amount" {
   description = "The amount to use as the budget for the restricted net hub project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "interconnect_project_alert_spent_percents" {
@@ -204,7 +204,7 @@ variable "interconnect_project_alert_pubsub_topic" {
 variable "interconnect_project_budget_amount" {
   description = "The amount to use as the budget for the Dedicated Interconnect project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "org_secrets_project_alert_spent_percents" {
@@ -222,7 +222,7 @@ variable "org_secrets_project_alert_pubsub_topic" {
 variable "org_secrets_project_budget_amount" {
   description = "The amount to use as the budget for the org secrets project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 
@@ -241,7 +241,7 @@ variable "org_billing_logs_project_alert_pubsub_topic" {
 variable "org_billing_logs_project_budget_amount" {
   description = "The amount to use as the budget for the org billing logs project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "org_audit_logs_project_alert_spent_percents" {
@@ -259,7 +259,7 @@ variable "org_audit_logs_project_alert_pubsub_topic" {
 variable "org_audit_logs_project_budget_amount" {
   description = "The amount to use as the budget for the org audit logs project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "scc_notifications_project_alert_spent_percents" {
@@ -277,7 +277,7 @@ variable "scc_notifications_project_alert_pubsub_topic" {
 variable "scc_notifications_project_budget_amount" {
   description = "The amount to use as the budget for the SCC notifications project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "project_prefix" {

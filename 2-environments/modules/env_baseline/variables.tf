@@ -64,7 +64,7 @@ variable "base_network_project_alert_pubsub_topic" {
 variable "base_network_project_budget_amount" {
   description = "The amount to use as the budget for the base networks project"
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "restricted_network_project_alert_spent_percents" {
@@ -82,7 +82,7 @@ variable "restricted_network_project_alert_pubsub_topic" {
 variable "restricted_network_project_budget_amount" {
   description = "The amount to use as the budget for the restricted networks project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "monitoring_project_alert_spent_percents" {
@@ -100,7 +100,7 @@ variable "monitoring_project_alert_pubsub_topic" {
 variable "monitoring_project_budget_amount" {
   description = "The amount to use as the budget for the monitoring project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "secret_project_alert_spent_percents" {
@@ -118,7 +118,7 @@ variable "secret_project_alert_pubsub_topic" {
 variable "secret_project_budget_amount" {
   description = "The amount to use as the budget for the secrets project."
   type        = number
-  default     = 5
+  default     = 1000
 }
 
 variable "project_prefix" {
