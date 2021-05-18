@@ -29,5 +29,7 @@ This repo provisions limited projects because of [billing-quota-increase](https:
 1. Create triggers
 1. Creating development shared vpc only and not restricted shared vpc
 
-## findings
-1. terraform sa and cloudbuild sa both needs permissions on a bucket or artifactory repo in case of impersonation
+## 4-projects
+1. Deploy shared/cloudbuild project/environment for BU1 manually
+1. Create triggers
+1. Creating 1 cloudbuild project for BU1 and 1 dev project for BU1
