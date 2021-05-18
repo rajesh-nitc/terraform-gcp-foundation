@@ -19,17 +19,6 @@ variable "impersonate_service_account" {
   type        = string
 }
 
-variable "default_region" {
-  description = "Default region to create resources where applicable."
-  type        = string
-}
-
-variable "gar_repo_name" {
-  description = "Custom name to use for GAR repo."
-  default     = ""
-  type        = string
-}
-
 variable "project_prefix" {
   description = "Name prefix to use for projects created."
   type        = string
@@ -41,57 +30,30 @@ variable "cloudbuild_project_id" {
   type        = string
 }
 
-variable "billing_account" {
-  description = "The ID of the billing account to associated this project with"
-  type        = string
-}
-
-variable "app_infra_repos" {
-  description = "A list of Cloud Source Repos to be created to hold app infra Terraform configs"
-  type        = list(string)
-}
-
 variable "bucket_region" {
   description = "Region to create GCS buckets for tfstate and Cloud Build artifacts"
   type        = string
   default     = "us-central1"
 }
 
-variable "terraform_apply_branches" {
-  description = "List of git branches configured to run terraform apply Cloud Build trigger. All other branches will run plan by default."
-  type        = list(string)
-
-  default = ["development",
-    "non-production",
-  "production"]
+variable "business_code" {
+  description = "The code that describes which business unit owns the project e.g. bu1"
+  type        = string
 }
 
-variable "cloudbuild_plan_filename" {
-  description = "Path and name of Cloud Build YAML definition used for terraform plan."
+variable "parent_folder" {
+  description = "Optional - for an organization with existing projects or for development/validation. It will place all the example foundation resources under the provided folder instead of the root organization. The value is the numeric folder ID. The folder must already exist. Must be the same value used in previous step."
   type        = string
-  default     = "cloudbuild-tf-plan.yaml"
+  default     = ""
 }
 
-variable "cloudbuild_apply_filename" {
-  description = "Path and name of Cloud Build YAML definition used for terraform apply."
+variable "org_id" {
   type        = string
-  default     = "cloudbuild-tf-apply.yaml"
+  description = "Organization ID"
 }
 
-variable "terraform_version" {
-  description = "Default terraform version."
+variable "folder_prefix" {
+  description = "Name prefix to use for folders created. Should be the same in all steps."
   type        = string
-  default     = "0.13.6"
-}
-
-variable "terraform_version_sha256sum" {
-  description = "sha256sum for default terraform version."
-  type        = string
-  default     = "55f2db00b05675026be9c898bdd3e8230ff0c5c78dd12d743ca38032092abfc9"
-}
-
-variable "terraform_validator_release" {
-  description = "Default terraform-validator release."
-  type        = string
-  default     = "2021-03-22"
+  default     = "fldr"
 }

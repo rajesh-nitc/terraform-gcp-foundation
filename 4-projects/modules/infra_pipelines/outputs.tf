@@ -14,47 +14,47 @@
  * limitations under the License.
  */
 
-output "tf_runner_artifact_repo" {
-  description = "GAR Repo created to store runner images"
-  value       = google_artifact_registry_repository.tf-image-repo.name
-}
+# output "tf_runner_artifact_repo" {
+#   description = "GAR Repo created to store runner images"
+#   value       = google_artifact_registry_repository.tf-image-repo.name
+# }
 
-output "default_region" {
-  description = "Default region to create resources where applicable."
-  value       = var.default_region
-}
+# output "default_region" {
+#   description = "Default region to create resources where applicable."
+#   value       = var.default_region
+# }
 
-output "gar_name" {
-  description = "GAR Repo name created to store runner images"
-  value       = local.gar_name
-}
+# output "gar_name" {
+#   description = "GAR Repo name created to store runner images"
+#   value       = local.gar_name
+# }
 
-output "cloudbuild_sa" {
-  description = "Cloud Build service account"
-  value       = "${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
-}
+# output "cloudbuild_sa" {
+#   description = "Cloud Build service account"
+#   value       = "${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
+# }
 
-output "repos" {
-  description = "CSRs to store source code"
-  value       = local.created_csrs
-}
+# output "repos" {
+#   description = "CSRs to store source code"
+#   value       = local.created_csrs
+# }
 
-output "artifact_buckets" {
-  description = "GCS Buckets to store Cloud Build Artifacts"
-  value       = values(local.artifact_buckets)
-}
+# output "artifact_buckets" {
+#   description = "GCS Buckets to store Cloud Build Artifacts"
+#   value       = values(local.artifact_buckets)
+# }
 
-output "state_buckets" {
-  description = "GCS Buckets to store TF state"
-  value       = values(local.state_buckets)
-}
+# output "state_buckets" {
+#   description = "GCS Buckets to store TF state"
+#   value       = values(local.state_buckets)
+# }
 
-output "plan_triggers" {
-  description = "CB plan triggers"
-  value       = [for trigger in google_cloudbuild_trigger.non_main_trigger : trigger.name]
-}
+# output "plan_triggers" {
+#   description = "CB plan triggers"
+#   value       = [for trigger in google_cloudbuild_trigger.non_main_trigger : trigger.name]
+# }
 
-output "apply_triggers" {
-  description = "CB apply triggers"
-  value       = [for trigger in google_cloudbuild_trigger.main_trigger : trigger.name]
-}
+# output "apply_triggers" {
+#   description = "CB apply triggers"
+#   value       = [for trigger in google_cloudbuild_trigger.main_trigger : trigger.name]
+# }

@@ -14,46 +14,46 @@
  * limitations under the License.
  */
 
-output "default_region" {
-  description = "Default region to create resources where applicable."
-  value       = module.infra_pipelines.default_region
-}
+# output "default_region" {
+#   description = "Default region to create resources where applicable."
+#   value       = module.infra_pipelines.default_region
+# }
 
-output "tf_runner_artifact_repo" {
-  description = "GAR Repo created to store runner images"
-  value       = module.infra_pipelines.tf_runner_artifact_repo
-}
+# output "tf_runner_artifact_repo" {
+#   description = "GAR Repo created to store runner images"
+#   value       = module.infra_pipelines.tf_runner_artifact_repo
+# }
 
-output "cloudbuild_project_id" {
-  value = module.app_infra_cloudbuild_project.project_id
-}
+# output "cloudbuild_project_id" {
+#   value = module.app_infra_cloudbuild_project.project_id
+# }
 
-output "cloudbuild_sa" {
-  description = "Cloud Build service account"
-  value       = module.infra_pipelines.cloudbuild_sa
-}
+# output "cloudbuild_sa" {
+#   description = "Cloud Build service account"
+#   value       = module.infra_pipelines.cloudbuild_sa
+# }
 
-output "repos" {
-  description = "CSRs to store source code"
-  value       = module.infra_pipelines.repos
-}
+# output "repos" {
+#   description = "CSRs to store source code"
+#   value       = module.infra_pipelines.repos
+# }
 
-output "artifact_buckets" {
-  description = "GCS Buckets to store Cloud Build Artifacts"
-  value       = module.infra_pipelines.artifact_buckets
-}
+# output "artifact_buckets" {
+#   description = "GCS Buckets to store Cloud Build Artifacts"
+#   value       = module.infra_pipelines.artifact_buckets
+# }
 
-output "state_buckets" {
-  description = "GCS Buckets to store TF state"
-  value       = module.infra_pipelines.state_buckets
-}
+# output "state_buckets" {
+#   description = "GCS Buckets to store TF state"
+#   value       = module.infra_pipelines.state_buckets
+# }
 
-output "plan_triggers" {
-  description = "CB plan triggers"
-  value       = module.infra_pipelines.plan_triggers
-}
+# output "plan_triggers" {
+#   description = "CB plan triggers"
+#   value       = module.infra_pipelines.plan_triggers
+# }
 
-output "apply_triggers" {
-  description = "CB apply triggers"
-  value       = module.infra_pipelines.apply_triggers
-}
+# output "apply_triggers" {
+#   description = "CB apply triggers"
+#   value       = module.infra_pipelines.apply_triggers
+# }

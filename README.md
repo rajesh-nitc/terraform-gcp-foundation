@@ -30,6 +30,6 @@ This repo provisions limited projects because of [billing-quota-increase](https:
 1. Creating development shared vpc only and not restricted shared vpc
 
 ## 4-projects
-1. Deploy shared/cloudbuild project/environment for BU1 manually
+1. Deploy cloudbuild project for bu1 in common folder manually
 1. Create triggers
-1. Creating 1 cloudbuild project for BU1 and 1 dev project for BU1
+1. Allow Project SA to access TF state bucket - is this required? : need to check
