@@ -26,8 +26,13 @@ This repo provisions limited projects because of [billing-quota-increase](https:
 1. Deploy shared environment manually
 1. Creating development shared vpc only and not restricted shared vpc
 
+Not yet applied:
+
 ## 4-projects
 1. Deploy cloudbuild project for bu1 in common folder manually i.e. 1 cloudbuild project per bu
 1. Reusing the tf runner image from seed project
 1. Keeping 1 bucket for tf state and 1 bucket for cb artifacts for bu1 - for now
 1. Allow Project SA to access TF state bucket - is this required? : need to check
+
+## 5-app-infra
+1. Only creating app-infra for development. In fldr-development, first find the host project -> network -> subnet, then find the bu1 sample project. Finally, deploy an instance in bu1 sample project with the subnet in the host project.
