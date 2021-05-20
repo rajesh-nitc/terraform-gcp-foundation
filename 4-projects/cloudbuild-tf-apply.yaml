@@ -19,7 +19,11 @@ steps:
   args:
   - -c
   - |
-    cd 2-environments/envs/development    
+    cd 4-projects/business_unit_1/shared   
+    terraform init
+    terraform apply --auto-approve
+    cd ..
+    cd 4-projects/business_unit_1/development    
     terraform init
     terraform apply --auto-approve
 

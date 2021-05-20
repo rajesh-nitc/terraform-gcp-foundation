@@ -13,14 +13,18 @@ steps:
       gcloud config set auth/impersonate_service_account $tf_sa_email
     fi
 
-- id: 'tf apply'
+- id: 'tf plan'
   name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/terraform
   entrypoint: /bin/bash
   args:
   - -c
   - |
-    cd 2-environments/envs/development    
+    cd 4-projects/business_unit_1/shared   
     terraform init
-    terraform apply --auto-approve
+    terraform plan
+    cd ..
+    cd 4-projects/business_unit_1/development    
+    terraform init
+    terraform plan
 
 

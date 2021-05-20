@@ -1,9 +1,4 @@
 timeout: 1200s
-substitutions:
-  _DEFAULT_REGION: 'us-central1'
-  _GAR_REPOSITORY: 'prj-tf-runners'
-  _TF_SA_EMAIL: 'org-terraform@prj-b-seed-6949.iam.gserviceaccount.com'
-  _ARTIFACT_BUCKET_NAME: 'prj-cloudbuild-artifacts-1b60'
 steps:
 
 - id: 'setup'
@@ -28,7 +23,4 @@ steps:
     terraform init
     terraform plan
 
-artifacts:
-  objects:
-    location: 'gs://${_ARTIFACT_BUCKET_NAME}/terraform/cloudbuild/plan/${BUILD_ID}'
-    paths: ['1-org/cloudbuild-tf-plan.yaml']
+
