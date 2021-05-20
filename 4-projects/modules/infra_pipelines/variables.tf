@@ -57,3 +57,7 @@ variable "folder_prefix" {
   type        = string
   default     = "fldr"
 }
+
+variable "monorepo_folders" {
+  type = list(string)
+}

@@ -1,0 +1,29 @@
+timeout: 1200s
+substitutions:
+  _TF_SA_EMAIL: ''
+  _GAR_REPOSITORY: 'prj-tf-runners'
+steps:
+
+- id: 'setup'
+  name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/terraform
+  entrypoint: /bin/bash
+  args:
+  - -c
+  - |
+    tf_sa_email=${_TF_SA_EMAIL}
+    if [[ -n ${tf_sa_email} ]]; then
+      echo "Setting up gcloud for impersonation"
+      gcloud config set auth/impersonate_service_account $tf_sa_email
+    fi
+
+- id: 'tf apply'
+  name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/terraform
+  entrypoint: /bin/bash
+  args:
+  - -c
+  - |
+    cd 5-app-infra/business_unit_1/development
+    terraform init
+    terraform apply --auto-approve
+
+

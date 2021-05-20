@@ -16,7 +16,7 @@
 
 terraform {
   backend "gcs" {
-    bucket = "bkt-b-tfstate-e9c3"
+    bucket = ""
     prefix = "terraform/app-infra/business_unit_1/development"
   }
 }
