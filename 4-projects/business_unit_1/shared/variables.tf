@@ -71,7 +71,7 @@ variable "project_prefix" {
   default     = "prj"
 }
 
-variable "group_org_admins" {
-  description = "Google Group for GCP Organization Administrators"
+variable "group_prj_admins" {
   type        = string
+  default     = ""
 }

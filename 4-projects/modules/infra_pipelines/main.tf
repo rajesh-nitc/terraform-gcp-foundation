@@ -58,16 +58,3 @@ resource "google_project_iam_member" "bootstrap_cb_project" {
   role    = "roles/artifactregistry.reader"
   member  = "serviceAccount:${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
 }
-
-# IAM for admins
-resource "google_project_iam_member" "org_admins_cloudbuild_editor" {
-  project = var.cloudbuild_project_id
-  role    = "roles/cloudbuild.builds.editor"
-  member  = "group:${var.group_org_admins}"
-}
-
-resource "google_project_iam_member" "org_admins_cloudbuild_viewer" {
-  project = var.cloudbuild_project_id
-  role    = "roles/viewer"
-  member  = "group:${var.group_org_admins}"
-}

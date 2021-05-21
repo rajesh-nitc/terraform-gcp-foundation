@@ -9,3 +9,4 @@ billing_data_users               = "gcp-billing-admins@budita.dev"
 audit_data_users                 = "gcp-security-admins@budita.dev"
 monitoring_workspace_users       = "gcp-monitoring-admins@example.com"
 access_context_manager_policy_id = 57968632121
+group_prj_admins                 = "gcp-prj-admins@budita.dev"

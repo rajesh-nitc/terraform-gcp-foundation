@@ -41,6 +41,8 @@ module "app_infra_cloudbuild_project" {
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"
   business_code     = "bu1"
+
+  group_prj_admins = var.group_prj_admins
 }
 
 module "infra_pipelines" {
@@ -50,6 +52,5 @@ module "infra_pipelines" {
   business_code               = "bu1"
   org_id                      = var.org_id
   monorepo_folders            = ["5-app-infra"]
-  group_org_admins            = var.group_org_admins
 }
 
