@@ -54,7 +54,7 @@ Clone this repo and create ```feature/initial``` and ```development``` branch fr
 1. from terraform outputs, update the cloudbuild_sa in ```business_unit_1.auto.tfvars``` 
 1. we are creating 1 dev service project for bu1 (attached to dev base host project)
 1. reusing the tf runner image from bootstrap cloudbuild project
-1. allow project SA to access TF state bucket - is this required?
+1. allowing prj admins to impersonate prj sa
 
 ### 5-app-infra
 1. update project sa in ```bu1-development.auto.tfvars```, ```cloudbuild-tf-plan.yaml```, ```cloudbuild-tf-apply.yaml``` and bucket in ```backend.tf``` 
