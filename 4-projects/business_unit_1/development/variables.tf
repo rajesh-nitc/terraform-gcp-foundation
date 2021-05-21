@@ -151,3 +151,7 @@ variable "gcs_bucket_prefix" {
   type        = string
   default     = "cmek-encrypted-bucket"
 }
+
+variable "group_prj_admins" {
+  type = string
+}

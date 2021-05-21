@@ -144,6 +144,5 @@ variable "cloudbuild_sa" {
 }
 
 variable "group_prj_admins" {
-  type    = string
-  default = ""
+  type = string
 }
