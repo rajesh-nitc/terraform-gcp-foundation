@@ -6,7 +6,7 @@ This repo is a monorepo where each folder has its own github app cloudbuild trig
 
 This repo provisions limited projects. Gooogle Cloud provides 5 projects by default and i have got the [approval for additional 10](https://support.google.com/code/contact/billing_quota_increase) by paying $10. Out of total 15, we will be consuming 7 projects from ```0-bootstrap``` to ```5-app-infra``` and keeping rest for future use.
 
-## Final view (0-bootstrap to 5-app-infra)
+## Final view
 [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) gives:
 
 ```
