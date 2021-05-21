@@ -5,7 +5,7 @@ substitutions:
 steps:
 
 - id: 'setup'
-  name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/terraform
+  name: $_DEFAULT_REGION-docker.pkg.dev/$_BOOTSTRAP_CB_PROJECT_ID/$_GAR_REPOSITORY/terraform
   entrypoint: /bin/bash
   args:
   - -c
@@ -17,7 +17,7 @@ steps:
     fi
 
 - id: 'tf plan'
-  name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/terraform
+  name: $_DEFAULT_REGION-docker.pkg.dev/$_BOOTSTRAP_CB_PROJECT_ID/$_GAR_REPOSITORY/terraform
   entrypoint: /bin/bash
   args:
   - -c

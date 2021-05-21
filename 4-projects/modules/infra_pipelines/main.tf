@@ -13,8 +13,8 @@ data "google_active_folder" "bootstrap" {
   parent       = local.parent_id
 }
 
-data "google_projects" "seed_project" {
-  filter = "parent.id:${split("/", data.google_active_folder.bootstrap.name)[1]} labels.application_name=seed-bootstrap lifecycleState=ACTIVE"
+data "google_projects" "bootstrap_cb_project" {
+  filter = "parent.id:${split("/", data.google_active_folder.bootstrap.name)[1]} labels.application_name=cloudbuild-bootstrap lifecycleState=ACTIVE"
 }
 
 # Buckets for state and artifacts
@@ -52,9 +52,9 @@ resource "google_storage_bucket_iam_member" "buckets" {
   member   = "serviceAccount:${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
 }
 
-# Allow cloudbuild to access tf image in seed project
-resource "google_project_iam_member" "artifactory_seed_project" {
-  project = data.google_projects.seed_project.projects[0].project_id
+# Allow cloudbuild to access tf image in bootstrap cb project
+resource "google_project_iam_member" "bootstrap_cb_project" {
+  project = data.google_projects.bootstrap_cb_project.projects[0].project_id
   role    = "roles/artifactregistry.reader"
   member  = "serviceAccount:${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
 }
