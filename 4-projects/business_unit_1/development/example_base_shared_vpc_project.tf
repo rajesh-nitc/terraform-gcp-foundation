@@ -35,6 +35,8 @@ module "base_shared_vpc_project" {
     "cloudresourcemanager.googleapis.com"
   ]
 
+  group_prj_admins = var.group_prj_admins
+
   # Metadata
   project_suffix    = "sample-base"
   application_name  = "bu1-sample-application"
@@ -43,6 +45,5 @@ module "base_shared_vpc_project" {
   secondary_contact = "example2@example.com"
   business_code     = "bu1"
 
-  group_prj_admins = var.group_prj_admins
 }
 

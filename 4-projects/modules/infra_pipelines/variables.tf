@@ -61,3 +61,7 @@ variable "folder_prefix" {
 variable "monorepo_folders" {
   type = list(string)
 }
+
+variable "group_prj_admins" {
+  type = string
+}
