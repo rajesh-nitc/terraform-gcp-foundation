@@ -61,3 +61,8 @@ variable "folder_prefix" {
 variable "monorepo_folders" {
   type = list(string)
 }
+
+variable "group_org_admins" {
+  description = "Google Group for GCP Organization Administrators"
+  type        = string
+}

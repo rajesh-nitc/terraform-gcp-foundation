@@ -28,10 +28,10 @@
 #   value = module.app_infra_cloudbuild_project.project_id
 # }
 
-# output "cloudbuild_sa" {
-#   description = "Cloud Build service account"
-#   value       = module.infra_pipelines.cloudbuild_sa
-# }
+output "cloudbuild_sa" {
+  description = "Cloud Build service account"
+  value       = module.infra_pipelines.cloudbuild_sa
+}
 
 # output "repos" {
 #   description = "CSRs to store source code"

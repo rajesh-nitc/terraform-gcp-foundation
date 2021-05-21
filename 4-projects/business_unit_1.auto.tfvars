@@ -14,4 +14,4 @@
  * limitations under the License.
  */
 
-app_infra_pipeline_cloudbuild_sa = "<bu1_infra_pipeline_project_number>@cloudbuild.gserviceaccount.com"
+app_infra_pipeline_cloudbuild_sa = "310418294350@cloudbuild.gserviceaccount.com"

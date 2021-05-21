@@ -29,10 +29,10 @@
 #   value       = local.gar_name
 # }
 
-# output "cloudbuild_sa" {
-#   description = "Cloud Build service account"
-#   value       = "${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
-# }
+output "cloudbuild_sa" {
+  description = "Cloud Build service account"
+  value       = "${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
+}
 
 # output "repos" {
 #   description = "CSRs to store source code"

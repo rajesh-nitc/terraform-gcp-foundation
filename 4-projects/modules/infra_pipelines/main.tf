@@ -1,5 +1,7 @@
 locals {
-  parent_id = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  parent_id        = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  artifact_buckets = { for repo in toset(var.monorepo_folders) : "${repo}-ab" => format("%s-%s-%s", repo, "cb-artifacts", random_id.suffix.hex) }
+  state_buckets    = { for repo in toset(var.monorepo_folders) : "${repo}-tfstate" => format("%s-%s-%s", repo, "tfstate", random_id.suffix.hex) }
 }
 
 data "google_project" "cloudbuild_project" {
@@ -21,9 +23,9 @@ resource "random_id" "suffix" {
 }
 
 resource "google_storage_bucket" "tfstate" {
-  for_each                    = toset(var.monorepo_folders)
+  for_each                    = local.state_buckets
   project                     = var.cloudbuild_project_id
-  name                        = format("%s-%s-%s", each.key, "tfstate", random_id.suffix.hex)
+  name                        = each.value
   location                    = var.bucket_region
   uniform_bucket_level_access = true
   versioning {
@@ -32,9 +34,9 @@ resource "google_storage_bucket" "tfstate" {
 }
 
 resource "google_storage_bucket" "cloudbuild_artifacts" {
-  for_each                    = toset(var.monorepo_folders)
+  for_each                    = local.artifact_buckets
   project                     = var.cloudbuild_project_id
-  name                        = format("%s-%s-%s", each.key, "cb-artifacts", random_id.suffix.hex)
+  name                        = each.value
   location                    = var.bucket_region
   uniform_bucket_level_access = true
   versioning {
@@ -44,8 +46,8 @@ resource "google_storage_bucket" "cloudbuild_artifacts" {
 
 # IAM for Cloud Build SA to access cloudbuild_artifacts and tfstate buckets
 resource "google_storage_bucket_iam_member" "buckets" {
-  for_each = merge(google_storage_bucket.tfstate, google_storage_bucket.cloudbuild_artifacts)
-  bucket   = each.key
+  for_each = merge(local.artifact_buckets, local.state_buckets)
+  bucket   = each.value
   role     = "roles/storage.admin"
   member   = "serviceAccount:${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
 }
@@ -55,4 +57,17 @@ resource "google_project_iam_member" "artifactory_seed_project" {
   project = data.google_projects.seed_project.projects[0].project_id
   role    = "roles/artifactregistry.reader"
   member  = "serviceAccount:${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
+}
+
+# IAM for admins
+resource "google_project_iam_member" "org_admins_cloudbuild_editor" {
+  project = var.cloudbuild_project_id
+  role    = "roles/cloudbuild.builds.editor"
+  member  = "group:${var.group_org_admins}"
+}
+
+resource "google_project_iam_member" "org_admins_cloudbuild_viewer" {
+  project = var.cloudbuild_project_id
+  role    = "roles/viewer"
+  member  = "group:${var.group_org_admins}"
 }
