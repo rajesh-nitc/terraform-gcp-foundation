@@ -22,8 +22,7 @@ steps:
     cd 3-networks/envs/shared    
     terraform init
     terraform apply --auto-approve
-    cd ..
-    cd 3-networks/envs/development    
+    cd ../3-networks/envs/development    
     terraform init
     terraform apply --auto-approve
 
