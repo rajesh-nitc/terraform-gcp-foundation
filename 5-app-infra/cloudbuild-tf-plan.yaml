@@ -1,6 +1,6 @@
 timeout: 1200s
 substitutions:
-  _TF_SA_EMAIL: ''
+  _TF_SA_EMAIL: 'project-service-account@prj-bu1-d-sample-base-9208.iam.gserviceaccount.com'
   _GAR_REPOSITORY: 'prj-tf-runners'
 steps:
 

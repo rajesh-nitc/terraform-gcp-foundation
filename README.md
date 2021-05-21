@@ -38,4 +38,5 @@ Clone this repo and create ```feature/initial``` and ```development``` branch fr
 1. allow project SA to access TF state bucket - is this required?
 
 ## 5-app-infra
+1. update project sa in ```bu1-development.auto.tfvars```, ```cloudbuild-tf-plan.yaml```, ```cloudbuild-tf-apply.yaml``` 
 1. deploying app-infra in the dev service project for bu1
