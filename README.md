@@ -9,6 +9,7 @@ This repo provisions limited projects. Gooogle Cloud provides 5 projects by defa
 ## Final view (0-bootstrap to 5-app-infra)
 [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) gives:
 
+```
 🏢 budita.dev (157305482127)
  +-- 📁 fldr-bootstrap (818226860401)
  |   +-- 📦 prj-b-seed-6949
@@ -20,6 +21,7 @@ This repo provisions limited projects. Gooogle Cloud provides 5 projects by defa
  +-- 📁 fldr-development (267943501446)
      +-- 📦 prj-bu1-d-sample-base-9208
      +-- 📦 prj-d-shared-base-21a3
+```
 
 ## Steps
 
