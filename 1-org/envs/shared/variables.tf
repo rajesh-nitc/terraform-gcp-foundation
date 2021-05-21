@@ -291,3 +291,7 @@ variable "folder_prefix" {
   type        = string
   default     = "fldr"
 }
+
+variable "group_network_admins" {
+  type = string
+}
