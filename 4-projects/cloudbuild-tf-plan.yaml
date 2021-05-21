@@ -22,8 +22,7 @@ steps:
     cd 4-projects/business_unit_1/shared   
     terraform init
     terraform plan
-    cd ..
-    cd 4-projects/business_unit_1/development    
+    cd ../4-projects/business_unit_1/development    
     terraform init
     terraform plan
 
