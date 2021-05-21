@@ -22,7 +22,8 @@ steps:
     cd 3-networks/envs/shared    
     terraform init
     terraform plan
-    cd ../3-networks/envs/development    
+    cd ..
+    cd development   
     terraform init
     terraform plan
 
