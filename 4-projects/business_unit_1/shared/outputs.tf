@@ -38,15 +38,15 @@ output "cloudbuild_sa" {
 #   value       = module.infra_pipelines.repos
 # }
 
-# output "artifact_buckets" {
-#   description = "GCS Buckets to store Cloud Build Artifacts"
-#   value       = module.infra_pipelines.artifact_buckets
-# }
+output "artifact_buckets" {
+  description = "GCS Buckets to store Cloud Build Artifacts"
+  value       = module.infra_pipelines.artifact_buckets
+}
 
-# output "state_buckets" {
-#   description = "GCS Buckets to store TF state"
-#   value       = module.infra_pipelines.state_buckets
-# }
+output "state_buckets" {
+  description = "GCS Buckets to store TF state"
+  value       = module.infra_pipelines.state_buckets
+}
 
 # output "plan_triggers" {
 #   description = "CB plan triggers"

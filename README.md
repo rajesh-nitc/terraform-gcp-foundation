@@ -34,9 +34,9 @@ Clone this repo and create ```feature/initial``` and ```development``` branch fr
 1. you will get ```Error creating Trigger: googleapi: Error 400: Repository mapping does not exist. Please visit```. visit the link and connect github repo to common cloudbuild project for bu1
 1. from terraform outputs, update the cloudbuild_sa in ```business_unit_1.auto.tfvars``` 
 1. we are creating 1 dev service project for bu1 (attached to dev base host project)
-1. reusing the tf runner image from seed project
+1. reusing the tf runner image from bootstrap cloudbuild project
 1. allow project SA to access TF state bucket - is this required?
 
 ## 5-app-infra
-1. update project sa in ```bu1-development.auto.tfvars```, ```cloudbuild-tf-plan.yaml```, ```cloudbuild-tf-apply.yaml``` 
+1. update project sa in ```bu1-development.auto.tfvars```, ```cloudbuild-tf-plan.yaml```, ```cloudbuild-tf-apply.yaml``` and bucket in ```backend.tf``` 
 1. deploying app-infra in the dev service project for bu1

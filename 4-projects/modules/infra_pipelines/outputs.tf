@@ -39,15 +39,15 @@ output "cloudbuild_sa" {
 #   value       = local.created_csrs
 # }
 
-# output "artifact_buckets" {
-#   description = "GCS Buckets to store Cloud Build Artifacts"
-#   value       = values(local.artifact_buckets)
-# }
+output "artifact_buckets" {
+  description = "GCS Buckets to store Cloud Build Artifacts"
+  value       = values(local.artifact_buckets)
+}
 
-# output "state_buckets" {
-#   description = "GCS Buckets to store TF state"
-#   value       = values(local.state_buckets)
-# }
+output "state_buckets" {
+  description = "GCS Buckets to store TF state"
+  value       = values(local.state_buckets)
+}
 
 # output "plan_triggers" {
 #   description = "CB plan triggers"
