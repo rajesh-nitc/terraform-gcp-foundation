@@ -72,6 +72,6 @@ variable "project_prefix" {
 }
 
 variable "group_prj_admins" {
-  type        = string
-  default     = ""
+  type    = string
+  default = ""
 }
