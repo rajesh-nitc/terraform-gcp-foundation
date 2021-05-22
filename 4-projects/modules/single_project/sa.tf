@@ -1,9 +1,11 @@
 locals {
 
-  project_sa_default_roles = ["roles/logging.logWriter",
+  project_sa_default_roles = [
+    "roles/logging.logWriter",
     "roles/monitoring.metricWriter",
     "roles/monitoring.viewer",
-  "roles/storage.objectViewer"]
+    "roles/storage.objectViewer"
+  ]
 }
 
 # Additional roles to project deployment SA created by project factory

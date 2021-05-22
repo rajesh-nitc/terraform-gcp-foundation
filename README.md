@@ -1,10 +1,12 @@
 # gcp-foundation 
 
-Following the official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
+Following official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) for stages ```0-bootsrap``` to ```5-app-infra```
+
+Following official [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) for stages ```90-data-projects``` to ```93-data-dwh-infra```
 
 This repo is a monorepo where each folder has its own github app cloudbuild triggers
 
-This repo provisions limited projects. Gooogle Cloud provides 5 projects by default and i have got the [approval for additional 10](https://support.google.com/code/contact/billing_quota_increase) by paying $10. Out of total 15, we will be consuming 7 projects from ```0-bootstrap``` to ```5-app-infra``` and keeping rest for future use.
+This repo provisions limited projects. Gooogle Cloud provides 5 projects by default and i have got the [approval for additional 10](https://support.google.com/code/contact/billing_quota_increase) by paying $10.
 
 ## Final view
 [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) gives:
@@ -15,10 +17,14 @@ This repo provisions limited projects. Gooogle Cloud provides 5 projects by defa
  |   +-- 📦 prj-b-seed-6949
  |   +-- 📦 prj-b-cicd-98fa
  +-- 📁 fldr-common (161434909087)
+ |   +-- 📦 prj-data-c-infra-pipeline-fb29
  |   +-- 📦 prj-bu1-c-infra-pipeline-eedb
  |   +-- 📦 prj-c-dns-hub-c4a2
  |   +-- 📦 prj-c-logging-8083
  +-- 📁 fldr-development (267943501446)
+     +-- 📦 prj-data-d-dwh-42bd
+     +-- 📦 prj-data-d-landing-236b
+     +-- 📦 prj-data-d-transformation-803e
      +-- 📦 prj-bu1-d-sample-base-9208
      +-- 📦 prj-d-shared-base-21a3
 ```

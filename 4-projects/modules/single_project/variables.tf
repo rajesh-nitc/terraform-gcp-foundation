@@ -146,3 +146,13 @@ variable "cloudbuild_sa" {
 variable "group_prj_admins" {
   type = string
 }
+
+variable "svpc_host_project_id" {
+  type    = string
+  default = ""
+}
+
+variable "shared_vpc_subnets" {
+  type    = list(string)
+  default = []
+}

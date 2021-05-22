@@ -1,5 +1,12 @@
 locals {
-  monorepo_folders = ["0-bootstrap", "1-org", "2-environments", "3-networks", "4-projects"]
+  monorepo_folders = [
+    "0-bootstrap",
+    "1-org",
+    "2-environments",
+    "3-networks",
+    "4-projects",
+    "90-data-projects",
+  ]
 }
 
 resource "google_cloudbuild_trigger" "push_non_environment_branch" {

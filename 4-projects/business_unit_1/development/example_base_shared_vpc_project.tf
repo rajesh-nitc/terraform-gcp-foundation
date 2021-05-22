@@ -32,7 +32,8 @@ module "base_shared_vpc_project" {
   cloudbuild_sa               = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [
     "iam.googleapis.com",
-    "cloudresourcemanager.googleapis.com"
+    "cloudresourcemanager.googleapis.com",
+    "compute.googleapis.com",
   ]
 
   group_prj_admins = var.group_prj_admins
