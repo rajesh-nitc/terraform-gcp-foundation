@@ -1,1 +1,1 @@
-project_service_account = "project-service-account@prj-data-d-landing-236b.iam.gserviceaccount.com"
+project_service_account = "project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com"

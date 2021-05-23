@@ -18,14 +18,14 @@ resource "google_project_iam_member" "app_infra_pipeline_sa_roles" {
 
 resource "google_folder_iam_member" "folder_browser" {
   count  = var.enable_cloudbuild_deploy ? 1 : 0
-  folder = var.folder_id
+  folder = local.folder_id
   role   = "roles/browser"
   member = "serviceAccount:${module.project.service_account_email}"
 }
 
 resource "google_folder_iam_member" "folder_network_viewer" {
   count  = var.enable_cloudbuild_deploy ? 1 : 0
-  folder = var.folder_id
+  folder = local.folder_id
   role   = "roles/compute.networkViewer"
   member = "serviceAccount:${module.project.service_account_email}"
 }

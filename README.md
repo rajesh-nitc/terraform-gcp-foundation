@@ -22,9 +22,9 @@ This repo provisions limited projects. Gooogle Cloud provides 5 projects by defa
  |   +-- 📦 prj-c-dns-hub-c4a2
  |   +-- 📦 prj-c-logging-8083
  +-- 📁 fldr-development (267943501446)
-     +-- 📦 prj-data-d-dwh-42bd
-     +-- 📦 prj-data-d-landing-236b
-     +-- 📦 prj-data-d-transformation-803e
+     +-- 📦 prj-data-d-landing-0816
+     +-- 📦 prj-data-d-dwh-3f33
+     +-- 📦 prj-data-d-transformation-4f2b
      +-- 📦 prj-bu1-d-sample-base-9208
      +-- 📦 prj-d-shared-base-21a3
 ```

@@ -2,14 +2,10 @@ variable "project_landing" {
   type = string
 }
 
-variable "sa_landing" {
-  type = string
-}
-
 variable "project_dwh" {
   type = string
 }
 
-variable "sa_dwh" {
+variable "sa_transformation" {
   type = string
 }

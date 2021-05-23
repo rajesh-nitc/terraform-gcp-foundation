@@ -29,11 +29,6 @@ variable "billing_account" {
   type        = string
 }
 
-# variable "access_context_manager_policy_id" {
-#   type        = string
-#   description = "The ID of the access context manager policy the perimeter lies in. Can be obtained by running `gcloud access-context-manager policies list --organization YOUR_ORGANIZATION_ID --format=\"value(name)\"`."
-# }
-
 variable "parent_folder" {
   description = "Optional - for an organization with existing projects or for development/validation. It will place all the example foundation resources under the provided folder instead of the root organization. The value is the numeric folder ID. The folder must already exist. Must be the same value used in previous step."
   type        = string
@@ -154,5 +149,9 @@ variable "gcs_bucket_prefix" {
 }
 
 variable "group_prj_admins" {
+  type = string
+}
+
+variable "environment" {
   type = string
 }

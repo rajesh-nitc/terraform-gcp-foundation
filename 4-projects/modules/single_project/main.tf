@@ -1,6 +1,8 @@
 locals {
-  env_code        = element(split("", var.environment), 0)
-  shared_vpc_mode = var.enable_hub_and_spoke ? "-spoke" : ""
+  env_code             = element(split("", var.environment), 0)
+  shared_vpc_mode      = var.enable_hub_and_spoke ? "-spoke" : ""
+  svpc_host_project_id = var.vpc_type == "" ? "" : data.google_compute_network.shared_vpc[0].project
+  shared_vpc_subnets   = var.vpc_type == "" ? [] : data.google_compute_network.shared_vpc[0].subnetworks_self_links # Optional: To enable subnetting, replace to "module.networking_project.subnetwork_self_link"
 }
 
 module "project" {
@@ -12,10 +14,10 @@ module "project" {
   name                        = "${var.project_prefix}-${var.business_code}-${local.env_code}-${var.project_suffix}"
   org_id                      = var.org_id
   billing_account             = var.billing_account
-  folder_id                   = var.folder_id
+  folder_id                   = local.folder_id
 
-  svpc_host_project_id = var.vpc_type == "" ? "" : data.google_compute_network.shared_vpc[0].project
-  shared_vpc_subnets   = var.vpc_type == "" ? [] : data.google_compute_network.shared_vpc[0].subnetworks_self_links # Optional: To enable subnetting, replace to "module.networking_project.subnetwork_self_link"
+  svpc_host_project_id = local.svpc_host_project_id
+  shared_vpc_subnets   = local.shared_vpc_subnets
 
   vpc_service_control_attach_enabled = var.vpc_service_control_attach_enabled
   vpc_service_control_perimeter_name = var.vpc_service_control_perimeter_name
