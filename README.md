@@ -1,12 +1,9 @@
 # gcp-foundation 
 
-Following official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) for stages ```0-bootsrap``` to ```5-app-infra```
+This repo is a monorepo where each folder has its own github app cloudbuild triggers. It is made up of following parts:
 
-Following official [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) for stages ```90-data-projects``` to ```94-data-pipeline```
-
-This repo is a monorepo where each folder has its own github app cloudbuild triggers
-
-This repo provisions limited projects. Gooogle Cloud provides 5 projects by default and i have got the [approval for additional 10](https://support.google.com/code/contact/billing_quota_increase) by paying $10.
+1. ```0-bootsrap``` to ```5-app-infra``` follows [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
+1. ```90-data-projects``` to ```94-data-pipeline``` follows [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
 
 ## Final view
 [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) gives:
