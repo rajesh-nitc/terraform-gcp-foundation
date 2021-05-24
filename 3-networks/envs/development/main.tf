@@ -165,7 +165,7 @@ module "base_shared_vpc" {
   dns_enable_inbound_forwarding = var.dns_enable_inbound_forwarding
   dns_enable_logging            = var.dns_enable_logging
   firewall_enable_logging       = var.firewall_enable_logging
-  optional_fw_rules_enabled     = var.optional_fw_rules_enabled
+  optional_fw_rules_enabled     = true
   nat_enabled                   = var.nat_enabled
   nat_bgp_asn                   = var.nat_bgp_asn
   nat_num_addresses_region1     = var.nat_num_addresses_region1

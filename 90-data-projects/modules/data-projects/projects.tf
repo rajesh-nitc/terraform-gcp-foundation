@@ -31,9 +31,6 @@ module landing_project {
   business_code     = "data"
 }
 
-# Dataflow service use service-<prj-number>@dataflow-service-producer-prod.iam.gserviceaccount.com to provision compute vms
-# Dataflow workers use project sa
-# They need 3 roles: roles/dataflow.admin, roles/dataflow.worker, iam.serviceAccounts.actAs
 module transformation_project {
   source                      = "../../../4-projects/modules/single_project"
   impersonate_service_account = var.terraform_service_account
@@ -50,9 +47,6 @@ module transformation_project {
     "roles/dataflow.admin",
     "roles/dataflow.worker",
     "roles/iam.serviceAccountUser",
-    # "roles/bigquery.dataOwner",
-    # "roles/bigquery.jobUser",
-    # "roles/bigquery.metadataViewer",
     "roles/storage.admin",
   ]
   enable_cloudbuild_deploy = true
@@ -60,6 +54,7 @@ module transformation_project {
   activate_apis = [
     "iam.googleapis.com",
     "cloudresourcemanager.googleapis.com",
+    "bigquery.googleapis.com",
     "cloudbuild.googleapis.com",
     "compute.googleapis.com",
     "dataflow.googleapis.com",

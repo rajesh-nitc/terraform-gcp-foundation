@@ -24,18 +24,16 @@ module "buckets_landing" {
 
 module "pubsub" {
   source     = "git@github.com:terraform-google-modules/terraform-google-pubsub.git?ref=v2.0.0"
-  topic      = "tpc-${local.environment_code}-${var.business_code}-landing"
+  topic      = "tp-${local.environment_code}-${var.business_code}-landing"
   project_id = local.project_id
   pull_subscriptions = [
     {
-      name                 = "pull" // required
-      ack_deadline_seconds = 20     // optional
-      # dead_letter_topic       = "projects/my-pubsub-project/topics/example-dl-topic" // optional
-      max_delivery_attempts = 5      // optional
-      maximum_backoff       = "600s" // optional
-      minimum_backoff       = "300s" // optional
-      # filter                  = "attributes.domain = \"com\""                        // optional
-      enable_message_ordering = true // optional
+      name                    = "sub-dataflow"
+      ack_deadline_seconds    = 20
+      max_delivery_attempts   = 5
+      maximum_backoff         = "600s"
+      minimum_backoff         = "300s"
+      enable_message_ordering = true
       service_account         = local.sa_transformation
     }
   ]

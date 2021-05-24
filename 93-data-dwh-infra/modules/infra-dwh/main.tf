@@ -13,7 +13,7 @@ module "bq_dataset" {
   dataset_name                = "bq_raw_dataset"
   description                 = "some description"
   location                    = "US"
-  default_table_expiration_ms = 3600000
+  default_table_expiration_ms = 3600000 * 24 * 5
 
   access = [
     {
