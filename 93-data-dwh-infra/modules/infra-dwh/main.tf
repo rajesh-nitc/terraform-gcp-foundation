@@ -13,7 +13,7 @@ module "bq_dataset" {
   dataset_name                = "bq_raw_dataset"
   description                 = "some description"
   location                    = "US"
-  default_table_expiration_ms = 3600000 # 60 min
+  default_table_expiration_ms = 3600000
 
   access = [
     {
@@ -23,6 +23,10 @@ module "bq_dataset" {
     {
       role          = "roles/bigquery.dataViewer"
       user_by_email = format("project-service-account@%s.iam.gserviceaccount.com", local.project_id)
+    },
+    {
+      role           = "roles/bigquery.dataOwner"
+      group_by_email = var.group_data_admins
     },
 
   ]

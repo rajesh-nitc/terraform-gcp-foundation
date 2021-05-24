@@ -24,3 +24,7 @@ variable "business_code" {
   type    = string
   default = "data"
 }
+
+variable "group_data_admins" {
+  type = string
+}
