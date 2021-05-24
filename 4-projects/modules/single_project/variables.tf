@@ -126,16 +126,6 @@ variable "group_prj_admins" {
   type = string
 }
 
-# variable "svpc_host_project_id" {
-#   type    = string
-#   default = ""
-# }
-
-# variable "shared_vpc_subnets" {
-#   type    = list(string)
-#   default = []
-# }
-
 variable "folder_prefix" {
   description = "Name prefix to use for folders created. Should be the same in all steps."
   type        = string

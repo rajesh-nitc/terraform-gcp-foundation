@@ -16,6 +16,7 @@ resource "google_project_iam_member" "app_infra_pipeline_sa_roles" {
   member   = "serviceAccount:${module.project.service_account_email}"
 }
 
+# To use data sources
 resource "google_folder_iam_member" "folder_browser" {
   count  = var.enable_cloudbuild_deploy ? 1 : 0
   folder = local.folder_id
@@ -23,6 +24,7 @@ resource "google_folder_iam_member" "folder_browser" {
   member = "serviceAccount:${module.project.service_account_email}"
 }
 
+# To use data sources
 resource "google_folder_iam_member" "folder_network_viewer" {
   count  = var.enable_cloudbuild_deploy ? 1 : 0
   folder = local.folder_id
