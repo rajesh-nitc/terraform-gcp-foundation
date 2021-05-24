@@ -1,0 +1,1 @@
+group_prj_admins = "gcp-prj-admins@budita.dev"

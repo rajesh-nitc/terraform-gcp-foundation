@@ -15,3 +15,4 @@
  */
 
 app_infra_pipeline_cloudbuild_sa = "310418294350@cloudbuild.gserviceaccount.com"
+group_prj_admins                 = "gcp-prj-admins@budita.dev"
