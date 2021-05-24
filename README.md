@@ -2,7 +2,7 @@
 
 Following official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) for stages ```0-bootsrap``` to ```5-app-infra```
 
-Following official [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) for stages ```90-data-projects``` to ```94-data-dwh-pipeline```
+Following official [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) for stages ```90-data-projects``` to ```94-data-pipeline```
 
 This repo is a monorepo where each folder has its own github app cloudbuild triggers
 
