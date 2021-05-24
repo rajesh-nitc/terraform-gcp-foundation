@@ -1,4 +1,4 @@
-# Dataflow Pipeline in Shared VPC
+# Dataflow Sample Pipeline in Shared VPC
 
 Create bigquery table person with schema ```name:STRING,surname:STRING,timestamp:TIMESTAMP```
 
