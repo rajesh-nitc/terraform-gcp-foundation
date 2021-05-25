@@ -14,7 +14,7 @@ subnets = {
       enable_private_access = true
     },
     {
-      team                  = "kube"
+      team                  = "k8s"
       subnet_ip             = "10.0.80.0/21"
       enable_flow_logs      = true
       enable_private_access = true
@@ -35,7 +35,7 @@ subnets = {
       enable_private_access = true
     },
     {
-      team                  = "kube"
+      team                  = "k8s"
       subnet_ip             = "10.1.80.0/21"
       enable_flow_logs      = true
       enable_private_access = true

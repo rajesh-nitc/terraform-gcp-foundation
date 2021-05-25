@@ -2,8 +2,8 @@
 
 This repo is a monorepo where each folder has its own github app cloudbuild triggers. It is made up of following parts:
 
-1. ```0-bootsrap``` to ```5-app-infra``` follows [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
-1. ```90-data-projects``` to ```94-data-pipeline``` follows [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
+1. **core-foundation**: ```0-bootsrap``` to ```5-app-infra``` based on [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
+1. **data-foundation**: ```90-data-projects``` to ```94-data-pipeline``` based on [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
 
 ## Final view
 [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) gives:
