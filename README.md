@@ -32,12 +32,12 @@ Clone this repo and create ```feature/initial``` and ```development``` branch fr
 
 ### 0-bootstrap
 1. as org admin or as user running this, you should have 3 roles at org level: Billing Account Administrator, Folder Creator, Organization Administrator 
-1. create groups mentioned in ```common.auto.tfvars``` at root, comment out the ```terraform_service_account``` in ```common.auto.tfvars``` at root and comment out ```backend.tf```, ```provider.tf```, ```github_cloudbuild_triggers.tf``` in 0-bootstrap and apply terraform manually
+1. create groups mentioned in ```common.auto.tfvars``` at root, comment out the ```terraform_service_account``` in ```common.auto.tfvars``` at root and comment out ```backend.tf```,```provider.tf```,```github_cloudbuild_triggers.tf```,```cloudbuild-*``` in 0-bootstrap and apply terraform manually
 1. uncomment and update the files 
 1. connect github repo with cloudbuild project manually
 1. now a push to ```feature/initial``` branch should trigger terraform plan and merging it with ```development``` should trigger terraform apply
 1. cloud source repos and cloudbuild triggers created on them automatically as part of official ```0-bootstrap``` are kept but not used
-1. to make ```0-bootstrap``` work on cloudbuild: had to add roles to tf sa and a single role to cloudbuild sa 
+1. added roles to tf sa and a role to cloudbuild sa to access artifactory - to make ```0-bootstrap``` work on cloudbuild
 
 ### 1-org
 1. provision production projects per org: dns hub and logging
@@ -52,12 +52,10 @@ Clone this repo and create ```feature/initial``` and ```development``` branch fr
 
 ### 4-projects
 1. first provision common/shared cloudbuild project for bu1 manually
-1. you will get ```Error creating Trigger: googleapi: Error 400: Repository mapping does not exist. Please visit```. visit the link and connect github repo to common cloudbuild project for bu1
-1. from terraform outputs, update the cloudbuild_sa in ```business_unit_1.auto.tfvars``` 
-1. we are creating 1 dev service project for bu1 (attached to dev base host project)
-1. reusing the tf runner image from bootstrap cloudbuild project
-1. allowing prj admins to impersonate prj sa
+1. ```Error 400: Repository mapping does not exist``` : connect the repo
+1. update cloudbuild_sa in ```business_unit_1.auto.tfvars``` 
+1. reusing tf runner image from bootstrap
+1. shared subnets per bu/team
 
 ### 5-app-infra
-1. update project sa in ```bu1-development.auto.tfvars```, ```cloudbuild-tf-plan.yaml```, ```cloudbuild-tf-apply.yaml``` and bucket in ```backend.tf``` 
-1. deploying app-infra in the dev service project for bu1
+1. update ```bu1-development.auto.tfvars```, ```cloudbuild-*```,```backend.tf```
