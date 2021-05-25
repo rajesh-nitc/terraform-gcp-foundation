@@ -70,6 +70,7 @@ variable "audit_logs_table_expiration_days" {
 variable "scc_notification_name" {
   description = "Name of the Security Command Center Notification. It must be unique in the organization. Run `gcloud scc notifications describe <scc_notification_name> --organization=org_id` to check if it already exists."
   type        = string
+  default     = "scc-notify"
 }
 
 variable "skip_gcloud_download" {

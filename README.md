@@ -40,16 +40,15 @@ Clone this repo and create ```feature/initial``` and ```development``` branch fr
 1. to make ```0-bootstrap``` work on cloudbuild: had to add roles to tf sa and a single role to cloudbuild sa 
 
 ### 1-org
-1. creating 2 common projects: logging and dns hub
-1. not creating hub n spoke projects - for now
+1. provision production projects per org: dns hub and logging
 1. disabled audit data access logs and not sending log exports to cloud storage and pubsub
 
 ### 2-environments
-1. creating base host project for development only
+1. provision base host project for development
 
 ### 3-networks
 1. first provision shared environment manually
-1. creating base shared vpc in the base host project
+1. provision base shared vpc in base host project
 
 ### 4-projects
 1. first provision common/shared cloudbuild project for bu1 manually

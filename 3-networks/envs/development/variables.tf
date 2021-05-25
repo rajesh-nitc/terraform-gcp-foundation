@@ -145,3 +145,7 @@ variable "enable_hub_and_spoke_transitivity" {
   type        = bool
   default     = false
 }
+
+variable "subnets" {
+
+}

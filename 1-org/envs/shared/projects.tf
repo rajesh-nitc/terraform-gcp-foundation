@@ -186,76 +186,76 @@ module "dns_hub" {
   Project for Base Network Hub
 *****************************************/
 
-module "base_network_hub" {
-  source                      = "terraform-google-modules/project-factory/google"
-  version                     = "~> 10.1"
-  count                       = var.enable_hub_and_spoke ? 1 : 0
-  random_project_id           = "true"
-  impersonate_service_account = var.terraform_service_account
-  default_service_account     = "deprivilege"
-  name                        = "${var.project_prefix}-c-base-net-hub"
-  org_id                      = var.org_id
-  billing_account             = var.billing_account
-  folder_id                   = google_folder.common.id
+# module "base_network_hub" {
+#   source                      = "terraform-google-modules/project-factory/google"
+#   version                     = "~> 10.1"
+#   count                       = var.enable_hub_and_spoke ? 1 : 0
+#   random_project_id           = "true"
+#   impersonate_service_account = var.terraform_service_account
+#   default_service_account     = "deprivilege"
+#   name                        = "${var.project_prefix}-c-base-net-hub"
+#   org_id                      = var.org_id
+#   billing_account             = var.billing_account
+#   folder_id                   = google_folder.common.id
 
-  activate_apis = [
-    "compute.googleapis.com",
-    "dns.googleapis.com",
-    "servicenetworking.googleapis.com",
-    "logging.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
-    "billingbudgets.googleapis.com"
-  ]
+#   activate_apis = [
+#     "compute.googleapis.com",
+#     "dns.googleapis.com",
+#     "servicenetworking.googleapis.com",
+#     "logging.googleapis.com",
+#     "cloudresourcemanager.googleapis.com",
+#     "billingbudgets.googleapis.com"
+#   ]
 
-  labels = {
-    environment       = "production"
-    application_name  = "org-base-net-hub"
-    billing_code      = "1234"
-    primary_contact   = "example1"
-    secondary_contact = "example2"
-    business_code     = "abcd"
-    env_code          = "p"
-  }
-  budget_alert_pubsub_topic   = var.base_net_hub_project_alert_pubsub_topic
-  budget_alert_spent_percents = var.base_net_hub_project_alert_spent_percents
-  budget_amount               = var.base_net_hub_project_budget_amount
-}
+#   labels = {
+#     environment       = "production"
+#     application_name  = "org-base-net-hub"
+#     billing_code      = "1234"
+#     primary_contact   = "example1"
+#     secondary_contact = "example2"
+#     business_code     = "abcd"
+#     env_code          = "p"
+#   }
+#   budget_alert_pubsub_topic   = var.base_net_hub_project_alert_pubsub_topic
+#   budget_alert_spent_percents = var.base_net_hub_project_alert_spent_percents
+#   budget_amount               = var.base_net_hub_project_budget_amount
+# }
 
 /******************************************
   Project for Restricted Network Hub
 *****************************************/
 
-module "restricted_network_hub" {
-  source                      = "terraform-google-modules/project-factory/google"
-  version                     = "~> 10.1"
-  count                       = var.enable_hub_and_spoke ? 1 : 0
-  random_project_id           = "true"
-  impersonate_service_account = var.terraform_service_account
-  default_service_account     = "deprivilege"
-  name                        = "${var.project_prefix}-c-restricted-net-hub"
-  org_id                      = var.org_id
-  billing_account             = var.billing_account
-  folder_id                   = google_folder.common.id
+# module "restricted_network_hub" {
+#   source                      = "terraform-google-modules/project-factory/google"
+#   version                     = "~> 10.1"
+#   count                       = var.enable_hub_and_spoke ? 1 : 0
+#   random_project_id           = "true"
+#   impersonate_service_account = var.terraform_service_account
+#   default_service_account     = "deprivilege"
+#   name                        = "${var.project_prefix}-c-restricted-net-hub"
+#   org_id                      = var.org_id
+#   billing_account             = var.billing_account
+#   folder_id                   = google_folder.common.id
 
-  activate_apis = [
-    "compute.googleapis.com",
-    "dns.googleapis.com",
-    "servicenetworking.googleapis.com",
-    "logging.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
-    "billingbudgets.googleapis.com"
-  ]
+#   activate_apis = [
+#     "compute.googleapis.com",
+#     "dns.googleapis.com",
+#     "servicenetworking.googleapis.com",
+#     "logging.googleapis.com",
+#     "cloudresourcemanager.googleapis.com",
+#     "billingbudgets.googleapis.com"
+#   ]
 
-  labels = {
-    environment       = "production"
-    application_name  = "org-restricted-net-hub"
-    billing_code      = "1234"
-    primary_contact   = "example1"
-    secondary_contact = "example2"
-    business_code     = "abcd"
-    env_code          = "p"
-  }
-  budget_alert_pubsub_topic   = var.restricted_net_hub_project_alert_pubsub_topic
-  budget_alert_spent_percents = var.restricted_net_hub_project_alert_spent_percents
-  budget_amount               = var.restricted_net_hub_project_budget_amount
-}
+#   labels = {
+#     environment       = "production"
+#     application_name  = "org-restricted-net-hub"
+#     billing_code      = "1234"
+#     primary_contact   = "example1"
+#     secondary_contact = "example2"
+#     business_code     = "abcd"
+#     env_code          = "p"
+#   }
+#   budget_alert_pubsub_topic   = var.restricted_net_hub_project_alert_pubsub_topic
+#   budget_alert_spent_percents = var.restricted_net_hub_project_alert_spent_percents
+#   budget_amount               = var.restricted_net_hub_project_budget_amount
+# }

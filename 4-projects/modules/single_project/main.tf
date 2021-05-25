@@ -2,7 +2,7 @@ locals {
   env_code             = element(split("", var.environment), 0)
   shared_vpc_mode      = var.enable_hub_and_spoke ? "-spoke" : ""
   svpc_host_project_id = var.vpc_type == "" ? "" : data.google_compute_network.shared_vpc[0].project
-  shared_vpc_subnets   = var.vpc_type == "" ? [] : data.google_compute_network.shared_vpc[0].subnetworks_self_links # Optional: To enable subnetting, replace to "module.networking_project.subnetwork_self_link"
+  shared_vpc_subnets   = var.vpc_type == "" ? [] : [for i in data.google_compute_subnetwork.shared_subnets : i.self_link]
   iap_apis             = var.use_iap ? ["iap.googleapis.com"] : []
 }
 

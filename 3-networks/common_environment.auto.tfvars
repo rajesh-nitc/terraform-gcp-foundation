@@ -7,6 +7,6 @@ domain = "example.com."
 // Must be the same value used in previous steps.
 //parent_folder = "000000000000"
 
-//enable_hub_and_spoke = true
+# enable_hub_and_spoke = true
 
-//enable_hub_and_spoke_transitivity = true
+# enable_hub_and_spoke_transitivity = true

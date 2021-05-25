@@ -143,3 +143,13 @@ variable "use_iap" {
   type        = string
   default     = false
 }
+
+variable "default_region1" {
+  type    = string
+  default = "us-central1"
+}
+
+variable "default_region2" {
+  type    = string
+  default = "us-west1"
+}
