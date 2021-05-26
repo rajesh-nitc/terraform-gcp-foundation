@@ -24,6 +24,7 @@ locals {
     }
   ]])
 
+  # This is manual
   subnet_secondary_ranges = {
     (var.default_region1) = [
       {
@@ -37,9 +38,9 @@ locals {
     ]
   }
 
-  # k8s team subnet secondary ranges
-  k8s_subnet_secondary_ranges = {
-    "sb-${local.environment_code}-shared-base-${var.default_region1}-k8s" = local.subnet_secondary_ranges[var.default_region1]
+  # This is manual
+  gke_subnet_secondary_ranges = {
+    "sb-${local.environment_code}-shared-base-${var.default_region1}-gke" = local.subnet_secondary_ranges[var.default_region1]
   }
 
 
@@ -79,7 +80,7 @@ module "base_shared_vpc" {
   mode                          = local.mode
 
   subnets          = local.base_subnet_primary_ranges
-  secondary_ranges = local.k8s_subnet_secondary_ranges
+  secondary_ranges = local.gke_subnet_secondary_ranges
 
   allow_all_ingress_ranges = local.enable_transitivity ? local.base_hub_subnet_ranges : null
   allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
