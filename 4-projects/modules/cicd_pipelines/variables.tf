@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-variable "app_cicd_build_sa" {
-  description = "Service account email of the account to impersonate to run Terraform"
-  type        = string
-}
+# variable "app_cicd_build_sa" {
+#   description = "Service account email of the account to impersonate to run Terraform"
+#   type        = string
+# }
 
 variable "app_cicd_repos" {
   description = "A list of Cloud Source Repos to be created to hold app infra Terraform configs"
@@ -33,7 +33,7 @@ variable "app_cicd_project_id" {
 variable "primary_location" {
   type        = string
   description = "Region used for key-ring"
-  default     = "us-east1"
+  default     = "us-central1"
 }
 
 variable "attestor_names_prefix" {
@@ -51,7 +51,7 @@ variable "build_app_yaml" {
 variable "build_image_yaml" {
   type        = string
   description = "Name of image builder yaml file"
-  default     = "cloudbuild-build-boa.yaml"
+  default     = "cloudbuild-skaffold-build-image.yaml"
 }
 
 variable "boa_build_repo" {
@@ -64,4 +64,8 @@ variable "gar_repo_name_suffix" {
   type        = string
   description = "Docker artifact regitery repo to store app build images"
   default     = "boa-image-repo"
+}
+
+variable "group_prj_admins" {
+  type = string
 }

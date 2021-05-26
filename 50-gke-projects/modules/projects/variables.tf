@@ -102,8 +102,7 @@ variable "enable_hub_and_spoke" {
 }
 
 variable "app_infra_pipeline_cloudbuild_sa" {
-  description = "Cloud Build SA used for deploying infrastructure"
-  type        = string
+  type = string
 }
 
 variable "secrets_prj_suffix" {
@@ -153,5 +152,9 @@ variable "group_prj_admins" {
 }
 
 variable "environment" {
+  type = string
+}
+
+variable "app_cicd_project_id" {
   type = string
 }

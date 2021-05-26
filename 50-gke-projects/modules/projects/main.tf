@@ -16,23 +16,11 @@ locals {
     "roles/compute.securityAdmin",
     "roles/compute.publicIpAdmin",
   ]
-  project_sa_ops_roles = [
-    "roles/logging.configWriter",
-    "roles/serviceusage.serviceUsageAdmin",
-    "roles/resourcemanager.projectIamAdmin",
-    "roles/storage.admin",
-  ]
-  project_sa_sec_roles = [
-    "roles/cloudkms.admin",
-    "roles/logging.configWriter",
-    "roles/iam.serviceAccountCreator",
-    "roles/secretmanager.admin",
-  ]
 
-  project_sa_cicd_roles = [
-    "roles/binaryauthorization.attestorsViewer",
-    "roles/resourcemanager.projectIamAdmin",
-  ]
+  # project_sa_cicd_roles = [
+  #   "roles/binaryauthorization.attestorsViewer",
+  #   "roles/resourcemanager.projectIamAdmin",
+  # ]
 }
 
 module gke_project {
@@ -47,7 +35,7 @@ module gke_project {
   budget_amount               = var.budget_amount
   project_prefix              = var.project_prefix
   enable_hub_and_spoke        = var.enable_hub_and_spoke
-  sa_roles                    = concat(local.project_sa_gke_roles, local.project_sa_ops_roles, local.project_sa_sec_roles, local.project_sa_sql_roles, local.project_sa_vpc_roles, local.project_sa_cicd_roles)
+  sa_roles                    = local.gke_project_sa_roles
   enable_cloudbuild_deploy    = true
   cloudbuild_sa               = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [

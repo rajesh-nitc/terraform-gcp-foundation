@@ -14,47 +14,47 @@
  * limitations under the License.
  */
 
-resource "random_string" "keyring_name" {
-  length  = 4
-  special = false
-  number  = true
-  upper   = false
-  lower   = true
-}
+# resource "random_string" "keyring_name" {
+#   length  = 4
+#   special = false
+#   number  = true
+#   upper   = false
+#   lower   = true
+# }
 
-resource "google_kms_key_ring" "keyring" {
-  name     = "attestor-key-ring-${random_string.keyring_name.id}"
-  location = var.primary_location
-  project  = var.app_cicd_project_id
-  lifecycle {
-    prevent_destroy = false
-  }
-}
+# resource "google_kms_key_ring" "keyring" {
+#   name     = "attestor-key-ring-${random_string.keyring_name.id}"
+#   location = var.primary_location
+#   project  = var.app_cicd_project_id
+#   lifecycle {
+#     prevent_destroy = false
+#   }
+# }
 
-# Create a Google Secret containing the keyring name
-resource "google_secret_manager_secret" "keyring-secret" {
-  project   = var.app_cicd_project_id
-  secret_id = google_kms_key_ring.keyring.name
-  labels = {
-    label = google_kms_key_ring.keyring.name
-  }
+# # Create a Google Secret containing the keyring name
+# resource "google_secret_manager_secret" "keyring-secret" {
+#   project   = var.app_cicd_project_id
+#   secret_id = google_kms_key_ring.keyring.name
+#   labels = {
+#     label = google_kms_key_ring.keyring.name
+#   }
 
-  replication {
-    automatic = true
-  }
-}
+#   replication {
+#     automatic = true
+#   }
+# }
 
-resource "google_secret_manager_secret_version" "keyring-secret-version" {
-  secret      = google_secret_manager_secret.keyring-secret.id
-  secret_data = google_kms_key_ring.keyring.name
-}
+# resource "google_secret_manager_secret_version" "keyring-secret-version" {
+#   secret      = google_secret_manager_secret.keyring-secret.id
+#   secret_data = google_kms_key_ring.keyring.name
+# }
 
-module "attestors" {
-  source   = "terraform-google-modules/kubernetes-engine/google//modules/binary-authorization"
-  version  = "~> 14.1"
-  for_each = toset(var.attestor_names_prefix)
+# module "attestors" {
+#   source   = "terraform-google-modules/kubernetes-engine/google//modules/binary-authorization"
+#   version  = "~> 14.1"
+#   for_each = toset(var.attestor_names_prefix)
 
-  project_id    = var.app_cicd_project_id
-  attestor-name = each.key
-  keyring-id    = google_kms_key_ring.keyring.id
-}
+#   project_id    = var.app_cicd_project_id
+#   attestor-name = each.key
+#   keyring-id    = google_kms_key_ring.keyring.id
+# }

@@ -21,7 +21,7 @@ module "app_infra_cloudbuild_project" {
 
   # Metadata
   project_suffix    = "infra-pipeline"
-  application_name  = "gke-infra-pipelines"
+  application_name  = "gke-infra-pipeline"
   billing_code      = "1234"
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"
@@ -30,11 +30,11 @@ module "app_infra_cloudbuild_project" {
 }
 
 module "infra_pipelines" {
-  source                      = "../../../4-projects/modules/infra_pipelines"
-  impersonate_service_account = var.terraform_service_account
-  cloudbuild_project_id       = module.app_infra_cloudbuild_project.project_id
-  business_code               = "gke"
-  org_id                      = var.org_id
-  monorepo_folders            = ["51-gke-infra"]
-  group_prj_admins            = var.group_prj_admins
+  source = "../../../4-projects/modules/infra_pipelines"
+  # impersonate_service_account = var.terraform_service_account
+  cloudbuild_project_id = module.app_infra_cloudbuild_project.project_id
+  business_code         = "gke"
+  org_id                = var.org_id
+  monorepo_folders      = ["51-gke-infra"]
+  group_prj_admins      = var.group_prj_admins
 }

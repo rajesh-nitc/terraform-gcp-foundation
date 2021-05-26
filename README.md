@@ -2,8 +2,7 @@
 
 This repo is a monorepo where each folder has its own github app cloudbuild triggers. It is made up of following parts:
 
-1. **core-foundation**: ```0-bootsrap``` to ```5-app-infra``` based on [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
-1. **data-foundation**: ```90-data-projects``` to ```94-data-pipeline``` based on [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
+Following [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
 
 ## Final view
 [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) gives:
@@ -14,11 +13,14 @@ This repo is a monorepo where each folder has its own github app cloudbuild trig
  |   +-- 📦 prj-b-seed-6949
  |   +-- 📦 prj-b-cicd-98fa
  +-- 📁 fldr-common (161434909087)
+ |   +-- 📦 prj-gke-c-infra-pipeline-e6f5
+ |   +-- 📦 prj-gke-c-cicd-pipeline-7989
  |   +-- 📦 prj-data-c-infra-pipeline-fb29
  |   +-- 📦 prj-bu1-c-infra-pipeline-eedb
  |   +-- 📦 prj-c-dns-hub-c4a2
  |   +-- 📦 prj-c-logging-8083
  +-- 📁 fldr-development (267943501446)
+     +-- 📦 prj-gke-d-clusters-3c96
      +-- 📦 prj-data-d-landing-0816
      +-- 📦 prj-data-d-dwh-3f33
      +-- 📦 prj-data-d-transformation-4f2b

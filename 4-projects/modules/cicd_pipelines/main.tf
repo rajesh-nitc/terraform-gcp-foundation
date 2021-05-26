@@ -97,9 +97,12 @@ resource "null_resource" "cloudbuild_image_builder" {
       --project ${var.app_cicd_project_id} \
       --config=${path.module}/cloud-build-builder/${var.build_image_yaml} \
       --substitutions=_DEFAULT_REGION=${var.primary_location},_GAR_REPOSITORY=${local.gar_name} \
-      --impersonate-service-account=${var.app_cicd_build_sa}
+      --impersonate-service-account=${google_service_account.app_cicd_build_sa.email}
   EOT
   }
+
+  depends_on = [google_service_account_iam_member.app_cicd_build_sa_impersonate_permissions]
+
 }
 
 /***********************************************

@@ -14,17 +14,21 @@
  * limitations under the License.
  */
 
-output "bin_auth_attestor_names" {
-  description = "Names of Attestors"
-  value       = [for attestor_name in var.attestor_names_prefix : module.attestors[attestor_name].attestor]
-}
+# output "bin_auth_attestor_names" {
+#   description = "Names of Attestors"
+#   value       = [for attestor_name in var.attestor_names_prefix : module.attestors[attestor_name].attestor]
+# }
 
-output "bin_auth_attestor_project_id" {
-  description = "Project ID where attestors get created"
-  value       = var.app_cicd_project_id
-}
+# output "bin_auth_attestor_project_id" {
+#   description = "Project ID where attestors get created"
+#   value       = var.app_cicd_project_id
+# }
 
 output "boa_artifact_repo" {
   description = "GAR Repo created to store runner images"
   value       = google_artifact_registry_repository.image_repo.name
+}
+
+output "app_cicd_build_sa" {
+  value = google_service_account.app_cicd_build_sa.email
 }

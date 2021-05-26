@@ -16,7 +16,7 @@
 
 terraform {
   backend "gcs" {
-    bucket = "UPDATE_ME"
-    prefix = "terraform/app-infra/shared"
+    bucket = "bkt-b-tfstate-e9c3"
+    prefix = "terraform/projects/gke/development"
   }
 }
