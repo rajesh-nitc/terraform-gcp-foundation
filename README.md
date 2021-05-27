@@ -1,6 +1,6 @@
 # gcp-foundation 
 
-This repo is a monorepo where each folder has its own github app cloudbuild triggers
+This repo implements a reasonably secure foundation on google cloud. It is a monorepo where each folder has its own github app cloudbuild triggers.
 
 Following [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
 
