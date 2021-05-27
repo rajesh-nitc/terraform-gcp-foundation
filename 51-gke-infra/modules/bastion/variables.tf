@@ -24,7 +24,7 @@ variable "bastion_region" {
   description = "The region of the GCP subnetwork for bastion services"
 }
 
-variable "bastion_subnet" {
+variable "bastion_subnet_self_link" {
   type        = string
   description = "The name of the GCP subnetwork for bastion services"
 }
@@ -34,7 +34,7 @@ variable "network_project_id" {
   description = "The project id of the GCP subnetwork for bastion services"
 }
 
-variable "vpc_name" {
+variable "bastion_network_self_link" {
   type        = string
   description = "The name of the bastion VPC"
 }
@@ -59,7 +59,7 @@ variable "bastion_members" {
   description = "The names of the members of the bastion server"
 }
 
-variable "repo_project_id" {
-  type        = string
-  description = "The project where app repos exist"
-}
+# variable "repo_project_id" {
+#   type        = string
+#   description = "The project where app repos exist"
+# }

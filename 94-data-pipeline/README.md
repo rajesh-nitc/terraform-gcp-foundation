@@ -23,7 +23,7 @@ gcloud dataflow jobs run first-dataflow-job \
     --region us-central1 \
     --disable-public-ips \
     --network vpc-d-shared-base \
-    --subnetwork https://www.googleapis.com/compute/v1/projects/prj-d-shared-base-21a3/regions/us-central1/subnetworks/sb-d-shared-base-us-central1 \
+    --subnetwork https://www.googleapis.com/compute/v1/projects/prj-d-shared-base-21a3/regions/us-central1/subnetworks/sb-d-shared-base-us-central1-data \
     --staging-location gs://bkt-d-data-tfn-temp \
     --service-account-email project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com \
     --parameters inputSubscription=projects/prj-data-d-landing-0816/subscriptions/sub-dataflow,outputTableSpec=prj-data-d-dwh-3f33:bq_raw_dataset.person

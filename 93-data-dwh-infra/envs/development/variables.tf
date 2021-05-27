@@ -15,7 +15,7 @@
  */
 
 variable "project_service_account" {
-  description = "Email of the service account created on step 4-projects for the business unit 1 sample base project where the GCE instance will be created"
+  description = "Project sa for data-dwh"
   type        = string
 }
 

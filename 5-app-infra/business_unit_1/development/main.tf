@@ -31,4 +31,5 @@ module "base_shared_gce_instance" {
   business_code  = "bu1"
   project_suffix = "sample-base"
   region         = var.instance_region
+  app_name       = "sample-application"
 }

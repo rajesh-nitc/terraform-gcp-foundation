@@ -69,3 +69,7 @@ variable "project_suffix" {
   description = "The name of the GCP project. Max 16 characters with 3 character business unit code."
   type        = string
 }
+
+variable "app_name" {
+  type = string
+}

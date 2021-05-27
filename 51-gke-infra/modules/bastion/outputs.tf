@@ -33,13 +33,3 @@ output "service_account_email" {
   description = "Email address of the SA created for the bastion host"
   value       = module.iap_bastion.service_account
 }
-
-output "cidr_range" {
-  description = "Internal IP address range of the bastion host"
-  value       = data.google_compute_subnetwork.bastion_subnet.ip_cidr_range
-}
-
-output "subnet_name" {
-  description = "Self link of the bastion host"
-  value       = data.google_compute_subnetwork.bastion_subnet.name
-}

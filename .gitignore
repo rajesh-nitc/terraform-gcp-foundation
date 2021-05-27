@@ -9,3 +9,4 @@ terraform.json
 *.exe
 .vscode
 .terraform.lock*
+test
