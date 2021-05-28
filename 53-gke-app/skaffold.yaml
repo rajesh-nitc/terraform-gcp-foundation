@@ -1,0 +1,20 @@
+apiVersion: skaffold/v2alpha4
+kind: Config
+build:
+  artifacts:
+  - image: # will be provided by cicd
+    context: src/frontend
+  tagPolicy:
+    gitCommit: {}
+  local:
+    concurrency: 0
+deploy:
+  kustomize:
+    paths:
+    - k8s/dev
+profiles:
+  - name: prod
+    deploy:
+      kustomize:
+        paths:
+        - k8s/prod

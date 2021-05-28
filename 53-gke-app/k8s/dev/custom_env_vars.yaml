@@ -1,0 +1,17 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: app
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: app
+    spec:
+      containers:
+      - name: app
+        env:
+          - name: PORT
+            value: 8080
+          - name: TARGET
+            value: world!!

@@ -1,0 +1,10 @@
+patchesStrategicMerge:
+- custom_env_vars.yaml
+namePrefix: gke-
+commonLabels:
+  app: gke-app
+  role: frontend
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../52-gke-kustomize-bases

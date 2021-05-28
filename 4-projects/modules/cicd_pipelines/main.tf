@@ -1,37 +1,10 @@
-/**
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 locals {
-  created_csrs = toset([for repo in google_sourcerepo_repository.app_infra_repo : repo.name])
-  gar_name     = split("/", google_artifact_registry_repository.image_repo.name)[length(split("/", google_artifact_registry_repository.image_repo.name)) - 1]
-  folders      = ["cache/.m2/.ignore", "cache/.skaffold/.ignore", "cache/.cache/pip/wheels/.ignore"]
+  gar_name = split("/", google_artifact_registry_repository.image_repo.name)[length(split("/", google_artifact_registry_repository.image_repo.name)) - 1]
+  folders  = ["cache/.m2/.ignore", "cache/.skaffold/.ignore", "cache/.cache/pip/wheels/.ignore"]
 }
 
 data "google_project" "app_cicd_project" {
   project_id = var.app_cicd_project_id
-}
-
-/***********************************************
- Cloud Source Repos
- ***********************************************/
-
-resource "google_sourcerepo_repository" "app_infra_repo" {
-  for_each = toset(var.app_cicd_repos)
-  project  = var.app_cicd_project_id
-  name     = each.key
 }
 
 /***********************************************
@@ -62,25 +35,6 @@ resource "google_storage_bucket_iam_member" "cloudbuild_artifacts_iam" {
   depends_on = [google_storage_bucket.cache_bucket]
 }
 
-/***********************************************
- App Repo Cloudbuild Build Trigger
- ***********************************************/
-
-resource "google_cloudbuild_trigger" "boa_build_trigger" {
-  project     = var.app_cicd_project_id
-  description = "${var.boa_build_repo}-trigger."
-  trigger_template {
-    branch_name = ".*"
-    repo_name   = var.boa_build_repo
-  }
-  substitutions = {
-    _GAR_REPOSITORY    = local.gar_name
-    _DEFAULT_REGION    = var.primary_location
-    _CACHE_BUCKET_NAME = google_storage_bucket.cache_bucket.name
-  }
-  filename   = var.build_app_yaml
-  depends_on = [google_sourcerepo_repository.app_infra_repo]
-}
 
 /***********************************************
  Image Build

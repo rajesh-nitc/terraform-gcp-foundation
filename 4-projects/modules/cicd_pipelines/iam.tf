@@ -43,3 +43,9 @@ resource "google_project_iam_member" "app_cicd_cloudbuild_sa_roles" {
   member  = "serviceAccount:${data.google_project.app_cicd_project.number}@cloudbuild.gserviceaccount.com"
 }
 
+# Allow prj admins to impersonate cicd-sa
+resource "google_service_account_iam_member" "prjadmins_impersonate_cicd_sa" {
+  service_account_id = google_service_account.app_cicd_build_sa.name
+  role               = "roles/iam.serviceAccountTokenCreator"
+  member             = "group:${var.group_prj_admins}"
+}

@@ -42,12 +42,11 @@ module "app_cicd_project" {
 module "cicd_pipeline" {
   source               = "../../../4-projects/modules/cicd_pipelines"
   app_cicd_project_id  = module.app_cicd_project.project_id
-  app_cicd_repos       = ["bank-of-anthos-source", "root-config-repo", "accounts", "transactions", "frontend"]
-  boa_build_repo       = "bank-of-anthos-source"
+  monorepo_folders     = ["53-gke-app"]
   gar_repo_name_suffix = "boa-image-repo"
   primary_location     = var.default_region
   # attestor_names_prefix = ["build", "quality", "security"]
-  build_app_yaml   = "cloudbuild-build-boa.yaml"
+  build_app_yaml   = "cloudbuild-cicd.yaml"
   build_image_yaml = "cloudbuild-skaffold-build-image.yaml"
   group_prj_admins = var.group_prj_admins
 }

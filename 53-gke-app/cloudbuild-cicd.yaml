@@ -1,0 +1,35 @@
+artifacts:
+  objects:
+    location: gs://$_CACHE_BUCKET_NAME/artifacts
+    paths:
+      - 'build-artifacts.json'
+steps:
+
+# Build image and hydrate manifests
+- name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
+  id: "build-image"
+  entrypoint: "/bin/bash"
+  args:
+    - '-xe'
+    - -c
+    - |
+      skaffold build --default-repo=$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY --tag=$SHORT_SHA --cache-file='/.skaffold/cache' --file-output=/artifacts/build-artifacts.json
+      cd 53-gke-app/k8s/dev
+      kustomize edit set image app="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY:$SHORT_SHA"
+      kustomize build . -o /artifacts/hydrated_dev.yaml
+  volumes:
+  - path: '/artifacts'
+    name: 'artifacts'
+
+# Deploy on dev
+- name: gcr.io/cloud-builders/gke-deploy
+  id: "deploy"
+  entrypoint: "/bin/bash"
+  args:
+  - run
+  - --filename=/artifacts/hydrated_dev.yaml
+  - --location=$_DEFAULT_REGION
+  - --cluster=""
+  volumes:
+  - path: '/artifacts'
+    name: 'artifacts'
