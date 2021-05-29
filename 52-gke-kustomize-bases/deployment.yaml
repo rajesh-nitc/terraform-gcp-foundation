@@ -33,3 +33,4 @@ spec:
         ports:
         - name: http
           containerPort: 8080
+      serviceAccountName: ksa

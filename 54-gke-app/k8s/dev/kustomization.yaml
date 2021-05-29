@@ -1,0 +1,13 @@
+patchesStrategicMerge:
+- patch_deployment.yaml
+namespace: frontend
+namePrefix: frontend-
+nameSuffix: -d
+commonLabels:
+  app: app
+  role: frontend
+  environment: dev
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../../52-gke-kustomize-bases

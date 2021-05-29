@@ -1,0 +1,5 @@
+resources:
+  - service.yaml
+  - deployment.yaml
+  - ksa.yaml
+  - ns.yaml

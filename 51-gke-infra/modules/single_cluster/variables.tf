@@ -45,29 +45,16 @@ variable "master_ipv4_cidr_block" {
   description = "The primary IPv4 cidr block for the first GKE cluster."
 }
 
-variable "enforce_bin_auth_policy" {
-  type        = bool
-  description = "Enable or Disable creation of binary authorization policy."
-  default     = false
-}
-
-# variable "bin_auth_attestor_names" {
-#   type        = list(string)
-#   description = "Binary Authorization Attestor Names set up in shared app_cicd project."
-#   default     = []
-# }
-
-# variable "bin_auth_attestor_project_id" {
-#   type        = string
-#   description = "Project Id where binary attestors are created."
-# }
-
 variable "app_name" {
   type = string
 }
 variable "master_authorized_networks" {
   type    = list(object({ cidr_block = string, display_name = string }))
   default = []
+}
+
+variable "node_pools" {
+  type = list(map(string))
 }
 
 # Bastion

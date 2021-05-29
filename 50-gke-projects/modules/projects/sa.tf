@@ -1,8 +1,4 @@
 locals {
-  pod_default_roles = [
-    "roles/cloudtrace.agent",
-    "roles/monitoring.metricWriter"
-  ]
 
   node_default_roles = [
     "roles/logging.logWriter",
@@ -19,18 +15,6 @@ locals {
 
 }
 
-# Allow pods access to Cloud SQL and Cloud Operations
-resource "google_service_account" "pod_sa" {
-  account_id = "pod-sa"
-  project    = module.gke_project.project_id
-}
-
-resource "google_project_iam_member" "pod_sa_roles" {
-  for_each = toset(local.pod_default_roles)
-  project  = module.gke_project.project_id
-  role     = each.value
-  member   = "serviceAccount:${google_service_account.pod_sa.email}"
-}
 
 # Allow nodes access to ops and artifactory
 resource "google_service_account" "node_sa" {

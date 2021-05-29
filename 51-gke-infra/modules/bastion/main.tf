@@ -3,12 +3,10 @@ module "iap_bastion" {
   version = "~> 3.1"
   project = var.project_id
 
-  # Variables for existing network
   network      = var.bastion_network_self_link
   subnet       = var.bastion_subnet_self_link
   host_project = var.network_project_id
 
-  # Customizable Variables
   name                 = var.bastion_name
   zone                 = var.bastion_zone
   service_account_name = var.bastion_service_account_name
