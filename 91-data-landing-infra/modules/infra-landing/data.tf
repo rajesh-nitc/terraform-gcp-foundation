@@ -4,7 +4,7 @@ data "google_active_folder" "env" {
 }
 
 data "google_projects" "landing_projects" {
-  filter = "parent.id:${split("/", local.folder_id)[1]} name:*landing* labels.application_name=${var.business_code}-landing labels.environment=${var.environment} lifecycleState=ACTIVE"
+  filter = "parent.id:${split("/", local.folder_id)[1]} name:*landing* labels.application_name=landing labels.business_code=${var.business_code} labels.environment=${var.environment} lifecycleState=ACTIVE"
 }
 
 data "google_project" "landing_project" {
@@ -12,7 +12,7 @@ data "google_project" "landing_project" {
 }
 
 data "google_projects" "transformation_projects" {
-  filter = "parent.id:${split("/", local.folder_id)[1]} name:*transformation* labels.application_name=${var.business_code}-transformation labels.environment=${var.environment} lifecycleState=ACTIVE"
+  filter = "parent.id:${split("/", local.folder_id)[1]} name:*transformation* labels.application_name=transformation labels.business_code=${var.business_code} labels.environment=${var.environment} lifecycleState=ACTIVE"
 }
 
 data "google_project" "transformation_project" {

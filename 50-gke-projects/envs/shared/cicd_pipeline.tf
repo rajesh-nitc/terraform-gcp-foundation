@@ -31,7 +31,7 @@ module "app_cicd_project" {
 
   # Metadata
   project_suffix    = "cicd-pipeline"
-  application_name  = "gke-app-pipeline"
+  application_name  = "app-cicd-pipelines"
   billing_code      = "1234"
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"

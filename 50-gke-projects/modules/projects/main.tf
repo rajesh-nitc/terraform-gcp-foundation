@@ -75,7 +75,7 @@ module gke_project {
 
   # Metadata
   project_suffix    = "clusters"
-  application_name  = "gke-app1"
+  application_name  = "budita"
   billing_code      = "1234"
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"

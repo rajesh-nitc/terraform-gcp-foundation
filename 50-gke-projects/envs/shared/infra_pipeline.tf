@@ -21,7 +21,7 @@ module "app_infra_cloudbuild_project" {
 
   # Metadata
   project_suffix    = "infra-pipeline"
-  application_name  = "gke-infra-pipeline"
+  application_name  = "app-infra-pipelines"
   billing_code      = "1234"
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"

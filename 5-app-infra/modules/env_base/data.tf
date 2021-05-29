@@ -7,7 +7,7 @@ data "google_project" "network_project" {
 }
 
 data "google_projects" "environment_projects" {
-  filter = "parent.id:${split("/", var.folder_id)[1]} name:*${var.project_suffix}* labels.application_name=${var.business_code}-${var.app_name} labels.environment=${var.environment} lifecycleState=ACTIVE"
+  filter = "parent.id:${split("/", var.folder_id)[1]} name:*${var.project_suffix}* labels.application_name=${var.app_name} labels.business_code=${var.business_code} labels.environment=${var.environment} lifecycleState=ACTIVE"
 }
 
 data "google_project" "env_project" {

@@ -3,4 +3,4 @@ kind: ServiceAccount
 metadata:
   name: ksa
   annotations:
-    iam.gke.io/gcp-service-account: sa-frontend-app1@prj-gke-d-clusters-3c96.iam.gserviceaccount.com
+    iam.gke.io/gcp-service-account: sa-frontend@prj-gke-d-clusters-3c96.iam.gserviceaccount.com

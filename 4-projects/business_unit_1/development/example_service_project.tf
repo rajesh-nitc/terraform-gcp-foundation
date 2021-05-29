@@ -39,7 +39,7 @@ module "base_shared_vpc_project" {
 
   # Metadata
   project_suffix    = "sample-base"
-  application_name  = "bu1-sample-application"
+  application_name  = "sample-application"
   billing_code      = "1234"
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"

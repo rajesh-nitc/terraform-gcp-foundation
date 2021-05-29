@@ -31,7 +31,8 @@ variable "k8s_app_service_name" {
   type = string
 }
 
-variable "sa_roles" {
-  type = list(string)
+variable "pod_sa_roles" {
+  type    = list(string)
+  default = []
 }
 

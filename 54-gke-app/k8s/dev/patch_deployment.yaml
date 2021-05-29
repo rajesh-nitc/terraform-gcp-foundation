@@ -8,6 +8,7 @@ spec:
     metadata:
       name: app
     spec:
+      serviceAccountName: ksa
       containers:
       - name: app
         env:
@@ -15,4 +16,6 @@ spec:
             value: 8080
           - name: TARGET
             value: world!!
-      serviceAccountName: ksa
+          - name: ENVIRONMENT
+            value: dev
+      

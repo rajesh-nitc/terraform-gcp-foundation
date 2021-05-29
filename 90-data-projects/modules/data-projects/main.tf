@@ -24,7 +24,7 @@ module landing_project {
 
   # Metadata
   project_suffix    = "landing"
-  application_name  = "data-landing"
+  application_name  = "landing"
   billing_code      = "1234"
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"
@@ -66,7 +66,7 @@ module transformation_project {
 
   # Metadata
   project_suffix    = "transformation"
-  application_name  = "data-transformation"
+  application_name  = "transformation"
   billing_code      = "1234"
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"
@@ -101,7 +101,7 @@ module dwh_project {
 
   # Metadata
   project_suffix    = "dwh"
-  application_name  = "data-dwh"
+  application_name  = "dwh"
   billing_code      = "1234"
   primary_contact   = "example@example.com"
   secondary_contact = "example2@example.com"
