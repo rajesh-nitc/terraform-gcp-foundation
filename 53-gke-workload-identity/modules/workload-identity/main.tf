@@ -8,7 +8,7 @@ locals {
 }
 
 resource "google_service_account" "main" {
-  account_id   = var.k8s_app_service_name
+  account_id   = "sa-${var.k8s_app_service_name}-${var.app_name}"
   display_name = "GCP SA bound to KSA"
   project      = local.project_id
 }

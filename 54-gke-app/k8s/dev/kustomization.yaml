@@ -1,10 +1,11 @@
 patchesStrategicMerge:
 - patch_deployment.yaml
+- patch_ksa.yaml
 namespace: frontend
 namePrefix: frontend-
 nameSuffix: -d
 commonLabels:
-  app: app
+  app: app1
   role: frontend
   environment: dev
 apiVersion: kustomize.config.k8s.io/v1beta1
