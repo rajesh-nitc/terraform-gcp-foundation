@@ -11,3 +11,7 @@ variable "default_region" {
   type    = string
   default = "us-central1"
 }
+
+variable "groups_gke_security" {
+  type = string
+}

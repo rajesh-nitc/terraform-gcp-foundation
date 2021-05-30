@@ -6,8 +6,8 @@ namePrefix: frontend-
 nameSuffix: -d
 commonLabels:
   app: budita
-  role: frontend
   environment: dev
+  role: frontend
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:

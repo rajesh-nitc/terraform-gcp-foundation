@@ -2,4 +2,5 @@ resources:
   - service.yaml
   - deployment.yaml
   - ksa.yaml
-  - ns.yaml
+  - namespace.yaml
+  - rbac.yaml

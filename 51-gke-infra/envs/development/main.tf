@@ -1,11 +1,19 @@
 module "gke_cluster" {
-  source                     = "../../modules/single_cluster"
-  org_id                     = var.org_id
-  environment                = "development"
-  app_name                   = "budita"
-  region                     = var.default_region
-  master_authorized_networks = []
-  master_ipv4_cidr_block     = "100.64.78.0/28" # Cluster control plane same is defined in 3-networks/envs/development/boa_vpc_fw.tf
+  source                 = "../../modules/single_cluster"
+  org_id                 = var.org_id
+  environment            = "development"
+  app_name               = "budita"
+  region                 = var.default_region
+  groups_gke_security    = var.groups_gke_security
+  master_ipv4_cidr_block = "100.64.78.0/28"
+
+  master_authorized_networks = [
+    {
+      cidr_block   = "0.0.0.0/0",
+      display_name = "To test cicd on cloudbuild"
+    }
+  ]
+
   node_pools = [
     {
       name               = "np-${var.default_region}"

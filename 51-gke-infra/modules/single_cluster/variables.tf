@@ -48,6 +48,7 @@ variable "master_ipv4_cidr_block" {
 variable "app_name" {
   type = string
 }
+
 variable "master_authorized_networks" {
   type    = list(object({ cidr_block = string, display_name = string }))
   default = []
@@ -55,6 +56,10 @@ variable "master_authorized_networks" {
 
 variable "node_pools" {
   type = list(map(string))
+}
+
+variable "groups_gke_security" {
+  type = string
 }
 
 # Bastion

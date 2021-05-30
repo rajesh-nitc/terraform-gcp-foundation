@@ -18,12 +18,13 @@ module "gke_cluster" {
   network_project_id = local.host_project_id
   network            = local.network_name
 
-  name                   = "gke-${local.environment_code}-${var.app_name}-${var.region}"
-  subnetwork             = local.subnet_name
-  ip_range_pods          = local.range_name_pod[0]
-  ip_range_services      = local.range_name_svc[0]
-  master_ipv4_cidr_block = var.master_ipv4_cidr_block
-  region                 = var.region
+  name                         = "gke-${local.environment_code}-${var.app_name}-${var.region}"
+  subnetwork                   = local.subnet_name
+  ip_range_pods                = local.range_name_pod[0]
+  ip_range_services            = local.range_name_svc[0]
+  master_ipv4_cidr_block       = var.master_ipv4_cidr_block
+  region                       = var.region
+  authenticator_security_group = var.groups_gke_security
   master_authorized_networks = concat(var.master_authorized_networks,
     [
       {
