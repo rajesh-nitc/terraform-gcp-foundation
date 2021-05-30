@@ -3,8 +3,8 @@ artifacts:
     location: gs://$_CACHE_BUCKET_NAME/artifacts
     paths:
       - '/artifacts/build-artifacts.json'
-steps:
 
+steps:
 - name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
   id: "build-image"
   entrypoint: "/bin/bash"
@@ -19,7 +19,7 @@ steps:
   volumes:
   - path: '/artifacts'
     name: 'artifacts'
-
+    
 - name: gcr.io/cloud-builders/gke-deploy
   id: "deploy"
   entrypoint: "/bin/bash"

@@ -1,14 +1,15 @@
 locals {
-  env_code               = element(split("", var.environment), 0)
-  shared_vpc_mode        = var.enable_hub_and_spoke ? "-spoke" : ""
-  svpc_host_project_id   = var.vpc_type == "" ? "" : data.google_compute_network.shared_vpc[0].project
-  shared_vpc_subnets_map = var.vpc_type == "" ? {} : data.google_compute_subnetwork.shared_subnets
-  shared_vpc_subnets     = var.vpc_type == "" ? [] : [for i in local.shared_vpc_subnets_map : i.self_link]
-  iap_apis               = var.use_iap ? ["iap.googleapis.com"] : []
-  gke_sa                 = format("service-%s@container-engine-robot.iam.gserviceaccount.com", module.project.project_number)
-  dataflow_sa            = format("service-%s@dataflow-service-producer-prod.iam.gserviceaccount.com", module.project.project_number)
-  composer_sa            = format("service-%s@cloudcomposer-accounts.iam.gserviceaccount.com", module.project.project_number)
-  dataproc_sa            = format("service-%s@dataproc-accounts.iam.gserviceaccount.com", module.project.project_number)
+  env_code                   = element(split("", var.environment), 0)
+  shared_vpc_mode            = var.enable_hub_and_spoke ? "-spoke" : ""
+  svpc_host_project_id       = var.vpc_type == "" ? "" : data.google_compute_network.shared_vpc[0].project
+  shared_vpc_subnets_map     = var.vpc_type == "" ? {} : data.google_compute_subnetwork.shared_subnets
+  shared_vpc_subnets         = var.vpc_type == "" ? [] : [for i in local.shared_vpc_subnets_map : i.self_link]
+  iap_apis                   = var.use_iap ? ["iap.googleapis.com"] : []
+  service_prj_gke_sa         = format("service-%s@container-engine-robot.iam.gserviceaccount.com", module.project.project_number)
+  service_prj_google_apis_sa = format("%s@cloudservices.gserviceaccount.com", module.project.project_number)
+  service_prj_dataflow_sa    = format("service-%s@dataflow-service-producer-prod.iam.gserviceaccount.com", module.project.project_number)
+  service_prj_composer_sa    = format("service-%s@cloudcomposer-accounts.iam.gserviceaccount.com", module.project.project_number)
+  service_prj_dataproc_sa    = format("service-%s@dataproc-accounts.iam.gserviceaccount.com", module.project.project_number)
 }
 
 module "project" {

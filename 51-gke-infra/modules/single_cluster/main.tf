@@ -11,27 +11,38 @@ locals {
   range_name_svc    = [for i in data.google_compute_subnetwork.subnetwork.secondary_ip_range : i.range_name if can(regex("svc", i.range_name))]
 }
 
-module "gke_cluster" {
-  source = "git@github.com:terraform-google-modules/terraform-google-kubernetes-engine.git//modules/safer-cluster?ref=v14.3.0"
+module "gke" {
+  source                            = "git@github.com:terraform-google-modules/terraform-google-kubernetes-engine.git//modules/beta-private-cluster?ref=v14.3.0"
+  project_id                        = local.project_id
+  name                              = "gke-${local.environment_code}-${var.app_name}-${var.region}"
+  regional                          = false
+  zones                             = ["${var.region}-a"]
+  network                           = local.network_name
+  subnetwork                        = local.subnet_name
+  network_project_id                = local.host_project_id
+  ip_range_pods                     = local.range_name_pod[0]
+  ip_range_services                 = local.range_name_svc[0]
+  add_cluster_firewall_rules        = true
+  add_master_webhook_firewall_rules = true
+  add_shadow_firewall_rules         = true
+  deploy_using_private_endpoint     = var.deploy_using_private_endpoint
+  enable_private_endpoint           = var.enable_private_endpoint
+  impersonate_service_account       = var.project_service_account
+  master_ipv4_cidr_block            = var.master_ipv4_cidr_block
+  authenticator_security_group      = var.groups_gke_security
+  remove_default_node_pool          = true
+  enable_private_nodes              = true
+  identity_namespace                = "${local.project_id}.svc.id.goog"
+  istio                             = true
 
-  project_id         = local.project_id
-  network_project_id = local.host_project_id
-  network            = local.network_name
-
-  name                         = "gke-${local.environment_code}-${var.app_name}-${var.region}"
-  subnetwork                   = local.subnet_name
-  ip_range_pods                = local.range_name_pod[0]
-  ip_range_services            = local.range_name_svc[0]
-  master_ipv4_cidr_block       = var.master_ipv4_cidr_block
-  region                       = var.region
-  authenticator_security_group = var.groups_gke_security
   master_authorized_networks = concat(var.master_authorized_networks,
+    var.provision_bastion_instance ?
     [
       {
-        cidr_block   = "${module.bastion.ip_address}/32",
+        cidr_block   = "${module.bastion[0].ip_address}/32",
         display_name = "bastion in same subnet as cluster"
       }
-    ]
+    ] : []
   )
 
   cluster_resource_labels = {
@@ -53,11 +64,13 @@ module "gke_cluster" {
     ]
     default-node-pool = []
   }
-  compute_engine_service_account = "node-sa@${data.google_projects.gke_projects.projects[0].project_id}.iam.gserviceaccount.com"
+  create_service_account = false
+  service_account        = "node-sa@${local.project_id}.iam.gserviceaccount.com"
 }
 
 module "bastion" {
   source                       = "../bastion"
+  count                        = var.provision_bastion_instance ? 1 : 0
   project_id                   = local.project_id
   bastion_name                 = "gce-bastion"
   bastion_zone                 = "${var.region}-a"
@@ -68,4 +81,3 @@ module "bastion" {
   bastion_region               = var.region
   network_project_id           = local.host_project_id
 }
-

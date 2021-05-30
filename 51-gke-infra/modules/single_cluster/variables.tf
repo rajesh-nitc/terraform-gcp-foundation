@@ -62,6 +62,21 @@ variable "groups_gke_security" {
   type = string
 }
 
+variable "enable_private_endpoint" {
+  type    = bool
+  default = true
+}
+
+variable "deploy_using_private_endpoint" {
+  type    = bool
+  default = true
+}
+
+variable "project_service_account" {
+  type        = string
+  description = "Service account email of the account to impersonate to run Terraform."
+}
+
 # Bastion
 variable "bastion_zone" {
   type        = string
@@ -73,4 +88,9 @@ variable "bastion_members" {
   type        = list(string)
   description = "The names of the members of the bastion server."
   default     = []
+}
+
+variable "provision_bastion_instance" {
+  type    = bool
+  default = true
 }
