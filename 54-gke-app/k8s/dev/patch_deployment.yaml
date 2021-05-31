@@ -13,7 +13,7 @@ spec:
       - name: app
         env:
           - name: PORT
-            value: 8080
+            value: "8080"
           - name: TARGET
             value: world!!
           - name: ENVIRONMENT

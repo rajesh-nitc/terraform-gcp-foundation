@@ -5,7 +5,6 @@ module "gke_cluster" {
   app_name                      = "budita"
   region                        = var.default_region
   project_service_account       = var.project_service_account
-  groups_gke_security           = var.groups_gke_security
   enable_private_endpoint       = false
   deploy_using_private_endpoint = false
   provision_bastion_instance    = false

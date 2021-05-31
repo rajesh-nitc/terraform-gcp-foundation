@@ -59,7 +59,8 @@ variable "node_pools" {
 }
 
 variable "groups_gke_security" {
-  type = string
+  type    = string
+  default = ""
 }
 
 variable "enable_private_endpoint" {

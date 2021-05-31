@@ -3,4 +3,3 @@ resources:
   - deployment.yaml
   - ksa.yaml
   - namespace.yaml
-  - rbac.yaml
