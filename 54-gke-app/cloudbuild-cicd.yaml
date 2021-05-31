@@ -5,6 +5,20 @@ artifacts:
       - '/artifacts/build-artifacts.json'
 
 steps:
+
+- name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
+  id: "setup"
+  entrypoint: "/bin/bash"
+  args:
+    - '-xe'
+    - -c
+    - |
+      cicd_sa_email=${_CICD_BUILD_SA}
+      if [[ -n ${cicd_sa_email} ]]; then
+        echo "Setting up gcloud for impersonation"
+        gcloud config set auth/impersonate_service_account $cicd_sa_email
+      fi
+      
 - name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
   id: "build-image"
   entrypoint: "/bin/bash"
@@ -12,8 +26,8 @@ steps:
     - '-xe'
     - -c
     - |
-      skaffold build --default-repo=$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY --tag=$SHORT_SHA --cache-file='/.skaffold/cache' --file-output=/artifacts/build-artifacts.json
-      cd 53-gke-app/k8s/dev
+      skaffold build --default-repo=$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY --tag=$SHORT_SHA --file-output=/artifacts/build-artifacts.json
+      cd 54-gke-app/k8s/dev
       kustomize edit set image app="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY:$SHORT_SHA"
       kustomize build . -o /artifacts/hydrated_dev.yaml
   volumes:
@@ -24,10 +38,11 @@ steps:
   id: "deploy"
   entrypoint: "/bin/bash"
   args:
-  - run
+  - apply
   - --filename=/artifacts/hydrated_dev.yaml
   - --location=$_DEFAULT_REGION
-  - --cluster=""
+  - --cluster=budita-d-$_DEFAULT_REGION
+  - --project=prj-gke-d-clusters-3c96
   volumes:
   - path: '/artifacts'
     name: 'artifacts'
