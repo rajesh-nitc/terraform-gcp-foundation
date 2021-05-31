@@ -39,6 +39,6 @@ steps:
   args:
   - apply
   - --filename=/workspace/frontend_hydrated.yaml
-  - --location=$_DEFAULT_REGION
+  - --location=$_DEFAULT_REGION-a
   - --cluster=budita-d-$_DEFAULT_REGION
   - --project=prj-gke-d-clusters-3c96
