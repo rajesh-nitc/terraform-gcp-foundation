@@ -49,3 +49,10 @@ resource "google_service_account_iam_member" "prjadmins_impersonate_cicd_sa" {
   role               = "roles/iam.serviceAccountTokenCreator"
   member             = "group:${var.group_prj_admins}"
 }
+
+# Allow cicd-sa to deploy on cluster
+resource "google_project_iam_member" "cloudbuild_sa_role_gke_project" {
+  project = var.gke_project_id
+  role    = "roles/container.developer"
+  member  = "serviceAccount:${google_service_account.cicd_build_sa.email}"
+}

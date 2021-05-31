@@ -74,3 +74,7 @@ variable "project_prefix" {
 variable "group_prj_admins" {
   type = string
 }
+
+variable "gke_project_id" {
+  type = string
+}

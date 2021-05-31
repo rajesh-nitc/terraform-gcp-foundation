@@ -45,3 +45,7 @@ variable "group_prj_admins" {
 variable "monorepo_folders" {
   type = list(string)
 }
+
+variable "gke_project_id" {
+  type = string
+}
