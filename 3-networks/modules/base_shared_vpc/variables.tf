@@ -154,3 +154,32 @@ variable "allow_all_ingress_ranges" {
   description = "List of network ranges from which all ingress traffic will be allowed"
   default     = null
 }
+
+# GKE firewall rules
+variable "budita_cluster_uscentral1_cluster_network_tag" {
+  type    = string
+  default = ""
+}
+
+variable "budita_cluster_uscentral1_cluster_endpoint_for_nodes" {
+  type    = string
+  default = ""
+}
+
+variable "budita_cluster_uscentral1_cluster_subnet_cidr" {
+  type    = string
+  default = ""
+}
+
+variable "budita_cluster_uscentral1_cluster_ip_range_pods" {
+  type    = string
+  default = ""
+}
+
+variable "gke_fw_rules_enabled" {
+  type    = bool
+  default = false
+}
+
+
+

@@ -14,7 +14,7 @@ locals {
 module "gke" {
   source                            = "git@github.com:terraform-google-modules/terraform-google-kubernetes-engine.git//modules/beta-private-cluster?ref=v14.3.0"
   project_id                        = local.project_id
-  name                              = "gke-${local.environment_code}-${var.app_name}-${var.region}"
+  name                              = "${var.app_name}-${local.environment_code}-${var.region}"
   regional                          = false
   zones                             = ["${var.region}-a"]
   network                           = local.network_name
@@ -22,9 +22,9 @@ module "gke" {
   network_project_id                = local.host_project_id
   ip_range_pods                     = local.range_name_pod[0]
   ip_range_services                 = local.range_name_svc[0]
-  add_cluster_firewall_rules        = true
-  add_master_webhook_firewall_rules = true
-  add_shadow_firewall_rules         = true
+  add_cluster_firewall_rules        = false
+  add_master_webhook_firewall_rules = false
+  add_shadow_firewall_rules         = false
   deploy_using_private_endpoint     = var.deploy_using_private_endpoint
   enable_private_endpoint           = var.enable_private_endpoint
   impersonate_service_account       = var.project_service_account
@@ -50,7 +50,7 @@ module "gke" {
   }
 
   node_pools_tags = {
-    "np-${var.region}" = ["gke-${var.app_name}-cluster", "allow-google-apis", "egress-internet", "allow-lb"]
+    "np-${var.region}" = ["allow-google-apis"]
   }
 
   node_pools = var.node_pools

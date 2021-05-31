@@ -30,9 +30,10 @@ resource "google_project_iam_member" "service_prj_gke_sa_security_admin" {
   member  = format("serviceAccount:%s", local.service_prj_gke_sa)
 }
 
-resource "google_project_iam_member" "service_prj_prj_sa_security_admin" {
-  count   = contains(var.activate_apis, "container.googleapis.com") && var.vpc_type != "" ? 1 : 0
-  project = local.svpc_host_project_id
-  role    = "roles/compute.securityAdmin"
-  member  = "serviceAccount:${module.project.service_account_email}"
-}
+# Fw rules are managed separately and are not created as part of gke terraform module
+# resource "google_project_iam_member" "service_prj_prj_sa_security_admin" {
+#   count   = contains(var.activate_apis, "container.googleapis.com") && var.vpc_type != "" ? 1 : 0
+#   project = local.svpc_host_project_id
+#   role    = "roles/compute.securityAdmin"
+#   member  = "serviceAccount:${module.project.service_account_email}"
+# }

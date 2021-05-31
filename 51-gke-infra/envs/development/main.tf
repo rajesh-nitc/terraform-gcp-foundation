@@ -22,7 +22,7 @@ module "gke_cluster" {
     {
       name               = "np-${var.default_region}"
       machine_type       = "e2-standard-4"
-      node_locations     = "us-central1-b,us-central1-c"
+      node_locations     = "us-central1-a"
       min_count          = 1
       max_count          = 3
       local_ssd_count    = 0

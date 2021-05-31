@@ -29,11 +29,11 @@ locals {
     (var.default_region1) = [
       {
         range_name    = "rn-${local.environment_code}-shared-base-${var.default_region1}-gke-pod"
-        ip_cidr_range = "100.64.64.0/21"
+        ip_cidr_range = var.budita_cluster_uscentral1_cluster_ip_range_pods
       },
       {
         range_name    = "rn-${local.environment_code}-shared-base-${var.default_region1}-gke-svc"
-        ip_cidr_range = "100.64.72.0/21"
+        ip_cidr_range = var.budita_cluster_uscentral1_cluster_ip_range_services
       }
     ]
   }
@@ -43,6 +43,7 @@ locals {
     "sb-${local.environment_code}-shared-base-${var.default_region1}-gke" = local.subnet_secondary_ranges[var.default_region1]
   }
 
+  budita_cluster_uscentral1_subnet_cidr = [for i in var.subnets[var.default_region1] : i.subnet_ip if i.team == "gke"]
 
 }
 
@@ -69,7 +70,7 @@ module "base_shared_vpc" {
   windows_activation_enabled    = var.windows_activation_enabled
   dns_enable_inbound_forwarding = var.dns_enable_inbound_forwarding
   dns_enable_logging            = var.dns_enable_logging
-  firewall_enable_logging       = var.firewall_enable_logging
+  firewall_enable_logging       = false
   optional_fw_rules_enabled     = true
   nat_enabled                   = var.nat_enabled
   nat_bgp_asn                   = var.nat_bgp_asn
@@ -84,5 +85,12 @@ module "base_shared_vpc" {
 
   allow_all_ingress_ranges = local.enable_transitivity ? local.base_hub_subnet_ranges : null
   allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
+
+  # GKE firewall rules for single budita cluster in us-central1
+  gke_fw_rules_enabled                                 = true
+  budita_cluster_uscentral1_cluster_network_tag        = var.budita_cluster_uscentral1_cluster_network_tag
+  budita_cluster_uscentral1_cluster_endpoint_for_nodes = var.budita_cluster_uscentral1_cluster_endpoint_for_nodes
+  budita_cluster_uscentral1_cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]
+  budita_cluster_uscentral1_cluster_ip_range_pods      = var.budita_cluster_uscentral1_cluster_ip_range_pods
 
 }

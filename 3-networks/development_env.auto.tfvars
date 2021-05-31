@@ -43,3 +43,8 @@ subnets = {
   ]
 
 }
+
+budita_cluster_uscentral1_cluster_ip_range_pods      = "100.64.64.0/21"
+budita_cluster_uscentral1_cluster_ip_range_services  = "100.64.72.0/21"
+budita_cluster_uscentral1_cluster_endpoint_for_nodes = "100.64.80.0/28"
+budita_cluster_uscentral1_cluster_network_tag        = "gke-budita-d-us-central1"
