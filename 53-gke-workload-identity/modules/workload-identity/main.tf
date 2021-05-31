@@ -5,7 +5,7 @@ locals {
   k8s_ns_name_enforced_by_kustomize_overlays = "${var.k8s_app_service_name}-ns-${local.environment_code}"
   k8s_sa_name_enforced_by_kustomize_overlays = "${var.k8s_app_service_name}-ksa-${local.environment_code}"
   k8s_sa_gcp_derived_name                    = "serviceAccount:${local.project_id}.svc.id.goog[${local.k8s_ns_name_enforced_by_kustomize_overlays}/${local.k8s_sa_name_enforced_by_kustomize_overlays}]"
-  pod_sa_default_roles_gke_prj                       = ["roles/monitoring.metricWriter", "roles/cloudtrace.agent"]
+  pod_sa_default_roles_gke_prj               = ["roles/monitoring.metricWriter", "roles/cloudtrace.agent"]
 }
 
 resource "google_service_account" "main" {
