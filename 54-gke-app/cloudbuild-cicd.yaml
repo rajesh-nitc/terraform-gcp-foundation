@@ -2,7 +2,7 @@ artifacts:
   objects:
     location: gs://$_CACHE_BUCKET_NAME/artifacts
     paths:
-      - '/artifacts/build-artifacts.json'
+      - '/workspace/54-gke-app/k8s/dev/frontend_hydrated.yaml'
 
 steps:
 
@@ -31,17 +31,14 @@ steps:
       cd ..
       cd 54-gke-app/k8s/dev
       kustomize edit set image app="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY:$SHORT_SHA"
-      kustomize build . -o /artifacts/hydrated_dev.yaml
-  volumes:
-  - path: '/artifacts'
-    name: 'artifacts'
+      kustomize build . -o frontend_hydrated.yaml
     
 - name: gcr.io/cloud-builders/gke-deploy
   id: "deploy"
   entrypoint: "/bin/bash"
   args:
   - apply
-  - --filename=/artifacts/hydrated_dev.yaml
+  - --filename=/workspace/54-gke-app/k8s/dev/frontend_hydrated.yaml
   - --location=$_DEFAULT_REGION
   - --cluster=budita-d-$_DEFAULT_REGION
   - --project=prj-gke-d-clusters-3c96
