@@ -34,9 +34,8 @@ steps:
       kustomize build . -o /workspace/frontend_hydrated.yaml
       stat /workspace/frontend_hydrated.yaml
     
-- name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
+- name: "gcr.io/cloud-builders/gke-deploy"
   id: "deploy"
-  entrypoint: "/bin/bash"
   args:
   - apply
   - --filename=/workspace/frontend_hydrated.yaml
