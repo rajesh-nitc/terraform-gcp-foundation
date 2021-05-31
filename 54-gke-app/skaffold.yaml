@@ -2,7 +2,7 @@ apiVersion: skaffold/v2alpha4
 kind: Config
 build:
   artifacts:
-  - image: # will be provided by cicd
+  - image:
     context: src/frontend
   tagPolicy:
     gitCommit: {}
