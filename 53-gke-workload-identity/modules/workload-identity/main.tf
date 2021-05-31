@@ -5,7 +5,7 @@ locals {
   k8s_ns_name_enforced_by_kustomize_overlays = "${var.k8s_app_service_name}-ns-${local.environment_code}"
   k8s_sa_name_enforced_by_kustomize_overlays = "${var.k8s_app_service_name}-ksa-${local.environment_code}"
   k8s_sa_gcp_derived_name                    = "serviceAccount:${local.project_id}.svc.id.goog[${local.k8s_ns_name_enforced_by_kustomize_overlays}/${local.k8s_sa_name_enforced_by_kustomize_overlays}]"
-  pod_sa_default_roles                       = ["roles/monitoring.metricWriter", "roles/cloudtrace.agent"]
+  pod_sa_default_roles_gke_prj                       = ["roles/monitoring.metricWriter", "roles/cloudtrace.agent"]
 }
 
 resource "google_service_account" "main" {
@@ -20,8 +20,8 @@ resource "google_service_account_iam_member" "main" {
   member             = local.k8s_sa_gcp_derived_name
 }
 
-resource "google_project_iam_member" "main" {
-  for_each = toset(concat(local.pod_sa_default_roles, var.pod_sa_roles))
+resource "google_project_iam_member" "pod_sa_roles_gke_prj" {
+  for_each = toset(concat(local.pod_sa_default_roles_gke_prj, var.pod_sa_roles_gke_prj))
   project  = local.project_id
   role     = each.value
   member   = "serviceAccount:${google_service_account.main.email}"

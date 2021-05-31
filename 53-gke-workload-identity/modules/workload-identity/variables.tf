@@ -31,8 +31,11 @@ variable "k8s_app_service_name" {
   type = string
 }
 
-variable "pod_sa_roles" {
+variable "app_cicd_project_id" {
+  type = string
+}
+
+variable "pod_sa_roles_gke_prj" {
   type    = list(string)
   default = []
 }
-

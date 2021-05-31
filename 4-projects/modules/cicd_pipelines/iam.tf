@@ -56,3 +56,11 @@ resource "google_project_iam_member" "cloudbuild_sa_role_gke_project" {
   role    = "roles/container.developer"
   member  = "serviceAccount:${google_service_account.cicd_build_sa.email}"
 }
+
+# Allow gke prj sa to set iam roles on cicd prj
+# To allow workload-identities to be created using gke prj sa
+resource "google_project_iam_member" "gke_prj_sa_role" {
+  project = var.app_cicd_project_id
+  role    = "roles/resourcemanager.projectIamAdmin"
+  member  = format("serviceAccount:%s@%s.iam.gserviceaccount.com","project-service-account",var.gke_project_id)
+}

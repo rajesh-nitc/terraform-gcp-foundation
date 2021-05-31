@@ -13,6 +13,7 @@ steps:
     - '-xe'
     - -c
     - |
+      pwd
       cicd_sa_email=${_CICD_BUILD_SA}
       if [[ -n ${cicd_sa_email} ]]; then
         echo "Setting up gcloud for impersonation"
@@ -26,13 +27,15 @@ steps:
     - '-xe'
     - -c
     - |
+      pwd
       cd 54-gke-app
-      skaffold build --default-repo=$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY --tag=$SHORT_SHA
+      skaffold config set default-repo $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY
+      skaffold build --tag=$SHORT_SHA
+      cd k8s/dev
+      kustomize edit set image app="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/frontend:$SHORT_SHA"
       cd ..
-      cd 54-gke-app/k8s/dev
-      kustomize edit set image app="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY:$SHORT_SHA"
-      kustomize build . -o /workspace/frontend_hydrated.yaml
-      stat /workspace/frontend_hydrated.yaml
+      cd ..
+      skaffold render > /workspace/frontend_hydrated.yaml
     
 - name: "gcr.io/cloud-builders/gke-deploy"
   id: "deploy"

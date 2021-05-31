@@ -4,6 +4,7 @@ module "workload_identity_frontend" {
   environment          = "development"
   app_name             = "budita"
   k8s_app_service_name = "frontend"
-  pod_sa_roles         = ["roles/storage.admin"] # Example
+  app_cicd_project_id = var.app_cicd_project_id
+  pod_sa_roles_gke_prj = ["roles/storage.admin"]
 
 }
