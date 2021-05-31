@@ -2,7 +2,7 @@ apiVersion: skaffold/v2alpha4
 kind: Config
 build:
   artifacts:
-  - image:
+  - image: frontend
     context: src/frontend
   tagPolicy:
     gitCommit: {}
