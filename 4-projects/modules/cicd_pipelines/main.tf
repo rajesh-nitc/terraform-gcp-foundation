@@ -1,5 +1,5 @@
 locals {
-  gar_name = split("/", google_artifact_registry_repository.image_repo.name)[length(split("/", google_artifact_registry_repository.image_repo.name)) - 1]
+  gar_name = split("/", google_artifact_registry_repository.cicd_runner_image_repo.name)[length(split("/", google_artifact_registry_repository.cicd_runner_image_repo.name)) - 1]
   folders  = ["cache/.m2/.ignore", "cache/.skaffold/.ignore", "cache/.cache/pip/wheels/.ignore"]
 }
 
@@ -40,7 +40,7 @@ resource "google_storage_bucket_iam_member" "cloudbuild_artifacts_iam" {
  Image Build
  ***********************************************/
 
-resource "null_resource" "cloudbuild_image_builder" {
+resource "null_resource" "cicd_runner_image" {
   triggers = {
     project_id_cloudbuild_project = var.app_cicd_project_id
   }
@@ -51,11 +51,11 @@ resource "null_resource" "cloudbuild_image_builder" {
       --project ${var.app_cicd_project_id} \
       --config=${path.module}/cloud-build-builder/${var.build_image_yaml} \
       --substitutions=_DEFAULT_REGION=${var.primary_location},_GAR_REPOSITORY=${local.gar_name} \
-      --impersonate-service-account=${google_service_account.app_cicd_build_sa.email}
+      --impersonate-service-account=${google_service_account.cicd_build_sa.email}
   EOT
   }
 
-  depends_on = [google_service_account_iam_member.app_cicd_build_sa_impersonate_permissions]
+  depends_on = [google_service_account_iam_member.cloudbuild_sa_impersonate_cicd_sa]
 
 }
 
@@ -63,7 +63,7 @@ resource "null_resource" "cloudbuild_image_builder" {
  GAR Image Repo
  ***********************************************/
 
-resource "google_artifact_registry_repository" "image_repo" {
+resource "google_artifact_registry_repository" "cicd_runner_image_repo" {
   provider      = google-beta
   project       = var.app_cicd_project_id
   location      = var.primary_location
@@ -72,11 +72,11 @@ resource "google_artifact_registry_repository" "image_repo" {
   format        = "DOCKER"
 }
 
-resource "google_artifact_registry_repository_iam_member" "terraform-image-iam" {
+resource "google_artifact_registry_repository_iam_member" "cloudbuild_sa_access_cicd_runner_image" {
   provider   = google-beta
   project    = var.app_cicd_project_id
-  location   = google_artifact_registry_repository.image_repo.location
-  repository = google_artifact_registry_repository.image_repo.name
-  role       = "roles/artifactregistry.writer"
+  location   = google_artifact_registry_repository.cicd_runner_image_repo.location
+  repository = google_artifact_registry_repository.cicd_runner_image_repo.name
+  role       = "roles/artifactregistry.reader"
   member     = "serviceAccount:${data.google_project.app_cicd_project.number}@cloudbuild.gserviceaccount.com"
 }

@@ -26,9 +26,9 @@
 
 output "boa_artifact_repo" {
   description = "GAR Repo created to store runner images"
-  value       = google_artifact_registry_repository.image_repo.name
+  value       = google_artifact_registry_repository.cicd_runner_image_repo.name
 }
 
 output "app_cicd_build_sa" {
-  value = google_service_account.app_cicd_build_sa.email
+  value = google_service_account.cicd_build_sa.email
 }

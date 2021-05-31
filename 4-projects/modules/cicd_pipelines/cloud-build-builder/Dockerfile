@@ -24,8 +24,9 @@ WORKDIR /go/src/app
 RUN make out/signer
 RUN cp out/signer /signer
 
-
 FROM alpine:3.13
+
+ARG KUSTOMIZE_VERSION=3.9.2
 
 ### 1. Get Java via the package manager
 RUN apk update \
@@ -50,7 +51,14 @@ ENV CLOUDSDK_INSTALL_DIR /usr/local/gcloud/
 RUN curl -sSL https://sdk.cloud.google.com | bash
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 
-RUN gcloud components install skaffold kubectl kustomize kpt nomos
+RUN gcloud components install skaffold kubectl kpt nomos
+
+# Not sure why kustomize install via gcloud components complains:
+# /usr/local/gcloud/google-cloud-sdk/bin/kustomize: No such file or directory
+RUN curl -k -LO https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv${KUSTOMIZE_VERSION}/kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz && \
+    tar xzf kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz && \
+    mv kustomize /usr/local/bin && \
+    rm kustomize_v${KUSTOMIZE_VERSION}_linux_amd64.tar.gz
 
 ##### 4. Add the kritis signer to the commands
 COPY --from=kritis-build /signer .
