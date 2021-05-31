@@ -42,6 +42,3 @@ steps:
   - --location=$_DEFAULT_REGION
   - --cluster=budita-d-$_DEFAULT_REGION
   - --project=prj-gke-d-clusters-3c96
-  volumes:
-  - path: '/artifacts'
-    name: 'artifacts'
