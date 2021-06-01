@@ -29,7 +29,12 @@ spec:
           initialDelaySeconds: 1
           periodSeconds: 1
           httpGet:
-            path: /
+            path: /health
+            port: 8080
+        livenessProbe:
+          periodSeconds: 15
+          httpGet:
+            path: /health
             port: 8080
         ports:
         - name: http

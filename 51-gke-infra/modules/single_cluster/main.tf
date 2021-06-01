@@ -29,7 +29,6 @@ module "gke" {
   enable_private_endpoint           = var.enable_private_endpoint
   impersonate_service_account       = var.project_service_account
   master_ipv4_cidr_block            = var.master_ipv4_cidr_block
-  authenticator_security_group      = var.groups_gke_security
   remove_default_node_pool          = true
   enable_private_nodes              = true
   identity_namespace                = "${local.project_id}.svc.id.goog"

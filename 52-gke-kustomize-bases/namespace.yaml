@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   name: ns
   labels:
-    istio-injection: "true"
+    istio-injection: true

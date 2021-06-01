@@ -12,10 +12,21 @@ spec:
       containers:
       - name: app
         env:
-          - name: PORT
-            value: "8080"
-          - name: TARGET
-            value: world!!
-          - name: ENVIRONMENT
-            value: dev
+        - name: PORT
+          value: "8080"
+        - name: TARGET
+          value: world!!
+        - name: ENVIRONMENT
+          value: dev
+        readinessProbe:
+          initialDelaySeconds: 1
+          periodSeconds: 1
+          httpGet:
+            path: /
+            port: 8080
+        livenessProbe:
+          periodSeconds: 15
+          httpGet:
+            path: /
+            port: 8080
       

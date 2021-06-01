@@ -58,11 +58,6 @@ variable "node_pools" {
   type = list(map(string))
 }
 
-variable "groups_gke_security" {
-  type    = string
-  default = ""
-}
-
 variable "enable_private_endpoint" {
   type    = bool
   default = true
