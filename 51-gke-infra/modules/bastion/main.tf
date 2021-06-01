@@ -1,6 +1,5 @@
 module "iap_bastion" {
-  source  = "terraform-google-modules/bastion-host/google"
-  version = "~> 3.1"
+  source  = "git@github.com:terraform-google-modules/terraform-google-bastion-host.git?ref=v3.2.0"
   project = var.project_id
 
   network      = var.bastion_network_self_link

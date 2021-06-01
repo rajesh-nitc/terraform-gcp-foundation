@@ -3,9 +3,7 @@ artifacts:
     location: gs://$_CACHE_BUCKET_NAME/artifacts
     paths:
       - '/workspace/frontend_hydrated.yaml'
-
 steps:
-
 - name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
   id: "setup"
   entrypoint: "/bin/bash"
@@ -18,7 +16,7 @@ steps:
         echo "Setting up gcloud for impersonation"
         gcloud config set auth/impersonate_service_account $cicd_sa_email
       fi
-      
+      skaffold config set default-repo $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY    
 - name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
   id: "build-image"
   entrypoint: "/bin/bash"
@@ -27,13 +25,10 @@ steps:
     - -c
     - |
       cd 54-gke-app
-      skaffold config set default-repo $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY
       skaffold build --tag=$SHORT_SHA
       cd k8s/dev
       kustomize edit set image app="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/frontend:$SHORT_SHA"
-      cd /workspace/54-gke-app
-      skaffold render > /workspace/frontend_hydrated.yaml
-    
+      kustomize build . -o /workspace/frontend_hydrated.yaml
 - name: "gcr.io/cloud-builders/gke-deploy"
   id: "deploy"
   args:
