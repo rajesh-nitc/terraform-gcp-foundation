@@ -18,15 +18,4 @@ spec:
           value: world!!
         - name: ENVIRONMENT
           value: dev
-        readinessProbe:
-          initialDelaySeconds: 1
-          periodSeconds: 1
-          httpGet:
-            path: /
-            port: 8080
-        livenessProbe:
-          periodSeconds: 15
-          httpGet:
-            path: /
-            port: 8080
       
