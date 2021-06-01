@@ -43,7 +43,7 @@ module "cicd_pipeline" {
   source               = "../../../4-projects/modules/cicd_pipelines"
   app_cicd_project_id  = module.app_cicd_project.project_id
   gke_project_id       = var.gke_project_id
-  monorepo_folders     = ["54-gke-app"]
+  monorepo_folders     = ["54-gke-app-cicd"]
   gar_repo_name_suffix = "cicd-image-repo"
   primary_location     = var.default_region
   # attestor_names_prefix = ["build", "quality", "security"]
