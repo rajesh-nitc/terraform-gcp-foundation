@@ -150,14 +150,6 @@ variable "subnets" {
 
 }
 
-variable "budita_cluster_uscentral1_cluster_ip_range_pods" {
-  type = string
-}
-
-variable "budita_cluster_uscentral1_cluster_ip_range_services" {
-  type = string
-}
-
 variable "budita_cluster_uscentral1_cluster_network_tag" {
   type = string
 }

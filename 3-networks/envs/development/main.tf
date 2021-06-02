@@ -1,50 +1,37 @@
 locals {
-  environment_code    = "d"
-  env                 = "development"
-  base_project_id     = data.google_projects.base_host_project.projects[0].project_id
-  parent_id           = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
-  mode                = var.enable_hub_and_spoke ? "spoke" : null
-  bgp_asn_number      = var.enable_partner_interconnect ? "16550" : "64514"
-  enable_transitivity = var.enable_hub_and_spoke && var.enable_hub_and_spoke_transitivity
-
-  base_subnet_aggregates = ["10.0.0.0/16", "10.1.0.0/16", "100.64.0.0/16", "100.65.0.0/16"]
-  base_hub_subnet_ranges = ["10.0.0.0/24", "10.1.0.0/24"]
+  environment_code       = "d"
+  env                    = "development"
+  base_project_id        = data.google_projects.base_host_project.projects[0].project_id
+  parent_id              = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  mode                   = var.enable_hub_and_spoke ? "spoke" : null
+  bgp_asn_number         = var.enable_partner_interconnect ? "16550" : "64514"
+  enable_transitivity    = var.enable_hub_and_spoke && var.enable_hub_and_spoke_transitivity
+  base_subnet_aggregates = []
+  base_hub_subnet_ranges = []
 
   # Base Shared VPC
-
   base_private_service_cidr = "10.16.64.0/21"
 
-  base_subnet_primary_ranges = flatten([for k, v in var.subnets : [for subnet in v : {
+  base_subnet_primary_ranges = flatten([for i in var.subnets : {
 
-    subnet_name           = "sb-${local.environment_code}-shared-base-${k}-${subnet.team}"
-    subnet_ip             = subnet.subnet_ip
-    subnet_region         = k
-    subnet_private_access = subnet.enable_private_access
-    subnet_flow_logs      = subnet.enable_flow_logs
+    subnet_name           = "sb-${local.environment_code}-shared-base-${i.region}-${i.team}"
+    subnet_ip             = i.subnet_ip
+    subnet_region         = i.region
+    subnet_private_access = i.enable_private_access
+    subnet_flow_logs      = i.enable_flow_logs
     }
-  ]])
+  ])
 
-  # This is manual
-  subnet_secondary_ranges = {
-    (var.default_region1) = [
-      {
-        range_name    = "rn-${local.environment_code}-shared-base-${var.default_region1}-gke-pod"
-        ip_cidr_range = var.budita_cluster_uscentral1_cluster_ip_range_pods
-      },
-      {
-        range_name    = "rn-${local.environment_code}-shared-base-${var.default_region1}-gke-svc"
-        ip_cidr_range = var.budita_cluster_uscentral1_cluster_ip_range_services
+  secondary_ranges = { for i in var.subnets :
+
+    "sb-${local.environment_code}-shared-base-${i.region}-${i.team}" => [for k, v in i.secondary_ip_range : {
+      range_name    = "rn-${local.environment_code}-shared-base-${i.region}-gke-${k}"
+      ip_cidr_range = v
       }
-    ]
-  }
+  ] }
 
-  # This is manual
-  gke_subnet_secondary_ranges = {
-    "sb-${local.environment_code}-shared-base-${var.default_region1}-gke" = local.subnet_secondary_ranges[var.default_region1]
-  }
-
-  budita_cluster_uscentral1_subnet_cidr = [for i in var.subnets[var.default_region1] : i.subnet_ip if i.team == "gke"]
-
+  budita_cluster_uscentral1_subnet_cidr           = [for i in var.subnets : i.subnet_ip if i.team == "gke" && i.region == var.default_region1]
+  budita_cluster_uscentral1_cluster_ip_range_pods = [for i in var.subnets : i.secondary_ip_range["pod"] if i.team == "gke" && i.region == var.default_region1]
 }
 
 data "google_active_folder" "env" {
@@ -81,7 +68,7 @@ module "base_shared_vpc" {
   mode                          = local.mode
 
   subnets          = local.base_subnet_primary_ranges
-  secondary_ranges = local.gke_subnet_secondary_ranges
+  secondary_ranges = local.secondary_ranges
 
   allow_all_ingress_ranges = local.enable_transitivity ? local.base_hub_subnet_ranges : null
   allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
@@ -91,6 +78,6 @@ module "base_shared_vpc" {
   budita_cluster_uscentral1_cluster_network_tag        = var.budita_cluster_uscentral1_cluster_network_tag
   budita_cluster_uscentral1_cluster_endpoint_for_nodes = var.budita_cluster_uscentral1_cluster_endpoint_for_nodes
   budita_cluster_uscentral1_cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]
-  budita_cluster_uscentral1_cluster_ip_range_pods      = var.budita_cluster_uscentral1_cluster_ip_range_pods
+  budita_cluster_uscentral1_cluster_ip_range_pods      = local.budita_cluster_uscentral1_cluster_ip_range_pods[0]
 
 }
