@@ -34,7 +34,7 @@ Clone this repo and create ```feature/initial``` and ```development``` branch fr
 
 ### 0-bootstrap
 1. as org admin or as user running this, you should have 3 roles at org level: Billing Account Administrator, Folder Creator, Organization Administrator 
-1. create groups mentioned in ```common.auto.tfvars``` at root, comment out the ```terraform_service_account``` in ```common.auto.tfvars``` at root and comment out ```backend.tf```,```provider.tf```,```github_cloudbuild_triggers.tf```,```cloudbuild-*``` in 0-bootstrap and apply terraform manually
+1. create groups mentioned in ```terraform.tfvars```, comment out the ```terraform_service_account``` in ```common.auto.tfvars``` at root and comment out ```backend.tf```,```provider.tf```,```github_cloudbuild_triggers.tf```,```cloudbuild-*``` in 0-bootstrap and apply terraform manually
 1. uncomment and update the files 
 1. connect github repo with cloudbuild project manually
 1. now a push to ```feature/initial``` branch should trigger terraform plan and merging it with ```development``` should trigger terraform apply
@@ -42,6 +42,7 @@ Clone this repo and create ```feature/initial``` and ```development``` branch fr
 1. added roles to tf sa and a role to cloudbuild sa to access artifactory - to make ```0-bootstrap``` work on cloudbuild
 
 ### 1-org
+1. create groups
 1. provision production projects per org: dns hub and logging
 1. disabled audit data access logs and not sending log exports to cloud storage and pubsub
 
