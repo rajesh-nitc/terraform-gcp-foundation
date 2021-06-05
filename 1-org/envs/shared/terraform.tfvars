@@ -1,3 +1,9 @@
-group_network_admins = "gcp-network-admins@budita.dev"
-billing_data_users   = "gcp-billing-admins@budita.dev"
-audit_data_users     = "gcp-security-admins@budita.dev"
+group_network_admins                        = "gcp-network-admins@budita.dev"
+billing_data_users                          = "gcp-billing-admins@budita.dev"
+audit_data_users                            = "gcp-security-admins@budita.dev"
+domains_to_allow                            = ["budita.dev"]
+enable_hub_and_spoke                        = true
+data_access_logs_enabled                    = false
+audit_logs_table_expiration_days            = 5
+audit_logs_table_delete_contents_on_destroy = true
+create_access_context_manager_access_policy = true

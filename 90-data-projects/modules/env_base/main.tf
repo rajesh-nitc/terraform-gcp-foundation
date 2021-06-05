@@ -33,6 +33,7 @@ module landing_project {
 
 module transformation_project {
   source                      = "../../../4-projects/modules/single_project"
+  enable_hub_and_spoke        = true
   impersonate_service_account = var.terraform_service_account
   org_id                      = var.org_id
   billing_account             = var.billing_account
@@ -42,7 +43,6 @@ module transformation_project {
   alert_pubsub_topic          = var.alert_pubsub_topic
   budget_amount               = var.budget_amount
   project_prefix              = var.project_prefix
-  enable_hub_and_spoke        = var.enable_hub_and_spoke
   sa_roles = [
     "roles/dataflow.admin",
     "roles/dataflow.worker",

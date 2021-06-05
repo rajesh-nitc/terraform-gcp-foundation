@@ -75,31 +75,31 @@ module "base_transitivity" {
  * Restricted Network Transitivity
  */
 
-module "restricted_transitivity" {
-  count               = local.enable_transitivity ? 1 : 0
-  source              = "../../modules/transitivity"
-  project_id          = local.restricted_net_hub_project_id
-  regions             = keys(local.restricted_subnet_primary_ranges)
-  vpc_name            = module.restricted_shared_vpc[0].network_name
-  gw_subnets          = { for region in keys(local.restricted_subnet_primary_ranges) : region => "sb-c-shared-restricted-hub-${region}" }
-  regional_aggregates = local.restricted_regional_aggregates
-  commands = [
-    # Accept all ICMP (troubleshooting)
-    "iptables -A INPUT -p icmp -j ACCEPT",
-    # Accept SSH local traffic to the eth0 interface (health checking)
-    "iptables -A INPUT -p tcp --dport 22 -d $(curl -H \"Metadata-Flavor: Google\" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip) -j ACCEPT",
-    # Drop everything else
-    "iptables -A INPUT -j DROP",
-    # Accept all return transit traffic for established flows
-    "iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT",
-    # Accept all transit traffic from internal ranges
-    # Replace by actual multiple source/destination/proto/ports rules for fine-grained ACLs.
-    "iptables -A FORWARD -s ${join(",", flatten(values(local.restricted_regional_aggregates)))} -d ${join(",", flatten(values(local.restricted_regional_aggregates)))} -j ACCEPT",
-    # Drop everything else
-    "iptables -A FORWARD -j DROP",
-    # SNAT traffic not to the local eth0 interface
-    "iptables -t nat -A POSTROUTING ! -d $(curl -H \"Metadata-Flavor: Google\" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip) -j MASQUERADE",
-  ]
+# module "restricted_transitivity" {
+#   count               = local.enable_transitivity ? 1 : 0
+#   source              = "../../modules/transitivity"
+#   project_id          = local.restricted_net_hub_project_id
+#   regions             = keys(local.restricted_subnet_primary_ranges)
+#   vpc_name            = module.restricted_shared_vpc[0].network_name
+#   gw_subnets          = { for region in keys(local.restricted_subnet_primary_ranges) : region => "sb-c-shared-restricted-hub-${region}" }
+#   regional_aggregates = local.restricted_regional_aggregates
+#   commands = [
+#     # Accept all ICMP (troubleshooting)
+#     "iptables -A INPUT -p icmp -j ACCEPT",
+#     # Accept SSH local traffic to the eth0 interface (health checking)
+#     "iptables -A INPUT -p tcp --dport 22 -d $(curl -H \"Metadata-Flavor: Google\" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip) -j ACCEPT",
+#     # Drop everything else
+#     "iptables -A INPUT -j DROP",
+#     # Accept all return transit traffic for established flows
+#     "iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT",
+#     # Accept all transit traffic from internal ranges
+#     # Replace by actual multiple source/destination/proto/ports rules for fine-grained ACLs.
+#     "iptables -A FORWARD -s ${join(",", flatten(values(local.restricted_regional_aggregates)))} -d ${join(",", flatten(values(local.restricted_regional_aggregates)))} -j ACCEPT",
+#     # Drop everything else
+#     "iptables -A FORWARD -j DROP",
+#     # SNAT traffic not to the local eth0 interface
+#     "iptables -t nat -A POSTROUTING ! -d $(curl -H \"Metadata-Flavor: Google\" http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip) -j MASQUERADE",
+#   ]
 
-  depends_on = [module.restricted_shared_vpc]
-}
+#   depends_on = [module.restricted_shared_vpc]
+# }

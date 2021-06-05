@@ -15,7 +15,7 @@ data "google_project" "env_project" {
 }
 
 data "google_compute_network" "shared_vpc" {
-  name    = "vpc-${local.environment_code}-shared-${var.vpc_type}"
+  name    = "vpc-${local.environment_code}-shared-${var.vpc_type}-spoke"
   project = data.google_project.network_project.project_id
 }
 

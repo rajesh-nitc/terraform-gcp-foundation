@@ -45,8 +45,8 @@ module "main" {
   version                                = "~> 3.1"
   project_id                             = var.project_id
   network_name                           = local.network_name
-  shared_vpc_host                        = "true"
-  delete_default_internet_gateway_routes = "true"
+  shared_vpc_host                        = true
+  delete_default_internet_gateway_routes = true
 
   subnets          = var.subnets
   secondary_ranges = var.secondary_ranges

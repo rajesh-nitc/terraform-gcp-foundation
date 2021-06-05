@@ -22,7 +22,7 @@ gcloud dataflow jobs run first-dataflow-job \
     --project prj-data-d-transformation-4f2b \
     --region us-central1 \
     --disable-public-ips \
-    --network vpc-d-shared-base \
+    --network vpc-d-shared-base-spoke \
     --subnetwork https://www.googleapis.com/compute/v1/projects/prj-d-shared-base-21a3/regions/us-central1/subnetworks/sb-d-shared-base-us-central1-data \
     --staging-location gs://bkt-d-data-tfn-temp \
     --service-account-email project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com \

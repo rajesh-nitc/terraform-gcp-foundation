@@ -1,5 +1,5 @@
 module "workload_identity_frontend" {
-  source               = "../../modules/workload-identity"
+  source               = "../../modules/env_base"
   org_id               = var.org_id
   environment          = "development"
   app_name             = "budita"
