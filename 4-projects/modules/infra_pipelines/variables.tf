@@ -65,3 +65,9 @@ variable "monorepo_folders" {
 variable "group_prj_admins" {
   type = string
 }
+
+variable "folders_to_grant_browser_role" {
+  description = "List of folders to grant browser role to the cloud build service account. Used by terraform validator to able to load IAM policies."
+  type        = list(string)
+  default     = []
+}
