@@ -2,7 +2,7 @@
 
 This repo implements a reasonably secure foundation. This is a mono repo where each folder has its own github app cloudbuild triggers.
 
-Following [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
+This repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions).
 
 ## Final view
 [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) gives:
@@ -13,6 +13,7 @@ Following [terraform-example-foundation](https://github.com/terraform-google-mod
  |   +-- 📦 prj-b-seed-6949
  |   +-- 📦 prj-b-cicd-98fa
  +-- 📁 fldr-common (161434909087)
+ |   +-- 📦 prj-c-base-net-hub-74f5
  |   +-- 📦 prj-gke-c-infra-pipeline-e6f5
  |   +-- 📦 prj-gke-c-cicd-pipeline-7989
  |   +-- 📦 prj-data-c-infra-pipeline-fb29
