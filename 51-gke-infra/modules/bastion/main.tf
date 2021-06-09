@@ -22,7 +22,9 @@ module "iap_bastion" {
     "roles/privateca.admin"
   ]
   create_firewall_rule = false
-  shielded_vm          = false
+  shielded_vm          = true
+  image                = "centos-7-v20210512"
+  image_project        = "centos-cloud"
   members              = var.bastion_members
   tags                 = ["bastion", "allow-google-apis", "egress-internet", "allow-iap-ssh"]
 }

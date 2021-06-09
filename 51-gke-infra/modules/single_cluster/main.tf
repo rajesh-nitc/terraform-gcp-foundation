@@ -12,7 +12,7 @@ locals {
 }
 
 module "gke" {
-  source                            = "git@github.com:terraform-google-modules/terraform-google-kubernetes-engine.git//modules/beta-private-cluster?ref=v14.3.0"
+  source                            = "git@github.com:terraform-google-modules/terraform-google-kubernetes-engine.git//modules/beta-private-cluster?ref=v15.0.0"
   project_id                        = local.project_id
   name                              = "${var.app_name}-${local.environment_code}-${var.region}"
   regional                          = false
@@ -32,7 +32,10 @@ module "gke" {
   remove_default_node_pool          = true
   enable_private_nodes              = true
   identity_namespace                = "${local.project_id}.svc.id.goog"
-  istio                             = true
+  istio                             = false
+
+  enable_l4_ilb_subsetting = false
+  http_load_balancing      = true
 
   master_authorized_networks = concat(var.master_authorized_networks,
     var.provision_bastion_instance ?
@@ -49,7 +52,7 @@ module "gke" {
   }
 
   node_pools_tags = {
-    "np-${var.region}" = ["allow-google-apis"]
+    "np-${var.region}" = ["allow-google-apis", "allow-lb"]
   }
 
   node_pools = var.node_pools

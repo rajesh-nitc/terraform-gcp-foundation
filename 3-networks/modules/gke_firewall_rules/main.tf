@@ -23,7 +23,7 @@ resource "google_compute_firewall" "intra_egress" {
     }
   }
 
-  target_tags = [var.cluster_network_tag]
+  target_tags = [var.cluster_network_tag, "bastion"]
   destination_ranges = compact([
     var.cluster_endpoint_for_nodes,
     var.cluster_subnet_cidr,
@@ -112,7 +112,7 @@ resource "google_compute_firewall" "shadow_allow_pods" {
 
 resource "google_compute_firewall" "shadow_allow_master" {
   name        = "fw-${var.environment_code}-i-a-gke-shadow-master"
-  description = "Managed by terraform GKE module: A shadow firewall rule to match the default rule allowing worker nodes communication."
+  description = "Managed by terraform GKE module: A shadow firewall rule to match the default rule allowing master nodes communication."
   project     = var.network_project_id
   network     = var.network
   priority    = 999

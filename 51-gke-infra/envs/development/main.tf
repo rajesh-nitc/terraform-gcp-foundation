@@ -7,7 +7,7 @@ module "gke_cluster" {
   project_service_account       = var.project_service_account
   enable_private_endpoint       = false
   deploy_using_private_endpoint = false
-  provision_bastion_instance    = false
+  provision_bastion_instance    = true
   master_ipv4_cidr_block        = "100.64.80.0/28"
 
   master_authorized_networks = [

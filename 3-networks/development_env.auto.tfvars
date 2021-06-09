@@ -49,7 +49,7 @@ subnets = [
     enable_flow_logs      = true
     enable_private_access = true
     secondary_ip_range    = {}
-  }
+  },
 ]
 
 budita_cluster_uscentral1_cluster_endpoint_for_nodes = "100.64.80.0/28"

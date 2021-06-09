@@ -1,5 +1,11 @@
 locals {
-  group_network_admins_roles = ["roles/compute.networkAdmin", "roles/compute.xpnAdmin", "roles/compute.securityAdmin", "roles/dns.admin"]
+  group_network_admins_roles = [
+    "roles/compute.networkAdmin",
+    "roles/compute.xpnAdmin",
+    "roles/compute.securityAdmin",
+    "roles/dns.admin",
+    "roles/compute.orgSecurityResourceAdmin"
+  ]
 }
 
 resource "google_organization_iam_member" "group_network_admins" {
