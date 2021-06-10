@@ -1,6 +1,7 @@
 patchesStrategicMerge:
 - patch_deployment.yaml
 - patch_ksa.yaml
+- patch_istio_vsvc.yaml
 namespace: frontend-ns-d
 namePrefix: frontend-
 nameSuffix: -d

@@ -32,7 +32,7 @@ module "gke" {
   remove_default_node_pool          = true
   enable_private_nodes              = true
   identity_namespace                = "${local.project_id}.svc.id.goog"
-  istio                             = false
+  istio                             = true
 
   enable_l4_ilb_subsetting = false
   http_load_balancing      = true

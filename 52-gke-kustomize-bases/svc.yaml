@@ -1,11 +1,9 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: ilb-service
-  annotations:
-    networking.gke.io/load-balancer-type: "Internal"
+  name: svc
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
   - name: tcp-port
     port: 80

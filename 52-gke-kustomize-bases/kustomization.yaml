@@ -1,5 +1,7 @@
 resources:
-  - service.yaml
+  - svc.yaml
   - deployment.yaml
   - ksa.yaml
-  - namespace.yaml
+  - ns.yaml
+  - istio-gateway.yaml
+  - istio-vsvc.yaml
