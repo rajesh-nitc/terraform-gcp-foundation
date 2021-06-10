@@ -5,3 +5,6 @@ The beta-private-cluster terraform module creates an external tcp loadbalancer o
 
 ## External access from within the VPC
 To provision internal tcp load balancer, we need to configure istio operator with the required annotation otherwise istio will provision external tcp load balancer or istio ingress gateway. We need to apply istio-operator yaml. This is not covered here.
+
+## External access from within the VPC without Istio
+This has been tested. We need to create a service of type loadbalancer and attach internal annotation. The clusterip service won't be required in this case.
