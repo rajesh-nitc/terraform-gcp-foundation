@@ -1,0 +1,30 @@
+# External access over the Internet with Istio:
+# The beta-private-cluster terraform module creates an external tcp loadbalancer 
+# or istio external ingress gateway by default. Later, istio ingress gateway is  
+# configured with istio-gateway.yaml and istio-vsvc.yaml.
+
+# External access from within the VPC with Istio:
+# To provision internal tcp load balancer, we need to configure istio operator with 
+# istio-operator.yaml. In current setup, istio-operator.yaml is not applied and is  
+# not part of kustomization.yaml.
+
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  annotations:
+    config.kubernetes.io/local-config: "true"
+spec:
+  profile: empty
+  hub: gcr.io/istio-release # Image pull error
+  components:
+    base:
+      enabled: true
+    pilot:
+      enabled: true
+    ingressGateways:
+    - name: istio-ingressgateway
+      enabled: true
+      k8s:
+        serviceAnnotations:
+          networking.gke.io/load-balancer-type: Internal
+          networking.gke.io/internal-load-balancer-allow-global-access: "true"
