@@ -15,7 +15,6 @@ locals {
 
 }
 
-
 # Allow nodes access to ops and artifactory
 resource "google_service_account" "node_sa" {
   account_id = "node-sa"
@@ -34,4 +33,11 @@ resource "google_project_iam_member" "node_sa_cicd_roles" {
   project  = var.app_cicd_project_id
   role     = each.value
   member   = "serviceAccount:${google_service_account.node_sa.email}"
+}
+
+# Allow cicd-sa to deploy on cluster
+resource "google_project_iam_member" "cloudbuild_sa_role_gke_project" {
+  project = module.gke_project.project_id
+  role    = "roles/container.developer"
+  member  = "serviceAccount:${var.cicd_sa}"
 }

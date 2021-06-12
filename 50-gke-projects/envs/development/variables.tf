@@ -26,3 +26,6 @@ variable "app_cicd_project_id" {
   type = string
 }
 
+variable "cicd_sa" {
+  type = string
+}

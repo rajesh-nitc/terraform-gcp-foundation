@@ -6,6 +6,7 @@ locals {
     "3-networks",
     "4-projects",
     "90-data-projects",
+    "50-gke-projects"
   ]
 }
 

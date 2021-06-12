@@ -1,5 +1,5 @@
 locals {
-  cicd_tf_deploy_sa_roles = [
+  cicd_sa_roles_cicd_prj = [
     "roles/viewer",
     "roles/storage.admin",
     "roles/cloudkms.admin",
@@ -25,7 +25,7 @@ resource "google_service_account" "cicd_build_sa" {
 }
 
 resource "google_project_iam_member" "cicd_sa_roles" {
-  for_each = toset(local.cicd_tf_deploy_sa_roles)
+  for_each = toset(local.cicd_sa_roles_cicd_prj)
   project  = var.app_cicd_project_id
   role     = each.value
   member   = "serviceAccount:${google_service_account.cicd_build_sa.email}"
@@ -48,11 +48,4 @@ resource "google_service_account_iam_member" "prjadmins_impersonate_cicd_sa" {
   service_account_id = google_service_account.cicd_build_sa.name
   role               = "roles/iam.serviceAccountTokenCreator"
   member             = "group:${var.group_prj_admins}"
-}
-
-# Allow cicd-sa to deploy on cluster
-resource "google_project_iam_member" "cloudbuild_sa_role_gke_project" {
-  project = var.gke_project_id
-  role    = "roles/container.developer"
-  member  = "serviceAccount:${google_service_account.cicd_build_sa.email}"
 }
