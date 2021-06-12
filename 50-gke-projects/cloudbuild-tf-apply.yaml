@@ -19,11 +19,7 @@ steps:
   args:
   - -c
   - |
-    cd 90-data-projects/envs/shared   
-    terraform init
-    terraform apply --auto-approve
-    cd ..
-    cd development    
+    cd 50-gke-prokects/envs/development  
     terraform init
     terraform apply --auto-approve
 
