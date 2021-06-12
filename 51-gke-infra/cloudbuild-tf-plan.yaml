@@ -22,11 +22,7 @@ steps:
   args:
   - -c
   - |
-    cd 51-gke-infra/envs/shared    
-    terraform init
-    terraform plan
-    cd ..
-    cd development   
+    cd 51-gke-infra/envs/development    
     terraform init
     terraform plan
 

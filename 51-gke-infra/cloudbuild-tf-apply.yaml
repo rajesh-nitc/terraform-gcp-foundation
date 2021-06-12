@@ -22,12 +22,6 @@ steps:
   args:
   - -c
   - |
-    cd 51-gke-infra/envs/shared    
+    cd 51-gke-infra/envs/development    
     terraform init
     terraform apply --auto-approve
-    cd ..
-    cd development    
-    terraform init
-    terraform apply --auto-approve
-
-
