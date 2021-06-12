@@ -1,8 +1,8 @@
 # gcp-foundation 
 
-This repo implements a reasonably secure foundation. This is a mono repo where each folder has its own github app cloudbuild triggers.
+This repo implements a reasonably secure foundation on gcp via terraform
 
-This repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions).
+This repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
 
 ## Final view
 [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) gives:
