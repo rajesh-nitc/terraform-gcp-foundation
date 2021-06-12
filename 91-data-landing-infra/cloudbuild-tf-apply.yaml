@@ -15,7 +15,6 @@ steps:
       echo "Setting up gcloud for impersonation"
       gcloud config set auth/impersonate_service_account $tf_sa_email
     fi
-    export GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no"
 
 - id: 'tf apply'
   name: $_DEFAULT_REGION-docker.pkg.dev/$_BOOTSTRAP_CB_PROJECT_ID/$_GAR_REPOSITORY/terraform

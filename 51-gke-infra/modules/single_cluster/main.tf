@@ -12,7 +12,8 @@ locals {
 }
 
 module "gke" {
-  source                            = "git@github.com:terraform-google-modules/terraform-google-kubernetes-engine.git//modules/beta-private-cluster?ref=v15.0.0"
+  source                            = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
+  version                           = "15.0.0"
   project_id                        = local.project_id
   name                              = "${var.app_name}-${local.environment_code}-${var.region}"
   regional                          = false

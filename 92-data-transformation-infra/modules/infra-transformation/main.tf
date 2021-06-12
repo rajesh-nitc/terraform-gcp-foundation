@@ -8,7 +8,8 @@ locals {
 }
 
 module "buckets_transformation" {
-  source     = "git@github.com:terraform-google-modules/terraform-google-cloud-storage.git?ref=v2.0.0"
+  source     = "terraform-google-modules/cloud-storage/google"
+  version    = "2.0.0"
   project_id = local.project_id
   prefix     = ""
 
