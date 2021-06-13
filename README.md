@@ -1,9 +1,10 @@
 # gcp-foundation 
 
 This repo implements a reasonably secure foundation on gcp via terraform. It is made up of:
-0. core foundation (0-5)
-0. gke foundation (50-54)
-0. data foundation (90-94)
+
+- core foundation (0-5)
+- gke foundation (50-54)
+- data foundation (90-94)
 
 This repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions)
 
