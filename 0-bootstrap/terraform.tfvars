@@ -1,2 +1,6 @@
-group_org_admins     = "gcp-organization-admins@budita.dev"
-group_billing_admins = "gcp-billing-admins@budita.dev"
+org_id                    = "157305482127"
+terraform_service_account = "org-terraform@prj-b-seed-6949.iam.gserviceaccount.com"
+billing_account           = "014A32-6EFDA8-492638"
+default_region            = "us-central1"
+group_org_admins          = "gcp-organization-admins@budita.dev"
+group_billing_admins      = "gcp-billing-admins@budita.dev"

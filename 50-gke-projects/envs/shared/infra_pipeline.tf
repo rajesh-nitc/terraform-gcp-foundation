@@ -31,7 +31,7 @@ module "app_infra_cloudbuild_project" {
 
 module "infra_pipelines" {
   source = "../../../4-projects/modules/infra_pipelines"
-  # impersonate_service_account = var.terraform_service_account
+
   cloudbuild_project_id = module.app_infra_cloudbuild_project.project_id
   business_code         = "gke"
   org_id                = var.org_id

@@ -1,1 +1,1 @@
-../../../common.auto.tfvars
+../../common.auto.tfvars

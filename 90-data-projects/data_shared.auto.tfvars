@@ -1,1 +1,1 @@
-group_prj_admins = "gcp-prj-admins@budita.dev"
+default_region = "us-central1"
