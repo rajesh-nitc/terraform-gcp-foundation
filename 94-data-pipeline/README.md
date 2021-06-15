@@ -4,14 +4,20 @@
 
 Prerequisites:
 ```
-gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
+gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com
+
+for i in {0..4} 
+do 
+  echo "KS,F,1923,Dorothy,654$i,11/28/2016" >> usa_names.csv
+done
 
 gsutil cp usa_names.csv gs://bkt-d-data-landing-raw-data
-# Example data: KS,F,1923,Dorothy,654,11/28/2016
 ```
 
 Run job:
 ```
+gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
+
 python3 data_ingestion.py \
   --input=gs://bkt-d-data-landing-raw-data/usa_names.csv \
   --output=prj-data-d-dwh-3f33:bq_raw_dataset.sample_data \
