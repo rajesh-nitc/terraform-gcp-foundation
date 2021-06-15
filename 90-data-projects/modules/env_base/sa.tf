@@ -3,7 +3,9 @@ locals {
     "roles/storage.admin",
   ]
 
-  transformation_sa_roles_dwh_project = []
+  transformation_sa_roles_dwh_project = [
+    "roles/bigquery.jobUser" # Required for batch pipeline # Access Denied: Project prj-data-d-dwh-3f33: User does not have bigquery.jobs.create permission in project prj-data-d-dwh-3f33
+  ]
 }
 
 resource "google_project_iam_member" "transformation_sa_access_landing_project" {
