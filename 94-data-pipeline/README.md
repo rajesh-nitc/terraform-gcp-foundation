@@ -2,12 +2,16 @@
 
 ## Batch pipeline
 
-Upload csv file in the landing project's raw data bucket
-
-Run job:
+Prerequisites:
 ```
 gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
 
+gsutil cp usa_names.csv gs://bkt-d-data-landing-raw-data
+# Example data: KS,F,1923,Dorothy,654,11/28/2016
+```
+
+Run job:
+```
 python3 data_ingestion.py \
   --input=gs://bkt-d-data-landing-raw-data/usa_names.csv \
   --output=prj-data-d-dwh-3f33:bq_raw_dataset.sample_data \
@@ -22,7 +26,12 @@ python3 data_ingestion.py \
 
 ## Streaming pipeline
 
-Create bigquery table person with schema ```name:STRING,surname:STRING,timestamp:TIMESTAMP```
+Prerequisites:
+```
+gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-dwh-3f33.iam.gserviceaccount.com
+
+bq mk -t --description "This is a Test Person table" prj-data-d-dwh-3f33:bq_raw_dataset.person name:STRING,surname:STRING,timestamp:TIMESTAMP
+```
 
 Publish:
 ```
