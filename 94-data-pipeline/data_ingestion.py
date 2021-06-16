@@ -20,7 +20,7 @@ def parse_args():
     return known_args, pipeline_args
 
 
-def transform_field_types(data: Dict[str, str]):
+def transform(data: Dict[str, str]):
     data["year"] = "-".join((data["year"], "01", "01"))
     data["number"] = int(data["number"])
     return data
@@ -35,7 +35,7 @@ def main():
      | 'Read Single Line' >> beam.io.ReadFromText(known_args.input, skip_header_lines=0)
      | 'Split the line' >> beam.Map(lambda x: x.split(','))
      | 'Create Dict' >> beam.Map(lambda x: {"state": x[0], "gender": x[1], "year": x[2], "name": x[3], "number": x[4], "created_date": x[5]})
-     | 'Transform fields' >> beam.Map(transform_field_types)
+     | 'Transform fields' >> beam.Map(transform)
      | 'Write to Bigquery' >> beam.io.WriteToBigQuery(
          known_args.output,
          schema='state:STRING,gender:STRING,year:DATE,name:STRING,number:INTEGER,created_date:STRING',
