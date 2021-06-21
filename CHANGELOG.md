@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.0.0...v1.0.0) (2021-06-21)
+
+
+### Miscellaneous Chores
+
+* release 1.0.0 ([74976b5](https://www.github.com/rajesh-nitc/gcp-foundation/commit/74976b543d8622143f2e631f0ad91dd52eb3d06f))
+* release 1.0.0 ([4d9de04](https://www.github.com/rajesh-nitc/gcp-foundation/commit/4d9de043e81ef564f1cfe7e5f56d5a4274eed260))
+
 ## [1.0.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v0.1.0...v1.0.0) (2021-06-21)
 
 
