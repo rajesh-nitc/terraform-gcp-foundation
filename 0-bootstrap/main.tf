@@ -1,6 +1,6 @@
 /*************************************************
   Bootstrap GCP Organization.
-************************************************/
+**************************************************/
 locals {
   parent = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
   org_admins_org_iam_permissions = var.org_policy_admin_role == true ? [
