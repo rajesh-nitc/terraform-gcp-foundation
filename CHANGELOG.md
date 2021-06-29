@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.0.0...v1.1.0) (2021-06-29)
+
+
+### Features
+
+* added gke policies ([9892177](https://www.github.com/rajesh-nitc/gcp-foundation/commit/98921777ba27a6b546be06e881b79bacccbf85e9))
+
 ## [1.0.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.0.0...v1.0.0) (2021-06-22)
 
 
