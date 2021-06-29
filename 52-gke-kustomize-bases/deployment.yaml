@@ -1,7 +1,7 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: app
+  name: frontend
 spec:
   replicas: 1
   strategy:
@@ -10,12 +10,12 @@ spec:
       maxUnavailable: 0
   template:
     metadata:
-      name: app
+      name: frontend
     spec:
-      serviceAccountName: ksa
+      serviceAccountName: frontend
       containers:
-      - name: app
-        image: app
+      - name: frontend
+        image: frontend
         resources:
           limits:
             memory: "512Mi"

@@ -1,16 +1,14 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: app
+  name: frontend
 spec:
   replicas: 2
   template:
-    metadata:
-      name: app
     spec:
-      serviceAccountName: ksa
       containers:
-      - name: app
+      - name: frontend
+        image: frontend
         env:
         - name: PORT
           value: "8080"

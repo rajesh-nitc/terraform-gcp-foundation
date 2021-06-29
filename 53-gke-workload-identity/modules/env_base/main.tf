@@ -2,8 +2,8 @@ locals {
   environment_code                           = element(split("", var.environment), 0)
   folder_id                                  = data.google_active_folder.env.name
   project_id                                 = data.google_projects.gke_projects.projects[0].project_id
-  k8s_ns_name_enforced_by_kustomize_overlays = "${var.k8s_app_service_name}-ns-${local.environment_code}"
-  k8s_sa_name_enforced_by_kustomize_overlays = "${var.k8s_app_service_name}-ksa-${local.environment_code}"
+  k8s_ns_name_enforced_by_kustomize_overlays = var.k8s_app_service_name
+  k8s_sa_name_enforced_by_kustomize_overlays = var.k8s_app_service_name
   k8s_sa_gcp_derived_name                    = "serviceAccount:${local.project_id}.svc.id.goog[${local.k8s_ns_name_enforced_by_kustomize_overlays}/${local.k8s_sa_name_enforced_by_kustomize_overlays}]"
   pod_sa_default_roles_gke_prj               = ["roles/monitoring.metricWriter", "roles/cloudtrace.agent"]
 }
