@@ -1,3 +1,5 @@
+transformers:
+  - ns-transformer.yaml
 resources:
   - svc.yaml
   - deployment.yaml
@@ -5,3 +7,4 @@ resources:
   - ns.yaml
   - istio-gateway.yaml
   - istio-vsvc.yaml
+  - auth-policy-ingress.yaml

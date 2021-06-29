@@ -27,7 +27,7 @@ steps:
       cd 54-gke-app-cicd
       skaffold build --tag=$SHORT_SHA
       cd k8s/dev
-      kustomize edit set image app="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/frontend:$SHORT_SHA"
+      kustomize edit set image frontend="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/frontend:$SHORT_SHA"
       kustomize build . -o /workspace/frontend_hydrated.yaml
 - name: "gcr.io/cloud-builders/gke-deploy"
   id: "deploy"

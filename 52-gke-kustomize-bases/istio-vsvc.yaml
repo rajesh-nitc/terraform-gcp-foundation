@@ -4,7 +4,7 @@ metadata:
   name: vsvc
 spec:
   gateways:
-  - gateway
+  - default-ext-gateway
   hosts:
   - '*'
   http:

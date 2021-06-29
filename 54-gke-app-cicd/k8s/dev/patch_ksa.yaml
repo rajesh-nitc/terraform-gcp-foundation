@@ -1,6 +1,0 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: ksa
-  annotations:
-    iam.gke.io/gcp-service-account: sa-frontend@prj-gke-d-clusters-3c96.iam.gserviceaccount.com

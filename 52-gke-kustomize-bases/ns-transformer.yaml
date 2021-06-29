@@ -1,0 +1,36 @@
+apiVersion: builtin
+kind: NamespaceTransformer
+metadata:
+   name: not-important-to-example
+   namespace: frontend
+fieldSpecs:
+  - path: metadata/namespace
+    kind: Service
+    create: true
+  - path: metadata/namespace
+    kind: Deployment
+    create: true
+  - path: metadata/namespace
+    kind: NetworkPolicy
+    create: true
+  - path: metadata/namespace
+    kind: ServiceAccount
+    create: true
+  - path: metadata/namespace
+    kind: VirtualService
+    create: true
+  - path: metadata/namespace
+    kind: Gateway
+    create: true
+  - path: metadata/namespace
+    kind: Service
+    create: true
+  - path: metadata/namespace
+    kind: Service
+    create: true
+  - path: subjects
+    kind: RoleBinding
+    group: rbac.authorization.k8s.io
+  - path: subjects
+    kind: ClusterRoleBinding
+    group: rbac.authorization.k8s.io
