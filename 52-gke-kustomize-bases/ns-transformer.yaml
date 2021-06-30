@@ -23,10 +23,7 @@ fieldSpecs:
     kind: Gateway
     create: true
   - path: metadata/namespace
-    kind: Service
-    create: true
-  - path: metadata/namespace
-    kind: Service
+    kind: AuthorizationPolicy
     create: true
   - path: subjects
     kind: RoleBinding
