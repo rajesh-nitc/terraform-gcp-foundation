@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.0...v1.1.1) (2021-06-30)
+
+
+### Bug Fixes
+
+* add authorizationpolicy to ns transformer ([64de5c5](https://www.github.com/rajesh-nitc/gcp-foundation/commit/64de5c522a92b79145123d4630ee179761708776))
+
 ## [1.1.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.0.0...v1.1.0) (2021-06-29)
 
 
