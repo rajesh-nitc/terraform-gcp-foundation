@@ -10,9 +10,9 @@ resource "google_cloudbuild_trigger" "pr_trigger" {
     owner = "rajesh-nitc"
 
     pull_request {
-      branch = "^main$"
+      branch          = "^main$"
       comment_control = "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
-      invert_regex = false
+      invert_regex    = false
     }
   }
 

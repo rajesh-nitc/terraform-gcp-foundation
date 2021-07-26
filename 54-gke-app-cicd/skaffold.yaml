@@ -1,7 +1,5 @@
-apiVersion: skaffold/v2beta18
+apiVersion: skaffold/v2alpha4
 kind: Config
-metadata:
-  name: frontend # module
 build:
   artifacts:
   - image: frontend
