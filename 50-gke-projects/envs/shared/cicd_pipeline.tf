@@ -46,7 +46,7 @@ module "cicd_pipeline" {
   gar_repo_name_suffix = "cicd-image-repo"
   primary_location     = var.default_region
   # attestor_names_prefix = ["build", "quality", "security"]
-  build_app_yaml   = "cloudbuild-cicd.yaml"
+  build_app_yaml   = "cloudbuild-pr.yaml"
   build_image_yaml = "cloudbuild-skaffold-build-image.yaml"
   group_prj_admins = var.group_prj_admins
 }

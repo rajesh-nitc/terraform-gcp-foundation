@@ -1,5 +1,5 @@
-# App Repo Cloudbuild Build Trigger
-resource "google_cloudbuild_trigger" "cicd_trigger" {
+# PR to main branch
+resource "google_cloudbuild_trigger" "pr_trigger" {
   for_each = toset(var.monorepo_folders)
   provider = google-beta
   project  = var.app_cicd_project_id
@@ -9,9 +9,10 @@ resource "google_cloudbuild_trigger" "cicd_trigger" {
     name  = "gcp-foundation"
     owner = "rajesh-nitc"
 
-    push {
-      branch       = ".*"
-      invert_regex = false
+    pull_request {
+      branch          = "^main$"
+      comment_control = "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
+      invert_regex    = false
     }
   }
 

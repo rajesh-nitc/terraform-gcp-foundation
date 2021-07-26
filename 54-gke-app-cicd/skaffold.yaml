@@ -4,15 +4,16 @@ build:
   artifacts:
   - image: frontend
     context: src/frontend
-  tagPolicy:
-    gitCommit: {}
-  local:
-    concurrency: 0
 deploy:
   kustomize:
     paths:
     - k8s/dev
 profiles:
+  - name: dev
+    deploy:
+      kustomize:
+        paths:
+        - k8s/dev
   - name: prod
     deploy:
       kustomize:
