@@ -1,5 +1,13 @@
 # Changelog
 
+### [1.1.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.1...v1.1.2) (2021-07-26)
+
+
+### Bug Fixes
+
+* create pr environment for gke app cicd ([133440a](https://www.github.com/rajesh-nitc/gcp-foundation/commit/133440a21f2d3db9cd32f6508d9289db58246d11))
+* skaffold apiversion ([f496e4b](https://www.github.com/rajesh-nitc/gcp-foundation/commit/f496e4b819457884e6ff7ebe1a789d1be7d217fd))
+
 ### [1.1.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.0...v1.1.1) (2021-06-30)
 
 
