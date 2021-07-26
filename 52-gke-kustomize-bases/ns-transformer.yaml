@@ -1,3 +1,4 @@
+# Allow kustomize to add frontend namespace to below kinds only
 apiVersion: builtin
 kind: NamespaceTransformer
 metadata:
@@ -25,9 +26,3 @@ fieldSpecs:
   - path: metadata/namespace
     kind: AuthorizationPolicy
     create: true
-  - path: subjects
-    kind: RoleBinding
-    group: rbac.authorization.k8s.io
-  - path: subjects
-    kind: ClusterRoleBinding
-    group: rbac.authorization.k8s.io

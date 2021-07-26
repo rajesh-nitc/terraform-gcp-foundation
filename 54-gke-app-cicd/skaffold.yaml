@@ -1,18 +1,21 @@
-apiVersion: skaffold/v2alpha4
+apiVersion: skaffold/v2beta18
 kind: Config
+metadata:
+  name: frontend # module
 build:
   artifacts:
   - image: frontend
     context: src/frontend
-  tagPolicy:
-    gitCommit: {}
-  local:
-    concurrency: 0
 deploy:
   kustomize:
     paths:
     - k8s/dev
 profiles:
+  - name: dev
+    deploy:
+      kustomize:
+        paths:
+        - k8s/dev
   - name: prod
     deploy:
       kustomize:
