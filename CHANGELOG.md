@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.2...v1.2.0) (2021-07-26)
+
+
+### Features
+
+* introduced skaffold modules ([74d5aa0](https://www.github.com/rajesh-nitc/gcp-foundation/commit/74d5aa0a7c881d398ab8efee1e870381f9c49be4))
+
 ### [1.1.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.1...v1.1.2) (2021-07-26)
 
 
