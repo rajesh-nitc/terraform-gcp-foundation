@@ -1,8 +1,0 @@
-# Example auth policy: allow all ingress to frontend namespace
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
- name: allow-all
-spec:
- rules:
- - {}

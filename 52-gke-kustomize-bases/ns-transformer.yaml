@@ -1,4 +1,4 @@
-# Allow kustomize to add frontend namespace to below kinds only
+# Allow kustomize to add frontend namespace where create: true
 apiVersion: builtin
 kind: NamespaceTransformer
 metadata:
@@ -12,9 +12,6 @@ fieldSpecs:
     kind: Deployment
     create: true
   - path: metadata/namespace
-    kind: NetworkPolicy
-    create: true
-  - path: metadata/namespace
     kind: ServiceAccount
     create: true
   - path: metadata/namespace
@@ -24,5 +21,14 @@ fieldSpecs:
     kind: Gateway
     create: true
   - path: metadata/namespace
-    kind: AuthorizationPolicy
+    kind: Role
     create: true
+  - path: metadata/namespace
+    kind: RoleBinding
+    create: true
+  - path: subjects
+    kind: RoleBinding
+    group: rbac.authorization.k8s.io
+  - path: subjects
+    kind: ClusterRoleBinding
+    group: rbac.authorization.k8s.io
