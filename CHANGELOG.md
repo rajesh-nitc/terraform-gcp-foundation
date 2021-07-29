@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.2.0...v1.3.0) (2021-07-29)
+
+
+### Features
+
+* added rbac to gke cluster ([ad6189a](https://www.github.com/rajesh-nitc/gcp-foundation/commit/ad6189a715422af864d00d6cd49b39f90c5cc642))
+
 ## [1.2.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.2...v1.2.0) (2021-07-26)
 
 
