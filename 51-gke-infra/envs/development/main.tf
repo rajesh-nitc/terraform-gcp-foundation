@@ -17,6 +17,9 @@ module "gke_cluster" {
     }
   ]
 
+  cluster_admin  = "cluster-admin@budita.dev"
+  rbac_test_user = "frontend-ro@budita.dev"
+
   node_pools = [
     {
       name               = "np-${var.default_region}"

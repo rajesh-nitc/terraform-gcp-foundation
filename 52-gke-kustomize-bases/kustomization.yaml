@@ -7,4 +7,5 @@ resources:
   - ns.yaml
   - istio-gateway.yaml
   - istio-vsvc.yaml
-  - auth-policy-ingress.yaml
+  - network-policy.yaml
+  - rbac.yaml

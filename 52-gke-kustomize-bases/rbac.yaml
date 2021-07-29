@@ -1,0 +1,46 @@
+# Frontend ro
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: frontend-ro
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: frontend-ro-binding
+subjects:
+- kind: User
+  name: frontend-ro@budita.dev
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: frontend-ro
+  apiGroup: rbac.authorization.k8s.io
+---
+# Cluster ro
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cluster-ro
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "list", "watch"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cluster-ro-binding
+subjects:
+- kind: User
+  name: cluster-ro@budita.dev
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-ro
+  apiGroup: rbac.authorization.k8s.io
+

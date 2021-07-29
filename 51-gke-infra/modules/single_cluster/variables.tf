@@ -90,3 +90,12 @@ variable "provision_bastion_instance" {
   type    = bool
   default = true
 }
+
+# rbac
+variable "cluster_admin" {
+  type = string
+}
+
+variable "rbac_test_user" {
+  type = string
+}
