@@ -1,5 +1,15 @@
 # Changelog
 
+### [1.3.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.1...v1.3.2) (2021-07-30)
+
+
+### Bug Fixes
+
+* cicd-sa need container.admin to deploy ClusterRole ([f255410](https://www.github.com/rajesh-nitc/gcp-foundation/commit/f25541013cce58e3454d995a12a5ff7305076468))
+* container admin role to cicd sa on gke project ([1607b50](https://www.github.com/rajesh-nitc/gcp-foundation/commit/1607b5015336048f23eebc2e53a8131bce604df7))
+* fsGroup can only be set at pod level ([fc86524](https://www.github.com/rajesh-nitc/gcp-foundation/commit/fc8652424e4783bcca9419367b33d14420ae9aa8))
+* run container as non-root user ([fd64846](https://www.github.com/rajesh-nitc/gcp-foundation/commit/fd64846ae76437ce0ab97aacc96fb2c4e68df0f9))
+
 ### [1.3.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.0...v1.3.1) (2021-07-30)
 
 
