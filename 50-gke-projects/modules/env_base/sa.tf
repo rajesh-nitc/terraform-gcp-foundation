@@ -36,8 +36,9 @@ resource "google_project_iam_member" "node_sa_cicd_roles" {
 }
 
 # Allow cicd-sa to deploy on cluster
+# with "roles/container.developer" cicd-sa cannot create resource "clusterroles" in API group "rbac.authorization.k8s.io"
 resource "google_project_iam_member" "cloudbuild_sa_role_gke_project" {
   project = module.gke_project.project_id
-  role    = "roles/container.developer"
+  role    = "roles/container.admin"
   member  = "serviceAccount:${var.cicd_sa}"
 }
