@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.0...v1.3.1) (2021-07-30)
+
+
+### Bug Fixes
+
+* kustomize improvements ([1018e0e](https://www.github.com/rajesh-nitc/gcp-foundation/commit/1018e0e6f14b6ae407da8086fe013c569ba0546a))
+
 ## [1.3.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.2.0...v1.3.0) (2021-07-29)
 
 
