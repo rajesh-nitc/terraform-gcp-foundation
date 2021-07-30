@@ -12,6 +12,8 @@ spec:
     metadata:
       name: frontend
     spec:
+      securityContext:
+        fsGroup: 1000
       serviceAccountName: frontend
       containers:
       - name: frontend
@@ -38,4 +40,7 @@ spec:
         ports:
         - name: http
           containerPort: 8080
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
       
