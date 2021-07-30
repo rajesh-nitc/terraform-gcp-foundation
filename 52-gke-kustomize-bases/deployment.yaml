@@ -12,6 +12,8 @@ spec:
     metadata:
       name: frontend
     spec:
+      securityContext:
+        fsGroup: 1000
       serviceAccountName: frontend
       containers:
       - name: frontend
@@ -41,5 +43,4 @@ spec:
         securityContext:
           runAsUser: 1000
           runAsGroup: 1000
-          fsGroup: 1000
       
