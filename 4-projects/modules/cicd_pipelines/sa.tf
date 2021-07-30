@@ -8,7 +8,7 @@ locals {
     "roles/containeranalysis.occurrences.editor",
     "roles/containeranalysis.notes.occurrences.viewer",
     "roles/containeranalysis.notes.attacher",
-    "roles/container.developer",
+    "roles/container.admin",
     "roles/secretmanager.secretAccessor",
     "roles/containeranalysis.notes.editor",
     "roles/artifactregistry.admin",
