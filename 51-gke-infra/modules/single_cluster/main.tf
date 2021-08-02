@@ -34,10 +34,10 @@ module "gke" {
   enable_private_nodes              = true
   identity_namespace                = "${local.project_id}.svc.id.goog"
 
-  istio                      = true
-  enable_l4_ilb_subsetting   = false
-  http_load_balancing        = true
-  network_policy             = true
+  istio                    = true
+  enable_l4_ilb_subsetting = false
+  http_load_balancing      = true
+  network_policy           = true
 
   master_authorized_networks = concat(var.master_authorized_networks,
     var.provision_bastion_instance ?

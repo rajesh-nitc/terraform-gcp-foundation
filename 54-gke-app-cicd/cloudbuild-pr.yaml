@@ -30,7 +30,15 @@ steps:
       kustomize edit set image frontend="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/frontend:$SHORT_SHA"
       kustomize build . -o /workspace/frontend_hydrated.yaml
 - name: "gcr.io/cloud-builders/gke-deploy"
-  id: "deploy"
+  id: "deploy-gatekeeper"
+  args:
+  - apply
+  - --filename=https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.5/deploy/gatekeeper.yaml
+  - --location=$_DEFAULT_REGION-a
+  - --cluster=budita-d-$_DEFAULT_REGION
+  - --project=prj-gke-d-clusters-3c96
+- name: "gcr.io/cloud-builders/gke-deploy"
+  id: "deploy-app"
   args:
   - apply
   - --filename=/workspace/frontend_hydrated.yaml
