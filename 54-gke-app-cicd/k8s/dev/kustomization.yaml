@@ -1,25 +1,25 @@
 patchesStrategicMerge:
 - patch_deployment.yaml
-patches:
 # ServiceAccount: unique per fleet (we are not using fleet)
 # ksa name and gsa name should match with what's in 53-gke-workload-identity
-- target:
-    kind: ServiceAccount
-    name: frontend
-  patch: |-
+patches:
+- patch: |-
     - op: replace
       path: /metadata/name
       value: frontend-dev
     - op: replace
       path: "/metadata/annotations/iam.gke.io~1gcp-service-account"
       value: sa-frontend@prj-gke-d-clusters-3c96.iam.gserviceaccount.com
-- target:
-    kind: RoleBinding
-    name: frontend-ro-binding
-  patch: |-
+  target:
+    kind: ServiceAccount
+    name: frontend
+- patch: |-
     - op: replace
       path: /subjects/0/name
       value: frontend-ro@budita.dev
+  target:
+    kind: RoleBinding
+    name: frontend-ro-binding
 commonLabels:
   app: budita
   environment: dev
@@ -28,3 +28,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - ../../../52-gke-kustomize-bases
+images:
+- name: frontend
+  newName: us-central1-docker.pkg.dev/prj-gke-c-cicd-pipeline-7989/prj-gke-c-cicd-pipeline-7989-cicd-image-repo/frontend
+  newTag: 13705cf

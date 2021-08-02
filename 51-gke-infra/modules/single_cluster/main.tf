@@ -38,7 +38,6 @@ module "gke" {
   enable_l4_ilb_subsetting   = false
   http_load_balancing        = true
   network_policy             = true
-  enable_pod_security_policy = true
 
   master_authorized_networks = concat(var.master_authorized_networks,
     var.provision_bastion_instance ?
