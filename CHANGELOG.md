@@ -1,5 +1,15 @@
 # Changelog
 
+### [1.3.3](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.2...v1.3.3) (2021-08-02)
+
+
+### Bug Fixes
+
+* Added pod security policies ([13705cf](https://www.github.com/rajesh-nitc/gcp-foundation/commit/13705cf69b42d977a1149163e322f1e7ba023a23))
+* deploy gatekeeper with kubectl ([44adb39](https://www.github.com/rajesh-nitc/gcp-foundation/commit/44adb391259e984b0d9c667e62faaccbfa627b6a))
+* install gatekeeper ([2b641d7](https://www.github.com/rajesh-nitc/gcp-foundation/commit/2b641d75a1025f9e822408a1061e6d0f1a539c93))
+* removed psp constraint ([c327b48](https://www.github.com/rajesh-nitc/gcp-foundation/commit/c327b48edd4e06bc4df1469a502b082192beed6b))
+
 ### [1.3.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.1...v1.3.2) (2021-07-30)
 
 
