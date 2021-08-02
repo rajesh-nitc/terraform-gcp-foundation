@@ -13,7 +13,7 @@ locals {
 
 module "gke" {
   source                            = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
-  version                           = "15.0.0"
+  version                           = "16.0.1"
   project_id                        = local.project_id
   name                              = "${var.app_name}-${local.environment_code}-${var.region}"
   regional                          = false
@@ -33,11 +33,12 @@ module "gke" {
   remove_default_node_pool          = true
   enable_private_nodes              = true
   identity_namespace                = "${local.project_id}.svc.id.goog"
-  istio                             = true
 
-  enable_l4_ilb_subsetting = false
-  http_load_balancing      = true
-  network_policy           = true
+  istio                      = true
+  enable_l4_ilb_subsetting   = false
+  http_load_balancing        = true
+  network_policy             = true
+  enable_pod_security_policy = true
 
   master_authorized_networks = concat(var.master_authorized_networks,
     var.provision_bastion_instance ?

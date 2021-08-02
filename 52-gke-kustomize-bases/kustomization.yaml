@@ -9,3 +9,4 @@ resources:
   - istio-vsvc.yaml
   - network-policy.yaml
   - rbac.yaml
+  - constraints.yaml

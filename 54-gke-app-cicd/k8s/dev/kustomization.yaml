@@ -1,7 +1,7 @@
 patchesStrategicMerge:
 - patch_deployment.yaml
 patches:
-# ServiceAccount: unique per fleet
+# ServiceAccount: unique per fleet (we are not using fleet)
 # ksa name and gsa name should match with what's in 53-gke-workload-identity
 - target:
     kind: ServiceAccount
