@@ -30,14 +30,6 @@ steps:
       cd k8s/dev
       kustomize edit set image frontend="$_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/frontend:$SHORT_SHA"
       kustomize build . -o /workspace/frontend_hydrated.yaml
-- name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
-  id: "deploy-gatekeeper"
-  entrypoint: "/bin/bash"
-  args:
-    - '-xe'
-    - -c
-    - |
-      kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper/release-3.5/deploy/gatekeeper.yaml
 - name: "gcr.io/cloud-builders/gke-deploy"
   id: "deploy-app"
   args:
