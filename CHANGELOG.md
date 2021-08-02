@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.4](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.3...v1.3.4) (2021-08-02)
+
+
+### Bug Fixes
+
+* removed gatekeeper ([2982abd](https://www.github.com/rajesh-nitc/gcp-foundation/commit/2982abdb0a577b3e74e7c98643529889143ad428))
+
 ### [1.3.3](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.2...v1.3.3) (2021-08-02)
 
 
