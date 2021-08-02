@@ -1,10 +1,7 @@
-# Sample constraint: not applied, need to install gatekeeper
 apiVersion: templates.gatekeeper.sh/v1beta1
 kind: ConstraintTemplate
 metadata:
   name: k8spspprivilegedcontainer
-  annotations:
-    description: Controls running of privileged containers.
 spec:
   crd:
     spec:
@@ -14,6 +11,7 @@ spec:
     - target: admission.k8s.gatekeeper.sh
       rego: |
         package k8spspprivileged
+
         violation[{"msg": msg, "details": {}}] {
             c := input_containers[_]
             c.securityContext.privileged
@@ -35,4 +33,4 @@ spec:
     kinds:
       - apiGroups: [""]
         kinds: ["Pod"]
-    excludedNamespaces: ["kube-system"]
+    excludedNamespaces: ["kube-system","istio-system","istio-operator"]
