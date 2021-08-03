@@ -11,7 +11,7 @@ locals {
 
 module "org_disable_nested_virtualization" {
   source          = "terraform-google-modules/org-policy/google"
-  version         = "~> 3.0"
+  version         = "~> 5.0"
   organization_id = local.organization_id
   folder_id       = local.folder_id
   policy_for      = local.policy_for
