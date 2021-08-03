@@ -1,3 +1,5 @@
+# TODO : Remove roles and apis that are not required
+
 locals {
   gke_project_sa_roles = [
     "roles/compute.viewer",
@@ -24,20 +26,19 @@ locals {
 }
 
 module gke_project {
-  source                      = "../../../4-projects/modules/single_project"
-  enable_hub_and_spoke        = true
-  impersonate_service_account = var.terraform_service_account
-  org_id                      = var.org_id
-  billing_account             = var.billing_account
-  environment                 = var.environment
-  vpc_type                    = "base"
-  alert_spent_percents        = var.alert_spent_percents
-  alert_pubsub_topic          = var.alert_pubsub_topic
-  budget_amount               = var.budget_amount
-  project_prefix              = var.project_prefix
-  sa_roles                    = local.gke_project_sa_roles
-  enable_cloudbuild_deploy    = true
-  cloudbuild_sa               = var.app_infra_pipeline_cloudbuild_sa
+  source                   = "../../../4-projects/modules/single_project"
+  enable_hub_and_spoke     = true
+  org_id                   = var.org_id
+  billing_account          = var.billing_account
+  environment              = var.environment
+  vpc_type                 = "base"
+  alert_spent_percents     = var.alert_spent_percents
+  alert_pubsub_topic       = var.alert_pubsub_topic
+  budget_amount            = var.budget_amount
+  project_prefix           = var.project_prefix
+  sa_roles                 = local.gke_project_sa_roles
+  enable_cloudbuild_deploy = true
+  cloudbuild_sa            = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [
     "cloudresourcemanager.googleapis.com",
     "compute.googleapis.com",

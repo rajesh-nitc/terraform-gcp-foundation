@@ -3,16 +3,15 @@
 *****************************************/
 
 module "org_audit_logs" {
-  source                      = "terraform-google-modules/project-factory/google"
-  version                     = "~> 11.1"
-  random_project_id           = "true"
-  impersonate_service_account = var.terraform_service_account
-  default_service_account     = "deprivilege"
-  name                        = "${var.project_prefix}-c-logging"
-  org_id                      = var.org_id
-  billing_account             = var.billing_account
-  folder_id                   = google_folder.common.id
-  activate_apis               = ["logging.googleapis.com", "bigquery.googleapis.com", "billingbudgets.googleapis.com"]
+  source                  = "terraform-google-modules/project-factory/google"
+  version                 = "~> 11.1"
+  random_project_id       = "true"
+  default_service_account = "deprivilege"
+  name                    = "${var.project_prefix}-c-logging"
+  org_id                  = var.org_id
+  billing_account         = var.billing_account
+  folder_id               = google_folder.common.id
+  activate_apis           = ["logging.googleapis.com", "bigquery.googleapis.com", "billingbudgets.googleapis.com"]
 
   labels = {
     environment       = "production"
@@ -30,9 +29,8 @@ module "org_audit_logs" {
 
 # module "org_billing_logs" {
 #   source                      = "terraform-google-modules/project-factory/google"
-#   version                     = "~> 10.1"
+#   version                     = "~> 11.1"
 #   random_project_id           = "true"
-#   impersonate_service_account = var.terraform_service_account
 #   default_service_account     = "deprivilege"
 #   name                        = "${var.project_prefix}-c-billing-logs"
 #   org_id                      = var.org_id
@@ -60,9 +58,8 @@ module "org_audit_logs" {
 
 # module "org_secrets" {
 #   source                      = "terraform-google-modules/project-factory/google"
-#   version                     = "~> 10.1"
+#   version                     = "~> 11.1"
 #   random_project_id           = "true"
-#   impersonate_service_account = var.terraform_service_account
 #   default_service_account     = "deprivilege"
 #   name                        = "${var.project_prefix}-c-secrets"
 #   org_id                      = var.org_id
@@ -90,9 +87,8 @@ module "org_audit_logs" {
 
 # module "interconnect" {
 #   source                      = "terraform-google-modules/project-factory/google"
-#   version                     = "~> 10.1"
+#   version                     = "~> 11.1"
 #   random_project_id           = "true"
-#   impersonate_service_account = var.terraform_service_account
 #   default_service_account     = "deprivilege"
 #   name                        = "${var.project_prefix}-c-interconnect"
 #   org_id                      = var.org_id
@@ -120,9 +116,8 @@ module "org_audit_logs" {
 
 # module "scc_notifications" {
 #   source                      = "terraform-google-modules/project-factory/google"
-#   version                     = "~> 10.1"
+#   version                     = "~> 11.1"
 #   random_project_id           = "true"
-#   impersonate_service_account = var.terraform_service_account
 #   default_service_account     = "deprivilege"
 #   name                        = "${var.project_prefix}-c-scc"
 #   org_id                      = var.org_id
@@ -149,15 +144,14 @@ module "org_audit_logs" {
 *****************************************/
 
 module "dns_hub" {
-  source                      = "terraform-google-modules/project-factory/google"
-  version                     = "~> 10.1"
-  random_project_id           = "true"
-  impersonate_service_account = var.terraform_service_account
-  default_service_account     = "deprivilege"
-  name                        = "${var.project_prefix}-c-dns-hub"
-  org_id                      = var.org_id
-  billing_account             = var.billing_account
-  folder_id                   = google_folder.common.id
+  source                  = "terraform-google-modules/project-factory/google"
+  version                 = "~> 11.1"
+  random_project_id       = "true"
+  default_service_account = "deprivilege"
+  name                    = "${var.project_prefix}-c-dns-hub"
+  org_id                  = var.org_id
+  billing_account         = var.billing_account
+  folder_id               = google_folder.common.id
 
   activate_apis = [
     "compute.googleapis.com",
@@ -187,16 +181,15 @@ module "dns_hub" {
 *****************************************/
 
 module "base_network_hub" {
-  source                      = "terraform-google-modules/project-factory/google"
-  version                     = "~> 10.1"
-  count                       = var.enable_hub_and_spoke ? 1 : 0
-  random_project_id           = "true"
-  impersonate_service_account = var.terraform_service_account
-  default_service_account     = "deprivilege"
-  name                        = "${var.project_prefix}-c-base-net-hub"
-  org_id                      = var.org_id
-  billing_account             = var.billing_account
-  folder_id                   = google_folder.common.id
+  source                  = "terraform-google-modules/project-factory/google"
+  version                 = "~> 11.1"
+  count                   = var.enable_hub_and_spoke ? 1 : 0
+  random_project_id       = "true"
+  default_service_account = "deprivilege"
+  name                    = "${var.project_prefix}-c-base-net-hub"
+  org_id                  = var.org_id
+  billing_account         = var.billing_account
+  folder_id               = google_folder.common.id
 
   activate_apis = [
     "compute.googleapis.com",
@@ -227,10 +220,9 @@ module "base_network_hub" {
 
 # module "restricted_network_hub" {
 #   source                      = "terraform-google-modules/project-factory/google"
-#   version                     = "~> 10.1"
+#   version                     = "~> 11.1"
 #   count                       = var.enable_hub_and_spoke ? 1 : 0
 #   random_project_id           = "true"
-#   impersonate_service_account = var.terraform_service_account
 #   default_service_account     = "deprivilege"
 #   name                        = "${var.project_prefix}-c-restricted-net-hub"
 #   org_id                      = var.org_id
