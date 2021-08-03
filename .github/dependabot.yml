@@ -1,0 +1,86 @@
+version: 2
+updates:
+  - package-ecosystem: "terraform"
+    directory: "0-bootstrap"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "1-org/envs/shared"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "2-environments/modules/env_baseline"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "3-networks/modules/base_shared_vpc"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "3-networks/envs/shared"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "4-projects/modules/single_project"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "5-app-infra/modules/env_base"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "51-gke-infra/modules/single_cluster"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "51-gke-infra/modules/bastion"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "91-data-landing-infra/modules/env_base"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "92-data-transformation-infra/modules/env_base"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
+  - package-ecosystem: "terraform"
+    directory: "91-data-dwh-infra/modules/env_base"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(deps): "
+    rebase-strategy: "disabled"
