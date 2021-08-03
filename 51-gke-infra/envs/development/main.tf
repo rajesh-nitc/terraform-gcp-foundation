@@ -20,6 +20,16 @@ module "gke_cluster" {
   cluster_admin  = "cluster-admin@budita.dev"
   rbac_test_user = "frontend-ro@budita.dev"
 
+  cluster_autoscaling = {
+    enabled             = true
+    autoscaling_profile = "OPTIMIZE_UTILIZATION"
+    max_cpu_cores       = 50
+    min_cpu_cores       = 1
+    max_memory_gb       = 50
+    min_memory_gb       = 1
+    gpu_resources       = []
+  }
+
   node_pools = [
     {
       name               = "np-${var.default_region}"

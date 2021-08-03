@@ -40,15 +40,7 @@ module "gke" {
   network_policy             = true
   enable_pod_security_policy = false
 
-  cluster_autoscaling = {
-    enabled             = true
-    autoscaling_profile = "OPTIMIZE_UTILIZATION"
-    max_cpu_cores       = 50
-    min_cpu_cores       = 1
-    max_memory_gb       = 50
-    min_memory_gb       = 1
-    gpu_resources       = []
-  }
+  cluster_autoscaling = var.cluster_autoscaling
 
   master_authorized_networks = concat(var.master_authorized_networks,
     var.provision_bastion_instance ?
