@@ -24,7 +24,7 @@ resource "random_string" "suffix" {
 
 module "log_export_to_biqquery" {
   source                 = "terraform-google-modules/log-export/google"
-  version                = "~> 5.1.0"
+  version                = "~> 7.0.0"
   destination_uri        = module.bigquery_destination.destination_uri
   filter                 = local.main_logs_filter
   log_sink_name          = "sk-c-logging-bq"
