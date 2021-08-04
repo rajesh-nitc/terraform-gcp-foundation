@@ -12,27 +12,29 @@ locals {
 }
 
 module "gke" {
-  source                            = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
-  version                           = "~> 16.0"
-  project_id                        = local.project_id
-  name                              = "${var.app_name}-${local.environment_code}-${var.region}"
-  regional                          = false
-  zones                             = ["${var.region}-a"]
-  network                           = local.network_name
-  subnetwork                        = local.subnet_name
-  network_project_id                = local.host_project_id
-  ip_range_pods                     = local.range_name_pod[0]
-  ip_range_services                 = local.range_name_svc[0]
+  source                        = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
+  version                       = "~> 16.0"
+  project_id                    = local.project_id
+  name                          = "${var.app_name}-${local.environment_code}-${var.region}"
+  regional                      = false
+  zones                         = ["${var.region}-a"]
+  network                       = local.network_name
+  subnetwork                    = local.subnet_name
+  network_project_id            = local.host_project_id
+  ip_range_pods                 = local.range_name_pod[0]
+  ip_range_services             = local.range_name_svc[0]
+  deploy_using_private_endpoint = var.deploy_using_private_endpoint
+  enable_private_endpoint       = var.enable_private_endpoint
+  impersonate_service_account   = var.project_service_account
+  master_ipv4_cidr_block        = var.master_ipv4_cidr_block
+  remove_default_node_pool      = true
+  enable_private_nodes          = true
+  identity_namespace            = "${local.project_id}.svc.id.goog"
+
+  # GKE Firewall rules are managed in 3-networks
   add_cluster_firewall_rules        = false
   add_master_webhook_firewall_rules = false
   add_shadow_firewall_rules         = false
-  deploy_using_private_endpoint     = var.deploy_using_private_endpoint
-  enable_private_endpoint           = var.enable_private_endpoint
-  impersonate_service_account       = var.project_service_account
-  master_ipv4_cidr_block            = var.master_ipv4_cidr_block
-  remove_default_node_pool          = true
-  enable_private_nodes              = true
-  identity_namespace                = "${local.project_id}.svc.id.goog"
 
   istio                      = true
   enable_l4_ilb_subsetting   = false
