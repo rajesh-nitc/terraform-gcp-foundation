@@ -1,6 +1,6 @@
 # gcp-foundation 
 
-This repo implements a reasonably secure foundation on gcp via terraform. It is made up of:
+This repo implements a reasonably secure foundation on gcp via terraform. It is made up of following parts:
 
 - core foundation (0-5)
 - gke foundation (50-54)
