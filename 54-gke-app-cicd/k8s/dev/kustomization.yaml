@@ -17,6 +17,7 @@ commonLabels:
   app: budita
   environment: dev
   service: frontend
+namespace: frontend
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
