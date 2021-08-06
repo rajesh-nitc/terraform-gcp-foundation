@@ -1,0 +1,12 @@
+# Default "admin" ClusterRole allows admin access, intended to be granted within a namespace using a RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: default-admin-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: admin
+subjects:
+- kind: User
+  name: rajesh@budita.dev

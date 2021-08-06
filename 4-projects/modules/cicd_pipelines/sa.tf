@@ -31,6 +31,7 @@ resource "google_project_iam_member" "cicd_sa_roles" {
   member   = "serviceAccount:${google_service_account.cicd_build_sa.email}"
 }
 
+# Allow cloudbuild sa to impersonate cicd-sa
 resource "google_service_account_iam_member" "cloudbuild_sa_impersonate_cicd_sa" {
   service_account_id = google_service_account.cicd_build_sa.name
   role               = "roles/iam.serviceAccountTokenCreator"

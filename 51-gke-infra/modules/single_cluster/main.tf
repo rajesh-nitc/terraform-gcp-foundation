@@ -59,7 +59,7 @@ module "gke" {
   }
 
   node_pools_tags = {
-    "np-${var.region}" = ["allow-google-apis", "allow-lb"]
+    "np-${var.region}" = ["allow-google-apis", "allow-lb", "egress-internet"]
   }
 
   node_pools = var.node_pools

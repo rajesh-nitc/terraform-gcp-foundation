@@ -17,8 +17,8 @@ module "gke_cluster" {
     }
   ]
 
-  cluster_admin  = "cluster-admin@budita.dev"
-  rbac_test_user = "frontend-ro@budita.dev"
+  cluster_admin                                = "cluster-admin@budita.dev"
+  this_user_can_only_authenticate_with_cluster = "rajesh@budita.dev"
 
   cluster_autoscaling = {
     enabled             = true
@@ -48,4 +48,9 @@ module "gke_cluster" {
       initial_node_count = 1
     },
   ]
+
+  # acm
+  sync_repo   = "git@github.com:rajesh-nitc/gcp-foundation.git" # This will require NAT
+  sync_branch = "acm"
+  policy_dir  = "52-gke-platform-admins/budita-app/acm"
 }

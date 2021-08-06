@@ -118,6 +118,24 @@ variable "cluster_admin" {
   type = string
 }
 
-variable "rbac_test_user" {
+variable "this_user_can_only_authenticate_with_cluster" {
   type = string
+}
+
+# acm
+variable "sync_repo" {
+  description = "ACM Git repo address"
+  type        = string
+}
+
+variable "sync_branch" {
+  description = "ACM repo Git branch. If un-set, uses Config Management default."
+  type        = string
+  default     = ""
+}
+
+variable "policy_dir" {
+  description = "Subfolder containing configs in ACM Git repo. If un-set, uses Config Management default."
+  type        = string
+  default     = ""
 }

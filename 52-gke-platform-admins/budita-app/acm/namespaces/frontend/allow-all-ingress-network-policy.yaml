@@ -1,4 +1,5 @@
 # Sample network policy
+# Error: KNV1039: Namespace-scoped and Namespace configs MUST be declared in `namespaces/`. To fix, move the NetworkPolicy to `namespaces/`
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
