@@ -13,7 +13,8 @@ module "app_infra_cloudbuild_project" {
     "cloudkms.googleapis.com",
     "iam.googleapis.com",
     "artifactregistry.googleapis.com",
-    "cloudresourcemanager.googleapis.com"
+    "cloudresourcemanager.googleapis.com",
+    "iamcredentials.googleapis.com",
   ]
 
   group_prj_admins = var.group_prj_admins

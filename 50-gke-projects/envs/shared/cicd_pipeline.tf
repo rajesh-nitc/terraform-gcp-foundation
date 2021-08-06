@@ -23,7 +23,8 @@ module "app_cicd_project" {
     "container.googleapis.com",
     "cloudkms.googleapis.com",
     "anthos.googleapis.com",
-    "serviceusage.googleapis.com"
+    "serviceusage.googleapis.com",
+    "iamcredentials.googleapis.com",
   ]
 
   group_prj_admins = var.group_prj_admins
