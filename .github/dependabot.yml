@@ -78,7 +78,7 @@ updates:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "91-data-dwh-infra/modules/env_base"
+    directory: "93-data-dwh-infra/modules/env_base"
     schedule:
       interval: "monthly"
     commit-message:
