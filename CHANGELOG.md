@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.5...v1.4.0) (2021-08-06)
+
+
+### Features
+
+* added acm ([2d2428f](https://www.github.com/rajesh-nitc/gcp-foundation/commit/2d2428f557f1e356d6bcbf50cb52e8dc687d2513))
+
 ### [1.3.5](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.4...v1.3.5) (2021-08-03)
 
 
