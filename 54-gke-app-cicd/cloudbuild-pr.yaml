@@ -16,7 +16,7 @@ steps:
         echo "Setting up gcloud for impersonation"
         gcloud config set auth/impersonate_service_account $cicd_sa_email
       fi
-#      gcloud container clusters get-credentials budita-d-$_DEFAULT_REGION --zone $_DEFAULT_REGION-a --project prj-gke-d-clusters-3c96
+      #gcloud container clusters get-credentials budita-d-$_DEFAULT_REGION --zone $_DEFAULT_REGION-a --project prj-gke-d-clusters-3c96
       skaffold config set default-repo $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY    
 - name: $_DEFAULT_REGION-docker.pkg.dev/$PROJECT_ID/$_GAR_REPOSITORY/skaffold-builder
   id: "build-image"
