@@ -2,7 +2,6 @@ locals {
   env        = substr(var.environment, 0, 3)
   folder_id  = data.google_active_folder.env.name
   project_id = data.google_projects.gke_projects.projects[0].project_id
-  # k8s_ns, k8s_sa, gcp_sa: Must match with the output of [kustomize build 54-gke-app-cicd/k8s/{env}]
   k8s_ns                       = var.k8s_app_service_name
   k8s_sa                       = "${var.k8s_app_service_name}-${local.env}"
   gcp_sa                       = "sa-${var.k8s_app_service_name}"

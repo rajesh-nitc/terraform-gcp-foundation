@@ -1,7 +1,6 @@
 patchesStrategicMerge:
 - patch_deployment.yaml
-# ServiceAccount: unique per fleet (we are not using fleet)
-# ksa name (frontend-dev) and gsa name (sa-frontend@prj-gke-d-clusters-3c96.iam.gserviceaccount.com) must match with what's in gke-workload-identity
+# ksa (frontend-dev) and gsa (sa-frontend@prj-gke-d-clusters-3c96.iam.gserviceaccount.com) must match with what's in 53-gke-workload-identity to leverage workload identity
 patches:
 - patch: |-
     - op: replace
