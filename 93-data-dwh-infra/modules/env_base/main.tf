@@ -7,7 +7,7 @@ locals {
 
 module "bq_dataset" {
   source     = "terraform-google-modules/bigquery/google"
-  version    = "5.1.0"
+  version    = "5.2.0"
   project_id = local.project_id
 
   dataset_id                  = "bq_raw_dataset"
