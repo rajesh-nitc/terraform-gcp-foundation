@@ -18,8 +18,4 @@ module "acm" {
   sync_repo   = var.sync_repo
   sync_branch = var.sync_branch
   policy_dir  = var.policy_dir
-
-  enable_policy_controller = true
-  install_template_library = true
-  create_ssh_key           = true
 }

@@ -89,19 +89,19 @@ variable "nat_bgp_asn" {
 variable "nat_num_addresses_region1" {
   type        = number
   description = "Number of external IPs to reserve for first Cloud NAT."
-  default     = 2
+  default     = 1
 }
 
 variable "nat_num_addresses_region2" {
   type        = number
   description = "Number of external IPs to reserve for second Cloud NAT."
-  default     = 2
+  default     = 1
 }
 
 variable "nat_num_addresses" {
   type        = number
   description = "Number of external IPs to reserve for Cloud NAT."
-  default     = 2
+  default     = 1
 }
 
 variable "optional_fw_rules_enabled" {

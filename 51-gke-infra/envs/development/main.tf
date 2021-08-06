@@ -50,7 +50,7 @@ module "gke_cluster" {
   ]
 
   # acm
-  sync_repo   = "git@github.com:rajesh-nitc/gcp-foundation.git"
+  sync_repo   = "git@github.com:rajesh-nitc/gcp-foundation.git" # This will require NAT
   sync_branch = "acm"
   policy_dir  = "52-gke-platform-admins/budita-app/acm"
 }

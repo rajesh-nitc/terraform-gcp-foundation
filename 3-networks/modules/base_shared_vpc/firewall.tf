@@ -3,6 +3,7 @@
  *****************************************/
 
 resource "google_compute_firewall" "deny_all_egress" {
+  count     = var.nat_enabled ? 0 : 1
   name      = "fw-${var.environment_code}-shared-base-65535-e-d-all-all-all"
   network   = module.main.network_name
   project   = var.project_id

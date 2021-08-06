@@ -1,3 +1,5 @@
+# TODO : Use Google Groups for RBAC
+
 # Cluster Admin
 resource "google_project_iam_member" "kube-api-admin" {
   project = local.project_id
@@ -36,5 +38,3 @@ resource "google_project_iam_binding" "kube-api-ro" {
     "user:${var.this_user_can_only_authenticate_with_cluster}",
   ]
 }
-
-# TODO : Use Google Groups for RBAC

@@ -38,9 +38,8 @@ resource "google_project_iam_member" "node_sa_cicd_roles" {
 }
 
 # Allow cicd-sa to deploy on cluster
-# with "roles/container.developer" cicd-sa can deploy most resources but not "clusterroles"
 resource "google_project_iam_member" "cloudbuild_sa_role_gke_project" {
   project = module.gke_project.project_id
-  role    = "roles/container.admin"
+  role    = "roles/container.developer"
   member  = "serviceAccount:${var.cicd_sa}"
 }

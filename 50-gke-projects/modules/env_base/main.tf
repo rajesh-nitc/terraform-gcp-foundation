@@ -17,6 +17,8 @@ locals {
     "roles/binaryauthorization.policyEditor",
     "roles/compute.securityAdmin",
     "roles/compute.publicIpAdmin",
+    "roles/container.admin", # Required to create clusterroles for e.g. if acm is to be installed
+    "roles/gkehub.admin",    # Need gkehub.features.create to enable acm in a project
   ]
 
   # project_sa_cicd_roles = [
