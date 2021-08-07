@@ -5,7 +5,7 @@
 
 ### Features
 
-* added resource quota ([667ccbf](https://www.github.com/rajesh-nitc/gcp-foundation/commit/667ccbff9980f4c8f94f770d7d41653c958f3622))
+* added constraint and resource quota ([667ccbf](https://www.github.com/rajesh-nitc/gcp-foundation/commit/667ccbff9980f4c8f94f770d7d41653c958f3622))
 
 
 ### Bug Fixes

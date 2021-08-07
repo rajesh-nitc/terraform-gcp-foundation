@@ -1,3 +1,4 @@
+# Template library was installed as part of acm deployment
 apiVersion: constraints.gatekeeper.sh/v1beta1
 kind: K8sPSPPrivilegedContainer
 metadata:
