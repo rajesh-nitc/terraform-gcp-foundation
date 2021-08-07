@@ -6,6 +6,7 @@ spec:
   replicas: 2
   template:
     spec:
+      serviceAccountName: frontend-dev # Updated
       containers:
       - name: frontend
         image: frontend

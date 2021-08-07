@@ -1,0 +1,9 @@
+kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: frontend-quota
+spec:
+  hard:
+    pods: "5"
+    cpu: "5"
+    memory: 5Gi
