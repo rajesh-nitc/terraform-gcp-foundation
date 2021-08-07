@@ -18,10 +18,6 @@ spec:
       containers:
       - name: frontend
         image: frontend
-        resources:
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
         env:
         - name: ENVIRONMENT
           value: base
