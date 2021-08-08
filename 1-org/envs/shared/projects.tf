@@ -11,7 +11,12 @@ module "org_audit_logs" {
   org_id                  = var.org_id
   billing_account         = var.billing_account
   folder_id               = google_folder.common.id
-  activate_apis           = ["logging.googleapis.com", "bigquery.googleapis.com", "billingbudgets.googleapis.com"]
+  activate_apis = [
+    "logging.googleapis.com",
+    "bigquery.googleapis.com",
+    "billingbudgets.googleapis.com",
+    "iamcredentials.googleapis.com",
+  ]
 
   labels = {
     environment       = "production"
@@ -159,7 +164,8 @@ module "dns_hub" {
     "servicenetworking.googleapis.com",
     "logging.googleapis.com",
     "cloudresourcemanager.googleapis.com",
-    "billingbudgets.googleapis.com"
+    "billingbudgets.googleapis.com",
+    "iamcredentials.googleapis.com"
   ]
 
   labels = {
@@ -197,7 +203,8 @@ module "base_network_hub" {
     "servicenetworking.googleapis.com",
     "logging.googleapis.com",
     "cloudresourcemanager.googleapis.com",
-    "billingbudgets.googleapis.com"
+    "billingbudgets.googleapis.com",
+    "iamcredentials.googleapis.com"
   ]
 
   labels = {

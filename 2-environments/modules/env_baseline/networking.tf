@@ -33,7 +33,8 @@ module "base_shared_vpc_host_project" {
     "servicenetworking.googleapis.com",
     "container.googleapis.com",
     "logging.googleapis.com",
-    "billingbudgets.googleapis.com"
+    "billingbudgets.googleapis.com",
+    "iamcredentials.googleapis.com",
   ]
 
   labels = {

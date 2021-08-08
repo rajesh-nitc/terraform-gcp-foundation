@@ -3,7 +3,7 @@ subnets = [
     team                  = "bu1"
     subnet_ip             = "10.0.64.0/21"
     region                = "us-central1"
-    enable_flow_logs      = true
+    enable_flow_logs      = false
     enable_private_access = true
     secondary_ip_range    = {}
   },
@@ -11,7 +11,7 @@ subnets = [
     team                  = "data"
     subnet_ip             = "10.0.72.0/21"
     region                = "us-central1"
-    enable_flow_logs      = true
+    enable_flow_logs      = false
     enable_private_access = true
     secondary_ip_range    = {}
   },
@@ -19,7 +19,7 @@ subnets = [
     team                  = "gke"
     subnet_ip             = "10.0.80.0/21"
     region                = "us-central1"
-    enable_flow_logs      = true
+    enable_flow_logs      = false
     enable_private_access = true
     secondary_ip_range = {
       pod = "100.64.64.0/21"
@@ -30,7 +30,7 @@ subnets = [
     team                  = "bu1"
     subnet_ip             = "10.1.64.0/21"
     region                = "us-west1"
-    enable_flow_logs      = true
+    enable_flow_logs      = false
     enable_private_access = true
     secondary_ip_range    = {}
   },
@@ -38,7 +38,7 @@ subnets = [
     team                  = "data"
     subnet_ip             = "10.1.72.0/21"
     region                = "us-west1"
-    enable_flow_logs      = true
+    enable_flow_logs      = false
     enable_private_access = true
     secondary_ip_range    = {}
   },
@@ -46,7 +46,7 @@ subnets = [
     team                  = "gke"
     subnet_ip             = "10.1.80.0/21"
     region                = "us-west1"
-    enable_flow_logs      = true
+    enable_flow_logs      = false
     enable_private_access = true
     secondary_ip_range    = {}
   },

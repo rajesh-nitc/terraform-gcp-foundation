@@ -1,10 +1,20 @@
 locals {
-  env_code                   = element(split("", var.environment), 0)
-  shared_vpc_mode            = var.enable_hub_and_spoke ? "-spoke" : ""
-  svpc_host_project_id       = var.vpc_type == "" ? "" : data.google_compute_network.shared_vpc[0].project
-  shared_vpc_subnets_map     = var.vpc_type == "" ? {} : data.google_compute_subnetwork.shared_subnets
-  shared_vpc_subnets         = var.vpc_type == "" ? [] : [for i in local.shared_vpc_subnets_map : i.self_link]
-  iap_apis                   = var.use_iap ? ["iap.googleapis.com"] : []
+  env_code               = element(split("", var.environment), 0)
+  shared_vpc_mode        = var.enable_hub_and_spoke ? "-spoke" : ""
+  svpc_host_project_id   = var.vpc_type == "" ? "" : data.google_compute_network.shared_vpc[0].project
+  shared_vpc_subnets_map = var.vpc_type == "" ? {} : data.google_compute_subnetwork.shared_subnets
+  shared_vpc_subnets     = var.vpc_type == "" ? [] : [for i in local.shared_vpc_subnets_map : i.self_link]
+  iap_apis               = var.use_iap ? ["iap.googleapis.com"] : []
+  default_apis = [
+    "iam.googleapis.com",
+    "iamcredentials.googleapis.com", # dependent on iam.googleapis.com
+    "monitoring.googleapis.com",
+    "logging.googleapis.com",
+    "storage.googleapis.com",
+    "billingbudgets.googleapis.com",
+    "serviceusage.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+  ]
   service_prj_gke_sa         = format("service-%s@container-engine-robot.iam.gserviceaccount.com", module.project.project_number)
   service_prj_google_apis_sa = format("%s@cloudservices.gserviceaccount.com", module.project.project_number)
   service_prj_dataflow_sa    = format("service-%s@dataflow-service-producer-prod.iam.gserviceaccount.com", module.project.project_number)
@@ -16,7 +26,7 @@ module "project" {
   source            = "terraform-google-modules/project-factory/google"
   version           = "~> 11.1"
   random_project_id = "true"
-  activate_apis     = distinct(concat(var.activate_apis, local.iap_apis, ["billingbudgets.googleapis.com"]))
+  activate_apis     = distinct(concat(var.activate_apis, local.default_apis, local.iap_apis))
   name              = "${var.project_prefix}-${var.business_code}-${local.env_code}-${var.project_suffix}"
   org_id            = var.org_id
   billing_account   = var.billing_account

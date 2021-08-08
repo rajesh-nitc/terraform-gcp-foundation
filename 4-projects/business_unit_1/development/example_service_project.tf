@@ -25,7 +25,7 @@ module "base_shared_vpc_project" {
   alert_pubsub_topic       = var.alert_pubsub_topic
   budget_amount            = var.budget_amount
   project_prefix           = var.project_prefix
-  sa_roles                 = ["roles/editor"]
+  sa_roles                 = ["roles/compute.admin"]
   enable_cloudbuild_deploy = true
   cloudbuild_sa            = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [
