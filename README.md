@@ -1,12 +1,12 @@
 # gcp-foundation 
 
-This repo implements a reasonably secure foundation on gcp via terraform. It is made up of following parts:
+Example repo for creating a reasonably secure foundation on gcp via terraform. It is made up of following parts:
 
 - core foundation (0-5)
 - gke foundation (50-54)
 - data foundation (90-94)
 
-and for each part, this repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations).
+and for each part, this repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations) and various other Google Cloud Platform repos.
 
 ## Final view
 via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer):
@@ -31,4 +31,29 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
      +-- 📦 prj-data-d-transformation-4f2b
      +-- 📦 prj-bu1-d-sample-base-9208
      +-- 📦 prj-d-shared-base-21a3
+```
+## GKE Platform Admins Repo view
+```
+├── budita-app
+│   ├── acm
+│   │   ├── cluster
+│   │   │   └── privileged-container-constraint.yaml
+│   │   ├── namespaces
+│   │   │   └── frontend
+│   │   │       ├── admin-role-binding.yaml
+│   │   │       ├── allow-all-ingress-networkpolicy.yaml
+│   │   │       ├── namespace.yaml
+│   │   │       └── quota.yaml
+│   │   └── system
+│   │       ├── README.md
+│   │       └── repo.yaml
+│   └── kustomize-bases
+│       └── frontend
+│           ├── deployment.yaml
+│           ├── istio-gateway.yaml
+│           ├── istio-vsvc.yaml
+│           ├── ksa.yaml
+│           ├── kustomization.yaml
+│           └── service.yaml
+└── README.md
 ```
