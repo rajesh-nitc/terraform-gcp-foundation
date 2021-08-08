@@ -32,8 +32,9 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
      +-- 📦 prj-bu1-d-sample-base-9208
      +-- 📦 prj-d-shared-base-21a3
 ```
-## GKE Platform Admins Repo view
+## GKE Platform Admins repo
 ```
+.
 ├── budita-app
 │   ├── acm
 │   │   ├── cluster
