@@ -18,6 +18,8 @@ module "base_shared_vpc_project" {
   source                   = "../../modules/single_project"
   enable_hub_and_spoke     = true
   org_id                   = var.org_id
+  random_project_id        = false
+  project_id               = "prj-bu1-d-sample-base-9208" # destroyed the project by mistake, imported it as gcp was not allowing to create new project because of quota
   billing_account          = var.billing_account
   environment              = "development"
   vpc_type                 = "base"

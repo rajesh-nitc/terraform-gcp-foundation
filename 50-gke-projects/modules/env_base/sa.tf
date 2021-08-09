@@ -11,7 +11,7 @@ locals {
   node_sa_roles_cicd_project = [
     "roles/artifactregistry.reader",
     # "roles/storage.objectViewer", Required?
-    # "roles/source.reader", Required if not using Anthos?
+    # "roles/source.reader",
   ]
 
 }

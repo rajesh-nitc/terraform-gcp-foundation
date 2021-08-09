@@ -27,10 +27,11 @@ locals {
 module "project" {
   source            = "terraform-google-modules/project-factory/google"
   version           = "~> 11.1"
-  random_project_id = "true"
+  random_project_id = var.random_project_id
   activate_apis     = distinct(concat(var.activate_apis, local.default_apis, local.iap_apis))
   name              = "${var.project_prefix}-${var.business_code}-${local.env_code}-${var.project_suffix}"
   org_id            = var.org_id
+  project_id        = var.project_id
   billing_account   = var.billing_account
   folder_id         = local.folder_id
 

@@ -1,17 +1,13 @@
 locals {
   gke_project_sa_roles = [
-    "roles/container.admin", # Required to create clusterroles for e.g. if acm is to be installed
-    "roles/gkehub.admin",    # Need gkehub.features.create to enable acm in a project
+    "roles/container.admin",       # Required to create clusterroles for e.g. if acm is to be installed
+    "roles/gkehub.admin",          # Need gkehub.features.create to enable acm in a project
+    "roles/compute.securityAdmin", # Required even if we are managing gke firewall rules separately
     "roles/compute.viewer",
     "roles/iam.serviceAccountAdmin",
     "roles/iam.serviceAccountUser",
     "roles/resourcemanager.projectIamAdmin",
-    "roles/logging.configWriter", # This is for creating sinks. Do we need it here?
-    "roles/iap.admin",            # Are we using iap?
-    "roles/iam.roleAdmin",
     # "roles/binaryauthorization.policyEditor", # Not using yet
-    "roles/compute.securityAdmin", # Required even if we are managing gke firewall rules separately
-    "roles/compute.publicIpAdmin",
   ]
 
   # project_sa_cicd_roles = [
@@ -24,6 +20,8 @@ module gke_project {
   source                   = "../../../4-projects/modules/single_project"
   enable_hub_and_spoke     = true
   org_id                   = var.org_id
+  random_project_id        = false
+  project_id               = var.project_id
   billing_account          = var.billing_account
   environment              = var.environment
   vpc_type                 = "base"
