@@ -22,7 +22,6 @@ module "app_cicd_project" {
     "iam.googleapis.com",
     "container.googleapis.com",
     "cloudkms.googleapis.com",
-    "anthos.googleapis.com",
     "serviceusage.googleapis.com",
     "iamcredentials.googleapis.com",
   ]

@@ -1,24 +1,17 @@
-# TODO : Remove roles and apis that are not required
-
 locals {
   gke_project_sa_roles = [
+    "roles/container.admin", # Required to create clusterroles for e.g. if acm is to be installed
+    "roles/gkehub.admin",    # Need gkehub.features.create to enable acm in a project
     "roles/compute.viewer",
-    "roles/compute.instanceAdmin.v1",
-    "roles/container.clusterAdmin",
-    "roles/container.developer",
-    "roles/viewer",
     "roles/iam.serviceAccountAdmin",
     "roles/iam.serviceAccountUser",
     "roles/resourcemanager.projectIamAdmin",
-    "roles/logging.configWriter",
-    "roles/storage.objectViewer",
-    "roles/iap.admin",
+    "roles/logging.configWriter", # This is for creating sinks. Do we need it here?
+    "roles/iap.admin",            # Are we using iap?
     "roles/iam.roleAdmin",
-    "roles/binaryauthorization.policyEditor",
-    "roles/compute.securityAdmin",
+    # "roles/binaryauthorization.policyEditor", # Not using yet
+    "roles/compute.securityAdmin", # Required even if we are managing gke firewall rules separately
     "roles/compute.publicIpAdmin",
-    "roles/container.admin", # Required to create clusterroles for e.g. if acm is to be installed
-    "roles/gkehub.admin",    # Need gkehub.features.create to enable acm in a project
   ]
 
   # project_sa_cicd_roles = [
@@ -42,36 +35,18 @@ module gke_project {
   enable_cloudbuild_deploy = true
   cloudbuild_sa            = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [
-    "cloudresourcemanager.googleapis.com",
+    # general
     "compute.googleapis.com",
-    "container.googleapis.com",
     "dns.googleapis.com",
-    "monitoring.googleapis.com",
-    "logging.googleapis.com",
-    "storage.googleapis.com",
-    "cloudtrace.googleapis.com",
-    "stackdriver.googleapis.com",
-    "cloudkms.googleapis.com",
-    "secretmanager.googleapis.com",
-    "sql-component.googleapis.com",
-    "sqladmin.googleapis.com",
-    "meshca.googleapis.com",
-    "meshtelemetry.googleapis.com",
-    "meshconfig.googleapis.com",
-    "iamcredentials.googleapis.com",
-    "iam.googleapis.com",
-    "gkeconnect.googleapis.com",
+    # gke
+    "container.googleapis.com",
+    # acm
     "gkehub.googleapis.com",
-    "anthos.googleapis.com",
-    "billingbudgets.googleapis.com",
-    "iap.googleapis.com",
-    "storage-api.googleapis.com",
-    "oslogin.googleapis.com",
-    "binaryauthorization.googleapis.com",
-    "privateca.googleapis.com",
-    "containerscanning.googleapis.com",
-    "multiclusteringress.googleapis.com",
-    "serviceusage.googleapis.com"
+    # cicd
+    # "binaryauthorization.googleapis.com",
+    # "containerscanning.googleapis.com",
+    # "cloudkms.googleapis.com",
+    # "secretmanager.googleapis.com",
   ]
 
   group_prj_admins = var.group_prj_admins

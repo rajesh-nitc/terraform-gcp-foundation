@@ -23,7 +23,7 @@ resource "google_compute_firewall" "intra_egress" {
     }
   }
 
-  target_tags = [var.cluster_network_tag, "bastion"]
+  target_tags = [var.cluster_network_tag]
   destination_ranges = compact([
     var.cluster_endpoint_for_nodes,
     var.cluster_subnet_cidr,

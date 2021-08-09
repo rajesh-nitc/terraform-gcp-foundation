@@ -44,15 +44,7 @@ module "gke" {
 
   cluster_autoscaling = var.cluster_autoscaling
 
-  master_authorized_networks = concat(var.master_authorized_networks,
-    var.provision_bastion_instance ?
-    [
-      {
-        cidr_block   = "${module.bastion[0].ip_address}/32",
-        display_name = "bastion in same subnet as cluster"
-      }
-    ] : []
-  )
+  master_authorized_networks = var.master_authorized_networks
 
   cluster_resource_labels = {
     "mesh_id" = "proj-${data.google_project.gke_project.number}"
@@ -75,18 +67,4 @@ module "gke" {
   }
   create_service_account = false
   service_account        = "node-sa@${local.project_id}.iam.gserviceaccount.com"
-}
-
-module "bastion" {
-  source                       = "../bastion"
-  count                        = var.provision_bastion_instance ? 1 : 0
-  project_id                   = local.project_id
-  bastion_name                 = "gce-bastion"
-  bastion_zone                 = "${var.region}-a"
-  bastion_service_account_name = "gce-bastion-sa"
-  bastion_members              = var.bastion_members
-  bastion_network_self_link    = local.network_self_link
-  bastion_subnet_self_link     = local.subnet_self_link
-  bastion_region               = var.region
-  network_project_id           = local.host_project_id
 }

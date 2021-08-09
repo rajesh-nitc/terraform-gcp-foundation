@@ -95,24 +95,6 @@ variable "cluster_autoscaling" {
   description = "Cluster autoscaling configuration. See [more details](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#clusterautoscaling)"
 }
 
-# Bastion
-variable "bastion_zone" {
-  type        = string
-  description = "The zone for the bastion VM in primary region."
-  default     = "us-central1-a"
-}
-
-variable "bastion_members" {
-  type        = list(string)
-  description = "The names of the members of the bastion server."
-  default     = []
-}
-
-variable "provision_bastion_instance" {
-  type    = bool
-  default = true
-}
-
 # rbac
 variable "cluster_admin" {
   type = string

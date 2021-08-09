@@ -8,12 +8,14 @@ locals {
   default_apis = [
     "iam.googleapis.com",
     "iamcredentials.googleapis.com", # dependent on iam.googleapis.com
-    "monitoring.googleapis.com",
-    "logging.googleapis.com",
-    "storage.googleapis.com",
     "billingbudgets.googleapis.com",
     "serviceusage.googleapis.com",
     "cloudresourcemanager.googleapis.com",
+    "monitoring.googleapis.com",
+    "logging.googleapis.com",
+    "storage.googleapis.com",
+    "cloudtrace.googleapis.com",
+    "stackdriver.googleapis.com",
   ]
   service_prj_gke_sa         = format("service-%s@container-engine-robot.iam.gserviceaccount.com", module.project.project_number)
   service_prj_google_apis_sa = format("%s@cloudservices.gserviceaccount.com", module.project.project_number)
