@@ -3,6 +3,7 @@ locals {
     "roles/container.admin",       # Required to create clusterroles for e.g. if acm is to be installed
     "roles/gkehub.admin",          # Need gkehub.features.create to enable acm in a project
     "roles/compute.securityAdmin", # Required even if we are managing gke firewall rules separately
+    "roles/iam.roleAdmin",         # Provides access to all custom roles in the project
     "roles/compute.viewer",
     "roles/iam.serviceAccountAdmin",
     "roles/iam.serviceAccountUser",
