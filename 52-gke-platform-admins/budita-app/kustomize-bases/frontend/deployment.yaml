@@ -11,6 +11,8 @@ spec:
   template:
     metadata:
       name: frontend
+      annotations:
+          sidecar.istio.io/rewriteAppHTTPProbers: "true" # allow http probes from kubelet
     spec:
       securityContext:
         fsGroup: 1000
@@ -28,15 +30,19 @@ spec:
         - name: LOG_LEVEL
           value: info
         readinessProbe:
-          tcpSocket:
+          httpGet:
+            path: /
             port: 8080
+          initialDelaySeconds: 10
           periodSeconds: 5
-          initialDelaySeconds: 5
+          timeoutSeconds: 10
         livenessProbe:
-          tcpSocket:
+          httpGet:
+            path: /
             port: 8080
-          periodSeconds: 5
-          initialDelaySeconds: 5
+          initialDelaySeconds: 60
+          periodSeconds: 15
+          timeoutSeconds: 30
         ports:
         - name: http
           containerPort: 8080

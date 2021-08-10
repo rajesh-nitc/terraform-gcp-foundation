@@ -3,4 +3,4 @@ resources:
   - deployment.yaml
   - ksa.yaml
   - istio-gateway.yaml
-  - istio-vsvc.yaml
+  - istio-route.yaml

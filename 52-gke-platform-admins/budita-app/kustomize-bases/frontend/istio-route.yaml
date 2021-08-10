@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
-  name: vsvc
+  name: custom-route
 spec:
   gateways:
   - default-ext-gateway
@@ -13,6 +13,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: svc
+        host: frontend-svc
         port:
           number: 80

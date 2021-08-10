@@ -1,7 +1,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: svc
+  name: frontend-svc
 spec:
   type: ClusterIP
   ports:

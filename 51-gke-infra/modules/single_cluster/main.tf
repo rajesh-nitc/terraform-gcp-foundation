@@ -41,6 +41,7 @@ module "gke" {
   http_load_balancing        = true
   network_policy             = true
   enable_pod_security_policy = false
+  gce_pd_csi_driver          = true
 
   cluster_autoscaling = var.cluster_autoscaling
 

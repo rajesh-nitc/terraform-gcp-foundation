@@ -52,7 +52,7 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
 │       └── frontend
 │           ├── deployment.yaml
 │           ├── istio-gateway.yaml
-│           ├── istio-vsvc.yaml
+│           ├── istio-route.yaml
 │           ├── ksa.yaml
 │           ├── kustomization.yaml
 │           └── service.yaml

@@ -2,4 +2,12 @@
 
 **Guideline_1**: Google recommends ASM for production scenarios.
 
-**Actual_1**: with Istio addon, istio will be installed with default options. For e.g. external tcp network load balancer. If customization is needed, either we install istio i.e. not as an addon or use asm. In our case, we are using the addon.
+**Actual_1**: we are using Istio addon which comes with default options. For e.g. external tcp network load balancer.
+
+**Guideline_2**: Register the cluster with gke hub
+
+**Actual_2**: we are using acm as a standalone feature
+
+**Guideline_3**: Private cluster shoule be accessible from bastion host only
+
+**Actual_3**: we have allowed external access to the gke control plane to test the cicd.

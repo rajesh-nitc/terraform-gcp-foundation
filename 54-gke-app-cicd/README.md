@@ -6,4 +6,4 @@
 
 **Guideline_2**: Private pools to be used to deploy apps on Private GKE cluster.
 
-**Actual_2**: we have allowed the external access to the gke control plane to test the cicd.
+**Actual_2**: we have allowed external access to the gke control plane to test the cicd.
