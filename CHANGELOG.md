@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.0.0...v1.0.1) (2021-08-10)
+
+
+### Bug Fixes
+
+* use http probes ([111dc64](https://www.github.com/rajesh-nitc/gcp-foundation/commit/111dc64d8bfe309f2d94768e33c839ab022572f1))
+
 ## [1.0.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.0.0...v1.0.0) (2021-08-09)
 
 
