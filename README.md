@@ -8,6 +8,8 @@ Example repo for creating a reasonably secure foundation on gcp via terraform. I
 
 and for each part, this repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations).
 
+For maintaining your own personal organization, there are few tips to save cost at the bottom of this README.
+
 ## Final view
 via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer):
 
@@ -57,4 +59,20 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
 │           ├── kustomization.yaml
 │           └── service.yaml
 └── README.md
+```
+## Save Costs for Personal Organization
+We have disabled the services that we are not using yet for e.g. DNS zones for hub network vpc and hub dns vpc.  
+
+```
+| Project ID                   | Service description    | SKU description                        | Usage unit          | Pricing                    | Cost saving action             |
+| ---------------------------- | ---------------------- | -------------------------------------- | ------------------- | -------------------------- | ------------------------------ |
+| prj-gke-c-cicd-pipeline-7989 | Vulnerability Scanning | Container Images Scanned               | count               |                            | disable container scanning api |
+| prj-c-dns-hub-c4a2           | Cloud DNS              | ManagedZone                            | month               | no free tier               | destroy                        |
+| prj-c-base-net-hub-74f5      | Cloud DNS              | ManagedZone                            | month               | no free tier               | destroy                        |
+| prj-d-shared-base-21a3       | Cloud DNS              | ManagedZone                            | month               | no free tier               | keep                           |
+| prj-d-shared-base-21a3       | Networking             | Firewall Policy coverage               | month               |                            | destroy                        |
+| prj-c-logging-8083           | BigQuery               | Streaming Insert                       | mebibyte            |                            | destroy                        |
+| prj-b-cicd-98fa              | Cloud KMS              | Active software symmetric key versions | active key versions |                            | manual destroy                 |
+| prj-gke-c-cicd-pipeline-7989 | Artifact Registry      | Artifact Registry Storage              | gibibyte month      | Up to 0.5 GB is free       | clean                          |
+| prj-b-cicd-98fa              | Artifact Registry      | Artifact Registry Storage              | gibibyte month      | terraform image is ~900 mb | keep                           |
 ```

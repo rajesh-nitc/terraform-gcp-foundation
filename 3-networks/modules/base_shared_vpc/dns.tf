@@ -55,6 +55,7 @@ resource "google_dns_policy" "default_policy" {
  *****************************************/
 
 module "private_googleapis" {
+  count       = var.create_dns_zones ? 1 : 0 # to save cost, so that we can destroy dns zones for hub network
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id
@@ -88,6 +89,7 @@ module "private_googleapis" {
  *****************************************/
 
 module "base_gcr" {
+  count       = var.create_dns_zones ? 1 : 0 # to save cost, so that we can destroy dns zones for hub network
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id
@@ -121,6 +123,7 @@ module "base_gcr" {
  ***********************************************/
 
 module "base_pkg_dev" {
+  count       = var.create_dns_zones ? 1 : 0 # to save cost, so that we can destroy dns zones for hub network
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id
@@ -152,17 +155,17 @@ module "base_pkg_dev" {
 /******************************************
  Creates DNS Peering to DNS HUB
 *****************************************/
-module "peering_zone" {
-  source      = "terraform-google-modules/cloud-dns/google"
-  version     = "~> 3.1"
-  project_id  = var.project_id
-  type        = "peering"
-  name        = "dz-${var.environment_code}-shared-base-to-dns-hub"
-  domain      = var.domain
-  description = "Private DNS peering zone."
+# module "peering_zone" {
+#   source      = "terraform-google-modules/cloud-dns/google"
+#   version     = "~> 3.1"
+#   project_id  = var.project_id
+#   type        = "peering"
+#   name        = "dz-${var.environment_code}-shared-base-to-dns-hub"
+#   domain      = var.domain
+#   description = "Private DNS peering zone."
 
-  private_visibility_config_networks = [
-    module.main.network_self_link
-  ]
-  target_network = data.google_compute_network.vpc_dns_hub.self_link
-}
+#   private_visibility_config_networks = [
+#     module.main.network_self_link
+#   ]
+#   target_network = data.google_compute_network.vpc_dns_hub.self_link
+# }

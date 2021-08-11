@@ -86,73 +86,75 @@ resource "google_dns_policy" "default_policy" {
  DNS Forwarding
 *****************************************/
 
-module "dns-forwarding-zone" {
-  source  = "terraform-google-modules/cloud-dns/google"
-  version = "3.1.0"
+# To save cost
 
-  project_id = local.dns_hub_project_id
-  type       = "forwarding"
-  name       = "fz-dns-hub"
-  domain     = var.domain
+# module "dns-forwarding-zone" {
+#   source  = "terraform-google-modules/cloud-dns/google"
+#   version = "3.1.0"
 
-  private_visibility_config_networks = [
-    module.dns_hub_vpc.network_self_link
-  ]
-  target_name_server_addresses = var.target_name_server_addresses
-}
+#   project_id = local.dns_hub_project_id
+#   type       = "forwarding"
+#   name       = "fz-dns-hub"
+#   domain     = var.domain
+
+#   private_visibility_config_networks = [
+#     module.dns_hub_vpc.network_self_link
+#   ]
+#   target_name_server_addresses = var.target_name_server_addresses
+# }
 
 /*********************************************************
   Routers to advertise DNS proxy range "35.199.192.0/19"
 *********************************************************/
 
-module "dns_hub_region1_router1" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 1.2.0"
-  name    = "cr-c-dns-hub-${var.default_region1}-cr1"
-  project = local.dns_hub_project_id
-  network = module.dns_hub_vpc.network_name
-  region  = var.default_region1
-  bgp = {
-    asn                  = var.bgp_asn_dns
-    advertised_ip_ranges = [{ range = "35.199.192.0/19" }]
-  }
-}
+# module "dns_hub_region1_router1" {
+#   source  = "terraform-google-modules/cloud-router/google"
+#   version = "~> 1.2.0"
+#   name    = "cr-c-dns-hub-${var.default_region1}-cr1"
+#   project = local.dns_hub_project_id
+#   network = module.dns_hub_vpc.network_name
+#   region  = var.default_region1
+#   bgp = {
+#     asn                  = var.bgp_asn_dns
+#     advertised_ip_ranges = [{ range = "35.199.192.0/19" }]
+#   }
+# }
 
-module "dns_hub_region1_router2" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.3.0"
-  name    = "cr-c-dns-hub-${var.default_region1}-cr2"
-  project = local.dns_hub_project_id
-  network = module.dns_hub_vpc.network_name
-  region  = var.default_region1
-  bgp = {
-    asn                  = var.bgp_asn_dns
-    advertised_ip_ranges = [{ range = "35.199.192.0/19" }]
-  }
-}
+# module "dns_hub_region1_router2" {
+#   source  = "terraform-google-modules/cloud-router/google"
+#   version = "~> 0.3.0"
+#   name    = "cr-c-dns-hub-${var.default_region1}-cr2"
+#   project = local.dns_hub_project_id
+#   network = module.dns_hub_vpc.network_name
+#   region  = var.default_region1
+#   bgp = {
+#     asn                  = var.bgp_asn_dns
+#     advertised_ip_ranges = [{ range = "35.199.192.0/19" }]
+#   }
+# }
 
-module "dns_hub_region2_router1" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.3.0"
-  name    = "cr-c-dns-hub-${var.default_region2}-cr3"
-  project = local.dns_hub_project_id
-  network = module.dns_hub_vpc.network_name
-  region  = var.default_region2
-  bgp = {
-    asn                  = var.bgp_asn_dns
-    advertised_ip_ranges = [{ range = "35.199.192.0/19" }]
-  }
-}
+# module "dns_hub_region2_router1" {
+#   source  = "terraform-google-modules/cloud-router/google"
+#   version = "~> 0.3.0"
+#   name    = "cr-c-dns-hub-${var.default_region2}-cr3"
+#   project = local.dns_hub_project_id
+#   network = module.dns_hub_vpc.network_name
+#   region  = var.default_region2
+#   bgp = {
+#     asn                  = var.bgp_asn_dns
+#     advertised_ip_ranges = [{ range = "35.199.192.0/19" }]
+#   }
+# }
 
-module "dns_hub_region2_router2" {
-  source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.3.0"
-  name    = "cr-c-dns-hub-${var.default_region2}-cr4"
-  project = local.dns_hub_project_id
-  network = module.dns_hub_vpc.network_name
-  region  = var.default_region2
-  bgp = {
-    asn                  = var.bgp_asn_dns
-    advertised_ip_ranges = [{ range = "35.199.192.0/19" }]
-  }
-}
+# module "dns_hub_region2_router2" {
+#   source  = "terraform-google-modules/cloud-router/google"
+#   version = "~> 0.3.0"
+#   name    = "cr-c-dns-hub-${var.default_region2}-cr4"
+#   project = local.dns_hub_project_id
+#   network = module.dns_hub_vpc.network_name
+#   region  = var.default_region2
+#   bgp = {
+#     asn                  = var.bgp_asn_dns
+#     advertised_ip_ranges = [{ range = "35.199.192.0/19" }]
+#   }
+# }

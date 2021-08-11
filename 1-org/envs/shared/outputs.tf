@@ -8,15 +8,15 @@ output "org_id" {
 #   description = "Name of SCC Notification"
 # }
 
-output "parent_resource_id" {
-  value       = local.parent_resource_id
-  description = "The parent resource id"
-}
+# output "parent_resource_id" {
+#   value       = local.parent_resource_id
+#   description = "The parent resource id"
+# }
 
-output "parent_resource_type" {
-  value       = local.parent_resource_type
-  description = "The parent resource type"
-}
+# output "parent_resource_type" {
+#   value       = local.parent_resource_type
+#   description = "The parent resource type"
+# }
 
 output "common_folder_name" {
   value       = google_folder.common.name

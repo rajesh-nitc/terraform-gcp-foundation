@@ -15,7 +15,7 @@ module "app_cicd_project" {
     "sourcerepo.googleapis.com",
     "artifactregistry.googleapis.com",
     "containeranalysis.googleapis.com",
-    "containerscanning.googleapis.com",
+    # "containerscanning.googleapis.com", # To save cost
     "binaryauthorization.googleapis.com",
     "secretmanager.googleapis.com",
     "compute.googleapis.com",

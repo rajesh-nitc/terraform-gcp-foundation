@@ -181,5 +181,8 @@ variable "gke_fw_rules_enabled" {
   default = false
 }
 
-
-
+# dns zones
+variable "create_dns_zones" {
+  type    = bool
+  default = true
+}
