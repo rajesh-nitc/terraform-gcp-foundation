@@ -8,7 +8,7 @@ Example repo for creating a reasonably secure foundation on gcp via terraform. I
 
 and for each part, this repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations).
 
-To save costs for your own personal organization, you may take few actions listed at the bottom of this README.
+To save costs for our own personal organization, we may take few actions listed at the bottom of this README.
 
 ## Final view
 via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer):
