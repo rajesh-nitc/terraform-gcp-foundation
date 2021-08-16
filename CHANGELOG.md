@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.1.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.0...v1.1.1) (2021-08-16)
+
+
+### Bug Fixes
+
+* Tested workload identity ([d8a7ca1](https://www.github.com/rajesh-nitc/gcp-foundation/commit/d8a7ca1c6f0866ee07d5049c9efabba459258922))
+
 ## [1.1.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.0.1...v1.1.0) (2021-08-11)
 
 
