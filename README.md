@@ -45,6 +45,8 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
 │   │   │   └── frontend
 │   │   │       ├── admin-role-binding.yaml
 │   │   │       ├── allow-all-ingress-networkpolicy.yaml
+│   │   │       ├── istio-egress-googleapis.yaml
+│   │   │       ├── istio-egress-metadata.yaml
 │   │   │       ├── namespace.yaml
 │   │   │       └── quota.yaml
 │   │   └── system

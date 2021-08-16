@@ -31,14 +31,14 @@ spec:
           value: info
         readinessProbe:
           httpGet:
-            path: /
+            path: /health
             port: 8080
           initialDelaySeconds: 10
           periodSeconds: 5
           timeoutSeconds: 10
         livenessProbe:
           httpGet:
-            path: /
+            path: /health
             port: 8080
           initialDelaySeconds: 60
           periodSeconds: 15
