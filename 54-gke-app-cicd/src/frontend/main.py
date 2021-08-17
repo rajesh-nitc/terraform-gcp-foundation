@@ -16,6 +16,7 @@ def health():
     return "Frontend service is healthy"
 
 
+# TODO : Get project_id from metadata server
 @app.route('/buckets')
 def list_buckets():
     project_id = os.environ.get('PROJECT_ID', 'prj-gke-d-clusters-3c96')
@@ -27,6 +28,7 @@ def list_buckets():
     return """
     You have {} buckets. This means that workload identity is working and ... 
     the egress to metadata server and to private google apis via istio is working""".format(len(bucket_names))
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
