@@ -26,7 +26,7 @@ def list_buckets():
         bucket_names.append(bucket.name)
     return """
     You have {} buckets. This means that workload identity is working and ... 
-    the egress to metadata server and to private google apis via istio is working""".format(str(len(bucket_names)))
+    the egress to metadata server and to private google apis via istio is working""".format(len(bucket_names))
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
