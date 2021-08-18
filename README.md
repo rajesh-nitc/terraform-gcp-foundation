@@ -8,8 +8,6 @@ Example repo for creating a reasonably secure foundation on gcp via terraform. I
 
 and for each part, this repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations).
 
-To save costs for our own personal organization, we have taken few actions listed at the bottom of this README.
-
 ## Final view
 via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer):
 
@@ -63,7 +61,7 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
 └── README.md
 ```
 ## Save Costs for Personal Organization
-We have disabled the services that we are not using yet for e.g. DNS zones for hub network vpc and hub dns vpc.  
+we have disabled services that we are not using yet for e.g. DNS zones for hub network vpc and hub dns vpc.  
 
 ```
 | Project ID                   | Service description    | SKU description                        | Usage unit          | Pricing                    | Cost saving action             |
