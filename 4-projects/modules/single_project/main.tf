@@ -22,6 +22,7 @@ locals {
   service_prj_dataflow_sa    = format("service-%s@dataflow-service-producer-prod.iam.gserviceaccount.com", module.project.project_number)
   service_prj_composer_sa    = format("service-%s@cloudcomposer-accounts.iam.gserviceaccount.com", module.project.project_number)
   service_prj_dataproc_sa    = format("service-%s@dataproc-accounts.iam.gserviceaccount.com", module.project.project_number)
+  service_prj_vpc_access_sa  = format("service-%s@gcp-sa-vpcaccess.iam.gserviceaccount.com", module.project.project_number)
 }
 
 module "project" {
