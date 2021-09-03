@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.1...v1.2.0) (2021-09-03)
+
+
+### Features
+
+* project module now supports serverless vpc access ([f2b6219](https://www.github.com/rajesh-nitc/gcp-foundation/commit/f2b6219d8987ff0e97eb09647e6fb737ef73cabe))
+
 ### [1.1.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.0...v1.1.1) (2021-08-16)
 
 
