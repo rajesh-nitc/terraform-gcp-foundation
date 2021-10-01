@@ -25,7 +25,7 @@ module "buckets_landing" {
 
 module "pubsub" {
   source     = "terraform-google-modules/pubsub/google"
-  version    = "2.0.0"
+  version    = "3.0.0"
   topic      = "tp-${local.environment_code}-${var.business_code}-landing"
   project_id = local.project_id
   pull_subscriptions = [
