@@ -57,7 +57,7 @@ resource "google_dns_policy" "default_policy" {
 module "private_googleapis" {
   count       = var.create_dns_zones ? 1 : 0 # to save cost, so that we can destroy dns zones for hub network
   source      = "terraform-google-modules/cloud-dns/google"
-  version     = "~> 3.1"
+  version     = "~> 4.0"
   project_id  = var.project_id
   type        = "private"
   name        = "dz-${var.environment_code}-shared-base-apis"
