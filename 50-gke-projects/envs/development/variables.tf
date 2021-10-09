@@ -13,7 +13,7 @@ variable "billing_account" {
   type        = string
 }
 
-variable "group_prj_admins" {
+variable "group_email" {
   type = string
 }
 

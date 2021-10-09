@@ -16,7 +16,7 @@ module "app_infra_cloudbuild_project" {
     "cloudresourcemanager.googleapis.com"
   ]
 
-  group_prj_admins = var.group_prj_admins
+  group_email = var.group_email
 
   # Metadata
   project_suffix    = "infra-pipeline"
@@ -35,6 +35,6 @@ module "infra_pipelines" {
   business_code         = "data"
   org_id                = var.org_id
   monorepo_folders      = ["91-data-landing-infra", "92-data-transformation-infra", "93-data-dwh-infra"]
-  group_prj_admins      = var.group_prj_admins
+  group_email      = var.group_email
 }
 

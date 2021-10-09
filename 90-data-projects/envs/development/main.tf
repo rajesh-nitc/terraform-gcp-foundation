@@ -5,6 +5,6 @@ module projects_data {
   billing_account                  = var.billing_account
   environment                      = "development"
   app_infra_pipeline_cloudbuild_sa = var.app_infra_pipeline_cloudbuild_sa
-  group_prj_admins                 = var.group_prj_admins
+  group_email                 = var.group_email
 }
 

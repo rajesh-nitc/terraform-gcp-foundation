@@ -17,7 +17,7 @@ module "app_infra_cloudbuild_project" {
     "iamcredentials.googleapis.com",
   ]
 
-  group_prj_admins = var.group_prj_admins
+  group_email = var.group_email
 
   # Metadata
   project_suffix    = "infra-pipeline"
@@ -36,5 +36,5 @@ module "infra_pipelines" {
   business_code         = "gke"
   org_id                = var.org_id
   monorepo_folders      = ["51-gke-infra"]
-  group_prj_admins      = var.group_prj_admins
+  group_email      = var.group_email
 }

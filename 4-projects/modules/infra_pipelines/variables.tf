@@ -57,7 +57,7 @@ variable "monorepo_folders" {
   type = list(string)
 }
 
-variable "group_prj_admins" {
+variable "group_email" {
   type = string
 }
 

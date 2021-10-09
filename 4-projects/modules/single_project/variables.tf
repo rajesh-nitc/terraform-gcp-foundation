@@ -127,8 +127,13 @@ variable "cloudbuild_sa" {
   default     = ""
 }
 
-variable "group_prj_admins" {
+variable "group_email" {
   type = string
+}
+
+variable "group_iam_roles" {
+  type = list(string)
+  default = ["roles/viewer"]
 }
 
 variable "folder_prefix" {
@@ -143,9 +148,13 @@ variable "parent_folder" {
   default     = ""
 }
 
-variable "use_iap" {
-  description = "Optional - for an organization with existing projects or for development/validation. It will place all the example foundation resources under the provided folder instead of the root organization. The value is the numeric folder ID. The folder must already exist. Must be the same value used in previous step."
-  type        = string
+variable "enable_oslogin" {
+  type        = bool
+  default     = false
+}
+
+variable "use_packer" {
+  type        = bool
   default     = false
 }
 

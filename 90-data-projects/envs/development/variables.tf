@@ -18,6 +18,6 @@ variable "app_infra_pipeline_cloudbuild_sa" {
   type        = string
 }
 
-variable "group_prj_admins" {
+variable "group_email" {
   type = string
 }

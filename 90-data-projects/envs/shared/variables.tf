@@ -71,6 +71,6 @@ variable "project_prefix" {
   default     = "prj"
 }
 
-variable "group_prj_admins" {
+variable "group_email" {
   type = string
 }

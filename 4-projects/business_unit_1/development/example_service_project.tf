@@ -36,7 +36,7 @@ module "base_shared_vpc_project" {
     "compute.googleapis.com",
   ]
 
-  group_prj_admins = var.group_prj_admins
+  group_email = var.group_email
 
   # Metadata
   project_suffix    = "sample-base"

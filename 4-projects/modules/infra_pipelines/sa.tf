@@ -6,12 +6,12 @@ resource "google_storage_bucket_iam_member" "buckets" {
   member   = "serviceAccount:${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
 }
 
-# Allow project admins to access tf state 
+# Allow group to access tf state
 resource "google_storage_bucket_iam_member" "tf_state_buckets" {
   for_each = local.state_buckets
   bucket   = each.value
   role     = "roles/storage.admin"
-  member   = "group:${var.group_prj_admins}"
+  member   = "group:${var.group_email}"
 }
 
 # Allow cloudbuild to access tf image in bootstrap cb project

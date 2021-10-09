@@ -38,7 +38,7 @@ variable "gar_repo_name_suffix" {
   default     = "boa-image-repo"
 }
 
-variable "group_prj_admins" {
+variable "group_email" {
   type = string
 }
 

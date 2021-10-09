@@ -9,17 +9,19 @@ module landing_project {
   budget_amount            = var.budget_amount
   project_prefix           = var.project_prefix
   enable_hub_and_spoke     = var.enable_hub_and_spoke
-  sa_roles                 = ["roles/pubsub.admin", "roles/storage.admin", "roles/resourcemanager.projectIamAdmin"]
+  sa_roles                 = [
+    "roles/pubsub.admin",
+    "roles/storage.admin",
+    "roles/resourcemanager.projectIamAdmin"
+  ]
   enable_cloudbuild_deploy = true
   cloudbuild_sa            = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [
-    "iam.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
     "pubsub.googleapis.com",
     "storage-component.googleapis.com",
   ]
 
-  group_prj_admins = var.group_prj_admins
+  group_email = var.group_email
 
   # Metadata
   project_suffix    = "landing"
@@ -50,8 +52,6 @@ module transformation_project {
   enable_cloudbuild_deploy = true
   cloudbuild_sa            = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [
-    "iam.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
     "bigquery.googleapis.com",
     "cloudbuild.googleapis.com",
     "compute.googleapis.com",
@@ -60,7 +60,7 @@ module transformation_project {
     "storage-component.googleapis.com",
   ]
 
-  group_prj_admins = var.group_prj_admins
+  group_email = var.group_email
 
   # Metadata
   project_suffix    = "transformation"
@@ -82,19 +82,20 @@ module dwh_project {
   budget_amount            = var.budget_amount
   project_prefix           = var.project_prefix
   enable_hub_and_spoke     = var.enable_hub_and_spoke
-  sa_roles                 = ["roles/bigquery.admin", "roles/storage.admin"]
+  sa_roles                 = [
+    "roles/bigquery.admin",
+    "roles/storage.admin"
+  ]
   enable_cloudbuild_deploy = true
   cloudbuild_sa            = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [
-    "iam.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
     "bigquery.googleapis.com",
     "bigquerystorage.googleapis.com",
     "bigqueryreservation.googleapis.com",
     "storage-component.googleapis.com",
   ]
 
-  group_prj_admins = var.group_prj_admins
+  group_email = var.group_email
 
   # Metadata
   project_suffix    = "dwh"

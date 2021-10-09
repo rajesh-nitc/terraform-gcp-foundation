@@ -26,7 +26,7 @@ module "app_cicd_project" {
     "iamcredentials.googleapis.com",
   ]
 
-  group_prj_admins = var.group_prj_admins
+  group_email = var.group_email
 
   # Metadata
   project_suffix    = "cicd-pipeline"
@@ -47,5 +47,5 @@ module "cicd_pipeline" {
   # attestor_names_prefix = ["build", "quality", "security"]
   build_app_yaml   = "cloudbuild-pr.yaml"
   build_image_yaml = "cloudbuild-skaffold-build-image.yaml"
-  group_prj_admins = var.group_prj_admins
+  group_email = var.group_email
 }
