@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.2.0...v1.3.0) (2021-10-09)
+
+
+### Features
+
+* added features in project factory module ([2e07e2a](https://www.github.com/rajesh-nitc/gcp-foundation/commit/2e07e2a76f1584c3346e23901b7fa316c752e3c1))
+
 ## [1.2.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.1.1...v1.2.0) (2021-09-03)
 
 
