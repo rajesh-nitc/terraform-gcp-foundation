@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.3.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.0...v1.3.1) (2021-10-19)
+
+
+### Bug Fixes
+
+* added admin group per bu ([2d2cc8d](https://www.github.com/rajesh-nitc/gcp-foundation/commit/2d2cc8d53201bc505bbc099f26d3c93aa90c3e5f))
+
 ## [1.3.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.2.0...v1.3.0) (2021-10-09)
 
 
