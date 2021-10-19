@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.1...v1.4.0) (2021-10-19)
+
+
+### Features
+
+* destroy dns zones when not in use to save cost ([eaf81b5](https://www.github.com/rajesh-nitc/gcp-foundation/commit/eaf81b5f5ca1dbdd8951d4179a631818139566a5))
+
 ### [1.3.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.0...v1.3.1) (2021-10-19)
 
 
