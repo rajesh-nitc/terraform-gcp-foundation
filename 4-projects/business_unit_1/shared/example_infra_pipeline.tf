@@ -51,6 +51,6 @@ module "infra_pipelines" {
   business_code         = "bu1"
   org_id                = var.org_id
   monorepo_folders      = ["5-app-infra"]
-  group_email      = var.group_email
+  group_email           = var.group_email
 }
 

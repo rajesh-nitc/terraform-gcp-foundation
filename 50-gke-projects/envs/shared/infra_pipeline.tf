@@ -36,5 +36,5 @@ module "infra_pipelines" {
   business_code         = "gke"
   org_id                = var.org_id
   monorepo_folders      = ["51-gke-infra"]
-  group_email      = var.group_email
+  group_email           = var.group_email
 }

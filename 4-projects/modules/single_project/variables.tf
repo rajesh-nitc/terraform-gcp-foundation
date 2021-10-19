@@ -132,7 +132,7 @@ variable "group_email" {
 }
 
 variable "group_iam_roles" {
-  type = list(string)
+  type    = list(string)
   default = ["roles/viewer"]
 }
 
@@ -149,13 +149,13 @@ variable "parent_folder" {
 }
 
 variable "enable_oslogin" {
-  type        = bool
-  default     = false
+  type    = bool
+  default = false
 }
 
 variable "use_packer" {
-  type        = bool
-  default     = false
+  type    = bool
+  default = false
 }
 
 variable "default_region1" {

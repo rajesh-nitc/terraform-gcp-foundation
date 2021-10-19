@@ -47,5 +47,5 @@ module "cicd_pipeline" {
   # attestor_names_prefix = ["build", "quality", "security"]
   build_app_yaml   = "cloudbuild-pr.yaml"
   build_image_yaml = "cloudbuild-skaffold-build-image.yaml"
-  group_email = var.group_email
+  group_email      = var.group_email
 }

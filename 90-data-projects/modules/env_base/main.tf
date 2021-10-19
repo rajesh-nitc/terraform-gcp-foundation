@@ -1,15 +1,15 @@
 module landing_project {
-  source                   = "../../../4-projects/modules/single_project"
-  org_id                   = var.org_id
-  billing_account          = var.billing_account
-  environment              = var.environment
-  vpc_type                 = ""
-  alert_spent_percents     = var.alert_spent_percents
-  alert_pubsub_topic       = var.alert_pubsub_topic
-  budget_amount            = var.budget_amount
-  project_prefix           = var.project_prefix
-  enable_hub_and_spoke     = var.enable_hub_and_spoke
-  sa_roles                 = [
+  source               = "../../../4-projects/modules/single_project"
+  org_id               = var.org_id
+  billing_account      = var.billing_account
+  environment          = var.environment
+  vpc_type             = ""
+  alert_spent_percents = var.alert_spent_percents
+  alert_pubsub_topic   = var.alert_pubsub_topic
+  budget_amount        = var.budget_amount
+  project_prefix       = var.project_prefix
+  enable_hub_and_spoke = var.enable_hub_and_spoke
+  sa_roles = [
     "roles/pubsub.admin",
     "roles/storage.admin",
     "roles/resourcemanager.projectIamAdmin"
@@ -72,17 +72,17 @@ module transformation_project {
 }
 
 module dwh_project {
-  source                   = "../../../4-projects/modules/single_project"
-  org_id                   = var.org_id
-  billing_account          = var.billing_account
-  environment              = var.environment
-  vpc_type                 = ""
-  alert_spent_percents     = var.alert_spent_percents
-  alert_pubsub_topic       = var.alert_pubsub_topic
-  budget_amount            = var.budget_amount
-  project_prefix           = var.project_prefix
-  enable_hub_and_spoke     = var.enable_hub_and_spoke
-  sa_roles                 = [
+  source               = "../../../4-projects/modules/single_project"
+  org_id               = var.org_id
+  billing_account      = var.billing_account
+  environment          = var.environment
+  vpc_type             = ""
+  alert_spent_percents = var.alert_spent_percents
+  alert_pubsub_topic   = var.alert_pubsub_topic
+  budget_amount        = var.budget_amount
+  project_prefix       = var.project_prefix
+  enable_hub_and_spoke = var.enable_hub_and_spoke
+  sa_roles = [
     "roles/bigquery.admin",
     "roles/storage.admin"
   ]

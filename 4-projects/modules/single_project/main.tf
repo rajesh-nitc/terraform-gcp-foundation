@@ -20,22 +20,22 @@ locals {
   ]
 
   oslogin_api = contains(var.activate_apis, "compute.googleapis.com") && var.enable_oslogin ? ["oslogin.googleapis.com"] : []
-  iap_api = contains(var.activate_apis, "compute.googleapis.com") ? ["iap.googleapis.com"] : []
+  iap_api     = contains(var.activate_apis, "compute.googleapis.com") ? ["iap.googleapis.com"] : []
 
   # managed services sa
-  service_prj_gke_sa         = format("service-%s@container-engine-robot.iam.gserviceaccount.com", module.project.project_number)
-//  service_prj_google_apis_sa = format("%s@cloudservices.gserviceaccount.com", module.project.project_number)
-  service_prj_dataflow_sa    = format("service-%s@dataflow-service-producer-prod.iam.gserviceaccount.com", module.project.project_number)
-  service_prj_composer_sa    = format("service-%s@cloudcomposer-accounts.iam.gserviceaccount.com", module.project.project_number)
-  service_prj_dataproc_sa    = format("service-%s@dataproc-accounts.iam.gserviceaccount.com", module.project.project_number)
-  service_prj_vpc_access_sa  = format("service-%s@gcp-sa-vpcaccess.iam.gserviceaccount.com", module.project.project_number)
+  service_prj_gke_sa = format("service-%s@container-engine-robot.iam.gserviceaccount.com", module.project.project_number)
+  //  service_prj_google_apis_sa = format("%s@cloudservices.gserviceaccount.com", module.project.project_number)
+  service_prj_dataflow_sa   = format("service-%s@dataflow-service-producer-prod.iam.gserviceaccount.com", module.project.project_number)
+  service_prj_composer_sa   = format("service-%s@cloudcomposer-accounts.iam.gserviceaccount.com", module.project.project_number)
+  service_prj_dataproc_sa   = format("service-%s@dataproc-accounts.iam.gserviceaccount.com", module.project.project_number)
+  service_prj_vpc_access_sa = format("service-%s@gcp-sa-vpcaccess.iam.gserviceaccount.com", module.project.project_number)
 }
 
 module "project" {
   source            = "terraform-google-modules/project-factory/google"
   version           = "~> 11.1"
   random_project_id = var.random_project_id
-  activate_apis     = distinct(concat(var.activate_apis, local.default_apis, local.oslogin_api,local.iap_api))
+  activate_apis     = distinct(concat(var.activate_apis, local.default_apis, local.oslogin_api, local.iap_api))
   name              = "${var.project_prefix}-${var.business_code}-${local.env_code}-${var.project_suffix}"
   org_id            = var.org_id
   project_id        = var.project_id

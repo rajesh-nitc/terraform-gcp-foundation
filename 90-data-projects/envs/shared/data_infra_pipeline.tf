@@ -35,6 +35,6 @@ module "infra_pipelines" {
   business_code         = "data"
   org_id                = var.org_id
   monorepo_folders      = ["91-data-landing-infra", "92-data-transformation-infra", "93-data-dwh-infra"]
-  group_email      = var.group_email
+  group_email           = var.group_email
 }
 

@@ -8,7 +8,7 @@ resource "google_service_account_iam_member" "grp_impersonate_prj_sa" {
 # Group iam roles
 resource "google_project_iam_member" "grp_roles" {
   for_each = toset(var.group_iam_roles)
-  project = module.project.project_id
-  role    = each.value
-  member  = "group:${var.group_email}"
+  project  = module.project.project_id
+  role     = each.value
+  member   = "group:${var.group_email}"
 }
