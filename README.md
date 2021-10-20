@@ -60,8 +60,8 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
 │           └── service.yaml
 └── README.md
 ```
-## Save Costs for Personal Organization
-we have disabled services that we are not using yet for e.g. DNS zones for hub network vpc and hub dns vpc.  
+## Save costs
+To save costs for personal organization, we have disabled services that we are not using for e.g. DNS zones for hub network vpc and hub dns vpc. See the column ```cost saving action``` in the table below:  
 
 ```
 | Project ID                   | Service description    | SKU description                        | Usage unit          | Pricing                    | Cost saving action             |
