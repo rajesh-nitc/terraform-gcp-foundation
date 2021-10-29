@@ -1,15 +1,15 @@
 # gcp-foundation 
 
-Example repo for creating a reasonably secure foundation on gcp via terraform. It is made up of following parts:
+Example repo for creating a reasonably secure foundation on gcp with terraform. It is made up of following parts:
 
 - core foundation (0-5)
 - gke foundation (50-54)
 - data foundation (90-94)
 
-and for each part, this repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations).
+and for each part, this repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) and [cloud-foundation-fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations).
 
-## Final view
-via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer):
+## Org Hierarchy
+### Final view
 
 ```
 🏢 budita.dev (157305482127)
@@ -32,7 +32,11 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
      +-- 📦 prj-bu1-d-sample-base-9208
      +-- 📦 prj-d-shared-base-21a3
 ```
-## GKE Platform Admins repo
+via [GCP Organization Hierarchy Viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) tool
+
+## GKE Foundation
+### Platform Admins Repo view
+
 ```
 .
 ├── budita-app
@@ -60,8 +64,9 @@ via [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profession
 │           └── service.yaml
 └── README.md
 ```
-## Save costs
-To save costs for personal organization, we have disabled services that we are not using for e.g. DNS zones for hub network vpc and hub dns vpc. See the column ```cost saving action``` in the table below:  
+## Miscellaneous
+### Save costs
+To save costs for personal organization, we have destroyed resources not being used yet for e.g. DNS zones for hub network vpc and hub dns vpc and few others. See the column **```cost saving action```** in the table below:  
 
 ```
 | Project ID                   | Service description    | SKU description                        | Usage unit          | Pricing                    | Cost saving action             |
@@ -76,3 +81,6 @@ To save costs for personal organization, we have disabled services that we are n
 | prj-gke-c-cicd-pipeline-7989 | Artifact Registry      | Artifact Registry Storage              | gibibyte month      | Up to 0.5 GB is free       | clean                          |
 | prj-b-cicd-98fa              | Artifact Registry      | Artifact Registry Storage              | gibibyte month      | terraform image is ~900 mb | keep                           |
 ```
+
+### TODO
+1. Istio addon is deprecated, use ASM as a standalone service
