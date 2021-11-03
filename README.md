@@ -83,4 +83,4 @@ To save costs for personal organization, we have destroyed resources not being u
 ```
 
 ### TODO
-1. Istio addon is deprecated, use ASM as a standalone service
+1. Replace istio addon with asm
