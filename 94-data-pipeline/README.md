@@ -13,10 +13,10 @@ Run job:
 ```
 gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
 
-python3 data_ingestion.py \
+python3 csv_line_to_bq_row.py \
   --input=gs://bkt-d-data-landing-raw-data/names_data.csv \
   --output=prj-data-d-dwh-3f33:bq_raw_dataset.names1 \
-  --temp_location=gs://bkt-d-data-tfn-temp \
+  --temp_location=gs://bkt-d-data-dataflow-temp \
   --runner=DataflowRunner \
   --project=prj-data-d-transformation-4f2b \
   --region=us-central1 \
@@ -46,7 +46,7 @@ gcloud dataflow jobs run first-batch-template-job \
     --disable-public-ips \
     --network vpc-d-shared-base-spoke \
     --subnetwork https://www.googleapis.com/compute/v1/projects/prj-d-shared-base-21a3/regions/us-central1/subnetworks/sb-d-shared-base-us-central1-data \
-    --staging-location gs://bkt-d-data-tfn-temp \
+    --staging-location gs://bkt-d-data-dataflow-temp \
     --service-account-email project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com \
     --parameters \
 javascriptTextTransformFunctionName=transform_batch_data,\
@@ -54,7 +54,7 @@ JSONPath=gs://bkt-d-data-landing-data-schema/names_schema.json,\
 javascriptTextTransformGcsPath=gs://bkt-d-data-landing-data-schema/names_udf.js,\
 inputFilePattern=gs://bkt-d-data-landing-raw-data/names_data.csv,\
 outputTable=prj-data-d-dwh-3f33:bq_raw_dataset.names2,\
-bigQueryLoadingTemporaryDirectory=gs://bkt-d-data-tfn-temp
+bigQueryLoadingTemporaryDirectory=gs://bkt-d-data-dataflow-temp
 ```
 
 ## Streaming pipeline using Templates
@@ -91,7 +91,7 @@ gcloud dataflow jobs run first-streaming-template-job \
     --disable-public-ips \
     --network vpc-d-shared-base-spoke \
     --subnetwork https://www.googleapis.com/compute/v1/projects/prj-d-shared-base-21a3/regions/us-central1/subnetworks/sb-d-shared-base-us-central1-data \
-    --staging-location gs://bkt-d-data-tfn-temp \
+    --staging-location gs://bkt-d-data-dataflow-temp \
     --service-account-email project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com \
     --parameters \
 javascriptTextTransformFunctionName=transform_streaming_data,\

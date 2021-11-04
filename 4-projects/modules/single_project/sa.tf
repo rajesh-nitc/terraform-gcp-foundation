@@ -8,12 +8,14 @@ resource "google_project_iam_member" "prj_sa_roles" {
 
 # Allow project sa to perform folder/project lookups
 resource "google_folder_iam_member" "folder_browser" {
+  count  = var.enable_cloudbuild_deploy ? 1 : 0
   folder = local.folder_id
   role   = "roles/browser"
   member = "serviceAccount:${module.project.service_account_email}"
 }
 
 resource "google_folder_iam_member" "folder_network_viewer" {
+  count  = var.enable_cloudbuild_deploy ? 1 : 0
   folder = local.folder_id
   role   = "roles/compute.networkViewer"
   member = "serviceAccount:${module.project.service_account_email}"
