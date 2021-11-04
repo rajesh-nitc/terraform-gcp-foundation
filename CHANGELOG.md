@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.4.0...v1.4.1) (2021-11-04)
+
+
+### Bug Fixes
+
+* browser and networkviewer role to infra and cicd project sa is not required ([671c3b8](https://www.github.com/rajesh-nitc/gcp-foundation/commit/671c3b83915033856dd424a72ddf1ca018f875d4))
+
 ## [1.4.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.3.1...v1.4.0) (2021-10-19)
 
 
