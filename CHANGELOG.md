@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.4.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.4.1...v1.4.2) (2021-11-06)
+
+
+### Bug Fixes
+
+* we dont need to create csr repos in bootstrap stage ([4900681](https://www.github.com/rajesh-nitc/gcp-foundation/commit/490068121f5eea7ab035107ba439cdcc8029dcbd))
+
 ### [1.4.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.4.0...v1.4.1) (2021-11-04)
 
 
