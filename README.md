@@ -66,21 +66,15 @@ via [GCP Organization Hierarchy Viewer](https://github.com/GoogleCloudPlatform/p
 ```
 ## Miscellaneous
 ### Save costs
-To save costs for personal organization, we have destroyed resources not being used yet for e.g. DNS zones for hub network vpc and hub dns vpc and few others. See the column **```cost saving action```** in the table below:  
+To save costs for personal organization, we have:  
 
-```
-| Project ID                   | Service description    | SKU description                        | Usage unit          | Pricing                    | Cost saving action             |
-| ---------------------------- | ---------------------- | -------------------------------------- | ------------------- | -------------------------- | ------------------------------ |
-| prj-gke-c-cicd-pipeline-7989 | Vulnerability Scanning | Container Images Scanned               | count               |                            | disable container scanning api |
-| prj-c-dns-hub-c4a2           | Cloud DNS              | ManagedZone                            | month               | no free tier               | destroy                        |
-| prj-c-base-net-hub-74f5      | Cloud DNS              | ManagedZone                            | month               | no free tier               | destroy                        |
-| prj-d-shared-base-21a3       | Cloud DNS              | ManagedZone                            | month               | no free tier               | keep                           |
-| prj-d-shared-base-21a3       | Networking             | Firewall Policy coverage               | month               |                            | destroy                        |
-| prj-c-logging-8083           | BigQuery               | Streaming Insert                       | mebibyte            |                            | destroy                        |
-| prj-b-cicd-98fa              | Cloud KMS              | Active software symmetric key versions | active key versions |                            | manual destroy                 |
-| prj-gke-c-cicd-pipeline-7989 | Artifact Registry      | Artifact Registry Storage              | gibibyte month      | Up to 0.5 GB is free       | clean                          |
-| prj-b-cicd-98fa              | Artifact Registry      | Artifact Registry Storage              | gibibyte month      | terraform image is ~900 mb | keep                           |
-```
+1. Disabled ```containerscanning.googleapis.com``` in ```prj-gke-c-cicd-pipeline-7989```
+2. Configured ```base_shared_vpc``` module to not create dns zones for net hub
+3. Configured ```base_shared_vpc``` module to create dns zones for spoke vpcs on demand
+4. Not enabled hierarchical firewall policies
+5. Destroyed log sink to avoid streaming insert costs in case of bigquery
+6. Destroyed kms key version in ```prj-b-cicd-98fa```
+7. Cleaned artifact registry images in ```prj-b-cicd-98fa``` and ```prj-gke-c-cicd-pipeline-7989```
 
 ### TODO
 1. Replace istio addon with asm
