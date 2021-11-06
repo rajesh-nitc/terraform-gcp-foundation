@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.4.2...v1.5.0) (2021-11-06)
+
+
+### Features
+
+* create spoke dns zones on demand to save cost ([0db462f](https://www.github.com/rajesh-nitc/gcp-foundation/commit/0db462f5528100ece08d85366fc777cd59fad473))
+
 ### [1.4.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.4.1...v1.4.2) (2021-11-06)
 
 
