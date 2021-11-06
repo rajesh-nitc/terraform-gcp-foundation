@@ -1,6 +1,5 @@
 locals {
   monorepo_folders = [
-    "0-bootstrap",
     "1-org",
     "2-environments",
     "3-networks",
@@ -8,6 +7,8 @@ locals {
     "90-data-projects",
     "50-gke-projects"
   ]
+
+  terraform_service_account = module.seed_bootstrap.terraform_sa_email
 }
 
 resource "google_cloudbuild_trigger" "push_non_environment_branch" {
@@ -31,7 +32,7 @@ resource "google_cloudbuild_trigger" "push_non_environment_branch" {
   substitutions = {
     _DEFAULT_REGION = var.default_region
     _GAR_REPOSITORY = module.cloudbuild_bootstrap.tf_runner_artifact_repo
-    _TF_SA_EMAIL    = var.terraform_service_account
+    _TF_SA_EMAIL    = local.terraform_service_account
   }
 
   filename = "${each.key}/cloudbuild-tf-plan.yaml"
@@ -58,7 +59,7 @@ resource "google_cloudbuild_trigger" "push_environment_branch" {
   substitutions = {
     _DEFAULT_REGION = var.default_region
     _GAR_REPOSITORY = module.cloudbuild_bootstrap.tf_runner_artifact_repo
-    _TF_SA_EMAIL    = var.terraform_service_account
+    _TF_SA_EMAIL    = local.terraform_service_account
   }
 
   filename = "${each.key}/cloudbuild-tf-apply.yaml"

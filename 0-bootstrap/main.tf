@@ -1,6 +1,3 @@
-/*************************************************
-  Bootstrap GCP Organization.
-**************************************************/
 locals {
   parent = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
   org_admins_org_iam_permissions = var.org_policy_admin_role == true ? [
@@ -74,10 +71,6 @@ module "seed_bootstrap" {
     "roles/resourcemanager.folderAdmin",
     "roles/securitycenter.notificationConfigEditor",
     "roles/resourcemanager.organizationViewer",
-    "roles/storage.admin",            # Error when reading or editing Storage Bucket "prj-cloudbuild-artifacts-1b60": googleapi: Error 403: org-terraform@prj-b-seed-6949.iam.gserviceaccount.com does not have storage.buckets.get access to the Google Cloud Storage bucket., forbidden
-    "roles/cloudkms.admin",           # Error when reading or editing KMSKeyRing "projects/prj-b-cicd-98fa/locations/us-central1/keyRings/tf-keyring": googleapi: Error 403: Permission 'cloudkms.keyRings.get' denied on resource 'projects/prj-b-cicd-98fa/locations/us-central1/keyRings/tf-keyring'
-    "roles/cloudbuild.builds.editor", # Error when reading or editing CloudBuildTrigger "projects/prj-b-cicd-98fa/triggers/3022e24d-6439-4b43-ba44-c31ac4c46736": googleapi: Error 403: The caller does not have permission
-    "roles/artifactregistry.admin"    # Error when reading or editing Resource "artifactregistry repository \"projects/prj-b-cicd-98fa/locations/us-central1/repositories/prj-tf-runners\"" with IAM Member: Role "roles/artifactregistry.writer" Member "serviceAccount:569736384662@cloudbuild.gserviceaccount.com": Error retrieving IAM policy for artifactregistry repository "projects/prj-b-cicd-98fa/locations/us-central1/repositories/prj-tf-runners": googleapi: Error 403: Permission 'artifactregistry.repositories.getIamPolicy' denied on resource '//artifactregistry.googleapis.com/projects/prj-b-cicd-98fa/locations/us-central1/repositories/prj-tf-runners'  
   ]
 }
 
@@ -87,7 +80,6 @@ resource "google_billing_account_iam_member" "tf_billing_admin" {
   member             = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
 }
 
-// Comment-out the cloudbuild_bootstrap module and its outputs if you want to use Jenkins instead of Cloud Build
 module "cloudbuild_bootstrap" {
   source                      = "terraform-google-modules/bootstrap/google//modules/cloudbuild"
   version                     = "~> 2.2"
@@ -134,34 +126,11 @@ module "cloudbuild_bootstrap" {
     env_code          = "b"
   }
 
-  terraform_apply_branches = [
-    "development",
-    "non\\-production", //non-production needs a \ to ensure regex matches correct branches.
-    "production"
-  ]
-}
-
-// Standalone repo for Terraform-validator policies.
-// This repo does not need to trigger builds in Cloud Build.
-resource "google_sourcerepo_repository" "gcp_policies" {
-  project = module.cloudbuild_bootstrap.cloudbuild_project_id
-  name    = "gcp-policies"
-
-  depends_on = [module.cloudbuild_bootstrap.csr_repos]
-}
-
-resource "google_project_iam_member" "project_source_reader" {
-  project = module.cloudbuild_bootstrap.cloudbuild_project_id
-  role    = "roles/source.reader"
-  member  = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
-
-  depends_on = [module.cloudbuild_bootstrap.csr_repos]
+  create_cloud_source_repos = false # we don't need csr repos
 }
 
 data "google_project" "cloudbuild" {
   project_id = module.cloudbuild_bootstrap.cloudbuild_project_id
-
-  depends_on = [module.cloudbuild_bootstrap.csr_repos]
 }
 
 resource "google_organization_iam_member" "org_cb_sa_browser" {
@@ -178,41 +147,31 @@ resource "google_folder_iam_member" "folder_cb_sa_browser" {
   member = "serviceAccount:${data.google_project.cloudbuild.number}@cloudbuild.gserviceaccount.com"
 }
 
-resource "google_organization_iam_member" "org_tf_compute_security_policy_admin" {
-  count  = var.parent_folder == "" ? 1 : 0
-  org_id = var.org_id
-  role   = "roles/compute.orgSecurityPolicyAdmin"
-  member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
-}
-
-resource "google_folder_iam_member" "folder_tf_compute_security_policy_admin" {
-  count  = var.parent_folder != "" ? 1 : 0
-  folder = var.parent_folder
-  role   = "roles/compute.orgSecurityPolicyAdmin"
-  member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
-}
-
-resource "google_organization_iam_member" "org_tf_compute_security_resource_admin" {
-  count  = var.parent_folder == "" ? 1 : 0
-  org_id = var.org_id
-  role   = "roles/compute.orgSecurityResourceAdmin"
-  member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
-}
-
-resource "google_folder_iam_member" "folder_tf_compute_security_resource_admin" {
-  count  = var.parent_folder != "" ? 1 : 0
-  folder = var.parent_folder
-  role   = "roles/compute.orgSecurityResourceAdmin"
-  member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
-}
-
-# Required to allow cloud build to access artifactory repo with impersonation.
-resource "google_artifact_registry_repository_iam_member" "registry_access_with_impersonation" {
-  provider = google-beta
-  project  = module.cloudbuild_bootstrap.cloudbuild_project_id
-
-  location   = var.default_region
-  repository = module.cloudbuild_bootstrap.tf_runner_artifact_repo
-  role       = "roles/artifactregistry.admin"
-  member     = "serviceAccount:${data.google_project.cloudbuild.number}@cloudbuild.gserviceaccount.com"
-}
+# TODO: terraform validator and policies
+#resource "google_organization_iam_member" "org_tf_compute_security_policy_admin" {
+#  count  = var.parent_folder == "" ? 1 : 0
+#  org_id = var.org_id
+#  role   = "roles/compute.orgSecurityPolicyAdmin"
+#  member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
+#}
+#
+#resource "google_folder_iam_member" "folder_tf_compute_security_policy_admin" {
+#  count  = var.parent_folder != "" ? 1 : 0
+#  folder = var.parent_folder
+#  role   = "roles/compute.orgSecurityPolicyAdmin"
+#  member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
+#}
+#
+#resource "google_organization_iam_member" "org_tf_compute_security_resource_admin" {
+#  count  = var.parent_folder == "" ? 1 : 0
+#  org_id = var.org_id
+#  role   = "roles/compute.orgSecurityResourceAdmin"
+#  member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
+#}
+#
+#resource "google_folder_iam_member" "folder_tf_compute_security_resource_admin" {
+#  count  = var.parent_folder != "" ? 1 : 0
+#  folder = var.parent_folder
+#  role   = "roles/compute.orgSecurityResourceAdmin"
+#  member = "serviceAccount:${module.seed_bootstrap.terraform_sa_email}"
+#}

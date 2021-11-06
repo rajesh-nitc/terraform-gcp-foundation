@@ -32,16 +32,6 @@ output "gcs_bucket_cloudbuild_artifacts" {
   value       = module.cloudbuild_bootstrap.gcs_bucket_cloudbuild_artifacts
 }
 
-output "csr_repos" {
-  description = "List of Cloud Source Repos created by the module, linked to Cloud Build triggers."
-  value       = module.cloudbuild_bootstrap.csr_repos
-}
-
-output "terraform_validator_policies_repo" {
-  description = "Cloud Source Repository created for terraform-validator policies."
-  value       = google_sourcerepo_repository.gcp_policies
-}
-
 output "kms_keyring" {
   description = "KMS Keyring created by the module."
   value       = module.cloudbuild_bootstrap.kms_keyring
