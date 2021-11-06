@@ -81,5 +81,5 @@ module "base_shared_vpc" {
   budita_cluster_uscentral1_cluster_ip_range_pods      = local.budita_cluster_uscentral1_cluster_ip_range_pods[0]
 
   # Destroy dns zones when not in use to save cost
-  create_dns_zones = var.create_dns_zones
+  create_spoke_dns_zones = var.create_spoke_dns_zones
 }

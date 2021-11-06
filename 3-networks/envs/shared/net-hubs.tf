@@ -59,7 +59,6 @@ data "google_projects" "base_net_hub" {
 module "base_shared_vpc" {
   source                        = "../../modules/base_shared_vpc"
   count                         = var.enable_hub_and_spoke ? 1 : 0
-  create_dns_zones              = false
   project_id                    = local.base_net_hub_project_id
   environment_code              = local.environment_code
   org_id                        = var.org_id

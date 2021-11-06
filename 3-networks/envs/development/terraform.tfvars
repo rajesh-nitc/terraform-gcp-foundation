@@ -61,11 +61,11 @@ subnets = [
   },
 ]
 
-# Enable nat if acm is used
-nat_enabled = false
-
 budita_cluster_uscentral1_cluster_endpoint_for_nodes = "100.64.80.0/28"
 budita_cluster_uscentral1_cluster_network_tag        = "gke-budita-d-us-central1"
 
+# Enable nat if acm is used
+nat_enabled = false
+
 # Destroy dns zones when not in use to save cost
-create_dns_zones = false
+create_spoke_dns_zones = false

@@ -182,7 +182,7 @@ variable "gke_fw_rules_enabled" {
 }
 
 # dns zones
-variable "create_dns_zones" {
+variable "create_spoke_dns_zones" {
   type    = bool
   default = true
 }

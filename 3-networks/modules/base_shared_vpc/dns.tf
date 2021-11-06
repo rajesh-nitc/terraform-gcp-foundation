@@ -1,21 +1,9 @@
-/**
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+# To save costs, we don't create dns zones for the hub network vpc
+# we create dns zones for spoke base shared vpc when we need it
 
 locals {
-  parent_id = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  parent_id         = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  dns_zones_enabled = var.mode == "hub" ? 0 : (var.create_spoke_dns_zones ? 1 : 0)
 }
 
 data "google_active_folder" "common" {
@@ -55,7 +43,7 @@ resource "google_dns_policy" "default_policy" {
  *****************************************/
 
 module "private_googleapis" {
-  count       = var.create_dns_zones ? 1 : 0 # to save cost, so that we can destroy dns zones for hub network
+  count       = local.dns_zones_enabled
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id
@@ -89,7 +77,7 @@ module "private_googleapis" {
  *****************************************/
 
 module "base_gcr" {
-  count       = var.create_dns_zones ? 1 : 0 # to save cost, so that we can destroy dns zones for hub network
+  count       = local.dns_zones_enabled
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id
@@ -123,7 +111,7 @@ module "base_gcr" {
  ***********************************************/
 
 module "base_pkg_dev" {
-  count       = var.create_dns_zones ? 1 : 0 # to save cost, so that we can destroy dns zones for hub network
+  count       = local.dns_zones_enabled
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id

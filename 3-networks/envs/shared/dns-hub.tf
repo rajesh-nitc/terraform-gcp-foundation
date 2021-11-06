@@ -86,8 +86,6 @@ resource "google_dns_policy" "default_policy" {
  DNS Forwarding
 *****************************************/
 
-# To save cost
-
 # module "dns-forwarding-zone" {
 #   source  = "terraform-google-modules/cloud-dns/google"
 #   version = "3.1.0"

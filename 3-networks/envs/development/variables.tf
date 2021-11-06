@@ -158,7 +158,7 @@ variable "budita_cluster_uscentral1_cluster_endpoint_for_nodes" {
   type = string
 }
 
-variable "create_dns_zones" {
+variable "create_spoke_dns_zones" {
   type    = bool
   default = true
 }
