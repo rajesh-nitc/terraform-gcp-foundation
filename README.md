@@ -6,7 +6,7 @@ Example repo for creating a reasonably secure foundation on gcp with terraform. 
 - gke foundation (50-54)
 - data foundation (90-94)
 
-and for each part, this repo closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) and [cloud-foundation-fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations).
+We closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) for core foundation, [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) for gke foundation and [cloud-foundation-fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations) for data foundation.
 
 ## Org Hierarchy
 ### Final view
@@ -64,8 +64,12 @@ via [GCP Organization Hierarchy Viewer](https://github.com/GoogleCloudPlatform/p
 │           └── service.yaml
 └── README.md
 ```
-## Miscellaneous
-### Save costs
+## Validation
+We have validated the foundations by deploying:
+1. Sample python app in a private gke cluster
+2. Sample dataflow pipelines
+
+## Save costs
 To save costs for personal organization, we have:  
 
 1. Disabled ```containerscanning.googleapis.com``` in ```prj-gke-c-cicd-pipeline-7989```
@@ -76,5 +80,5 @@ To save costs for personal organization, we have:
 6. Destroyed kms key version in ```prj-b-cicd-98fa```
 7. Cleaned artifact registry images in ```prj-b-cicd-98fa``` and ```prj-gke-c-cicd-pipeline-7989```
 
-### TODO
-1. Replace istio addon with asm
+## TODO
+Replace istio addon with asm
