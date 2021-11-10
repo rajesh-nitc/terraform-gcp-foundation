@@ -74,7 +74,7 @@ module "base_shared_vpc" {
   allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
 
   # GKE firewall rules for single budita cluster in us-central1
-  gke_fw_rules_enabled       = true
+  enable_gke_fw_rules        = true
   cluster_network_tag        = var.budita_cluster_uscentral1_cluster_network_tag
   cluster_endpoint_for_nodes = var.budita_cluster_uscentral1_cluster_endpoint_for_nodes
   cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]

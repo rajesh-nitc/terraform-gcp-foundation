@@ -176,7 +176,7 @@ variable "cluster_ip_range_pods" {
   default = ""
 }
 
-variable "gke_fw_rules_enabled" {
+variable "enable_gke_fw_rules" {
   type    = bool
   default = false
 }
