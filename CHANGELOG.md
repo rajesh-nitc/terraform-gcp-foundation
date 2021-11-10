@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.5.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.5.0...v1.5.1) (2021-11-10)
+
+
+### Bug Fixes
+
+* call to gke fw module from base shared vpc module now has a general name ([70b5d13](https://www.github.com/rajesh-nitc/gcp-foundation/commit/70b5d13b6149c3f7456730c5412012570a9b0aef))
+
 ## [1.5.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.4.2...v1.5.0) (2021-11-06)
 
 
