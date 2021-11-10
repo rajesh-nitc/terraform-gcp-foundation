@@ -156,22 +156,22 @@ variable "allow_all_ingress_ranges" {
 }
 
 # GKE firewall rules
-variable "budita_cluster_uscentral1_cluster_network_tag" {
+variable "cluster_network_tag" {
   type    = string
   default = ""
 }
 
-variable "budita_cluster_uscentral1_cluster_endpoint_for_nodes" {
+variable "cluster_endpoint_for_nodes" {
   type    = string
   default = ""
 }
 
-variable "budita_cluster_uscentral1_cluster_subnet_cidr" {
+variable "cluster_subnet_cidr" {
   type    = string
   default = ""
 }
 
-variable "budita_cluster_uscentral1_cluster_ip_range_pods" {
+variable "cluster_ip_range_pods" {
   type    = string
   default = ""
 }

@@ -74,11 +74,11 @@ module "base_shared_vpc" {
   allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
 
   # GKE firewall rules for single budita cluster in us-central1
-  gke_fw_rules_enabled                                 = true
-  budita_cluster_uscentral1_cluster_network_tag        = var.budita_cluster_uscentral1_cluster_network_tag
-  budita_cluster_uscentral1_cluster_endpoint_for_nodes = var.budita_cluster_uscentral1_cluster_endpoint_for_nodes
-  budita_cluster_uscentral1_cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]
-  budita_cluster_uscentral1_cluster_ip_range_pods      = local.budita_cluster_uscentral1_cluster_ip_range_pods[0]
+  gke_fw_rules_enabled       = true
+  cluster_network_tag        = var.budita_cluster_uscentral1_cluster_network_tag
+  cluster_endpoint_for_nodes = var.budita_cluster_uscentral1_cluster_endpoint_for_nodes
+  cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]
+  cluster_ip_range_pods      = local.budita_cluster_uscentral1_cluster_ip_range_pods[0]
 
   # Destroy dns zones when not in use to save cost
   create_spoke_dns_zones = var.create_spoke_dns_zones
