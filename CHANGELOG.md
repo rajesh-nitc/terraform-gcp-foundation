@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.5.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.5.1...v1.5.2) (2021-11-10)
+
+
+### Bug Fixes
+
+* changed variable gke_fw_rules_enabled to enable_gke_fw_rules ([e00745a](https://www.github.com/rajesh-nitc/gcp-foundation/commit/e00745aeb09f5dff24b6e5c947205639f747665f))
+
 ### [1.5.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.5.0...v1.5.1) (2021-11-10)
 
 
