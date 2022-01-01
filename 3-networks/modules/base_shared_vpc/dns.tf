@@ -45,7 +45,7 @@ resource "google_dns_policy" "default_policy" {
 module "private_googleapis" {
   count       = local.dns_zones_enabled
   source      = "terraform-google-modules/cloud-dns/google"
-  version     = "~> 3.1"
+  version     = "~> 4.1"
   project_id  = var.project_id
   type        = "private"
   name        = "dz-${var.environment_code}-shared-base-apis"
