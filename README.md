@@ -9,6 +9,7 @@ We closely follow [terraform-example-foundation](https://github.com/terraform-go
 - data foundation (20-24)
 
 ### 2. Migrations
+Following [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) for vm migration with m4ce
 - vm migration (30-31)
 
 ## Org Hierarchy
