@@ -19,7 +19,7 @@ steps:
   args:
   - -c
   - |
-    cd 4-projects/business_unit_1/shared   
+    cd 04-projects/business_unit_1/shared   
     terraform init
     terraform apply --auto-approve
     cd ..

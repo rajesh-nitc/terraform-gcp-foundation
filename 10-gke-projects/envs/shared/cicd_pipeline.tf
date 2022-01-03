@@ -1,5 +1,5 @@
 module "app_cicd_project" {
-  source               = "../../../4-projects/modules/single_project"
+  source               = "../../../04-projects/modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account
   environment          = "common"
@@ -39,7 +39,7 @@ module "app_cicd_project" {
 }
 
 module "cicd_pipeline" {
-  source               = "../../../4-projects/modules/cicd_pipelines"
+  source               = "../../../04-projects/modules/cicd_pipelines"
   app_cicd_project_id  = module.app_cicd_project.project_id
   monorepo_folders     = ["14-gke-app-cicd"]
   gar_repo_name_suffix = "cicd-image-repo"

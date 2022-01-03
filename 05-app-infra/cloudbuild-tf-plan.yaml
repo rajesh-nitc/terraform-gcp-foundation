@@ -22,7 +22,7 @@ steps:
   args:
   - -c
   - |
-    cd 5-app-infra/business_unit_1/development    
+    cd 05-app-infra/business_unit_1/development    
     terraform init
     terraform plan
 

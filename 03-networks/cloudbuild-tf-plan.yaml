@@ -19,7 +19,7 @@ steps:
   args:
   - -c
   - |
-    cd 3-networks/envs/shared    
+    cd 03-networks/envs/shared    
     terraform init
     terraform plan
     cd ..

@@ -1,5 +1,5 @@
 module "landing_project" {
-  source               = "../../../4-projects/modules/single_project"
+  source               = "../../../04-projects/modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account
   environment          = var.environment
@@ -33,7 +33,7 @@ module "landing_project" {
 }
 
 module "transformation_project" {
-  source               = "../../../4-projects/modules/single_project"
+  source               = "../../../04-projects/modules/single_project"
   enable_hub_and_spoke = true
   org_id               = var.org_id
   billing_account      = var.billing_account
@@ -72,7 +72,7 @@ module "transformation_project" {
 }
 
 module "dwh_project" {
-  source               = "../../../4-projects/modules/single_project"
+  source               = "../../../04-projects/modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account
   environment          = var.environment

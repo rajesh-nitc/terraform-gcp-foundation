@@ -50,7 +50,7 @@ module "infra_pipelines" {
   cloudbuild_project_id = module.app_infra_cloudbuild_project.project_id
   business_code         = "bu1"
   org_id                = var.org_id
-  monorepo_folders      = ["5-app-infra"]
+  monorepo_folders      = ["05-app-infra"]
   group_email           = var.group_email
 }
 

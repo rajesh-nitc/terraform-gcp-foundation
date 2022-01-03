@@ -1,9 +1,9 @@
 locals {
   monorepo_folders = [
-    "1-org",
-    "2-environments",
-    "3-networks",
-    "4-projects",
+    "01-org",
+    "02-environments",
+    "03-networks",
+    "04-projects",
     "10-gke-projects",
     "20-data-projects",
   ]

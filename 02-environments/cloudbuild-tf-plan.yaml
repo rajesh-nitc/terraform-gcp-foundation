@@ -19,7 +19,7 @@ steps:
   args:
   - -c
   - |
-    cd 2-environments/envs/development    
+    cd 02-environments/envs/development    
     terraform init
     terraform plan
 

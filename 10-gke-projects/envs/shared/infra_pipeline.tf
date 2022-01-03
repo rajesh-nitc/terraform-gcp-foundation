@@ -1,5 +1,5 @@
 module "app_infra_cloudbuild_project" {
-  source               = "../../../4-projects/modules/single_project"
+  source               = "../../../04-projects/modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account
   environment          = "common"
@@ -30,7 +30,7 @@ module "app_infra_cloudbuild_project" {
 }
 
 module "infra_pipelines" {
-  source = "../../../4-projects/modules/infra_pipelines"
+  source = "../../../04-projects/modules/infra_pipelines"
 
   cloudbuild_project_id = module.app_infra_cloudbuild_project.project_id
   business_code         = "gke"

@@ -1,49 +1,42 @@
 version: 2
 updates:
   - package-ecosystem: "terraform"
-    directory: "0-bootstrap"
+    directory: "00-bootstrap"
     schedule:
       interval: "monthly"
     commit-message:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "1-org/envs/shared"
+    directory: "01-org/envs/shared"
     schedule:
       interval: "monthly"
     commit-message:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "2-environments/modules/env_baseline"
+    directory: "02-environments/modules/env_baseline"
     schedule:
       interval: "monthly"
     commit-message:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "3-networks/modules/base_shared_vpc"
+    directory: "03-networks/modules/base_shared_vpc"
     schedule:
       interval: "monthly"
     commit-message:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "3-networks/envs/shared"
+    directory: "03-networks/envs/shared"
     schedule:
       interval: "monthly"
     commit-message:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "4-projects/modules/single_project"
-    schedule:
-      interval: "monthly"
-    commit-message:
-      prefix: "chore(deps): "
-    rebase-strategy: "disabled"
-  - package-ecosystem: "terraform"
-    directory: "5-app-infra/modules/env_base"
+    directory: "04-projects/modules/single_project"
     schedule:
       interval: "monthly"
     commit-message:
