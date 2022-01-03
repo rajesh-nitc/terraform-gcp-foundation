@@ -1,5 +1,6 @@
 locals {
   env_code               = element(split("", var.environment), 0)
+  folder_id              = data.google_active_folder.env.name
   shared_vpc_mode        = var.enable_hub_and_spoke ? "-spoke" : ""
   svpc_host_project_id   = var.vpc_type == "" ? "" : data.google_compute_network.shared_vpc[0].project
   shared_vpc_subnets_map = var.vpc_type == "" ? {} : data.google_compute_subnetwork.shared_subnets

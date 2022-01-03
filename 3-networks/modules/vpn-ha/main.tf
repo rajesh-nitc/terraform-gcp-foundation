@@ -41,6 +41,7 @@ data "google_secret_manager_secret_version" "psk" {
 
 module "vpn_ha_region1_router1" {
   source     = "terraform-google-modules/vpn/google//modules/vpn_ha"
+  version    = "2.1.0"
   project_id = var.project_id
   region     = var.default_region1
   network    = local.network_name
@@ -87,6 +88,7 @@ module "vpn_ha_region1_router1" {
 
 module "vpn_ha_region1_router2" {
   source     = "terraform-google-modules/vpn/google//modules/vpn_ha"
+  version    = "2.1.0"
   project_id = var.project_id
   region     = var.default_region1
   network    = local.network_name
@@ -133,6 +135,7 @@ module "vpn_ha_region1_router2" {
 
 module "vpn_ha_region2_router1" {
   source     = "terraform-google-modules/vpn/google//modules/vpn_ha"
+  version    = "2.1.0"
   project_id = var.project_id
   region     = var.default_region2
   network    = local.network_name
@@ -179,6 +182,7 @@ module "vpn_ha_region2_router1" {
 
 module "vpn_ha_region2_router2" {
   source     = "terraform-google-modules/vpn/google//modules/vpn_ha"
+  version    = "2.1.0"
   project_id = var.project_id
   region     = var.default_region2
   network    = local.network_name

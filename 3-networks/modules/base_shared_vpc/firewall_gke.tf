@@ -1,4 +1,4 @@
-module gke_fw_rules {
+module "gke_fw_rules" {
   source                     = "../gke_firewall_rules"
   count                      = var.enable_gke_fw_rules ? 1 : 0
   environment_code           = var.environment_code

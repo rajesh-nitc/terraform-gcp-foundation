@@ -1,7 +1,3 @@
-locals {
-  folder_id = data.google_active_folder.env.name
-}
-
 data "google_active_folder" "env" {
   display_name = "${var.folder_prefix}-${var.environment}"
   parent       = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"

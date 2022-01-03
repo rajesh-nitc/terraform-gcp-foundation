@@ -1,4 +1,4 @@
-module infra_landing {
+module "infra_landing" {
   source       = "../../modules/env_base"
   org_id       = var.org_id
   environment  = "development"

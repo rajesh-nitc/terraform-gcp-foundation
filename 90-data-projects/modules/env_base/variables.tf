@@ -43,7 +43,7 @@ variable "perimeter_name" {
 
 variable "peering_module_depends_on" {
   description = "List of modules or resources peering module depends on."
-  type        = list
+  type        = list(any)
   default     = []
 }
 

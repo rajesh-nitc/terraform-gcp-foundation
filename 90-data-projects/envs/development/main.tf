@@ -1,4 +1,4 @@
-module projects_data {
+module "projects_data" {
   source                           = "../../modules/env_base"
   terraform_service_account        = var.terraform_service_account
   org_id                           = var.org_id

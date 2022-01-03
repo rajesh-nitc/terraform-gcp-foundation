@@ -30,12 +30,12 @@ variable "region" {
   default     = "us-central1"
 }
 
-variable vpc_type {
+variable "vpc_type" {
   type    = string
   default = "base"
 }
 
-variable business_code {
+variable "business_code" {
   type    = string
   default = "gke"
 }

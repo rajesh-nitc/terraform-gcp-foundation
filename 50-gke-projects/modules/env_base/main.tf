@@ -17,7 +17,7 @@ locals {
   # ]
 }
 
-module gke_project {
+module "gke_project" {
   source                   = "../../../4-projects/modules/single_project"
   enable_hub_and_spoke     = true
   org_id                   = var.org_id

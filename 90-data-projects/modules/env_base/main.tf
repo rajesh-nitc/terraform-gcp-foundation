@@ -1,4 +1,4 @@
-module landing_project {
+module "landing_project" {
   source               = "../../../4-projects/modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account
@@ -32,7 +32,7 @@ module landing_project {
   business_code     = "data"
 }
 
-module transformation_project {
+module "transformation_project" {
   source               = "../../../4-projects/modules/single_project"
   enable_hub_and_spoke = true
   org_id               = var.org_id
@@ -71,7 +71,7 @@ module transformation_project {
   business_code     = "data"
 }
 
-module dwh_project {
+module "dwh_project" {
   source               = "../../../4-projects/modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account

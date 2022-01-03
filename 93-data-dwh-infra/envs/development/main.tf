@@ -1,4 +1,4 @@
-module infra_dwh {
+module "infra_dwh" {
   source            = "../../modules/env_base"
   org_id            = var.org_id
   environment       = "development"

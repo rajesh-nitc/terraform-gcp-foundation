@@ -18,7 +18,7 @@ variable "folder_prefix" {
   default     = "fldr"
 }
 
-variable business_code {
+variable "business_code" {
   type    = string
   default = "gke"
 }
