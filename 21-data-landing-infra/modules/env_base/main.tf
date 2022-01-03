@@ -11,7 +11,7 @@ locals {
 
 module "buckets_landing" {
   source     = "terraform-google-modules/cloud-storage/google"
-  version    = "3.0.0"
+  version    = "3.1.0"
   project_id = local.project_id
   prefix     = ""
 
