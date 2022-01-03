@@ -2,13 +2,13 @@
 
 Example repo showing how to build a secure foundation on gcp with terraform. It is made up of following parts:
 
-###1. Foundations
+### 1. Foundations
 We closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) for core foundation, [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) for gke foundation and [cloud-foundation-fabric/data-platform-foundations](https://github.com/terraform-google-modules/cloud-foundation-fabric/tree/master/data-solutions/data-platform-foundations) for data foundation.
 - core foundation (0-5)
 - gke foundation (50-54)
 - data foundation (90-94)
 
-###2. Migrations
+### 2. Migrations
 - vm migration (100-101)
 
 ## Org Hierarchy
