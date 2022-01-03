@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.5.2...v1.6.0) (2022-01-03)
+
+
+### Features
+
+* Added m4ce host project ([d923c83](https://www.github.com/rajesh-nitc/gcp-foundation/commit/d923c83613f51a510bb4e7087abdd619a1a18f32))
+
 ### [1.5.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.5.1...v1.5.2) (2021-11-10)
 
 
