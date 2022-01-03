@@ -50,28 +50,28 @@ updates:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "51-gke-infra/modules/single_cluster"
+    directory: "11-gke-infra/modules/single_cluster"
     schedule:
       interval: "monthly"
     commit-message:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "91-data-landing-infra/modules/env_base"
+    directory: "21-data-landing-infra/modules/env_base"
     schedule:
       interval: "monthly"
     commit-message:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "92-data-transformation-infra/modules/env_base"
+    directory: "22-data-transformation-infra/modules/env_base"
     schedule:
       interval: "monthly"
     commit-message:
       prefix: "chore(deps): "
     rebase-strategy: "disabled"
   - package-ecosystem: "terraform"
-    directory: "93-data-dwh-infra/modules/env_base"
+    directory: "23-data-dwh-infra/modules/env_base"
     schedule:
       interval: "monthly"
     commit-message:

@@ -4,8 +4,8 @@ locals {
     "2-environments",
     "3-networks",
     "4-projects",
-    "90-data-projects",
-    "50-gke-projects"
+    "10-gke-projects",
+    "20-data-projects",
   ]
 
   terraform_service_account = module.seed_bootstrap.terraform_sa_email
