@@ -9,7 +9,7 @@ We closely follow [terraform-example-foundation](https://github.com/terraform-go
 - data foundation (90-94)
 
 ### 2. Migrations
-- vm migration (100-101)
+- vm migration (990-991)
 
 ## Org Hierarchy
 We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) to generate the view:
