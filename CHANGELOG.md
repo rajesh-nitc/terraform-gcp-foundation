@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.6.0...v1.7.0) (2022-01-04)
+
+
+### Features
+
+* Added m4ce connector ([d2b9de1](https://www.github.com/rajesh-nitc/gcp-foundation/commit/d2b9de122b29f10d62347772559d7dd384d0a7f4))
+
 ## [1.6.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.5.2...v1.6.0) (2022-01-03)
 
 
