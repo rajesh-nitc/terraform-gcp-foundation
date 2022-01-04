@@ -37,7 +37,7 @@ module "m4ce_host_project" {
   ]
 
   group_email     = var.group_email
-  group_iam_roles = local.iam_roles_host_project # User roles on host project
+  group_iam_roles = local.iam_roles_host_project # User roles on m4ce host project
 
   # Metadata
   project_suffix    = "host"
