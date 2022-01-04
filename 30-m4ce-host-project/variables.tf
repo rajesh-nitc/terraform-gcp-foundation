@@ -20,3 +20,7 @@ variable "group_email" {
 variable "target_projects" {
   type = list(string)
 }
+
+variable "host_project_id" {
+  type = string
+}
