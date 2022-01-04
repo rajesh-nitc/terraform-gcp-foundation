@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.7.0...v1.8.0) (2022-01-04)
+
+
+### Features
+
+* Added m4ce sharedvpc access ([e1d41e1](https://www.github.com/rajesh-nitc/gcp-foundation/commit/e1d41e1d557ee2fd9b7868abc6544398121f44a6))
+
 ## [1.7.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.6.0...v1.7.0) (2022-01-04)
 
 
