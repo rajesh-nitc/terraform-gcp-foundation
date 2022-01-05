@@ -39,6 +39,7 @@ variable "m4ce_ssh_public_key" {
 }
 
 variable "vcenter_password" {
+  type = string
 
 }
 
@@ -46,4 +47,8 @@ variable "m4ce_connector_ovf_url" {
   description = "http URL to the public M4CE connector OVA image"
   type        = string
   default     = "https://storage.googleapis.com/vmmigration-public-artifacts/migrate-connector-2-0-1663.ova"
+}
+
+variable "m4ce_vcenter_user_password" {
+  type = string
 }

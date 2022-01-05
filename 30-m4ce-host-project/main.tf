@@ -1,5 +1,5 @@
 locals {
-  iam_roles_host_project = [
+  iam_roles_m4ce_host_project = [
     "roles/iam.serviceAccountKeyAdmin",
     "roles/iam.serviceAccountCreator",
     "roles/vmmigration.admin",
@@ -37,7 +37,7 @@ module "m4ce_host_project" {
   ]
 
   group_email     = var.group_email
-  group_iam_roles = local.iam_roles_host_project # User roles on m4ce host project
+  group_iam_roles = local.iam_roles_m4ce_host_project # User roles on m4ce host project
 
   # Metadata
   project_suffix    = "host"
@@ -54,9 +54,9 @@ resource "google_service_account" "m4ce_connector_sa" {
   display_name = "m4ce Connector SA"
 }
 
-# m4ce connector sa roles on host project
+# m4ce connector sa roles on m4ce host project
 resource "google_project_iam_member" "m4ce_connector_sa_roles" {
-  for_each = toset(local.iam_roles_host_project)
+  for_each = toset(local.iam_roles_m4ce_host_project)
   project  = module.m4ce_host_project.project_id
   role     = each.value
   member   = "serviceAccount:${google_service_account.m4ce_connector_sa.email}"
