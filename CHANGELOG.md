@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.8.1...v1.9.0) (2022-01-07)
+
+
+### Features
+
+* microsoft managed ad ([a7524ec](https://www.github.com/rajesh-nitc/gcp-foundation/commit/a7524ecada122c10587698146a492971e69ccb97))
+
 ### [1.8.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.8.0...v1.8.1) (2022-01-07)
 
 
