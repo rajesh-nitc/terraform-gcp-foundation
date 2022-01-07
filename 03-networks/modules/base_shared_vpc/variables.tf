@@ -186,3 +186,14 @@ variable "create_spoke_dns_zones" {
   type    = bool
   default = true
 }
+
+# AD
+variable "ad_domain_ip_range" {
+  type    = list(string)
+  default = []
+}
+
+variable "enable_ad_fw_rule" {
+  type    = bool
+  default = false
+}

@@ -13,8 +13,7 @@ Following [cloud-foundation-fabric](https://github.com/terraform-google-modules/
 - vm migration (30-31)
 
 ### 3. Modernizations
-TBD
-- TBD
+- microsoft managed ad (40-42)
 
 ## Org Hierarchy
 We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) to generate the view:
@@ -33,6 +32,7 @@ We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profes
  |   +-- 📦 prj-c-dns-hub-c4a2
  |   +-- 📦 prj-c-logging-8083
  +-- 📁 fldr-development (267943501446)
+     +-- 📦 prj-ad-d-mgmt-6b1d
      +-- 📦 prj-gke-d-clusters-3c96
      +-- 📦 prj-data-d-landing-0816
      +-- 📦 prj-data-d-dwh-3f33

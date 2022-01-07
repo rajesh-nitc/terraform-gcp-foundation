@@ -10,8 +10,6 @@ locals {
   base_hub_subnet_ranges = []
 
   # Base Shared VPC
-  base_private_service_cidr = "10.16.64.0/21"
-
   base_subnet_primary_ranges = flatten([for i in var.subnets : {
 
     subnet_name           = "sb-${local.environment_code}-shared-base-${i.region}-${i.team}"
@@ -34,6 +32,9 @@ locals {
 
   budita_cluster_uscentral1_subnet_cidr           = [for i in var.subnets : i.subnet_ip if i.team == "gke" && i.region == var.default_region1]
   budita_cluster_uscentral1_cluster_ip_range_pods = [for i in var.subnets : i.secondary_ip_range["pod"] if i.team == "gke" && i.region == var.default_region1]
+
+  # AD
+  ad_domain_ip_range = [for i in var.subnets : i.subnet_ip if i.team == "ad" && i.region == var.default_region1]
 }
 
 data "google_active_folder" "env" {
@@ -49,7 +50,7 @@ module "base_shared_vpc" {
   source                        = "../../modules/base_shared_vpc"
   project_id                    = local.base_project_id
   environment_code              = local.environment_code
-  private_service_cidr          = local.base_private_service_cidr
+  private_service_cidr          = var.private_service_cidr
   org_id                        = var.org_id
   parent_folder                 = var.parent_folder
   default_region1               = var.default_region1
@@ -84,4 +85,8 @@ module "base_shared_vpc" {
 
   # Destroy dns zones when not in use to save cost
   create_spoke_dns_zones = var.create_spoke_dns_zones
+
+  # AD
+  enable_ad_fw_rule  = true
+  ad_domain_ip_range = local.ad_domain_ip_range
 }

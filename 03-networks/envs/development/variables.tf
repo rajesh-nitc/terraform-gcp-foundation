@@ -162,3 +162,8 @@ variable "create_spoke_dns_zones" {
   type    = bool
   default = true
 }
+
+variable "private_service_cidr" {
+  type        = string
+  description = "CIDR range for private service networking. Used for Cloud SQL and other managed services."
+}

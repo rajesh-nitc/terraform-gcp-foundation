@@ -7,7 +7,11 @@ enable_hub_and_spoke              = true
 enable_hub_and_spoke_transitivity = false
 access_context_manager_policy_id  = null
 
+private_service_cidr = "10.16.64.0/21"
+# reserved for Managed Microsoft Ad : 10.16.64.0/24
+
 subnets = [
+  # us-central1
   {
     team                  = "bu1"
     subnet_ip             = "10.0.64.0/21"
@@ -36,6 +40,15 @@ subnets = [
     }
   },
   {
+    team                  = "ad"
+    subnet_ip             = "10.0.88.0/24"
+    region                = "us-central1"
+    enable_flow_logs      = false
+    enable_private_access = true
+    secondary_ip_range    = {}
+  },
+  # us-west1
+  {
     team                  = "bu1"
     subnet_ip             = "10.1.64.0/21"
     region                = "us-west1"
@@ -54,6 +67,14 @@ subnets = [
   {
     team                  = "gke"
     subnet_ip             = "10.1.80.0/21"
+    region                = "us-west1"
+    enable_flow_logs      = false
+    enable_private_access = true
+    secondary_ip_range    = {}
+  },
+  {
+    team                  = "ad"
+    subnet_ip             = "10.1.88.0/24"
     region                = "us-west1"
     enable_flow_logs      = false
     enable_private_access = true
