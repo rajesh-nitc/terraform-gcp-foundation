@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.8.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.8.0...v1.8.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* api service identity for vmmigration.googleapis.com ([47f8406](https://www.github.com/rajesh-nitc/gcp-foundation/commit/47f8406d1c9e56e5c13f82e7630d4cd929e28d05))
+
 ## [1.8.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.7.0...v1.8.0) (2022-01-04)
 
 
