@@ -20,7 +20,8 @@ locals {
     subnet_private_access = i.enable_private_access
     subnet_flow_logs      = i.enable_flow_logs
     }
-  ])
+    ]
+  )
 
   secondary_ranges = { for i in var.subnets :
 
@@ -28,7 +29,8 @@ locals {
       range_name    = "rn-${local.environment_code}-shared-base-${i.region}-gke-${k}"
       ip_cidr_range = v
       }
-  ] }
+    ]
+  }
 
   budita_cluster_uscentral1_subnet_cidr           = [for i in var.subnets : i.subnet_ip if i.team == "gke" && i.region == var.default_region1]
   budita_cluster_uscentral1_cluster_ip_range_pods = [for i in var.subnets : i.secondary_ip_range["pod"] if i.team == "gke" && i.region == var.default_region1]

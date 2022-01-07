@@ -6,7 +6,7 @@ locals {
   shared_vpc_subnets_map = var.vpc_type == "" ? {} : data.google_compute_subnetwork.shared_subnets
   shared_vpc_subnets     = var.vpc_type == "" ? [] : [for i in local.shared_vpc_subnets_map : i.self_link]
 
-  # apis
+  # default apis
   default_apis = [
     "iam.googleapis.com",
     "iamcredentials.googleapis.com", # dependent on iam.googleapis.com
@@ -30,18 +30,34 @@ locals {
   service_prj_composer_sa   = format("service-%s@cloudcomposer-accounts.iam.gserviceaccount.com", module.project.project_number)
   service_prj_dataproc_sa   = format("service-%s@dataproc-accounts.iam.gserviceaccount.com", module.project.project_number)
   service_prj_vpc_access_sa = format("service-%s@gcp-sa-vpcaccess.iam.gserviceaccount.com", module.project.project_number)
+
+  # jit services
+  jit_services = [
+    "secretmanager.googleapis.com",
+    "pubsub.googleapis.com",
+    "cloudasset.googleapis.com",
+    "vmmigration.googleapis.com",
+  ]
+
+  activate_api_identities_list_strings = setintersection(var.activate_apis, local.jit_services)
+  activate_api_identities = [for i in local.activate_api_identities_list_strings : {
+    api   = i
+    roles = []
+    }
+  ]
 }
 
 module "project" {
-  source            = "terraform-google-modules/project-factory/google"
-  version           = "~> 11.1"
-  random_project_id = var.random_project_id
-  activate_apis     = distinct(concat(var.activate_apis, local.default_apis, local.oslogin_api, local.iap_api))
-  name              = "${var.project_prefix}-${var.business_code}-${local.env_code}-${var.project_suffix}"
-  org_id            = var.org_id
-  project_id        = var.project_id
-  billing_account   = var.billing_account
-  folder_id         = local.folder_id
+  source                  = "terraform-google-modules/project-factory/google"
+  version                 = "~> 11.1"
+  random_project_id       = var.random_project_id
+  activate_apis           = distinct(concat(var.activate_apis, local.default_apis, local.oslogin_api, local.iap_api))
+  activate_api_identities = local.activate_api_identities
+  name                    = "${var.project_prefix}-${var.business_code}-${local.env_code}-${var.project_suffix}"
+  org_id                  = var.org_id
+  project_id              = var.project_id
+  billing_account         = var.billing_account
+  folder_id               = local.folder_id
 
   svpc_host_project_id = local.svpc_host_project_id
   shared_vpc_subnets   = local.shared_vpc_subnets
