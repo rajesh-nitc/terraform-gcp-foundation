@@ -13,7 +13,8 @@ Following [cloud-foundation-fabric](https://github.com/terraform-google-modules/
 - vm migration (30-31)
 
 ### 3. Modernizations
-- microsoft managed ad (40-42)
+Managed service for Microsoft AD?
+- managed ad (40-42)
 
 ## Org Hierarchy
 We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) to generate the view:
