@@ -204,7 +204,12 @@ module "base_network_hub" {
     "logging.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "billingbudgets.googleapis.com",
-    "iamcredentials.googleapis.com"
+    "iamcredentials.googleapis.com",
+    # Network Intelligence
+    "networktopology.googleapis.com",
+    "networkmanagement.googleapis.com",
+    "firewallinsights.googleapis.com",
+
   ]
 
   labels = {
