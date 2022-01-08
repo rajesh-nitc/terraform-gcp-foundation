@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.9.0...v1.10.0) (2022-01-08)
+
+
+### Features
+
+* enabled network intelligence apis on hub and spoke shared vpcs ([c324434](https://www.github.com/rajesh-nitc/gcp-foundation/commit/c324434896b165d286d9b8f570874189010e92f4))
+
 ## [1.9.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.8.1...v1.9.0) (2022-01-07)
 
 
