@@ -13,7 +13,6 @@ Following [cloud-foundation-fabric](https://github.com/terraform-google-modules/
 - vm migration (30-31)
 
 ### 3. Modernizations
-Managed service for Microsoft AD?
 - managed ad (40-42)
 
 ## Org Hierarchy
