@@ -15,7 +15,7 @@ Following [cloud-foundation-fabric](https://github.com/terraform-google-modules/
 ### 3. Modernizations
 - managed ad (40-42)
 
-## Org Hierarchy
+## Org Hierarchy view
 We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer) to generate the view:
 ```
 🏢 budita.dev (157305482127)
@@ -42,7 +42,7 @@ We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profes
 ```
 
 
-## GKE Platform Admins Repo view
+## GKE Admins Repo view
 
 ```
 .
@@ -76,7 +76,7 @@ We have validated the foundations by deploying:
 - Sample app in a private gke cluster
 - Sample dataflow pipelines
 
-## Save costs
+## Costs
 To save costs for personal organization, we have:  
 
 - Disabled ```containerscanning.googleapis.com``` in ```prj-gke-c-cicd-pipeline-7989```
