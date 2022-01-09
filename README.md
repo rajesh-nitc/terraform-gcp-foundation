@@ -1,6 +1,6 @@
 # gcp-foundation 
 
-Example repo showing how to build a secure foundation on gcp with terraform. It is made up of following parts:
+Example repo showing how to build a secure foundation / landing zone on gcp with terraform. It is made up of following parts:
 
 ### 1. Foundations
 We closely follow [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) for core foundation, [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) for gke foundation and [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) for data foundation.
