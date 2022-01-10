@@ -58,11 +58,11 @@ module "base_shared_vpc" {
   default_region2               = var.default_region2
   domain                        = var.domain
   bgp_asn_subnet                = local.bgp_asn_number
-  windows_activation_enabled    = var.windows_activation_enabled
   dns_enable_inbound_forwarding = var.dns_enable_inbound_forwarding
   dns_enable_logging            = var.dns_enable_logging
   firewall_enable_logging       = var.firewall_enable_logging
   optional_fw_rules_enabled     = true
+  windows_activation_enabled    = true # Fw rule for windows vms
   nat_enabled                   = var.nat_enabled
   nat_bgp_asn                   = var.nat_bgp_asn
   nat_num_addresses_region1     = var.nat_num_addresses_region1
@@ -76,6 +76,9 @@ module "base_shared_vpc" {
 
   allow_all_ingress_ranges = local.enable_transitivity ? local.base_hub_subnet_ranges : null
   allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
+
+  # Dataflow
+  enable_dataflow_fw_rule = true
 
   # GKE firewall rules for single budita cluster in us-central1
   enable_gke_fw_rules        = true
@@ -91,6 +94,4 @@ module "base_shared_vpc" {
   enable_ad_fw_rule  = true
   ad_domain_ip_range = local.ad_domain_ip_range
 
-  # Dataflow
-  enable_dataflow_fw_rule = true
 }
