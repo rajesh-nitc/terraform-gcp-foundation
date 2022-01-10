@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.0.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.0.0...v2.0.1) (2022-01-10)
+
+
+### Bug Fixes
+
+* clear distinction between hub and spoke fw rules ([5e49f1f](https://www.github.com/rajesh-nitc/gcp-foundation/commit/5e49f1f52bf311de0bf427a81e8b5017a004214c))
+
 ## [2.0.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v1.10.0...v2.0.0) (2022-01-09)
 
 
