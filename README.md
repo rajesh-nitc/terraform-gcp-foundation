@@ -40,7 +40,7 @@ We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profes
      +-- 📦 prj-bu1-d-sample-base-9208
      +-- 📦 prj-d-shared-base-21a3
 ```
-## Org IP Address Space
+## Org IP Address Space view
 
 budita.dev
 - us-central1 10.0.0.0/16
