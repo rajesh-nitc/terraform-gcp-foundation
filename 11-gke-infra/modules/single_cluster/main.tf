@@ -52,7 +52,7 @@ module "gke" {
   }
 
   node_pools_tags = {
-    "np-${var.region}" = ["allow-google-apis", "allow-lb", "egress-internet"]
+    "np-${var.region}" = ["allow-google-apis", "allow-lb", "egress-internet"] # egress-internet tag to allow access to acm repo on github
   }
 
   node_pools = var.node_pools

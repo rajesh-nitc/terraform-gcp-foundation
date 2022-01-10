@@ -9,7 +9,7 @@ locals {
   base_subnet_aggregates = []
   base_hub_subnet_ranges = []
 
-  # Base Shared VPC
+  # Subnets
   base_subnet_primary_ranges = flatten([for i in var.subnets : {
 
     subnet_name           = "sb-${local.environment_code}-shared-base-${i.region}-${i.team}"
@@ -21,6 +21,7 @@ locals {
     ]
   )
 
+  # GKE
   secondary_ranges = { for i in var.subnets :
 
     "sb-${local.environment_code}-shared-base-${i.region}-${i.team}" => [for k, v in i.secondary_ip_range : {
@@ -89,4 +90,7 @@ module "base_shared_vpc" {
   # AD
   enable_ad_fw_rule  = true
   ad_domain_ip_range = local.ad_domain_ip_range
+
+  # Dataflow
+  enable_dataflow_fw_rule = true
 }

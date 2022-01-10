@@ -1,8 +1,7 @@
-# To save costs, we don't create dns zones for the hub network vpc
-# we create dns zones for spoke base shared vpc when we need it
-
 locals {
-  parent_id         = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  parent_id = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  # To save costs, we don't create dns zones for the hub vpc
+  # But create them for spoke vpcs on demand
   dns_zones_enabled = var.mode == "hub" ? 0 : (var.create_spoke_dns_zones ? 1 : 0)
 }
 

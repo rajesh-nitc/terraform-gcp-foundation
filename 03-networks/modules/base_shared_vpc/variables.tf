@@ -197,3 +197,9 @@ variable "enable_ad_fw_rule" {
   type    = bool
   default = false
 }
+
+# Dataflow
+variable "enable_dataflow_fw_rule" {
+  type    = bool
+  default = false
+}

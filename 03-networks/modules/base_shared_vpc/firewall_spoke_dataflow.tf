@@ -1,4 +1,5 @@
 resource "google_compute_firewall" "allow_dataflow_internal" {
+  count     = var.enable_dataflow_fw_rule ? 1 : 0
   name      = "fw-${var.environment_code}-shared-base-1000-i-a-dataflow-internal"
   network   = module.main.network_name
   project   = var.project_id

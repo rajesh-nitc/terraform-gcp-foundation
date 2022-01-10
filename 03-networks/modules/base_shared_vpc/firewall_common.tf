@@ -51,7 +51,7 @@ resource "google_compute_firewall" "allow_private_api_egress" {
 
   destination_ranges = [local.private_googleapis_cidr]
 
-  target_tags = ["allow-google-apis", "dataflow"]
+  target_tags = ["allow-google-apis"]
 }
 
 /******************************************
