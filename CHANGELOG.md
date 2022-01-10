@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.0.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.0.1...v2.0.2) (2022-01-10)
+
+
+### Bug Fixes
+
+* enabled fw rule for windows vms ([c4e8af5](https://www.github.com/rajesh-nitc/gcp-foundation/commit/c4e8af569974cca4ba615fc2f33da30e56feb327))
+
 ### [2.0.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.0.0...v2.0.1) (2022-01-10)
 
 
