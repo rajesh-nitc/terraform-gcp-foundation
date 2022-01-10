@@ -43,7 +43,7 @@ We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profes
 ## Org IP Address Space view
 
 ```
-budita.dev
+🏢 budita.dev
 - us-central1 10.0.0.0/16
   - Hub 10.0.0.0/18
     - sb 10.0.0.0/24
