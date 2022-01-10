@@ -62,7 +62,7 @@ budita.dev
 - Dev Private Service 10.16.64.0/21
   - ad 10.16.64.0/24
 
-## GKE Admins Repo view
+## Org GKE Admins Repo view
 
 ```
 .
