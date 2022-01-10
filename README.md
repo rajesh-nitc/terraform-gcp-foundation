@@ -106,3 +106,5 @@ To save costs for personal organization, we have:
 - Destroyed log sink to avoid streaming insert costs in case of bigquery 
 - Destroyed kms key version in ```prj-b-cicd-98fa```
 - Cleaned artifact registry images in ```prj-b-cicd-98fa``` and ```prj-gke-c-cicd-pipeline-7989```
+
+**Warning**: Don't enable firewall insights api for personal org as it is a costly operation
