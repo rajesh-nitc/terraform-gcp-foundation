@@ -42,6 +42,7 @@ We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profes
 ```
 ## Org IP Address Space view
 
+```
 budita.dev
 - us-central1 10.0.0.0/16
   - Hub 10.0.0.0/18
@@ -61,6 +62,7 @@ budita.dev
     - ad 10.1.88.0/24
 - Dev Private Service 10.16.64.0/21
   - ad 10.16.64.0/24
+```
 
 ## Org GKE Admins Repo view
 
