@@ -51,7 +51,7 @@ We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profes
     - bu1 10.0.64.0/21
     - data 10.0.72.0/21
     - gke 10.0.80.0/21
-    - ad 10.0.88.0/24
+    - ad-mgmt 10.0.88.0/24
 - us-west1 10.1.0.0/16
   - Hub 10.1.0.0/18
     - sb 10.1.0.0/24
@@ -59,14 +59,15 @@ We used [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/profes
     - bu1 10.1.64.0/21
     - data 10.1.72.0/21
     - gke 10.1.80.0/21
-    - ad 10.1.88.0/24
+    - ad-mgmt 10.1.88.0/24
 - Dev Private Service 10.16.64.0/21
-  - ad 10.16.64.0/24
+  - ad-domain 10.16.64.0/24
 ```
 
 ## Org GKE Admins Repo view
 
 ```
+🏢 budita.dev
 .
 ├── budita-app
 │   ├── acm
