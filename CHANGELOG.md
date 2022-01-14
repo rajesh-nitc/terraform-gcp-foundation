@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.0.2...v2.1.0) (2022-01-14)
+
+
+### Features
+
+* Added proxy only subnets ([1e27d06](https://www.github.com/rajesh-nitc/gcp-foundation/commit/1e27d069403a3b6c7a8a0f969b01e8254be11af3))
+
 ### [2.0.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.0.1...v2.0.2) (2022-01-10)
 
 
