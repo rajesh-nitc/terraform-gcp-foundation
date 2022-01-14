@@ -203,3 +203,14 @@ variable "enable_dataflow_fw_rule" {
   type    = bool
   default = false
 }
+
+# Proxy only
+variable "enable_proxy_only_fw_rule" {
+  type    = bool
+  default = false
+}
+
+variable "proxy_only_subnet_ranges" {
+  type    = list(string)
+  default = []
+}

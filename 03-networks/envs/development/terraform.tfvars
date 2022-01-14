@@ -47,6 +47,16 @@ subnets = [
     enable_private_access = true
     secondary_ip_range    = {}
   },
+  {
+    team                  = "proxy-only"
+    subnet_ip             = "10.0.89.0/24"
+    region                = "us-central1"
+    enable_flow_logs      = false
+    enable_private_access = false
+    secondary_ip_range    = {}
+    purpose               = "REGIONAL_MANAGED_PROXY"
+    role                  = "ACTIVE"
+  },
   # us-west1
   {
     team                  = "bu1"
@@ -79,6 +89,16 @@ subnets = [
     enable_flow_logs      = false
     enable_private_access = true
     secondary_ip_range    = {}
+  },
+  {
+    team                  = "proxy-only"
+    subnet_ip             = "10.1.89.0/24"
+    region                = "us-west1"
+    enable_flow_logs      = false
+    enable_private_access = false
+    secondary_ip_range    = {}
+    purpose               = "REGIONAL_MANAGED_PROXY"
+    role                  = "ACTIVE"
   },
 ]
 

@@ -36,6 +36,9 @@ locals {
 
   # AD
   ad_domain_ip_range = [for i in var.subnets : i.subnet_ip if i.team == "ad" && i.region == var.default_region1]
+
+  # Proxy only
+  proxy_only_subnet_ranges = [for i in var.subnets : i.subnet_ip if i.team == "proxy-only"]
 }
 
 data "google_active_folder" "env" {
@@ -93,5 +96,10 @@ module "base_shared_vpc" {
   # AD
   enable_ad_fw_rule  = true
   ad_domain_ip_range = local.ad_domain_ip_range
+
+  # Proxy-only
+  enable_proxy_only_fw_rule = true
+  proxy_only_subnet_ranges  = local.proxy_only_subnet_ranges
+
 
 }
