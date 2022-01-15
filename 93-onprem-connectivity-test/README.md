@@ -1,6 +1,6 @@
 # Onprem connectivity
 
-Tested the onprem network connectivity with dev sharedvpc
+Tested the onprem connectivity with dev sharedvpc for us-central1 region
 
 Spare vm was launched using 05-app-infra in dev sharedvpc
 
