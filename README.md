@@ -100,10 +100,10 @@ Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/prof
 To keep costs down in personal org:  
 
 - Enable dns zones on demand
-- Don't enable container scanning api
+- Disable container scanning api
 - Skip hierarchical firewall policies 
 - Skip log sinks 
-- Destroy kms key version in seed cicd project
+- Destroy kms key in bootstrap cicd project
 - Clean artifact registry images in cicd projects
 
 **Warning**: Don't enable firewall insights api as it is a costly operation
