@@ -32,4 +32,9 @@ module "base_shared_gce_instance" {
   project_suffix = "sample-base"
   region         = var.instance_region
   app_name       = "sample-application"
+  tags = [
+    "allow-iap-ssh",
+    "allow-google-apis",
+  ]
+
 }

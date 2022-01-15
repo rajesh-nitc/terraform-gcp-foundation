@@ -16,10 +16,11 @@
 
 locals {
   environment_code = element(split("", var.environment), 0)
+  project_id       = data.google_project.env_project.project_id
 }
 
 resource "google_service_account" "compute_engine_service_account" {
-  project      = data.google_project.env_project.project_id
+  project      = local.project_id
   account_id   = "sa-example-app"
   display_name = "Example app service Account"
 }
@@ -29,11 +30,12 @@ module "instance_template" {
   version      = "7.0.0"
   machine_type = var.machine_type
   region       = var.region
-  project_id   = data.google_project.env_project.project_id
+  project_id   = local.project_id
   subnetwork   = data.google_compute_subnetwork.subnetwork.self_link
+  tags         = var.tags
   service_account = {
     email  = google_service_account.compute_engine_service_account.email
-    scopes = ["compute-rw"]
+    scopes = ["cloud-platform"]
   }
 }
 

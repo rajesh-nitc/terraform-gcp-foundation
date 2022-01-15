@@ -1,8 +1,5 @@
 locals {
   parent_id = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
-  # To save costs, we don't create dns zones for the hub vpc
-  # But create them for spoke vpcs on demand
-  dns_zones_enabled = var.mode == "hub" ? 0 : (var.create_spoke_dns_zones ? 1 : 0)
 }
 
 data "google_active_folder" "common" {
@@ -42,7 +39,7 @@ resource "google_dns_policy" "default_policy" {
  *****************************************/
 
 module "private_googleapis" {
-  count       = local.dns_zones_enabled
+  count       = var.enable_dns_zone_private_googleapis ? 1 : 0
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id
@@ -76,7 +73,7 @@ module "private_googleapis" {
  *****************************************/
 
 module "base_gcr" {
-  count       = local.dns_zones_enabled
+  count       = var.enable_dns_zone_gcr ? 1 : 0
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id
@@ -110,7 +107,7 @@ module "base_gcr" {
  ***********************************************/
 
 module "base_pkg_dev" {
-  count       = local.dns_zones_enabled
+  count       = var.enable_dns_zone_pkg_dev ? 1 : 0
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
   project_id  = var.project_id
@@ -142,17 +139,18 @@ module "base_pkg_dev" {
 /******************************************
  Creates DNS Peering to DNS HUB
 *****************************************/
-# module "peering_zone" {
-#   source      = "terraform-google-modules/cloud-dns/google"
-#   version     = "~> 3.1"
-#   project_id  = var.project_id
-#   type        = "peering"
-#   name        = "dz-${var.environment_code}-shared-base-to-dns-hub"
-#   domain      = var.domain
-#   description = "Private DNS peering zone."
+module "peering_zone" {
+  count       = var.enable_dns_peering ? 1 : 0
+  source      = "terraform-google-modules/cloud-dns/google"
+  version     = "~> 3.1"
+  project_id  = var.project_id
+  type        = "peering"
+  name        = "dz-${var.environment_code}-shared-base-to-dns-hub"
+  domain      = var.domain
+  description = "Private DNS peering zone."
 
-#   private_visibility_config_networks = [
-#     module.main.network_self_link
-#   ]
-#   target_network = data.google_compute_network.vpc_dns_hub.self_link
-# }
+  private_visibility_config_networks = [
+    module.main.network_self_link
+  ]
+  target_network = data.google_compute_network.vpc_dns_hub.self_link
+}

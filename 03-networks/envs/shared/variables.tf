@@ -216,3 +216,28 @@ variable "preactivate_partner_interconnect" {
   type        = bool
   default     = false
 }
+
+variable "enable_dns_zone_private_googleapis" {
+  type    = bool
+  default = false
+}
+
+variable "enable_dns_peering" {
+  type    = bool
+  default = false
+}
+
+variable "enable_dns_forwarding" {
+  type    = bool
+  default = false
+}
+
+variable "allow_all_egress_ranges" {
+  description = "List of network ranges to which all egress traffic will be allowed"
+  default     = null
+}
+
+variable "allow_all_ingress_ranges" {
+  description = "List of network ranges from which all ingress traffic will be allowed"
+  default     = null
+}

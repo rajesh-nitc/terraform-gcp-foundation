@@ -86,20 +86,21 @@ resource "google_dns_policy" "default_policy" {
  DNS Forwarding
 *****************************************/
 
-# module "dns-forwarding-zone" {
-#   source  = "terraform-google-modules/cloud-dns/google"
-#   version = "3.1.0"
+module "dns-forwarding-zone" {
+  count   = var.enable_dns_forwarding ? 1 : 0
+  source  = "terraform-google-modules/cloud-dns/google"
+  version = "3.1.0"
 
-#   project_id = local.dns_hub_project_id
-#   type       = "forwarding"
-#   name       = "fz-dns-hub"
-#   domain     = var.domain
+  project_id = local.dns_hub_project_id
+  type       = "forwarding"
+  name       = "fz-dns-hub"
+  domain     = var.domain
 
-#   private_visibility_config_networks = [
-#     module.dns_hub_vpc.network_self_link
-#   ]
-#   target_name_server_addresses = var.target_name_server_addresses
-# }
+  private_visibility_config_networks = [
+    module.dns_hub_vpc.network_self_link
+  ]
+  target_name_server_addresses = var.target_name_server_addresses
+}
 
 /*********************************************************
   Routers to advertise DNS proxy range "35.199.192.0/19"

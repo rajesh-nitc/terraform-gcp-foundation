@@ -2,13 +2,12 @@ org_id                            = "157305482127"
 terraform_service_account         = "org-terraform@prj-b-seed-6949.iam.gserviceaccount.com"
 default_region1                   = "us-central1"
 default_region2                   = "us-west1"
-domain                            = "example.com."
+domain                            = "onprem.budita.dev."
 enable_hub_and_spoke              = true
 enable_hub_and_spoke_transitivity = false
 access_context_manager_policy_id  = null
 
 private_service_cidr = "10.16.64.0/21"
-# reserved for Managed Microsoft Ad : 10.16.64.0/24
 
 subnets = [
   # us-central1
@@ -108,5 +107,15 @@ budita_cluster_uscentral1_cluster_network_tag        = "gke-budita-d-us-central1
 # Enable nat if acm is used
 nat_enabled = false
 
-# Destroy dns zones when not in use to save cost
-create_spoke_dns_zones = false
+# DNS on demand
+enable_dns_zone_private_googleapis = false
+enable_dns_peering                 = false
+
+allow_all_ingress_ranges = [
+  "10.2.0.0/24", # onprem
+]
+
+allow_all_egress_ranges = [
+  "10.2.0.0/24", # onprem
+
+]

@@ -214,3 +214,30 @@ variable "proxy_only_subnet_ranges" {
   type    = list(string)
   default = []
 }
+
+# DNS
+variable "enable_dns_zone_private_googleapis" {
+  type    = bool
+  default = false
+}
+
+variable "enable_dns_zone_gcr" {
+  type    = bool
+  default = false
+}
+
+variable "enable_dns_zone_pkg_dev" {
+  type    = bool
+  default = false
+}
+
+variable "enable_dns_peering" {
+  type    = bool
+  default = false
+}
+
+# onprem
+variable "allow_onprem_ranges" {
+  type    = list(string)
+  default = []
+}

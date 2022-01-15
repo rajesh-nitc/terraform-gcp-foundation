@@ -99,6 +99,12 @@ module "base_shared_vpc" {
   ]
   secondary_ranges = {}
 
+  enable_dns_zone_private_googleapis = var.enable_dns_zone_private_googleapis
+  enable_dns_peering                 = var.enable_dns_peering
+
+  allow_all_ingress_ranges = var.allow_all_ingress_ranges
+  allow_all_egress_ranges  = var.allow_all_egress_ranges
+
   depends_on = [module.dns_hub_vpc]
 }
 

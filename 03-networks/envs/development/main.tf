@@ -77,8 +77,8 @@ module "base_shared_vpc" {
   subnets          = local.base_subnet_primary_ranges
   secondary_ranges = local.secondary_ranges
 
-  allow_all_ingress_ranges = local.enable_transitivity ? local.base_hub_subnet_ranges : null
-  allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
+  #  allow_all_ingress_ranges = local.enable_transitivity ? local.base_hub_subnet_ranges : null
+  #  allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
 
   # Dataflow
   enable_dataflow_fw_rule = true
@@ -90,8 +90,9 @@ module "base_shared_vpc" {
   cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]
   cluster_ip_range_pods      = local.budita_cluster_uscentral1_cluster_ip_range_pods[0]
 
-  # Destroy dns zones when not in use to save cost
-  create_spoke_dns_zones = var.create_spoke_dns_zones
+  # DNS on demand
+  enable_dns_zone_private_googleapis = var.enable_dns_zone_private_googleapis
+  enable_dns_peering                 = var.enable_dns_peering
 
   # AD
   enable_ad_fw_rule  = true
@@ -101,5 +102,8 @@ module "base_shared_vpc" {
   enable_proxy_only_fw_rule = true
   proxy_only_subnet_ranges  = local.proxy_only_subnet_ranges
 
+
+  allow_all_ingress_ranges = var.allow_all_ingress_ranges
+  allow_all_egress_ranges  = var.allow_all_egress_ranges
 
 }

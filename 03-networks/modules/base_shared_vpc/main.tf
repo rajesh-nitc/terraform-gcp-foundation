@@ -46,6 +46,7 @@ module "main" {
   network_name                           = local.network_name
   shared_vpc_host                        = true
   delete_default_internet_gateway_routes = true
+  routing_mode                           = "REGIONAL"
 
   subnets          = var.subnets
   secondary_ranges = var.secondary_ranges
