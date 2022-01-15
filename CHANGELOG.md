@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.1.0...v2.2.0) (2022-01-15)
+
+
+### Features
+
+* Added onprem connectivity ([0291d21](https://www.github.com/rajesh-nitc/gcp-foundation/commit/0291d219ae2b58c9c053970f477eb536d188ef72))
+
 ## [2.1.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.0.2...v2.1.0) (2022-01-14)
 
 
