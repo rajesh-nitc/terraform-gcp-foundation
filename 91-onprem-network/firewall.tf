@@ -21,7 +21,7 @@ resource "google_compute_firewall" "allow_egress" {
 
   destination_ranges = [
     local.private_googleapis_cidr,
-    local.dns_proxy_cidr,
+    local.dns_forwarders_cidr,
     var.gcp_default_region1_dev_range,
   ]
 }
@@ -49,7 +49,7 @@ resource "google_compute_firewall" "allow_ingress" {
 
   source_ranges = [
     local.private_googleapis_cidr,
-    local.dns_proxy_cidr,
+    local.dns_forwarders_cidr,
     var.gcp_default_region1_dev_range,
   ]
 }

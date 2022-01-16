@@ -1,24 +1,9 @@
-/**
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 locals {
-  mode                    = var.mode == null ? "" : var.mode == "hub" ? "-hub" : "-spoke"
-  vpc_name                = "${var.environment_code}-shared-base${local.mode}"
-  network_name            = "vpc-${local.vpc_name}"
-  private_googleapis_cidr = "199.36.153.8/30"
+  mode                               = var.mode == null ? "" : var.mode == "hub" ? "-hub" : "-spoke"
+  vpc_name                           = "${var.environment_code}-shared-base${local.mode}"
+  network_name                       = "vpc-${local.vpc_name}"
+  private_googleapis_cidr            = data.google_netblock_ip_ranges.private-googleapis.cidr_blocks_ipv4[0]
+  private_googleapis_cidr_hosts_list = [for i in range(4) : cidrhost(local.private_googleapis_cidr, i)]
 }
 
 /******************************************
@@ -55,8 +40,8 @@ module "main" {
     [{
       name              = "rt-${local.vpc_name}-1000-all-default-private-api"
       description       = "Route through IGW to allow private google api access."
-      destination_range = "199.36.153.8/30"
-      next_hop_internet = "true"
+      destination_range = local.private_googleapis_cidr
+      next_hop_internet = true
       priority          = "1000"
     }],
     var.nat_enabled ?
@@ -66,7 +51,7 @@ module "main" {
         description       = "Tag based route through IGW to access internet"
         destination_range = "0.0.0.0/0"
         tags              = "egress-internet"
-        next_hop_internet = "true"
+        next_hop_internet = true
         priority          = "1000"
       }
     ]
@@ -76,7 +61,7 @@ module "main" {
       name              = "rt-${local.vpc_name}-1000-all-default-windows-kms"
       description       = "Route through IGW to allow Windows KMS activation for GCP."
       destination_range = "35.190.247.13/32"
-      next_hop_internet = "true"
+      next_hop_internet = true
       priority          = "1000"
       }
     ]
@@ -122,68 +107,3 @@ resource "google_service_networking_connection" "private_vpc_connection" {
 
   depends_on = [module.peering]
 }
-
-/************************************
-  Router to advertise shared VPC
-  subnetworks and Google Private API
-************************************/
-
-# module "region1_router1" {
-#   source  = "terraform-google-modules/cloud-router/google"
-#   version = "~> 1.2.0"
-#   count   = var.mode != "spoke" ? 1 : 0
-#   name    = "cr-${local.vpc_name}-${var.default_region1}-cr1"
-#   project = var.project_id
-#   network = module.main.network_name
-#   region  = var.default_region1
-#   bgp = {
-#     asn                  = var.bgp_asn_subnet
-#     advertised_groups    = ["ALL_SUBNETS"]
-#     advertised_ip_ranges = [{ range = local.private_googleapis_cidr }]
-#   }
-# }
-
-# module "region1_router2" {
-#   source  = "terraform-google-modules/cloud-router/google"
-#   version = "~> 0.3.0"
-#   count   = var.mode != "spoke" ? 1 : 0
-#   name    = "cr-${local.vpc_name}-${var.default_region1}-cr2"
-#   project = var.project_id
-#   network = module.main.network_name
-#   region  = var.default_region1
-#   bgp = {
-#     asn                  = var.bgp_asn_subnet
-#     advertised_groups    = ["ALL_SUBNETS"]
-#     advertised_ip_ranges = [{ range = local.private_googleapis_cidr }]
-#   }
-# }
-
-# module "region2_router1" {
-#   source  = "terraform-google-modules/cloud-router/google"
-#   version = "~> 0.3.0"
-#   count   = var.mode != "spoke" ? 1 : 0
-#   name    = "cr-${local.vpc_name}-${var.default_region2}-cr3"
-#   project = var.project_id
-#   network = module.main.network_name
-#   region  = var.default_region2
-#   bgp = {
-#     asn                  = var.bgp_asn_subnet
-#     advertised_groups    = ["ALL_SUBNETS"]
-#     advertised_ip_ranges = [{ range = local.private_googleapis_cidr }]
-#   }
-# }
-
-# module "region2_router2" {
-#   source  = "terraform-google-modules/cloud-router/google"
-#   version = "~> 0.3.0"
-#   count   = var.mode != "spoke" ? 1 : 0
-#   name    = "cr-${local.vpc_name}-${var.default_region2}-cr4"
-#   project = var.project_id
-#   network = module.main.network_name
-#   region  = var.default_region2
-#   bgp = {
-#     asn                  = var.bgp_asn_subnet
-#     advertised_groups    = ["ALL_SUBNETS"]
-#     advertised_ip_ranges = [{ range = local.private_googleapis_cidr }]
-#   }
-# }

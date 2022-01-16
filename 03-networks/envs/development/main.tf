@@ -1,13 +1,9 @@
 locals {
-  environment_code       = "d"
-  env                    = "development"
-  base_project_id        = data.google_projects.base_host_project.projects[0].project_id
-  parent_id              = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
-  mode                   = var.enable_hub_and_spoke ? "spoke" : null
-  bgp_asn_number         = var.enable_partner_interconnect ? "16550" : "64514"
-  enable_transitivity    = var.enable_hub_and_spoke && var.enable_hub_and_spoke_transitivity
-  base_subnet_aggregates = []
-  base_hub_subnet_ranges = []
+  environment_code = "d"
+  env              = "development"
+  base_project_id  = data.google_projects.base_host_project.projects[0].project_id
+  parent_id        = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+  mode             = var.enable_hub_and_spoke ? "spoke" : null
 
   # Subnets
   base_subnet_primary_ranges = flatten([for i in var.subnets : {
@@ -60,7 +56,6 @@ module "base_shared_vpc" {
   default_region1               = var.default_region1
   default_region2               = var.default_region2
   domain                        = var.domain
-  bgp_asn_subnet                = local.bgp_asn_number
   dns_enable_inbound_forwarding = var.dns_enable_inbound_forwarding
   dns_enable_logging            = var.dns_enable_logging
   firewall_enable_logging       = var.firewall_enable_logging
@@ -69,16 +64,11 @@ module "base_shared_vpc" {
   nat_enabled                   = var.nat_enabled
   nat_bgp_asn                   = var.nat_bgp_asn
   nat_num_addresses_region1     = var.nat_num_addresses_region1
-  nat_num_addresses_region2     = var.nat_num_addresses_region2
-  nat_num_addresses             = var.nat_num_addresses
   folder_prefix                 = var.folder_prefix
   mode                          = local.mode
 
   subnets          = local.base_subnet_primary_ranges
   secondary_ranges = local.secondary_ranges
-
-  #  allow_all_ingress_ranges = local.enable_transitivity ? local.base_hub_subnet_ranges : null
-  #  allow_all_egress_ranges  = local.enable_transitivity ? local.base_subnet_aggregates : null
 
   # Dataflow
   enable_dataflow_fw_rule = true

@@ -1,19 +1,3 @@
-/**
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 variable "org_id" {
   type        = string
   description = "Organization ID"
@@ -60,18 +44,7 @@ variable "nat_bgp_asn" {
 variable "nat_num_addresses_region1" {
   type        = number
   description = "Number of external IPs to reserve for first Cloud NAT."
-  default     = 2
-}
-
-variable "nat_num_addresses_region2" {
-  type        = number
-  description = "Number of external IPs to reserve for second Cloud NAT."
-  default     = 2
-}
-
-variable "bgp_asn_subnet" {
-  type        = number
-  description = "BGP ASN for Subnets cloud routers."
+  default     = 1
 }
 
 variable "subnets" {
@@ -119,12 +92,6 @@ variable "windows_activation_enabled" {
   type        = bool
   description = "Enable Windows license activation for Windows workloads."
   default     = false
-}
-
-variable "nat_num_addresses" {
-  type        = number
-  description = "Number of external IPs to reserve for Cloud NAT."
-  default     = 2
 }
 
 variable "optional_fw_rules_enabled" {

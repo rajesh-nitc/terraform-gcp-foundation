@@ -1,5 +1,5 @@
 module "gke_fw_rules" {
-  source                     = "../gke_firewall_rules"
+  source                     = "../firewall_gke"
   count                      = var.enable_gke_fw_rules ? 1 : 0
   environment_code           = var.environment_code
   network_project_id         = var.project_id

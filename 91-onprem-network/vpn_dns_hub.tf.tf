@@ -10,7 +10,7 @@ module "vpn_dns_hub_to_onprem_cr1" {
   router_advertise_config = {
     groups = ["ALL_SUBNETS"]
     ip_ranges = {
-      (local.dns_proxy_cidr) = "dns-proxy",
+      (local.dns_forwarders_cidr) = "dns-forwarders",
     }
     mode = "CUSTOM"
   }

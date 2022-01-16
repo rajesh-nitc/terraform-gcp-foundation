@@ -1,10 +1,12 @@
 locals {
-  private_googleapis_cidr = "199.36.153.8/30"
-  dns_proxy_cidr          = "35.199.192.0/19"
+  private_googleapis_cidr            = data.google_netblock_ip_ranges.private-googleapis.cidr_blocks_ipv4[0]
+  private_googleapis_cidr_hosts_list = [for i in range(4) : cidrhost(local.private_googleapis_cidr, i)]
+  dns_forwarders_cidr                = data.google_netblock_ip_ranges.dns-forwarders.cidr_blocks_ipv4[0]
 }
 
 module "main" {
-  source                                 = "git@github.com:terraform-google-modules/terraform-google-network.git?ref=master"
+  source                                 = "terraform-google-modules/network/google"
+  version                                = "~> 4.0"
   project_id                             = var.project_id
   network_name                           = "vpc-onprem"
   shared_vpc_host                        = false

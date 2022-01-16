@@ -63,7 +63,7 @@ module "private_googleapis" {
       name    = "private"
       type    = "A"
       ttl     = 300
-      records = ["199.36.153.8", "199.36.153.9", "199.36.153.10", "199.36.153.11"]
+      records = local.private_googleapis_cidr_hosts_list
     },
   ]
 }
@@ -97,7 +97,7 @@ module "base_gcr" {
       name    = ""
       type    = "A"
       ttl     = 300
-      records = ["199.36.153.8", "199.36.153.9", "199.36.153.10", "199.36.153.11"]
+      records = local.private_googleapis_cidr_hosts_list
     },
   ]
 }
@@ -131,7 +131,7 @@ module "base_pkg_dev" {
       name    = ""
       type    = "A"
       ttl     = 300
-      records = ["199.36.153.8", "199.36.153.9", "199.36.153.10", "199.36.153.11"]
+      records = local.private_googleapis_cidr_hosts_list
     },
   ]
 }
