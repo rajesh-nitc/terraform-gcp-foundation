@@ -2,9 +2,9 @@
 
 Example repo showing how to build a secure foundation for quick prototyping and testing. It is made up of following parts:
 
-- **foundations**: core (0-5), gke (10-14), data (20-24)
-- **onprem connectivity** (90-93)
-- **extras**: m4ce setup (30-31), managed ad (40-42)
+- **foundations**: core (0*), gke (1*), data (2*)
+- **onprem connectivity** (9*)
+- **extras**: m4ce setup (3*), managed ad (4*)
 
 Credit to [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric)
 
