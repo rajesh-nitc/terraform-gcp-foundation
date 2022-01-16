@@ -91,12 +91,12 @@ Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/prof
 │           └── service.yaml
 └── README.md
 ```
-## Validations
+## Org Validations
 - Sample app in private gke cluster
 - Sample dataflow pipelines
 - Sample onprem connectivity
 
-## Costs
+## Org Costs
 To keep costs down in personal org:  
 
 - Enable dns zones on demand
