@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.2.0...v2.3.0) (2022-01-16)
+
+
+### Features
+
+* refactoring ([4b9acb9](https://www.github.com/rajesh-nitc/gcp-foundation/commit/4b9acb908c3b7ed011c1503645987d5deb27b15c))
+
 ## [2.2.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.1.0...v2.2.0) (2022-01-15)
 
 
