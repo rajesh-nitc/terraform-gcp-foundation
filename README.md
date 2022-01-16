@@ -1,6 +1,6 @@
 # gcp-foundation 
 
-Example repo showing how to build a foundation for quick prototyping and testing. It is made up of following parts:
+Example repo showing how to build a secure foundation for quick prototyping and testing. It is made up of following parts:
 
 - **foundations**: core (0-5), gke (10-14), data (20-24)
 - **onprem connectivity** (90-93)
@@ -107,3 +107,6 @@ To keep costs down in personal org:
 - Clean artifact registry images in cicd projects
 
 **Warning**: Don't enable firewall insights api as it is a costly operation
+
+## TODO
+Enable vpc service controls
