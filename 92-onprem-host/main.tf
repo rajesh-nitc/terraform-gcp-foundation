@@ -4,6 +4,13 @@ resource "google_service_account" "compute_sa" {
   display_name = "Sample SA"
 }
 
+resource "google_project_iam_member" "compute_sa_roles" {
+  for_each = toset(["roles/compute.admin"])
+  project  = var.project_id
+  role     = each.key
+  member   = "serviceAccount:${google_service_account.compute_sa.email}"
+}
+
 resource "google_compute_instance" "host1" {
   project      = var.project_id
   name         = var.hostname

@@ -18,6 +18,7 @@ module "onprem_project" {
     "roles/compute.admin",
     "roles/iam.serviceAccountAdmin",
     "roles/iam.serviceAccountUser",
+    "roles/resourcemanager.projectIamAdmin",
   ]
   enable_cloudbuild_deploy = false
   cloudbuild_sa            = ""

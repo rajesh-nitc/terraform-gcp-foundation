@@ -1,6 +1,6 @@
 # gcp-foundation 
 
-Example repo showing how to build a secure foundation / landing zone on gcp with terraform. It is made up of following parts:
+Example repo showing how to build a personal org for quick prototyping and testing. It is made up of following parts:
 
 - **foundations**: core (0-5), gke (10-14), data (20-24)
 - **onprem connectivity** (90-93)
