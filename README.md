@@ -94,7 +94,7 @@ Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/prof
 ## Validations
 - Sample app in private gke cluster
 - Sample dataflow pipelines
-- Sample onprem connectivity test
+- Sample onprem connectivity
 
 ## Costs
 To keep costs down in personal org:  
