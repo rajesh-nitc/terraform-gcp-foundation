@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.3.0...v2.4.0) (2022-01-16)
+
+
+### Features
+
+* added connectivity test for private google access ([31c8c0f](https://www.github.com/rajesh-nitc/gcp-foundation/commit/31c8c0f55fcb608cf5ed8aa4fd441813eb215d64))
+
 ## [2.3.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.2.0...v2.3.0) (2022-01-16)
 
 
