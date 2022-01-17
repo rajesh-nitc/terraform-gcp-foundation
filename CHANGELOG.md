@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.4.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.4.0...v2.4.1) (2022-01-17)
+
+
+### Bug Fixes
+
+* single onprem router is shared with net hub and dns hub for vpn connections ([1c3f7d2](https://www.github.com/rajesh-nitc/gcp-foundation/commit/1c3f7d2189a73b99fda5d69567b1a91e44393033))
+
 ## [2.4.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.3.0...v2.4.0) (2022-01-16)
 
 
