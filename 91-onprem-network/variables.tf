@@ -51,8 +51,8 @@ variable "hostname" {
   type = string
 }
 
-variable "gcp_default_region1_dev_range" {
-  type = string
+variable "sharedvpc_cidr" {
+  type = map(map(string))
 }
 
 variable "bgp_session_range" {

@@ -35,8 +35,8 @@ module "vpn_net_hub_to_onprem_cr1" {
   router_advertise_config = {
     groups = ["ALL_SUBNETS"]
     ip_ranges = {
-      (local.private_googleapis_cidr)     = "private-googleapis",
-      (var.gcp_default_region1_dev_range) = "gcp-us-central1-dev-address-space"
+      (local.private_googleapis_cidr)                  = "private-googleapis",
+      (var.sharedvpc_cidr["dev"][var.default_region1]) = "gcp-us-central1-dev-cidr"
     }
     mode = "CUSTOM"
   }
