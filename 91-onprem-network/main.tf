@@ -11,6 +11,7 @@ module "main" {
   network_name                           = "vpc-onprem"
   shared_vpc_host                        = false
   delete_default_internet_gateway_routes = true
+  routing_mode                           = "REGIONAL"
 
   subnets = [
     {

@@ -10,3 +10,16 @@ gcp_default_region1_dev_range = "10.0.64.0/18"
 domain                        = "onprem.budita.dev."
 private_ip                    = "10.2.0.5"
 hostname                      = "host1"
+
+bgp_session_range = {
+  "us-central1" = {
+    "net-hub" = "169.254.1.0/30" # single tunnel
+    "dns-hub" = "169.254.2.0/30" # single tunnel
+  }
+}
+
+router_asn = {
+  "onprem"  = "64515"
+  "net-hub" = "64516"
+  "dns-hub" = "64517"
+}

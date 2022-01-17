@@ -54,3 +54,11 @@ variable "hostname" {
 variable "gcp_default_region1_dev_range" {
   type = string
 }
+
+variable "bgp_session_range" {
+  type = map(map(string))
+}
+
+variable "router_asn" {
+  type = map(string)
+}
