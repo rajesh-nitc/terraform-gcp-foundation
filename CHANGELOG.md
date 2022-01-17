@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.4.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.4.1...v2.4.2) (2022-01-17)
+
+
+### Bug Fixes
+
+* updated onprem fw rules ([6a99344](https://www.github.com/rajesh-nitc/gcp-foundation/commit/6a993448e84be16bb3cddad0e77f08c1dba96fd9))
+
 ### [2.4.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.4.0...v2.4.1) (2022-01-17)
 
 
