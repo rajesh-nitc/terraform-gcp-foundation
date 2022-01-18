@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.4.2...v2.5.0) (2022-01-18)
+
+
+### Features
+
+* Added restricted api and connectivity tests for hub vpc ([f816081](https://www.github.com/rajesh-nitc/gcp-foundation/commit/f8160816b84b6ed7d319eae2bfc431da81f0d120))
+* Added restricted api and connectivity tests for hub vpc ([ea82c60](https://www.github.com/rajesh-nitc/gcp-foundation/commit/ea82c60bb330eb4d9ab57c6ec8cafca4e8924368))
+
 ### [2.4.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.4.1...v2.4.2) (2022-01-17)
 
 
