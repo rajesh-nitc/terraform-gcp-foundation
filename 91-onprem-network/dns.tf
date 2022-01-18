@@ -8,7 +8,7 @@ resource "google_dns_policy" "default_policy" {
   }
 }
 
-# Resolve private.googleapis.com on prem
+# Resolve private.googleapis.com and restricted.googleapis on prem
 module "private_googleapis" {
   source      = "terraform-google-modules/cloud-dns/google"
   version     = "~> 3.1"
@@ -34,6 +34,12 @@ module "private_googleapis" {
       type    = "A"
       ttl     = 300
       records = local.private_googleapis_cidr_hosts_list
+    },
+    {
+      name    = "restricted"
+      type    = "A"
+      ttl     = 300
+      records = local.restricted_googleapis_cidr_hosts_list
     },
   ]
 }

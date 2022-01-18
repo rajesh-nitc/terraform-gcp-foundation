@@ -21,11 +21,11 @@ module "base_shared_vpc" {
   default_region1               = var.default_region1
   default_region2               = var.default_region2
   domain                        = var.domain
-  windows_activation_enabled    = var.base_hub_windows_activation_enabled
   dns_enable_inbound_forwarding = var.base_hub_dns_enable_inbound_forwarding
   dns_enable_logging            = var.base_hub_dns_enable_logging
   firewall_enable_logging       = var.base_hub_firewall_enable_logging
-  optional_fw_rules_enabled     = var.base_hub_optional_fw_rules_enabled
+  optional_fw_rules_enabled     = true
+  windows_activation_enabled    = true # Fw rule for windows vms
   nat_enabled                   = var.base_hub_nat_enabled
   nat_bgp_asn                   = var.base_hub_nat_bgp_asn
   nat_num_addresses_region1     = var.base_hub_nat_num_addresses_region1

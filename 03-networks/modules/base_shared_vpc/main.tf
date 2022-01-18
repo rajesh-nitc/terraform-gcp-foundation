@@ -1,9 +1,11 @@
 locals {
-  mode                               = var.mode == null ? "" : var.mode == "hub" ? "-hub" : "-spoke"
-  vpc_name                           = "${var.environment_code}-shared-base${local.mode}"
-  network_name                       = "vpc-${local.vpc_name}"
-  private_googleapis_cidr            = data.google_netblock_ip_ranges.private-googleapis.cidr_blocks_ipv4[0]
-  private_googleapis_cidr_hosts_list = [for i in range(4) : cidrhost(local.private_googleapis_cidr, i)]
+  mode                                  = var.mode == null ? "" : var.mode == "hub" ? "-hub" : "-spoke"
+  vpc_name                              = "${var.environment_code}-shared-base${local.mode}"
+  network_name                          = "vpc-${local.vpc_name}"
+  private_googleapis_cidr               = data.google_netblock_ip_ranges.private-googleapis.cidr_blocks_ipv4[0]
+  private_googleapis_cidr_hosts_list    = [for i in range(4) : cidrhost(local.private_googleapis_cidr, i)]
+  restricted_googleapis_cidr            = data.google_netblock_ip_ranges.restricted-googleapis.cidr_blocks_ipv4[0]
+  restricted_googleapis_cidr_hosts_list = [for i in range(4) : cidrhost(local.restricted_googleapis_cidr, i)]
 }
 
 /******************************************

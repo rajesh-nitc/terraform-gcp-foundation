@@ -21,6 +21,7 @@ resource "google_compute_firewall" "allow_egress" {
 
   destination_ranges = [
     local.private_googleapis_cidr,
+    local.restricted_googleapis_cidr,
     var.sharedvpc_cidr["hub"][var.default_region1],
     var.sharedvpc_cidr["hub"][var.default_region2],
     var.sharedvpc_cidr["dev"][var.default_region1],
@@ -52,6 +53,7 @@ resource "google_compute_firewall" "allow_ingress" {
 
   source_ranges = [
     local.private_googleapis_cidr,
+    local.restricted_googleapis_cidr,
     local.dns_forwarders_cidr,
     var.sharedvpc_cidr["hub"][var.default_region1],
     var.sharedvpc_cidr["hub"][var.default_region2],

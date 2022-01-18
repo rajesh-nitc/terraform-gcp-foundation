@@ -14,3 +14,8 @@ data "google_netblock_ip_ranges" "iap_forwarders" {
 data "google_netblock_ip_ranges" "private-googleapis" {
   range_type = "private-googleapis"
 }
+
+# 199.36.153.4/30
+data "google_netblock_ip_ranges" "restricted-googleapis" {
+  range_type = "restricted-googleapis"
+}

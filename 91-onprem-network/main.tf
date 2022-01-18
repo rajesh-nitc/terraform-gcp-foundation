@@ -1,7 +1,9 @@
 locals {
-  private_googleapis_cidr            = data.google_netblock_ip_ranges.private-googleapis.cidr_blocks_ipv4[0]
-  private_googleapis_cidr_hosts_list = [for i in range(4) : cidrhost(local.private_googleapis_cidr, i)]
-  dns_forwarders_cidr                = data.google_netblock_ip_ranges.dns-forwarders.cidr_blocks_ipv4[0]
+  private_googleapis_cidr               = data.google_netblock_ip_ranges.private-googleapis.cidr_blocks_ipv4[0]
+  private_googleapis_cidr_hosts_list    = [for i in range(4) : cidrhost(local.private_googleapis_cidr, i)]
+  restricted_googleapis_cidr            = data.google_netblock_ip_ranges.restricted-googleapis.cidr_blocks_ipv4[0]
+  restricted_googleapis_cidr_hosts_list = [for i in range(4) : cidrhost(local.restricted_googleapis_cidr, i)]
+  dns_forwarders_cidr                   = data.google_netblock_ip_ranges.dns-forwarders.cidr_blocks_ipv4[0]
 }
 
 module "main" {

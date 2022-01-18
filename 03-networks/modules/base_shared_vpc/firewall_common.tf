@@ -49,7 +49,7 @@ resource "google_compute_firewall" "allow_private_api_egress" {
     ports    = ["443"]
   }
 
-  destination_ranges = [local.private_googleapis_cidr]
+  destination_ranges = [local.private_googleapis_cidr, local.restricted_googleapis_cidr]
 
   target_tags = ["allow-google-apis"]
 }

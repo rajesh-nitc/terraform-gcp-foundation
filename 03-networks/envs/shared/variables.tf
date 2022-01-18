@@ -58,12 +58,6 @@ variable "folder_prefix" {
   default     = "fldr"
 }
 
-variable "base_hub_windows_activation_enabled" {
-  type        = bool
-  description = "Enable Windows license activation for Windows workloads in Base Hub"
-  default     = false
-}
-
 variable "base_hub_dns_enable_inbound_forwarding" {
   type        = bool
   description = "Toggle inbound query forwarding for Base Hub VPC DNS."
@@ -80,12 +74,6 @@ variable "base_hub_firewall_enable_logging" {
   type        = bool
   description = "Toggle firewall logging for VPC Firewalls in Base Hub VPC."
   default     = true
-}
-
-variable "base_hub_optional_fw_rules_enabled" {
-  type        = bool
-  description = "Toggle creation of optional firewall rules: IAP SSH, IAP RDP and Internal & Global load balancing health check and load balancing IP ranges in Base Hub VPC."
-  default     = false
 }
 
 variable "base_hub_nat_enabled" {

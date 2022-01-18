@@ -65,6 +65,12 @@ module "private_googleapis" {
       ttl     = 300
       records = local.private_googleapis_cidr_hosts_list
     },
+    {
+      name    = "restricted"
+      type    = "A"
+      ttl     = 300
+      records = local.restricted_googleapis_cidr_hosts_list
+    },
   ]
 }
 
