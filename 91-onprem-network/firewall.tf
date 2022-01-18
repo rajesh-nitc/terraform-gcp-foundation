@@ -1,3 +1,4 @@
+# we are resolving dns on prem
 resource "google_compute_firewall" "allow_egress" {
   name      = "fw-onprem-e-a"
   network   = module.main.network_name
