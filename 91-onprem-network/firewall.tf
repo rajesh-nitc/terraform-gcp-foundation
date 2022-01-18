@@ -26,7 +26,6 @@ resource "google_compute_firewall" "allow_egress" {
     var.sharedvpc_cidr["hub"][var.default_region2],
     var.sharedvpc_cidr["dev"][var.default_region1],
     var.sharedvpc_cidr["dev"][var.default_region2],
-    # Egress to gcp dns resolver in dns hub if that's the use case
   ]
 }
 
