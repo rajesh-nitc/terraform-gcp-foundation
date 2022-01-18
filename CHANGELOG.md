@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.5.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.5.0...v2.5.1) (2022-01-18)
+
+
+### Bug Fixes
+
+* removed a comment on egress to gcp dns resolver from onprem - not required ([36d07d6](https://www.github.com/rajesh-nitc/gcp-foundation/commit/36d07d652667e0425ce69be824bb1a005f4de2ad))
+
 ## [2.5.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.4.2...v2.5.0) (2022-01-18)
 
 
