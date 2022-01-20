@@ -73,12 +73,27 @@ vpc_sc_ingress_policies = {
     }
   }
 
+  logsink = {
+    ingress_from = {
+      identities = [
+        "serviceAccount:o157305482127-456794@gcp-sa-logging.iam.gserviceaccount.com",
+      ]
+      source_access_levels = ["*"]
+      identity_type        = null
+      source_resources     = null
+    }
+    ingress_to = {
+      operations = [{ method_selectors = [], service_name = "*" }]
+      resources  = ["projects/1099039660751"]
+    }
+  }
+
 }
 
 # Enable ingress policies on selected perimeters
 vpc_sc_perimeter_ingress_policies = {
   dev    = ["iac"]
-  common = ["iac"]
+  common = ["iac", "logsink"]
 }
 
 vpc_sc_egress_policies = null
