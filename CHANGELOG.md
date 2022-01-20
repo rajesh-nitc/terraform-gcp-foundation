@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.6.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.6.0...v2.6.1) (2022-01-20)
+
+
+### Bug Fixes
+
+* created log sink at org level for vpc-sc violations ([b38bc15](https://www.github.com/rajesh-nitc/gcp-foundation/commit/b38bc15372652fcb53e994b834a9ce72591ed604))
+
 ## [2.6.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.5.1...v2.6.0) (2022-01-20)
 
 
