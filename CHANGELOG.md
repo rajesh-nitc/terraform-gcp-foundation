@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.6.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.6.1...v2.6.2) (2022-01-20)
+
+
+### Bug Fixes
+
+* vpc-sc fix to allow gcp-sa-logging to enter common perimeter ([39cd5f0](https://www.github.com/rajesh-nitc/gcp-foundation/commit/39cd5f00fb62db41e31c06d83eb3cb2b59b20c33))
+
 ### [2.6.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.6.0...v2.6.1) (2022-01-20)
 
 
