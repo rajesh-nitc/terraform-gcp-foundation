@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.5.1...v2.6.0) (2022-01-20)
+
+
+### Features
+
+* Initial commit on vpc service controls ([830544b](https://www.github.com/rajesh-nitc/gcp-foundation/commit/830544b2fa745895603e44a98f188e74f8a8e18a))
+
 ### [2.5.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.5.0...v2.5.1) (2022-01-18)
 
 
