@@ -1,5 +1,3 @@
-# Only send vpc sc violations at dev folder to centralized dataset
-
 locals {
   parent_resource_id       = var.parent_folder != "" ? var.parent_folder : var.org_id
   parent_resource_type     = var.parent_folder != "" ? "folder" : "organization"
