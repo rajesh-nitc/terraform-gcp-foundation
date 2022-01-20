@@ -2,7 +2,7 @@
 
 Example repo showing how to build a secure foundation for quick prototyping and testing. It is made up of following parts:
 
-- **foundations**: core (0*), gke (1*), data (2*)
+- **foundations**: core (0* and _vpc-sc), gke (1*), data (2*)
 - **onprem connectivity**: sample infra and connectivity tests (9*)
 
 Credit to [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric)
@@ -101,11 +101,8 @@ To keep costs down in personal org:
 - Enable dns zones on demand
 - Disable container scanning api
 - Skip hierarchical firewall policies 
-- Skip log sinks 
+- Create log sink to send _only_ vpc sc violations
 - Destroy kms key in bootstrap cicd project
 - Clean artifact registry images in cicd projects
 
 **Warning**: Don't enable firewall insights api as it is a costly operation
-
-## TODO
-Enable vpc service controls
