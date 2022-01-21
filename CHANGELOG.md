@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.6.3](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.6.2...v2.6.3) (2022-01-21)
+
+
+### Bug Fixes
+
+* clean unused parts ([5cb8dd6](https://www.github.com/rajesh-nitc/gcp-foundation/commit/5cb8dd67b3a60fd8ad8b43b8fa4e40498629b825))
+
 ### [2.6.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.6.1...v2.6.2) (2022-01-20)
 
 
