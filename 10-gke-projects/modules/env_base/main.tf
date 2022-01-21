@@ -19,7 +19,6 @@ locals {
 
 module "gke_project" {
   source                   = "../../../04-projects/modules/single_project"
-  enable_hub_and_spoke     = true
   org_id                   = var.org_id
   random_project_id        = false
   project_id               = var.project_id
@@ -41,7 +40,7 @@ module "gke_project" {
     "container.googleapis.com",
     # acm
     "gkehub.googleapis.com",
-    # cicd
+    # cicd : not using these apis yet
     # "binaryauthorization.googleapis.com",
     # "containerscanning.googleapis.com",
     # "cloudkms.googleapis.com",

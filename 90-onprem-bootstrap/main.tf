@@ -13,15 +13,14 @@ module "onprem_project" {
   alert_pubsub_topic   = var.alert_pubsub_topic
   budget_amount        = var.budget_amount
   project_prefix       = var.project_prefix
-  enable_hub_and_spoke = false
+
   sa_roles = [
     "roles/compute.admin",
     "roles/iam.serviceAccountAdmin",
     "roles/iam.serviceAccountUser",
     "roles/resourcemanager.projectIamAdmin",
   ]
-  enable_cloudbuild_deploy = false
-  cloudbuild_sa            = ""
+
   activate_apis = [
     "compute.googleapis.com",
     "dns.googleapis.com",

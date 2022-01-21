@@ -1,6 +1,5 @@
 module "ad_management_project" {
   source               = "../../../04-projects/modules/single_project"
-  enable_hub_and_spoke = true
   org_id               = var.org_id
   billing_account      = var.billing_account
   environment          = var.environment
@@ -14,8 +13,7 @@ module "ad_management_project" {
     "roles/iam.serviceAccountUser",
     "roles/iam.serviceAccountAdmin",
   ]
-  enable_cloudbuild_deploy = false
-  cloudbuild_sa            = ""
+
   activate_apis = [
     "compute.googleapis.com",
   ]

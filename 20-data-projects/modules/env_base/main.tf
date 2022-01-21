@@ -8,7 +8,6 @@ module "landing_project" {
   alert_pubsub_topic   = var.alert_pubsub_topic
   budget_amount        = var.budget_amount
   project_prefix       = var.project_prefix
-  enable_hub_and_spoke = var.enable_hub_and_spoke
   sa_roles = [
     "roles/pubsub.admin",
     "roles/storage.admin",
@@ -34,7 +33,6 @@ module "landing_project" {
 
 module "transformation_project" {
   source               = "../../../04-projects/modules/single_project"
-  enable_hub_and_spoke = true
   org_id               = var.org_id
   billing_account      = var.billing_account
   environment          = var.environment
@@ -81,7 +79,6 @@ module "dwh_project" {
   alert_pubsub_topic   = var.alert_pubsub_topic
   budget_amount        = var.budget_amount
   project_prefix       = var.project_prefix
-  enable_hub_and_spoke = var.enable_hub_and_spoke
   sa_roles = [
     "roles/bigquery.admin",
     "roles/storage.admin"

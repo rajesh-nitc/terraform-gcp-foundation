@@ -17,11 +17,11 @@ module "app_cicd_project" {
     "containeranalysis.googleapis.com",
     # "containerscanning.googleapis.com", # To save cost
     "binaryauthorization.googleapis.com",
-    "secretmanager.googleapis.com",
+    # "secretmanager.googleapis.com", # Not using yet
     "compute.googleapis.com",
     "iam.googleapis.com",
     "container.googleapis.com",
-    "cloudkms.googleapis.com",
+    # "cloudkms.googleapis.com", # Not using yet
     "serviceusage.googleapis.com",
     "iamcredentials.googleapis.com",
   ]

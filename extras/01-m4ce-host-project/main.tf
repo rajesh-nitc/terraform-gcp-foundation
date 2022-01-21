@@ -17,14 +17,12 @@ locals {
 }
 
 module "m4ce_host_project" {
-  source                   = "../04-projects/modules/single_project"
-  org_id                   = var.org_id
-  billing_account          = var.billing_account
-  environment              = "common"
-  vpc_type                 = ""
-  sa_roles                 = []
-  enable_cloudbuild_deploy = false
-  cloudbuild_sa            = ""
+  source          = "../04-projects/modules/single_project"
+  org_id          = var.org_id
+  billing_account = var.billing_account
+  environment     = "common"
+  vpc_type        = ""
+  sa_roles        = []
 
   activate_apis = [
     "vmmigration.googleapis.com",

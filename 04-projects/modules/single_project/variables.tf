@@ -106,7 +106,7 @@ variable "project_prefix" {
 variable "enable_hub_and_spoke" {
   description = "Enable Hub-and-Spoke architecture."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "sa_roles" {
