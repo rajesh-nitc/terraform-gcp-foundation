@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.6.3...v2.7.0) (2022-01-22)
+
+
+### Features
+
+* securitycenter.googleapis.com should resolve to private.googleapis.com ([739b843](https://www.github.com/rajesh-nitc/gcp-foundation/commit/739b843aaf2d71c81a81ea1e7d2edcbd6300be8a))
+
 ### [2.6.3](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.6.2...v2.6.3) (2022-01-21)
 
 
