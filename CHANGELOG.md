@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.7.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.7.0...v2.7.1) (2022-01-22)
+
+
+### Bug Fixes
+
+* *.googleapis.com should reolve to restricted.googleapis.com ([e97c5ef](https://www.github.com/rajesh-nitc/gcp-foundation/commit/e97c5ef0c263731faec7b5ebc2c79fabd285a766))
+
 ## [2.7.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.6.3...v2.7.0) (2022-01-22)
 
 
