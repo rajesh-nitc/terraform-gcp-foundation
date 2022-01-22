@@ -57,7 +57,7 @@ module "private_googleapis" {
       name    = "*"
       type    = "CNAME"
       ttl     = 300
-      records = ["private.googleapis.com."]
+      records = ["restricted.googleapis.com."]
     },
     {
       name    = "private"
