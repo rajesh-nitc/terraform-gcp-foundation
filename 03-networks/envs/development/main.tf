@@ -11,8 +11,8 @@ locals {
     subnet_name           = "sb-${local.environment_code}-shared-base-${i.region}-${i.team}"
     subnet_ip             = i.subnet_ip
     subnet_region         = i.region
-    subnet_private_access = i.enable_private_access
-    subnet_flow_logs      = i.enable_flow_logs
+    subnet_private_access = true
+    subnet_flow_logs      = false
     }
     ]
   )
@@ -24,6 +24,7 @@ locals {
       range_name    = "rn-${local.environment_code}-shared-base-${i.region}-gke-${k}"
       ip_cidr_range = v
       }
+
     ]
   }
 

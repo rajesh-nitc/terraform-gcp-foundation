@@ -10,92 +10,72 @@ private_service_cidr = "10.16.64.0/21"
 subnets = [
   # us-central1
   {
-    team                  = "bu1"
-    subnet_ip             = "10.0.64.0/21"
-    region                = "us-central1"
-    enable_flow_logs      = false
-    enable_private_access = true
-    secondary_ip_range    = {}
+    team               = "bu1"
+    subnet_ip          = "10.0.64.0/21"
+    region             = "us-central1"
+    secondary_ip_range = {}
   },
   {
-    team                  = "data"
-    subnet_ip             = "10.0.72.0/21"
-    region                = "us-central1"
-    enable_flow_logs      = false
-    enable_private_access = true
-    secondary_ip_range    = {}
+    team               = "data"
+    subnet_ip          = "10.0.72.0/21"
+    region             = "us-central1"
+    secondary_ip_range = {}
   },
   {
-    team                  = "gke"
-    subnet_ip             = "10.0.80.0/21"
-    region                = "us-central1"
-    enable_flow_logs      = false
-    enable_private_access = true
+    team      = "gke"
+    subnet_ip = "10.0.80.0/21"
+    region    = "us-central1"
     secondary_ip_range = {
       pod = "100.64.64.0/21"
       svc = "100.64.72.0/21"
     }
   },
   {
-    team                  = "ad"
-    subnet_ip             = "10.0.88.0/24"
-    region                = "us-central1"
-    enable_flow_logs      = false
-    enable_private_access = true
-    secondary_ip_range    = {}
+    team               = "ad"
+    subnet_ip          = "10.0.88.0/24"
+    region             = "us-central1"
+    secondary_ip_range = {}
   },
   {
-    team                  = "proxy-only"
-    subnet_ip             = "10.0.89.0/24"
-    region                = "us-central1"
-    enable_flow_logs      = false
-    enable_private_access = false
-    secondary_ip_range    = {}
-    purpose               = "REGIONAL_MANAGED_PROXY"
-    role                  = "ACTIVE"
+    team               = "proxy-only"
+    subnet_ip          = "10.0.89.0/24"
+    region             = "us-central1"
+    secondary_ip_range = {}
+    purpose            = "REGIONAL_MANAGED_PROXY"
+    role               = "ACTIVE"
   },
   # us-west1
   {
-    team                  = "bu1"
-    subnet_ip             = "10.1.64.0/21"
-    region                = "us-west1"
-    enable_flow_logs      = false
-    enable_private_access = true
-    secondary_ip_range    = {}
+    team               = "bu1"
+    subnet_ip          = "10.1.64.0/21"
+    region             = "us-west1"
+    secondary_ip_range = {}
   },
   {
-    team                  = "data"
-    subnet_ip             = "10.1.72.0/21"
-    region                = "us-west1"
-    enable_flow_logs      = false
-    enable_private_access = true
-    secondary_ip_range    = {}
+    team               = "data"
+    subnet_ip          = "10.1.72.0/21"
+    region             = "us-west1"
+    secondary_ip_range = {}
   },
   {
-    team                  = "gke"
-    subnet_ip             = "10.1.80.0/21"
-    region                = "us-west1"
-    enable_flow_logs      = false
-    enable_private_access = true
-    secondary_ip_range    = {}
+    team               = "gke"
+    subnet_ip          = "10.1.80.0/21"
+    region             = "us-west1"
+    secondary_ip_range = {}
   },
   {
-    team                  = "ad"
-    subnet_ip             = "10.1.88.0/24"
-    region                = "us-west1"
-    enable_flow_logs      = false
-    enable_private_access = true
-    secondary_ip_range    = {}
+    team               = "ad"
+    subnet_ip          = "10.1.88.0/24"
+    region             = "us-west1"
+    secondary_ip_range = {}
   },
   {
-    team                  = "proxy-only"
-    subnet_ip             = "10.1.89.0/24"
-    region                = "us-west1"
-    enable_flow_logs      = false
-    enable_private_access = false
-    secondary_ip_range    = {}
-    purpose               = "REGIONAL_MANAGED_PROXY"
-    role                  = "ACTIVE"
+    team               = "proxy-only"
+    subnet_ip          = "10.1.89.0/24"
+    region             = "us-west1"
+    secondary_ip_range = {}
+    purpose            = "REGIONAL_MANAGED_PROXY"
+    role               = "ACTIVE"
   },
 ]
 
