@@ -91,6 +91,8 @@ Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/prof
 └── README.md
 ```
 ## Org Validations
+- Core foundation infra pipelines
+- Project level infra and cicd pipelines
 - Sample app in private gke cluster
 - Sample dataflow pipelines
 - Sample onprem connectivity tests
