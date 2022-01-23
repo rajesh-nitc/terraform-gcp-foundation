@@ -52,6 +52,7 @@ module "base_shared_vpc" {
   ]
   secondary_ranges = {}
 
+  # DNS on demand
   enable_dns_zone_private_googleapis = var.enable_dns_zone_private_googleapis
   enable_dns_peering                 = var.enable_dns_peering
 

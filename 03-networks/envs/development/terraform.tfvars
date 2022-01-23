@@ -87,6 +87,8 @@ nat_enabled = false
 
 # DNS on demand
 enable_dns_zone_private_googleapis = false
+enable_dns_zone_gcr                = false
+enable_dns_zone_pkg_dev            = false
 enable_dns_peering                 = false
 
 allow_all_ingress_ranges = [

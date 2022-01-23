@@ -112,6 +112,16 @@ variable "enable_dns_zone_private_googleapis" {
   default = true
 }
 
+variable "enable_dns_zone_gcr" {
+  type    = bool
+  default = false
+}
+
+variable "enable_dns_zone_pkg_dev" {
+  type    = bool
+  default = false
+}
+
 variable "private_service_cidr" {
   type        = string
   description = "CIDR range for private service networking. Used for Cloud SQL and other managed services."
