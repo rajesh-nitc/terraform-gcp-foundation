@@ -203,12 +203,6 @@ variable "enable_dns_peering" {
   default = false
 }
 
-# onprem
-#variable "allow_onprem_ranges" {
-#  type    = list(string)
-#  default = []
-#}
-
 variable "enable_private_service_dns_peering" {
   type    = bool
   default = false
