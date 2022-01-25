@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.7.1...v2.8.0) (2022-01-25)
+
+
+### Features
+
+* DNS peering with managed services ([ba60557](https://www.github.com/rajesh-nitc/gcp-foundation/commit/ba605575041fb37db3b152d7adf7c0dfde49dad3))
+
 ### [2.7.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.7.0...v2.7.1) (2022-01-22)
 
 
