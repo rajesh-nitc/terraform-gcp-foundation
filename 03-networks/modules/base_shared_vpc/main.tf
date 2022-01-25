@@ -111,3 +111,26 @@ resource "google_service_networking_connection" "private_vpc_connection" {
 
   depends_on = [module.peering]
 }
+
+resource "google_compute_network_peering_routes_config" "peering_config" {
+  count                = var.mode == "spoke" ? 1 : 0
+  project              = var.project_id
+  peering              = "servicenetworking-googleapis-com"
+  network              = module.main.network_name
+  import_custom_routes = true
+  export_custom_routes = true
+  depends_on           = [google_service_networking_connection.private_vpc_connection]
+}
+
+/***************************************************************
+  DNS Peering with managed services like Apigeex
+ **************************************************************/
+
+resource "google_service_networking_peered_dns_domain" "example" {
+  count      = var.mode == "spoke" && var.enable_private_service_dns_peering ? 1 : 0
+  project    = var.project_id
+  name       = "${replace(var.domain, ".", "-")}peering"
+  network    = module.main.network_name
+  dns_suffix = var.domain
+  depends_on = [google_service_networking_connection.private_vpc_connection]
+}
