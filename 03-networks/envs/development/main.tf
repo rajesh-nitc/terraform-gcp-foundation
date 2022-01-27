@@ -6,16 +6,31 @@ locals {
   mode             = var.enable_hub_and_spoke ? "spoke" : null
 
   # Subnets
-  base_subnet_primary_ranges = flatten([for i in var.subnets : {
+  team_subnets = flatten([for i in var.subnets : {
 
     subnet_name           = "sb-${local.environment_code}-shared-base-${i.region}-${i.team}"
     subnet_ip             = i.subnet_ip
     subnet_region         = i.region
     subnet_private_access = true
     subnet_flow_logs      = false
-    }
+    } if !can(regex("REGIONAL_MANAGED_PROXY", i.purpose))
     ]
   )
+
+  proxy_only_subnets = flatten([for i in var.subnets : {
+
+    subnet_name           = "sb-${local.environment_code}-shared-base-${i.region}-${i.team}"
+    subnet_ip             = i.subnet_ip
+    subnet_region         = i.region
+    subnet_private_access = false
+    subnet_flow_logs      = false
+    purpose               = i.purpose
+    role                  = i.role
+    } if can(regex("REGIONAL_MANAGED_PROXY", i.purpose))
+    ]
+  )
+
+  subnets = concat(local.team_subnets, local.proxy_only_subnets)
 
   # GKE
   secondary_ranges = { for i in var.subnets :
@@ -68,7 +83,7 @@ module "base_shared_vpc" {
   folder_prefix                 = var.folder_prefix
   mode                          = local.mode
 
-  subnets          = local.base_subnet_primary_ranges
+  subnets          = local.subnets
   secondary_ranges = local.secondary_ranges
 
   # Dataflow
