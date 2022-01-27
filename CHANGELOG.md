@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.8.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.8.0...v2.8.1) (2022-01-27)
+
+
+### Bug Fixes
+
+* Fixed proxy only subnets ([6712b28](https://www.github.com/rajesh-nitc/gcp-foundation/commit/6712b28b1f5ae951f113e41841d1b634fedb1391))
+
 ## [2.8.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.7.1...v2.8.0) (2022-01-25)
 
 
