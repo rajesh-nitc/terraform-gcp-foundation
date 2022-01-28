@@ -99,7 +99,7 @@ module "base_shared_vpc" {
   # DNS on demand
   enable_dns_zone_private_googleapis = var.enable_dns_zone_private_googleapis
   enable_dns_peering                 = var.enable_dns_peering
-  enable_dns_zone_gcr                = var.enable_dns_zone_gcr
+  enable_dns_zone_gcr                = var.enable_dns_zone_gcr # dataflow pull images from gcr.io
   enable_dns_zone_pkg_dev            = var.enable_dns_zone_pkg_dev
 
   # AD

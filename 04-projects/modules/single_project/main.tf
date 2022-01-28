@@ -46,6 +46,18 @@ locals {
     }
   ]
 
+  # dataflow
+  worker_sa_dataflow_roles = [
+    "roles/dataflow.worker",
+    "roles/storage.admin",
+  ]
+
+  # dataproc
+  worker_sa_dataproc_roles = [
+    "roles/dataproc.worker",
+
+  ]
+
 }
 
 module "project" {

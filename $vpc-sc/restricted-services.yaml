@@ -1,6 +1,3 @@
-# Services not supported
-# securitycenter.googleapis.com
-# Protect all supported services whether we use them or not
 - accessapproval.googleapis.com
 - adsdatahub.googleapis.com
 - aiplatform.googleapis.com

@@ -16,12 +16,13 @@ resource "google_service_account" "worker_sa_dataproc" {
   display_name = "Dataproc worker SA"
 }
 
-resource "google_project_iam_member" "worker_sa_dataproc_role" {
-  count   = contains(var.activate_apis, "dataproc.googleapis.com") ? 1 : 0
-  project = module.project.project_id
-  role    = "roles/dataproc.worker"
-  member  = "serviceAccount:${google_service_account.worker_sa_dataproc[0].email}"
+resource "google_project_iam_member" "worker_sa_dataproc_roles" {
+  for_each = contains(var.activate_apis, "dataproc.googleapis.com") ? toset(local.worker_sa_dataproc_roles) : []
+  project  = module.project.project_id
+  role     = each.value
+  member   = "serviceAccount:${google_service_account.worker_sa_dataproc[0].email}"
 }
+
 
 # Dataproc prj sa
 resource "google_project_iam_member" "prj_sa_dataproc_role" {

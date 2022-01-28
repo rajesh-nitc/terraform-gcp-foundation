@@ -1,6 +1,6 @@
 # PR to main branch
 resource "google_cloudbuild_trigger" "pr_trigger" {
-  for_each = toset(var.monorepo_folders)
+  for_each = toset(var.cloudbuild_trigger_repos)
   provider = google-beta
   project  = var.app_cicd_project_id
   name     = "${each.key}-trigger"

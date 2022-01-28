@@ -9,5 +9,6 @@ module "gke_project" {
   app_infra_pipeline_cloudbuild_sa = var.app_infra_pipeline_cloudbuild_sa
   group_email                      = var.group_email
   cicd_sa                          = var.cicd_sa
+  bkt_tfstate                      = var.bkt_tfstate
 }
 

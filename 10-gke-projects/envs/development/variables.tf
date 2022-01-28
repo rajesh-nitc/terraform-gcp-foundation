@@ -29,3 +29,7 @@ variable "app_cicd_project_id" {
 variable "cicd_sa" {
   type = string
 }
+
+variable "bkt_tfstate" {
+  type = string
+}

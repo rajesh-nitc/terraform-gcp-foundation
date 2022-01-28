@@ -1,12 +1,12 @@
 resource "google_cloudbuild_trigger" "push_non_environment_branch" {
-  for_each = toset(var.monorepo_folders)
+  for_each = toset(var.cloudbuild_trigger_repos)
   provider = google-beta
-  project  = var.cloudbuild_project_id
+  project  = var.automation_project_id
   name     = "${each.key}-plan"
 
   github {
-    name  = "gcp-foundation"
-    owner = "rajesh-nitc"
+    name  = var.github_repo_name
+    owner = var.github_user_name
 
     push {
       branch       = "^(development|production)$"
@@ -25,14 +25,14 @@ resource "google_cloudbuild_trigger" "push_non_environment_branch" {
 }
 
 resource "google_cloudbuild_trigger" "push_environment_branch" {
-  for_each = toset(var.monorepo_folders)
+  for_each = toset(var.cloudbuild_trigger_repos)
   provider = google-beta
-  project  = var.cloudbuild_project_id
+  project  = var.automation_project_id
   name     = "${each.key}-apply"
 
   github {
-    name  = "gcp-foundation"
-    owner = "rajesh-nitc"
+    name  = var.github_repo_name
+    owner = var.github_user_name
 
     push {
       branch       = "^(development|production)$"

@@ -42,6 +42,6 @@ variable "group_email" {
   type = string
 }
 
-variable "monorepo_folders" {
+variable "cloudbuild_trigger_repos" {
   type = list(string)
 }

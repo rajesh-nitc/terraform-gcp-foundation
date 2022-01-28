@@ -5,5 +5,5 @@ resource "google_folder_iam_member" "browser_cloud_build" {
   for_each = toset(var.folders_to_grant_browser_role)
   folder   = each.value
   role     = "roles/browser"
-  member   = "serviceAccount:${data.google_project.cloudbuild_project.number}@cloudbuild.gserviceaccount.com"
+  member   = "serviceAccount:${data.google_project.automation_project.number}@cloudbuild.gserviceaccount.com"
 }

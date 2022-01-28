@@ -1,4 +1,9 @@
-module "app_infra_cloudbuild_project" {
+moved {
+  from = module.app_infra_cloudbuild_project
+  to   = module.automation_project
+}
+
+module "automation_project" {
   source               = "../../../04-projects/modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account
@@ -32,9 +37,10 @@ module "app_infra_cloudbuild_project" {
 module "infra_pipelines" {
   source = "../../../04-projects/modules/infra_pipelines"
 
-  cloudbuild_project_id = module.app_infra_cloudbuild_project.project_id
-  business_code         = "gke"
-  org_id                = var.org_id
-  monorepo_folders      = ["11-gke-infra"]
-  group_email           = var.group_email
+  automation_project_id    = module.automation_project.project_id
+  business_code            = "gke"
+  org_id                   = var.org_id
+  cloudbuild_trigger_repos = ["11-gke-infra"]
+  github_repo_name         = "gcp-foundation"
+  github_user_name         = "rajesh-nitc"
 }

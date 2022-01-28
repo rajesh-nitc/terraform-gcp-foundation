@@ -49,3 +49,7 @@ variable "group_email" {
 variable "environment" {
   type = string
 }
+
+variable "bkt_tfstate" {
+  type = string
+}

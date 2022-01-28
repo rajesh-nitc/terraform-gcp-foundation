@@ -57,7 +57,7 @@ module "private_googleapis" {
       name    = "*"
       type    = "CNAME"
       ttl     = 300
-      records = ["restricted.googleapis.com."]
+      records = ["private.googleapis.com."]
     },
     {
       name    = "private"
@@ -70,12 +70,6 @@ module "private_googleapis" {
       type    = "A"
       ttl     = 300
       records = local.restricted_googleapis_cidr_hosts_list
-    },
-    {
-      name    = "securitycenter"
-      type    = "CNAME"
-      ttl     = 300
-      records = ["private.googleapis.com."]
     },
   ]
 }

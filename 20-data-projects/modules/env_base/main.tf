@@ -42,18 +42,16 @@ module "landing_project" {
 }
 
 module "transformation_project" {
-  source               = "../../../04-projects/modules/single_project"
-  org_id               = var.org_id
-  billing_account      = var.billing_account
-  environment          = var.environment
-  vpc_type             = "base"
-  alert_spent_percents = var.alert_spent_percents
-  alert_pubsub_topic   = var.alert_pubsub_topic
-  budget_amount        = var.budget_amount
-  project_prefix       = var.project_prefix
-  sa_roles = [
-    "roles/storage.admin",
-  ]
+  source                   = "../../../04-projects/modules/single_project"
+  org_id                   = var.org_id
+  billing_account          = var.billing_account
+  environment              = var.environment
+  vpc_type                 = "base"
+  alert_spent_percents     = var.alert_spent_percents
+  alert_pubsub_topic       = var.alert_pubsub_topic
+  budget_amount            = var.budget_amount
+  project_prefix           = var.project_prefix
+  sa_roles                 = [] # Provided as part of single_project module
   enable_cloudbuild_deploy = true
   cloudbuild_sa            = var.app_infra_pipeline_cloudbuild_sa
   activate_apis = [

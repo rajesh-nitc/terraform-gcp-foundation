@@ -1,32 +1,8 @@
 # Dataflow Sample Pipelines in Shared VPC
 
-## Batch pipeline using Python
-
-### Prerequisites:
-```
-gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com
-
-gsutil cp data/names_data.csv gs://bkt-d-data-landing-raw-data
-```
-
-### Run job:
-```
-gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
-
-python3 csv_line_to_bq_row.py \
-  --input=gs://bkt-d-data-landing-raw-data/names_data.csv \
-  --output=prj-data-d-dwh-3f33:bq_raw_dataset.names1 \
-  --temp_location=gs://bkt-d-data-dataflow-temp \
-  --runner=DataflowRunner \
-  --project=prj-data-d-transformation-4f2b \
-  --region=us-central1 \
-  --no_use_public_ips \
-  --subnetwork=https://www.googleapis.com/compute/v1/projects/prj-d-shared-base-21a3/regions/us-central1/subnetworks/sb-d-shared-base-us-central1-data \
-  --service_account_email=sa-dataflow-worker@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
-```
 ## Batch pipeline using Templates
 
-### Prerequisites:
+### Prerequisites
 ```
 gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com
 
@@ -35,11 +11,11 @@ gsutil cp schema/names_schema.json gs://bkt-d-data-landing-data-schema
 gsutil cp udf/names_udf.js gs://bkt-d-data-landing-data-schema
 ```
 
-### Run job:
+### Run job
 ```
 gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
 
-gcloud dataflow jobs run first-batch-template-job \
+gcloud dataflow jobs run first-batch-job5 \
     --gcs-location gs://dataflow-templates/latest/GCS_Text_to_BigQuery \
     --project prj-data-d-transformation-4f2b \
     --region us-central1 \
@@ -53,13 +29,13 @@ javascriptTextTransformFunctionName=transform_batch_data,\
 JSONPath=gs://bkt-d-data-landing-data-schema/names_schema.json,\
 javascriptTextTransformGcsPath=gs://bkt-d-data-landing-data-schema/names_udf.js,\
 inputFilePattern=gs://bkt-d-data-landing-raw-data/names_data.csv,\
-outputTable=prj-data-d-dwh-3f33:bq_raw_dataset.names2,\
+outputTable=prj-data-d-dwh-3f33:bq_raw_dataset.names5,\
 bigQueryLoadingTemporaryDirectory=gs://bkt-d-data-dataflow-temp
 ```
 
 ## Streaming pipeline using Templates
 
-### Prerequisites:
+### Prerequisites
 ```
 gcloud config unset auth/impersonate_service_account
 
@@ -70,7 +46,7 @@ gcloud config set auth/impersonate_service_account project-service-account@prj-d
 gsutil cp udf/names_udf.js gs://bkt-d-data-landing-data-schema
 ```
 
-### Publish:
+### Publish
 ```
 gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com
 
@@ -80,7 +56,7 @@ do
 done
 ```
 
-### Run job:
+### Run job
 ```
 gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
 

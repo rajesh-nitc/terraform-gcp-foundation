@@ -6,5 +6,6 @@ module "projects_data" {
   environment                      = "development"
   app_infra_pipeline_cloudbuild_sa = var.app_infra_pipeline_cloudbuild_sa
   group_email                      = var.group_email
+  bkt_tfstate                      = var.bkt_tfstate
 }
 

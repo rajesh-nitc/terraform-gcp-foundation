@@ -16,11 +16,11 @@ resource "google_service_account" "worker_sa_dataflow" {
   display_name = "Dataflow worker SA"
 }
 
-resource "google_project_iam_member" "worker_sa_dataflow_role" {
-  count   = contains(var.activate_apis, "dataflow.googleapis.com") ? 1 : 0
-  project = module.project.project_id
-  role    = "roles/dataflow.worker"
-  member  = "serviceAccount:${google_service_account.worker_sa_dataflow[0].email}"
+resource "google_project_iam_member" "worker_sa_dataflow_roles" {
+  for_each = contains(var.activate_apis, "dataflow.googleapis.com") ? toset(local.worker_sa_dataflow_roles) : []
+  project  = module.project.project_id
+  role     = each.value
+  member   = "serviceAccount:${google_service_account.worker_sa_dataflow[0].email}"
 }
 
 # Dataflow prj sa

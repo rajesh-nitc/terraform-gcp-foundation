@@ -1,14 +1,7 @@
-locals {
-  folder_id                 = data.google_active_folder.env.name
-  project_id                = data.google_project.dwh_project.project_id
-  project_id_transformation = data.google_project.transformation_project.project_id
-  environment_code          = element(split("", var.environment), 0)
-}
-
 module "bq_dataset" {
   source     = "terraform-google-modules/bigquery/google"
   version    = "5.2.0"
-  project_id = local.project_id
+  project_id = var.project_id
 
   dataset_id                  = "bq_raw_dataset"
   dataset_name                = "bq_raw_dataset"
@@ -19,11 +12,11 @@ module "bq_dataset" {
   access = [
     {
       role          = "roles/bigquery.dataOwner"
-      user_by_email = format("project-service-account@%s.iam.gserviceaccount.com", local.project_id_transformation)
+      user_by_email = format("%s@%s.iam.gserviceaccount.com", "sa-dataflow-worker", var.transformation_project_id)
     },
     {
       role          = "roles/bigquery.dataViewer"
-      user_by_email = format("project-service-account@%s.iam.gserviceaccount.com", local.project_id)
+      user_by_email = format("project-service-account@%s.iam.gserviceaccount.com", var.project_id)
     },
     {
       role           = "roles/bigquery.dataOwner"
