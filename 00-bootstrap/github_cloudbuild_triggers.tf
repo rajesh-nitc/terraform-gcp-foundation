@@ -18,8 +18,8 @@ resource "google_cloudbuild_trigger" "push_non_environment_branch" {
   name     = "${each.key}-plan"
 
   github {
-    name  = "gcp-foundation"
-    owner = "rajesh-nitc"
+    name  = var.github_repo_name
+    owner = var.github_user_name
 
     push {
       branch       = "^(development|production)$"
@@ -45,8 +45,8 @@ resource "google_cloudbuild_trigger" "push_environment_branch" {
   name     = "${each.key}-apply"
 
   github {
-    name  = "gcp-foundation"
-    owner = "rajesh-nitc"
+    name  = var.github_repo_name
+    owner = var.github_user_name
 
     push {
       branch       = "^(development|production)$"

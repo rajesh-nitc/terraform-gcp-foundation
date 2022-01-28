@@ -12,7 +12,7 @@ resource "google_folder" "bootstrap" {
 
 module "seed_bootstrap" {
   source                         = "terraform-google-modules/bootstrap/google"
-  version                        = "~> 3.0"
+  version                        = "~> 5.0"
   org_id                         = var.org_id
   folder_id                      = google_folder.bootstrap.id
   project_id                     = "${var.project_prefix}-b-seed"
@@ -82,7 +82,7 @@ resource "google_billing_account_iam_member" "tf_billing_admin" {
 
 module "cloudbuild_bootstrap" {
   source                      = "terraform-google-modules/bootstrap/google//modules/cloudbuild"
-  version                     = "~> 2.2"
+  version                     = "~> 5.0"
   org_id                      = var.org_id
   folder_id                   = google_folder.bootstrap.id
   project_id                  = "${var.project_prefix}-b-cicd"
@@ -97,9 +97,9 @@ module "cloudbuild_bootstrap" {
   cloudbuild_apply_filename   = "cloudbuild-tf-apply.yaml"
   project_prefix              = var.project_prefix
   cloud_source_repos          = var.cloud_source_repos
-  terraform_validator_release = "2021-03-22"
-  terraform_version           = "0.13.6"
-  terraform_version_sha256sum = "55f2db00b05675026be9c898bdd3e8230ff0c5c78dd12d743ca38032092abfc9"
+  terraform_validator_release = "v0.6.0"
+  terraform_version           = "1.0.2"
+  terraform_version_sha256sum = "7329f887cc5a5bda4bedaec59c439a4af7ea0465f83e3c1b0f4d04951e1181f4"
 
   activate_apis = [
     "serviceusage.googleapis.com",
@@ -146,5 +146,3 @@ resource "google_folder_iam_member" "folder_cb_sa_browser" {
   role   = "roles/browser"
   member = "serviceAccount:${data.google_project.cloudbuild.number}@cloudbuild.gserviceaccount.com"
 }
-
-# TODO: terraform validator and policies

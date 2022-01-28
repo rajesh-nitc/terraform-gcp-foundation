@@ -65,3 +65,11 @@ variable "cloud_source_repos" {
   type        = list(string)
   default     = ["gcp-org", "gcp-environments", "gcp-networks", "gcp-projects"]
 }
+
+variable "github_repo_name" {
+  type = string
+}
+
+variable "github_user_name" {
+  type = string
+}

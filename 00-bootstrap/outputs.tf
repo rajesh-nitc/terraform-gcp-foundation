@@ -31,13 +31,3 @@ output "gcs_bucket_cloudbuild_artifacts" {
   description = "Bucket used to store Cloud/Build artifacts in CloudBuild project."
   value       = module.cloudbuild_bootstrap.gcs_bucket_cloudbuild_artifacts
 }
-
-output "kms_keyring" {
-  description = "KMS Keyring created by the module."
-  value       = module.cloudbuild_bootstrap.kms_keyring
-}
-
-output "kms_crypto_key" {
-  description = "KMS key created by the module."
-  value       = module.cloudbuild_bootstrap.kms_crypto_key
-}

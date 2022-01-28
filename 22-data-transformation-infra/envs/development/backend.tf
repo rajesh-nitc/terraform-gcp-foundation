@@ -16,7 +16,8 @@
 
 terraform {
   backend "gcs" {
-    bucket = "22-data-transformation-infra-tfstate-0546"
-    prefix = "terraform/app-infra/data-transformation/development"
+    bucket                      = "22-data-transformation-infra-tfstate-0546"
+    prefix                      = "terraform/app-infra/data-transformation/development"
+    impersonate_service_account = "project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com"
   }
 }

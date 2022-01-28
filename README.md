@@ -102,9 +102,9 @@ To keep costs down in personal org:
 
 - Enable dns zones on demand
 - Disable container scanning api
-- Skip hierarchical firewall policies 
-- Create log sink to send _only_ vpc sc violations
-- Destroy kms key in bootstrap cicd project
+- Skip hierarchical firewall policies
+- Skip kms
+- Create log sink to send _only_ vpc-sc violations
 - Clean artifact registry images in cicd projects
 
 **Warning**: Don't enable firewall insights api as it is a costly operation

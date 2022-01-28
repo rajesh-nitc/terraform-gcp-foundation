@@ -1,6 +1,6 @@
-# VPCSC
+# VPC-SC
 
-In 01-org, an aggregated logsink at org level is created to send _only_ the vpc sc violations to the central logging project.
+In 01-org, an aggregated logsink at org level is created to send _only_ the vpc-sc violations to the central logging project.
 
 Sample sql to query the dataset:
 

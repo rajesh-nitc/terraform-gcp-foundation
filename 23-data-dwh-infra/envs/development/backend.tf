@@ -16,7 +16,8 @@
 
 terraform {
   backend "gcs" {
-    bucket = "23-data-dwh-infra-tfstate-0546"
-    prefix = "terraform/app-infra/data-dwh/development"
+    bucket                      = "23-data-dwh-infra-tfstate-0546"
+    prefix                      = "terraform/app-infra/data-dwh/development"
+    impersonate_service_account = "project-service-account@prj-data-d-dwh-3f33.iam.gserviceaccount.com"
   }
 }
