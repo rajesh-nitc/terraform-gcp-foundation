@@ -1,3 +1,4 @@
+# Composer sa
 resource "google_compute_subnetwork_iam_member" "sa_composer_networkuser" {
   for_each   = contains(var.activate_apis, "composer.googleapis.com") && var.vpc_type != "" ? local.shared_vpc_subnets_map : {}
   member     = format("serviceAccount:%s", local.service_prj_composer_sa)

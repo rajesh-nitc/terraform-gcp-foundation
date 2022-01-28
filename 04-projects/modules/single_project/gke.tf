@@ -1,3 +1,4 @@
+# GKE sa
 resource "google_compute_subnetwork_iam_member" "service_prj_gke_sa_networkuser" {
   for_each   = contains(var.activate_apis, "container.googleapis.com") && var.vpc_type != "" ? local.shared_vpc_subnets_map : {}
   member     = format("serviceAccount:%s", local.service_prj_gke_sa)

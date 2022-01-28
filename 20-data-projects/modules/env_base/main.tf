@@ -1,3 +1,13 @@
+locals {
+  worker_sa_dataflow_roles_landing_project = [
+    "roles/storage.admin",
+  ]
+
+  worker_sa_dataflow_roles_dwh_project = [
+    "roles/bigquery.jobUser" # Required for batch pipeline # Access Denied: Project prj-data-d-dwh-3f33: User does not have bigquery.jobs.create permission in project prj-data-d-dwh-3f33
+  ]
+}
+
 module "landing_project" {
   source               = "../../../04-projects/modules/single_project"
   org_id               = var.org_id
@@ -42,9 +52,6 @@ module "transformation_project" {
   budget_amount        = var.budget_amount
   project_prefix       = var.project_prefix
   sa_roles = [
-    "roles/dataflow.admin",
-    "roles/dataflow.worker",
-    "roles/iam.serviceAccountUser",
     "roles/storage.admin",
   ]
   enable_cloudbuild_deploy = true

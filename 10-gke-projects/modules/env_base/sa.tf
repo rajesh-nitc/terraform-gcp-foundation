@@ -17,7 +17,7 @@ locals {
 }
 
 resource "google_service_account" "node_sa" {
-  account_id = "node-sa"
+  account_id = "sa-gke-node"
   project    = module.gke_project.project_id
 }
 
