@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.8.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.8.1...v2.8.2) (2022-01-28)
+
+
+### Bug Fixes
+
+* Added dataflow worker sa and dataproc worker sa ([0da22af](https://www.github.com/rajesh-nitc/gcp-foundation/commit/0da22afcb8a5b2fff9d4fba9a47e17a6099fe3d9))
+
 ### [2.8.1](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.8.0...v2.8.1) (2022-01-27)
 
 
