@@ -3,3 +3,4 @@ terraform_service_account        = "org-terraform@prj-b-seed-6949.iam.gserviceac
 billing_account                  = "014A32-6EFDA8-492638"
 group_email                      = "gcp_bu1_admin@budita.dev"
 app_infra_pipeline_cloudbuild_sa = "310418294350@cloudbuild.gserviceaccount.com"
+bkt_tfstate                      = "bu1-tfstate-6fbf"

@@ -45,3 +45,7 @@ variable "app_infra_pipeline_cloudbuild_sa" {
 variable "group_email" {
   type = string
 }
+
+variable "bkt_tfstate" {
+  type = string
+}

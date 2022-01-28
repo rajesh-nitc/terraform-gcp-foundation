@@ -24,6 +24,7 @@ module "base_shared_vpc_project" {
   ]
 
   group_email = var.group_email
+  bkt_tfstate = var.bkt_tfstate
 
   # Metadata
   project_suffix    = "sample-base"

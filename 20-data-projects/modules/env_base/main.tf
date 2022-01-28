@@ -31,6 +31,7 @@ module "landing_project" {
   ]
 
   group_email = var.group_email
+  bkt_tfstate = var.bkt_tfstate
 
   # Metadata
   project_suffix    = "landing"
@@ -64,6 +65,7 @@ module "transformation_project" {
   ]
 
   group_email = var.group_email
+  bkt_tfstate = var.bkt_tfstate
 
   # Metadata
   project_suffix    = "transformation"
@@ -98,6 +100,7 @@ module "dwh_project" {
   ]
 
   group_email = var.group_email
+  bkt_tfstate = var.bkt_tfstate
 
   # Metadata
   project_suffix    = "dwh"

@@ -1,5 +1,5 @@
 locals {
-  monorepo_folders = [
+  cloudbuild_trigger_repos = [
     "01-org",
     "02-environments",
     "03-networks",
@@ -12,7 +12,7 @@ locals {
 }
 
 resource "google_cloudbuild_trigger" "push_non_environment_branch" {
-  for_each = toset(local.monorepo_folders)
+  for_each = toset(local.cloudbuild_trigger_repos)
   provider = google-beta
   project  = module.cloudbuild_bootstrap.cloudbuild_project_id
   name     = "${each.key}-plan"
@@ -39,7 +39,7 @@ resource "google_cloudbuild_trigger" "push_non_environment_branch" {
 }
 
 resource "google_cloudbuild_trigger" "push_environment_branch" {
-  for_each = toset(local.monorepo_folders)
+  for_each = toset(local.cloudbuild_trigger_repos)
   provider = google-beta
   project  = module.cloudbuild_bootstrap.cloudbuild_project_id
   name     = "${each.key}-apply"

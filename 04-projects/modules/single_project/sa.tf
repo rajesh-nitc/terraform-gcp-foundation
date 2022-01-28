@@ -20,3 +20,11 @@ resource "google_folder_iam_member" "folder_network_viewer" {
   role   = "roles/compute.networkViewer"
   member = "serviceAccount:${module.project.service_account_email}"
 }
+
+# Allow project sa to access tfstate bkt in automation project per bu
+resource "google_storage_bucket_iam_member" "prj_sa_tfstate_bucket" {
+  count  = var.bkt_tfstate != "" ? 1 : 0
+  bucket = var.bkt_tfstate
+  role   = "roles/storage.admin"
+  member = "serviceAccount:${module.project.service_account_email}"
+}

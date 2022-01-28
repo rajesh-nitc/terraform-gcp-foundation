@@ -167,3 +167,8 @@ variable "default_region2" {
   type    = string
   default = "us-west1"
 }
+
+variable "bkt_tfstate" {
+  type    = string
+  default = ""
+}

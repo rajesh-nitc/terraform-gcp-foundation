@@ -1,20 +1,9 @@
-/**
- * Copyright 2021 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+moved {
+  from = module.app_infra_cloudbuild_project
+  to   = module.automation_project
+}
 
-module "app_infra_cloudbuild_project" {
+module "automation_project" {
   source               = "../../modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account
@@ -47,10 +36,11 @@ module "app_infra_cloudbuild_project" {
 module "infra_pipelines" {
   source = "../../modules/infra_pipelines"
 
-  cloudbuild_project_id = module.app_infra_cloudbuild_project.project_id
-  business_code         = "bu1"
-  org_id                = var.org_id
-  monorepo_folders      = ["05-app-infra"]
-  group_email           = var.group_email
+  automation_project_id    = module.automation_project.project_id
+  business_code            = "bu1"
+  org_id                   = var.org_id
+  cloudbuild_trigger_repos = ["05-app-infra"]
+  github_repo_name         = "gcp-foundation"
+  github_user_name         = "rajesh-nitc"
 }
 

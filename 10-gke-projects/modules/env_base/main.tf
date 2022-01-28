@@ -48,6 +48,7 @@ module "gke_project" {
   ]
 
   group_email = var.group_email
+  bkt_tfstate = var.bkt_tfstate
 
   # Metadata
   project_suffix    = "clusters"

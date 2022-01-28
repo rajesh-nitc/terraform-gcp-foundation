@@ -3,12 +3,12 @@ output "cloudbuild_sa" {
   value       = module.infra_pipelines.cloudbuild_sa
 }
 
-output "artifact_buckets" {
-  description = "GCS Buckets to store Cloud Build Artifacts"
-  value       = module.infra_pipelines.artifact_buckets
+output "artifact_bucket" {
+  description = "GCS Bucket to store Cloud Build Artifacts"
+  value       = module.infra_pipelines.artifact_bucket
 }
 
-output "state_buckets" {
-  description = "GCS Buckets to store TF state"
-  value       = module.infra_pipelines.state_buckets
+output "state_bucket" {
+  description = "GCS Bucket to store TF state"
+  value       = module.infra_pipelines.state_bucket
 }
