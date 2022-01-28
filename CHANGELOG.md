@@ -1,5 +1,12 @@
 # Changelog
 
+### [2.8.3](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.8.2...v2.8.3) (2022-01-28)
+
+
+### Bug Fixes
+
+* Tested dataflow batch pipeline and simplified infra pipelines ([ce4593c](https://www.github.com/rajesh-nitc/gcp-foundation/commit/ce4593c1f7c996400186849327f67ce9c4715cbf))
+
 ### [2.8.2](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.8.1...v2.8.2) (2022-01-28)
 
 
