@@ -2,11 +2,11 @@
 
 Tested the onprem connectivity for us-central1 region
 
+onprem vm was launched using this repo
+
 dev vm was launched using 05-app-infra
 
 hub vm was launched manually
-
-onprem vm was launched using 92-onprem-host
 
 ## Tests
 
