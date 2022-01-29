@@ -1,8 +1,3 @@
-moved {
-  from = module.app_infra_cloudbuild_project
-  to   = module.automation_project
-}
-
 module "automation_project" {
   source               = "../../../04-projects/modules/single_project"
   org_id               = var.org_id
@@ -39,8 +34,8 @@ module "infra_pipelines" {
   automation_project_id    = module.automation_project.project_id
   business_code            = "data"
   org_id                   = var.org_id
-  cloudbuild_trigger_repos = ["21-data-landing-infra", "22-data-transformation-infra", "23-data-dwh-infra"]
-  github_repo_name         = "gcp-foundation"
-  github_user_name         = "rajesh-nitc"
+  cloudbuild_trigger_repos = var.cloudbuild_trigger_repos
+  github_repo_name         = var.github_repo_name
+  github_user_name         = var.github_user_name
 }
 

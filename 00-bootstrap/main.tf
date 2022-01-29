@@ -3,6 +3,8 @@ locals {
   org_admins_org_iam_permissions = var.org_policy_admin_role == true ? [
     "roles/orgpolicy.policyAdmin", "roles/resourcemanager.organizationAdmin", "roles/billing.user"
   ] : ["roles/resourcemanager.organizationAdmin", "roles/billing.user"]
+
+  terraform_service_account = module.seed_bootstrap.terraform_sa_email
 }
 
 resource "google_folder" "bootstrap" {

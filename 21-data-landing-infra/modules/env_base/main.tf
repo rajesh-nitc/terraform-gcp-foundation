@@ -5,7 +5,8 @@ locals {
   environment_code          = element(split("", var.environment), 0)
   bkt_names                 = [for bucket in toset(var.bucket_names) : "bkt-${local.environment_code}-${var.business_code}-landing-${bucket}"]
   bkt_policy                = { for bucket in toset(local.bkt_names) : bucket => true }
-  bkt_versioning            = { for bucket in toset(local.bkt_names) : bucket => true }
+  bkt_versioning            = { for bucket in toset(local.bkt_names) : bucket => false }
+  bkt_force_destroy         = { for bucket in toset(local.bkt_names) : bucket => true }
   sa_transformation         = format("project-service-account@%s.iam.gserviceaccount.com", local.project_id_transformation)
 }
 
@@ -20,6 +21,7 @@ module "buckets_landing" {
   storage_class      = "REGIONAL"
   bucket_policy_only = local.bkt_policy
   versioning         = local.bkt_versioning
+  force_destroy      = local.bkt_force_destroy
 
 }
 

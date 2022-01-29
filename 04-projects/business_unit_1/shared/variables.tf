@@ -46,3 +46,15 @@ variable "project_prefix" {
 variable "group_email" {
   type = string
 }
+
+variable "github_repo_name" {
+  type = string
+}
+
+variable "github_user_name" {
+  type = string
+}
+
+variable "cloudbuild_trigger_repos" {
+  type = list(string)
+}

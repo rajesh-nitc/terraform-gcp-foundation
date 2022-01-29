@@ -1,18 +1,5 @@
-locals {
-  cloudbuild_trigger_repos = [
-    "01-org",
-    "02-environments",
-    "03-networks",
-    "04-projects",
-    "10-gke-projects",
-    "20-data-projects",
-  ]
-
-  terraform_service_account = module.seed_bootstrap.terraform_sa_email
-}
-
 resource "google_cloudbuild_trigger" "push_non_environment_branch" {
-  for_each = toset(local.cloudbuild_trigger_repos)
+  for_each = toset(var.cloudbuild_trigger_repos)
   provider = google-beta
   project  = module.cloudbuild_bootstrap.cloudbuild_project_id
   name     = "${each.key}-plan"
@@ -39,7 +26,7 @@ resource "google_cloudbuild_trigger" "push_non_environment_branch" {
 }
 
 resource "google_cloudbuild_trigger" "push_environment_branch" {
-  for_each = toset(local.cloudbuild_trigger_repos)
+  for_each = toset(var.cloudbuild_trigger_repos)
   provider = google-beta
   project  = module.cloudbuild_bootstrap.cloudbuild_project_id
   name     = "${each.key}-apply"

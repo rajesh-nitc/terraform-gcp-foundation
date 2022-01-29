@@ -73,3 +73,7 @@ variable "github_repo_name" {
 variable "github_user_name" {
   type = string
 }
+
+variable "cloudbuild_trigger_repos" {
+  type = list(string)
+}
