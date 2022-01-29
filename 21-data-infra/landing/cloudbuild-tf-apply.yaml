@@ -1,6 +1,6 @@
 timeout: 1200s
 substitutions:
-  _TF_SA_EMAIL: 'project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com'
+  _TF_SA_EMAIL: 'project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com'
   _GAR_REPOSITORY: 'prj-tf-runners'
 steps:
 
@@ -22,7 +22,7 @@ steps:
   args:
   - -c
   - |
-    cd 22-data-transformation-infra/envs/development
+    cd 21-data-infra/landing/envs/development 
     terraform init
     terraform apply --auto-approve
 

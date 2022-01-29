@@ -22,7 +22,7 @@ steps:
   args:
   - -c
   - |
-    cd 23-data-dwh-infra/envs/development    
+    cd 21-data-infra/dwh/envs/development    
     terraform init
     terraform plan
 

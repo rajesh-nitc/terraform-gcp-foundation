@@ -22,4 +22,3 @@ module "dataflow_buckets" {
   force_destroy      = local.bkt_force_destroy
 
 }
-

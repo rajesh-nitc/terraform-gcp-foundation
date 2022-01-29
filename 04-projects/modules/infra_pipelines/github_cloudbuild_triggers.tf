@@ -2,7 +2,7 @@ resource "google_cloudbuild_trigger" "push_non_environment_branch" {
   for_each = toset(var.cloudbuild_trigger_repos)
   provider = google-beta
   project  = var.automation_project_id
-  name     = "${each.key}-plan"
+  name     = can(regex("/", each.key)) ? replace("${each.key}-plan", "/", "-") : "${each.key}-plan"
 
   github {
     name  = var.github_repo_name
@@ -28,7 +28,7 @@ resource "google_cloudbuild_trigger" "push_environment_branch" {
   for_each = toset(var.cloudbuild_trigger_repos)
   provider = google-beta
   project  = var.automation_project_id
-  name     = "${each.key}-apply"
+  name     = can(regex("/", each.key)) ? replace("${each.key}-apply", "/", "-") : "${each.key}-apply"
 
   github {
     name  = var.github_repo_name

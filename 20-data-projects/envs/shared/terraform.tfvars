@@ -5,4 +5,4 @@ group_email               = "gcp_data_admin@budita.dev"
 default_region            = "us-central1"
 github_repo_name          = "gcp-foundation"
 github_user_name          = "rajesh-nitc"
-cloudbuild_trigger_repos  = ["21-data-landing-infra", "22-data-transformation-infra", "23-data-dwh-infra"]
+cloudbuild_trigger_repos  = ["21-data-infra/landing", "21-data-infra/transformation", "21-data-infra/dwh"]
