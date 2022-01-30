@@ -75,8 +75,6 @@ module "base_shared_vpc" {
   dns_enable_inbound_forwarding = var.dns_enable_inbound_forwarding
   dns_enable_logging            = var.dns_enable_logging
   firewall_enable_logging       = var.firewall_enable_logging
-  optional_fw_rules_enabled     = true
-  windows_activation_enabled    = true # Fw rule for windows vms
   nat_enabled                   = var.nat_enabled
   nat_bgp_asn                   = var.nat_bgp_asn
   nat_num_addresses_region1     = var.nat_num_addresses_region1
@@ -86,32 +84,27 @@ module "base_shared_vpc" {
   subnets          = local.subnets
   secondary_ranges = local.secondary_ranges
 
-  # Dataflow
-  enable_dataflow_fw_rule = true
-
-  # GKE firewall rules for single budita cluster in us-central1
-  enable_gke_fw_rules        = true
-  cluster_network_tag        = var.budita_cluster_uscentral1_cluster_network_tag
-  cluster_endpoint_for_nodes = var.budita_cluster_uscentral1_cluster_endpoint_for_nodes
-  cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]
-  cluster_ip_range_pods      = local.budita_cluster_uscentral1_cluster_ip_range_pods[0]
-
   # DNS on demand
   enable_dns_zone_private_googleapis = var.enable_dns_zone_private_googleapis
   enable_dns_peering                 = var.enable_dns_peering
   enable_dns_zone_gcr                = var.enable_dns_zone_gcr # dataflow pull images from gcr.io
   enable_dns_zone_pkg_dev            = var.enable_dns_zone_pkg_dev
 
-  # AD
-  enable_ad_fw_rule  = true
-  ad_domain_ip_range = local.ad_domain_ip_range
+  # Enable all fw rules, they don't cost unless firewall insights api is enabled
+  enable_gke_fw_rules        = true
+  enable_dataflow_fw_rule    = true
+  windows_activation_enabled = true
+  enable_ad_fw_rule          = true
+  enable_proxy_only_fw_rule  = true
 
-  # Proxy-only
-  enable_proxy_only_fw_rule = true
-  proxy_only_subnet_ranges  = local.proxy_only_subnet_ranges
-
-
-  allow_all_ingress_ranges = var.allow_all_ingress_ranges
-  allow_all_egress_ranges  = var.allow_all_egress_ranges
+  # Fw
+  cluster_network_tag        = var.budita_cluster_uscentral1_cluster_network_tag
+  cluster_endpoint_for_nodes = var.budita_cluster_uscentral1_cluster_endpoint_for_nodes
+  cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]
+  cluster_ip_range_pods      = local.budita_cluster_uscentral1_cluster_ip_range_pods[0]
+  ad_domain_ip_range         = local.ad_domain_ip_range
+  proxy_only_subnet_ranges   = local.proxy_only_subnet_ranges
+  allow_all_ingress_ranges   = var.allow_all_ingress_ranges
+  allow_all_egress_ranges    = var.allow_all_egress_ranges
 
 }

@@ -24,8 +24,6 @@ module "base_shared_vpc" {
   dns_enable_inbound_forwarding = var.base_hub_dns_enable_inbound_forwarding
   dns_enable_logging            = var.base_hub_dns_enable_logging
   firewall_enable_logging       = var.base_hub_firewall_enable_logging
-  optional_fw_rules_enabled     = true
-  windows_activation_enabled    = true # Fw rule for windows vms
   nat_enabled                   = var.base_hub_nat_enabled
   nat_bgp_asn                   = var.base_hub_nat_bgp_asn
   nat_num_addresses_region1     = var.base_hub_nat_num_addresses_region1
@@ -50,14 +48,17 @@ module "base_shared_vpc" {
       description           = "Base network hub subnet for ${var.default_region2}"
     }
   ]
+
   secondary_ranges = {}
 
   # DNS on demand
   enable_dns_zone_private_googleapis = var.enable_dns_zone_private_googleapis
   enable_dns_peering                 = var.enable_dns_peering
 
-  allow_all_ingress_ranges = var.allow_all_ingress_ranges
-  allow_all_egress_ranges  = var.allow_all_egress_ranges
+  # Enable all fw rules, they don't cost unless firewall insights api is enabled
+  windows_activation_enabled = true
+  allow_all_ingress_ranges   = var.allow_all_ingress_ranges
+  allow_all_egress_ranges    = var.allow_all_egress_ranges
 
   depends_on = [module.dns_hub_vpc]
 }

@@ -1,7 +1,3 @@
-/******************************************
-  Mandatory firewall rules
- *****************************************/
-
 resource "google_compute_firewall" "deny_all_egress" {
   count     = var.nat_enabled ? 0 : 1
   name      = "fw-${var.environment_code}-shared-base-65535-e-d-all-all-all"
@@ -54,13 +50,8 @@ resource "google_compute_firewall" "allow_private_api_egress" {
   target_tags = ["allow-google-apis", "dataflow"]
 }
 
-/******************************************
-  Optional firewall rules
- *****************************************/
-
 // Allow SSH via IAP when using the allow-iap-ssh tag for Linux workloads.
 resource "google_compute_firewall" "allow_iap_ssh" {
-  count   = var.optional_fw_rules_enabled ? 1 : 0
   name    = "fw-${var.environment_code}-shared-base-1000-i-a-all-allow-iap-ssh-tcp-22"
   network = module.main.network_name
   project = var.project_id
@@ -88,7 +79,6 @@ resource "google_compute_firewall" "allow_iap_ssh" {
 
 // Allow RDP via IAP when using the allow-iap-rdp tag for Windows workloads.
 resource "google_compute_firewall" "allow_iap_rdp" {
-  count   = var.optional_fw_rules_enabled ? 1 : 0
   name    = "fw-${var.environment_code}-shared-base-1000-i-a-all-allow-iap-rdp-tcp-3389"
   network = module.main.network_name
   project = var.project_id
@@ -145,7 +135,6 @@ resource "google_compute_firewall" "allow_windows_activation" {
 
 // Allow traffic for Internal & Global load balancing health check and load balancing IP ranges.
 resource "google_compute_firewall" "allow_lb" {
-  count   = var.optional_fw_rules_enabled ? 1 : 0
   name    = "fw-${var.environment_code}-shared-base-1000-i-a-all-allow-lb-tcp-80-8080-443"
   network = module.main.network_name
   project = var.project_id
