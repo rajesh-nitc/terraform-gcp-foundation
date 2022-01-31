@@ -14,5 +14,4 @@ repos:
           "--skip-path=14-gke-app-cicd",
           # skip dockerfile scan
           "--skip-path=04-projects/modules/cicd_pipelines/cloud-build-builder/Dockerfile",
-          "--skip-path=04-projects/modules/cicd_pipelines/cloud-build-builder/Dockerfile",
       ]
