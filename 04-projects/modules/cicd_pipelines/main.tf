@@ -11,7 +11,9 @@ data "google_project" "app_cicd_project" {
  Cache Storage Bucket
  ***********************************************/
 
+
 resource "google_storage_bucket" "cache_bucket" {
+  #checkov:skip=CKV_GCP_62:Bucket should log access
   project                     = var.app_cicd_project_id
   name                        = "${var.app_cicd_project_id}_cloudbuild"
   location                    = var.primary_location

@@ -12,6 +12,9 @@ resource "google_project_iam_member" "compute_sa_roles" {
 }
 
 resource "google_compute_instance" "host1" {
+  #checkov:skip=CKV_GCP_32:Ensure Block Project-wide SSH keys is enabled for VM instances
+  #checkov:skip=CKV_GCP_38:Ensure VM disks for critical VMs are encrypted with Customer Supplied Encryption Keys (CSEK)
+  #checkov:skip=CKV_GCP_39:Ensure Compute instances are launched with Shielded VM enabled
   project      = var.project_id
   name         = var.hostname
   machine_type = "f1-micro"

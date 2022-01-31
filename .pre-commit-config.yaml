@@ -5,3 +5,14 @@ repos:
     - id: terraform_fmt
     - id: terraform_docs
     - id: terraform_tflint
+    - id: checkov
+      args: [
+          # skip terraform scan
+          "--skip-path=extras",
+          # skip kubernetes scan
+          "--skip-path=12-gke-platform-admins",
+          "--skip-path=14-gke-app-cicd",
+          # skip dockerfile scan
+          "--skip-path=04-projects/modules/cicd_pipelines/cloud-build-builder/Dockerfile",
+          "--skip-path=04-projects/modules/cicd_pipelines/cloud-build-builder/Dockerfile",
+      ]
