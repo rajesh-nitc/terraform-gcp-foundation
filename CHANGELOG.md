@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.8.3...v2.9.0) (2022-01-31)
+
+
+### Features
+
+* Added checkov ([65d378d](https://www.github.com/rajesh-nitc/gcp-foundation/commit/65d378d56eedb4e398045f7061c880050f50ee85))
+
 ### [2.8.3](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.8.2...v2.8.3) (2022-01-28)
 
 
