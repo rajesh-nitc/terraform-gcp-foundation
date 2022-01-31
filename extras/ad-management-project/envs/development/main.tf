@@ -1,5 +1,5 @@
 module "ad_management_project" {
-  source               = "../../../04-projects/modules/single_project"
+  source               = "../../../../04-projects/modules/single_project"
   org_id               = var.org_id
   billing_account      = var.billing_account
   environment          = var.environment
