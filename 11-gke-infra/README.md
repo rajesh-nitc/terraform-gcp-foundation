@@ -1,13 +1,5 @@
 # GKE cluster with ACM in a Shared VPC
 
-**Guideline_1**: Google recommends ASM for production scenarios.
-
-**Actual_1**: we are using Istio addon which comes with default options. For e.g. external tcp network load balancer.
-
-**Guideline_2**: Register the cluster with gke hub
-
-**Actual_2**: we are using acm as a standalone feature
-
-**Guideline_3**: Private cluster shoule be accessible from bastion host only
-
-**Actual_3**: we have allowed external access to the gke control plane to test the cicd.
+- ASM is the recommended option but not implemented yet. We are using Istio addon (deprecated now) which comes with default options (external tcp network load balancer). 
+- Not registered the cluster with gke hub. We are using acm as a standalone feature. 
+- Private pools is the recommended option but for simplicity, we have allowed external access to the gke control plane to test the cicd from cloud build. 
