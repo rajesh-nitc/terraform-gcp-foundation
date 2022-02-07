@@ -1,13 +1,13 @@
 locals {
-  folder_id                 = data.google_active_folder.env.name
-  project_id                = data.google_project.landing_project.project_id
-  project_id_transformation = data.google_project.transformation_project.project_id
-  environment_code          = element(split("", var.environment), 0)
-  bkt_names                 = [for bucket in toset(var.bucket_names) : "bkt-${local.environment_code}-${var.business_code}-landing-${bucket}"]
-  bkt_policy                = { for bucket in toset(local.bkt_names) : bucket => true }
-  bkt_versioning            = { for bucket in toset(local.bkt_names) : bucket => false }
-  bkt_force_destroy         = { for bucket in toset(local.bkt_names) : bucket => true }
-  sa_transformation         = format("project-service-account@%s.iam.gserviceaccount.com", local.project_id_transformation)
+  folder_id          = data.google_active_folder.env.name
+  project_id         = data.google_project.landing_project.project_id
+  project_id_loading = data.google_project.loading_project.project_id
+  environment_code   = element(split("", var.environment), 0)
+  bkt_names          = [for bucket in toset(var.bucket_names) : "bkt-${local.environment_code}-${var.business_code}-landing-${bucket}"]
+  bkt_policy         = { for bucket in toset(local.bkt_names) : bucket => true }
+  bkt_versioning     = { for bucket in toset(local.bkt_names) : bucket => false }
+  bkt_force_destroy  = { for bucket in toset(local.bkt_names) : bucket => true }
+  sa_loading         = format("project-service-account@%s.iam.gserviceaccount.com", local.project_id_loading)
 }
 
 module "buckets_landing" {
@@ -38,7 +38,7 @@ module "pubsub" {
       maximum_backoff         = "600s"
       minimum_backoff         = "300s"
       enable_message_ordering = true
-      service_account         = local.sa_transformation
+      service_account         = local.sa_loading
     }
   ]
 }

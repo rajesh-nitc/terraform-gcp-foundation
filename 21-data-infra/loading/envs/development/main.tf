@@ -1,4 +1,4 @@
-module "infra_transformation" {
+module "infra_loading" {
   source       = "../../modules/env_base"
   org_id       = var.org_id
   environment  = "development"

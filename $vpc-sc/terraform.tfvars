@@ -4,12 +4,12 @@ terraform_service_account = "org-terraform@prj-b-seed-6949.iam.gserviceaccount.c
 
 vpc_sc_perimeter_projects = {
   dev = [
-    "projects/195126579545",  # host
-    "projects/473976687661",  # gke
-    "projects/746892598413",  # data-landing
-    "projects/1077459657519", # data-transformation
-    "projects/239677946649",  # data-dwh
-    "projects/770674777462",  # bu1
+    "projects/195126579545", # host
+    "projects/473976687661", # gke
+    "projects/746892598413", # data-landing
+    "projects/922340859450", # data-loading
+    "projects/623745241425", # data-lake-l0
+    "projects/770674777462", # bu1
   ]
   common = [
     "projects/626802511012",  # net-hub
@@ -55,8 +55,10 @@ vpc_sc_ingress_policies = {
         "serviceAccount:org-terraform@prj-b-seed-6949.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-gke-d-clusters-3c96.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com",
-        "serviceAccount:project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com",
-        "serviceAccount:project-service-account@prj-data-d-dwh-3f33.iam.gserviceaccount.com",
+        "serviceAccount:project-service-account@prj-data-d-loading-82c5.iam.gserviceaccount.com",
+        # vpc-sc does not seem to like project-service-account@prj-data-d-lake-l0-ffe8.gserviceaccount.com
+        # Error 400: The email address 'project-service-account@prj-data-d-lake-l0-ffe8.gserviceaccount.com' is invalid or non-existent.
+        # "serviceAccount:project-service-account@prj-data-d-lake-l0-ffe8.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-bu1-d-sample-base-9208.iam.gserviceaccount.com",
 
         # Cloudbuild will be impersonating the above service accounts

@@ -1,6 +1,6 @@
 locals {
   folder_id         = data.google_active_folder.env.name
-  project_id        = data.google_project.transformation_project.project_id
+  project_id        = data.google_project.loading_project.project_id
   environment_code  = element(split("", var.environment), 0)
   bkt_names         = [for bucket in toset(var.bucket_names) : "bkt-${local.environment_code}-${var.business_code}-dataflow-${bucket}"]
   bkt_policy        = { for bucket in toset(local.bkt_names) : bucket => true }

@@ -1,6 +1,6 @@
 timeout: 1200s
 substitutions:
-  _TF_SA_EMAIL: 'project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com'
+  _TF_SA_EMAIL: 'project-service-account@prj-data-d-loading-82c5.iam.gserviceaccount.com'
   _GAR_REPOSITORY: 'prj-tf-runners'
 steps:
 
@@ -22,7 +22,7 @@ steps:
   args:
   - -c
   - |
-    cd 21-data-infra/transformation/envs/development    
+    cd 21-data-infra/loading/envs/development    
     terraform init
     terraform plan
 

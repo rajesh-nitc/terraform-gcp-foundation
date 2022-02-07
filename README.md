@@ -24,11 +24,11 @@ Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/prof
  |   +-- 📦 prj-c-dns-hub-c4a2
  |   +-- 📦 prj-c-logging-8083
  +-- 📁 fldr-development (267943501446)
+ |   +-- 📦 prj-data-d-loading-82c5
+ |   +-- 📦 prj-data-d-lake-l0-ffe8
  |   +-- 📦 prj-ad-d-mgmt-6b1d
  |   +-- 📦 prj-gke-d-clusters-3c96
  |   +-- 📦 prj-data-d-landing-0816
- |   +-- 📦 prj-data-d-dwh-3f33
- |   +-- 📦 prj-data-d-transformation-4f2b
  |   +-- 📦 prj-bu1-d-sample-base-9208
  |   +-- 📦 prj-d-shared-base-21a3
  +-- 📁 fldr-onprem (261068120484)

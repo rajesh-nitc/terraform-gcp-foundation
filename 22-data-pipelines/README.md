@@ -13,23 +13,23 @@ gsutil cp udf/names_udf.js gs://bkt-d-data-landing-data-schema
 
 ### Run job
 ```
-gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
+gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-loading-82c5.iam.gserviceaccount.com
 
-gcloud dataflow jobs run first-batch-job5 \
+gcloud dataflow jobs run first-batch-job \
     --gcs-location gs://dataflow-templates/latest/GCS_Text_to_BigQuery \
-    --project prj-data-d-transformation-4f2b \
+    --project prj-data-d-loading-82c5 \
     --region us-central1 \
     --disable-public-ips \
     --network vpc-d-shared-base-spoke \
     --subnetwork https://www.googleapis.com/compute/v1/projects/prj-d-shared-base-21a3/regions/us-central1/subnetworks/sb-d-shared-base-us-central1-data \
     --staging-location gs://bkt-d-data-dataflow-temp \
-    --service-account-email sa-dataflow-worker@prj-data-d-transformation-4f2b.iam.gserviceaccount.com \
+    --service-account-email sa-dataflow-worker@prj-data-d-loading-82c5.iam.gserviceaccount.com \
     --parameters \
 javascriptTextTransformFunctionName=transform_batch_data,\
 JSONPath=gs://bkt-d-data-landing-data-schema/names_schema.json,\
 javascriptTextTransformGcsPath=gs://bkt-d-data-landing-data-schema/names_udf.js,\
 inputFilePattern=gs://bkt-d-data-landing-raw-data/names_data.csv,\
-outputTable=prj-data-d-dwh-3f33:bq_raw_dataset.names5,\
+outputTable=prj-data-d-lake-l0-ffe8:bq_dataset_l0.names5,\
 bigQueryLoadingTemporaryDirectory=gs://bkt-d-data-dataflow-temp
 ```
 
@@ -39,7 +39,7 @@ bigQueryLoadingTemporaryDirectory=gs://bkt-d-data-dataflow-temp
 ```
 gcloud config unset auth/impersonate_service_account
 
-bq mk -t --description "This is US baby names table" prj-data-d-dwh-3f33:bq_raw_dataset.names3 state:STRING,gender:STRING,year:DATE,name:STRING,number:INTEGER,created_date:STRING
+bq mk -t --description "This is US baby names table" prj-data-d-lake-l0-ffe8:bq_dataset_l0.names6 state:STRING,gender:STRING,year:DATE,name:STRING,number:INTEGER,created_date:STRING
 
 gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com
 
@@ -58,20 +58,20 @@ done
 
 ### Run job
 ```
-gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-transformation-4f2b.iam.gserviceaccount.com
+gcloud config set auth/impersonate_service_account project-service-account@prj-data-d-loading-82c5.iam.gserviceaccount.com
 
 gcloud dataflow jobs run first-streaming-template-job \
     --gcs-location gs://dataflow-templates/latest/PubSub_Subscription_to_BigQuery \
-    --project prj-data-d-transformation-4f2b \
+    --project prj-data-d-loading-82c5 \
     --region us-central1 \
     --disable-public-ips \
     --network vpc-d-shared-base-spoke \
     --subnetwork https://www.googleapis.com/compute/v1/projects/prj-d-shared-base-21a3/regions/us-central1/subnetworks/sb-d-shared-base-us-central1-data \
     --staging-location gs://bkt-d-data-dataflow-temp \
-    --service-account-email sa-dataflow-worker@prj-data-d-transformation-4f2b.iam.gserviceaccount.com \
+    --service-account-email sa-dataflow-worker@prj-data-d-loading-82c5.iam.gserviceaccount.com \
     --parameters \
 javascriptTextTransformFunctionName=transform_streaming_data,\
 javascriptTextTransformGcsPath=gs://bkt-d-data-landing-data-schema/names_udf.js,\
 inputSubscription=projects/prj-data-d-landing-0816/subscriptions/sub-dataflow,\
-outputTableSpec=prj-data-d-dwh-3f33:bq_raw_dataset.names3
+outputTableSpec=prj-data-d-lake-l0-ffe8:bq_dataset_l0.names6
 ```

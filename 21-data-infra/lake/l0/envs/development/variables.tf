@@ -3,11 +3,11 @@ variable "project_service_account" {
   type        = string
 }
 
-variable "project_id" {
+variable "lake_l0_project_id" {
   type = string
 }
 
-variable "transformation_project_id" {
+variable "loading_project_id" {
   type = string
 }
 

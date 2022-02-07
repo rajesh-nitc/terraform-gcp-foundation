@@ -15,7 +15,7 @@
  */
 
 variable "project_service_account" {
-  description = "Project sa for data-transformation"
+  description = "Project sa for data-loading"
   type        = string
 }
 
