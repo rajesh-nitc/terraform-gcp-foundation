@@ -1,4 +1,4 @@
-module "infra_dwh" {
+module "infra_data_lake_l0" {
   source             = "../../modules/env_base"
   lake_l0_project_id = var.lake_l0_project_id
   loading_project_id = var.loading_project_id

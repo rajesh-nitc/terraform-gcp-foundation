@@ -1,5 +1,5 @@
 variable "project_service_account" {
-  description = "Project sa for data-dwh"
+  description = "Project sa for data-lake-l0"
   type        = string
 }
 
