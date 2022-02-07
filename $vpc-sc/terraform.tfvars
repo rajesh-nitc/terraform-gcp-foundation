@@ -2,7 +2,9 @@ org_id                    = "157305482127"
 access_policy             = "57968632121"
 terraform_service_account = "org-terraform@prj-b-seed-6949.iam.gserviceaccount.com"
 
+# Add projects to perimeters
 vpc_sc_perimeter_projects = {
+
   dev = [
     "projects/195126579545", # host
     "projects/473976687661", # gke
@@ -10,14 +12,15 @@ vpc_sc_perimeter_projects = {
     "projects/922340859450", # data-loading
     "projects/623745241425", # data-lake-l0
     "projects/770674777462", # bu1
+
   ]
+
   common = [
     "projects/626802511012",  # net-hub
     "projects/571446104349",  # dns-hub
     "projects/1099039660751", # logging
-    # Cloud build Pipelines need access to internet
-    # Bootstrap seed and cicd projects are not part of any parameter
-    # Project level infra and cicd pipeline projects are also kept outside
+
+    # Cloud build pipelines need internet : Bootstrap projects and Project-level infra/cicd pipeline projects are kept outside
     # "projects/869249260424",  # gke-infra-pipeline
     # "projects/675820069328",  # gke-cicd-pipeline
     # "projects/566416973195",  # data-infra-pipeline
@@ -37,6 +40,7 @@ vpc_sc_access_levels = {
   }
 }
 
+# Enable access levels on selected perimeters
 vpc_sc_perimeter_access_levels = {
   dev    = ["home"]
   common = ["home"]
@@ -49,8 +53,7 @@ vpc_sc_ingress_policies = {
     ingress_from = {
       identities = [
 
-        # Users impersonating the below service accounts should also be added here
-        # For simplicity, we have admin user impersonating all the service accounts
+        # Users impersonating below sa's should also be added here : not true anymore as we have recently added impersonate_service_account in backend.tf
         "user:admin@budita.dev",
         "serviceAccount:org-terraform@prj-b-seed-6949.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-gke-d-clusters-3c96.iam.gserviceaccount.com",
@@ -60,7 +63,7 @@ vpc_sc_ingress_policies = {
         "serviceAccount:project-service-account@prj-bu1-d-sample-base-9208.iam.gserviceaccount.com",
 
         # Cloud build will be impersonating the above service accounts
-        # don't think we need to include cloud build sa's here as tfstate buckets and cloud build are both outside perimeters
+        # don't think we need to include cloud build sa's here as tfstate buckets and cloud build are both outside perimeters in our case
 
       ]
 
