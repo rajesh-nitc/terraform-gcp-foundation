@@ -5,7 +5,7 @@ Example repo showing how to build a secure foundation for quick prototyping and 
 - **foundations**: core (0* and $vpc-sc), gke (1*), data (2*)
 - **onprem-connectivity**: sample infra and connectivity tests (9*)
 
-Credit to [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric)
+Credit to [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) (gke), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) (data, vpc-sc)
 
 ## Org Hierarchy view
 Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer)
