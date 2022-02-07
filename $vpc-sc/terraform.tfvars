@@ -62,8 +62,7 @@ vpc_sc_ingress_policies = {
         "serviceAccount:project-service-account@prj-data-d-lake-l0-ffe8.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-bu1-d-sample-base-9208.iam.gserviceaccount.com",
 
-        # Cloud build will be impersonating the above service accounts
-        # don't think we need to include cloud build sa's here as tfstate buckets and cloud build are both outside perimeters in our case
+        # Cloud build will be impersonating above sa's for infra pipelines
 
       ]
 
@@ -81,7 +80,7 @@ vpc_sc_ingress_policies = {
     ingress_from = {
       identities = [
 
-        # Org log sink sa residing at org level
+        # Log sink sa residing at org level
         "serviceAccount:o157305482127-456794@gcp-sa-logging.iam.gserviceaccount.com",
 
       ]
