@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.9.0...v2.10.0) (2022-02-07)
+
+
+### Features
+
+* Added loading prj and lake-l0 prj based on new fast data platform and tested dataflow batch pipeline ([64a95ed](https://www.github.com/rajesh-nitc/gcp-foundation/commit/64a95ed5e5c08b1bd3774e9f587af43726990b77))
+
 ## [2.9.0](https://www.github.com/rajesh-nitc/gcp-foundation/compare/v2.8.3...v2.9.0) (2022-01-31)
 
 
