@@ -15,7 +15,7 @@ vpc_sc_perimeter_projects = {
     "projects/626802511012",  # net-hub
     "projects/571446104349",  # dns-hub
     "projects/1099039660751", # logging
-    # Pipelines need access to internet
+    # Cloud build Pipelines need access to internet
     # Bootstrap seed and cicd projects are not part of any parameter
     # Project level infra and cicd pipeline projects are also kept outside
     # "projects/869249260424",  # gke-infra-pipeline
@@ -25,7 +25,7 @@ vpc_sc_perimeter_projects = {
   ]
 }
 
-# Allow unconditional access from set of cidrs
+# Allow unconditional access from a set of cidrs
 vpc_sc_access_levels = {
   home = {
     combining_function = null
@@ -56,15 +56,14 @@ vpc_sc_ingress_policies = {
         "serviceAccount:project-service-account@prj-gke-d-clusters-3c96.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-data-d-loading-82c5.iam.gserviceaccount.com",
-        # vpc-sc does not seem to like project-service-account@prj-data-d-lake-l0-ffe8.gserviceaccount.com
-        # Error 400: The email address 'project-service-account@prj-data-d-lake-l0-ffe8.gserviceaccount.com' is invalid or non-existent.
-        # "serviceAccount:project-service-account@prj-data-d-lake-l0-ffe8.gserviceaccount.com",
+        "serviceAccount:project-service-account@prj-data-d-lake-l0-ffe8.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-bu1-d-sample-base-9208.iam.gserviceaccount.com",
 
-        # Cloudbuild will be impersonating the above service accounts
-        # don't think we need to include cloudbuild sa's here as tf state buckets are outside perimeters
+        # Cloud build will be impersonating the above service accounts
+        # don't think we need to include cloud build sa's here as tfstate buckets and cloud build are both outside perimeters
 
       ]
+
       source_access_levels = ["*"]
       identity_type        = null
       source_resources     = null
@@ -78,7 +77,10 @@ vpc_sc_ingress_policies = {
   logsink = {
     ingress_from = {
       identities = [
+
+        # Org log sink sa residing at org level
         "serviceAccount:o157305482127-456794@gcp-sa-logging.iam.gserviceaccount.com",
+
       ]
       source_access_levels = ["*"]
       identity_type        = null
@@ -86,7 +88,9 @@ vpc_sc_ingress_policies = {
     }
     ingress_to = {
       operations = [{ method_selectors = [], service_name = "*" }]
-      resources  = ["projects/1099039660751"]
+      resources = [
+        "projects/1099039660751" # logging
+      ]
     }
   }
 
