@@ -20,12 +20,10 @@ vpc_sc_perimeter_projects = {
     "projects/571446104349",  # dns-hub
     "projects/1099039660751", # logging
 
-    # Cloud build pipelines need internet : Bootstrap projects and Project-level infra/cicd pipeline projects are kept outside
-    # "projects/869249260424",  # gke-infra-pipeline
-    # "projects/675820069328",  # gke-cicd-pipeline
-    # "projects/566416973195",  # data-infra-pipeline
-    # "projects/310418294350",  # bu1-infra-pipeline
   ]
+
+  # Bootstrap projects and Project-level infra/cicd pipeline projects are not part of any parameter
+
 }
 
 # Allow unconditional access from a set of cidrs
@@ -53,9 +51,9 @@ vpc_sc_ingress_policies = {
     ingress_from = {
       identities = [
 
-        # Users impersonating below sa's should also be added here : not true anymore as we have recently added impersonate_service_account in backend.tf
         "user:admin@budita.dev",
         "serviceAccount:org-terraform@prj-b-seed-6949.iam.gserviceaccount.com",
+        # Project service accounts
         "serviceAccount:project-service-account@prj-gke-d-clusters-3c96.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-data-d-loading-82c5.iam.gserviceaccount.com",
