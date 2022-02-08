@@ -2,13 +2,15 @@
 
 Example repo showing how to build a secure foundation for quick prototyping and testing. It is made up of following parts:
 
-- **foundations**: core (0* and $vpc-sc), gke (1*), data (2*)
+- **example-foundations**: core (0* and $vpc-sc), gke (1*), data (2*)
 - **onprem-connectivity**: sample infra and connectivity tests (9*)
 
-Credit to [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core), [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) (gke), [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) (data, vpc-sc)
+## Credits
+- [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core)
+- [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) (gke)
+- [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) (data, vpc-sc)
 
-## Org Hierarchy view
-Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer)
+## Org Hierarchy
 ```
 🏢 budita.dev (157305482127)
  +-- 📁 fldr-bootstrap (818226860401)
@@ -34,7 +36,7 @@ Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/prof
  +-- 📁 fldr-onprem (261068120484)
      +-- 📦 prj-onprem-o-connectivity-53cd
 ```
-## Org IP Address Space view
+## Org IP Address Space
 
 ```
 🏢 budita.dev
@@ -60,7 +62,7 @@ Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/prof
   - ad-domain 10.16.64.0/24
 ```
 
-## Org GKE Admins Repo view
+## Org GKE Admins Repo
 
 ```
 🏢 budita.dev
@@ -92,19 +94,19 @@ Credit to [gcp-org-hierarchy-viewer](https://github.com/GoogleCloudPlatform/prof
 ```
 ## Org Validations
 - Core foundation infra pipelines
-- Project level infra and cicd pipelines
+- Project-level infra/cicd pipelines
 - Sample app in private gke cluster
 - Sample dataflow pipelines
 - Sample onprem connectivity tests
 
 ## Org Costs
-To keep costs down in personal org:  
+To keep costs near zero in personal org:  
 
 - Enable dns zones on demand
 - Disable container scanning api
 - Skip hierarchical firewall policies
 - Skip kms
 - Create log sink to send _only_ vpc-sc violations
-- Clean artifact registry images in cicd projects
+- Clean artifact registry images in infra/cicd pipeline projects
 
 **Warning**: Don't enable firewall insights api as it is a costly operation
