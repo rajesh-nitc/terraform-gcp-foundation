@@ -44,14 +44,13 @@ vpc_sc_perimeter_access_levels = {
   common = ["home"]
 }
 
-# Running terraform locally and console access for admin user
+# Running terraform locally, console access for admin user and access for logsink sa
 vpc_sc_ingress_policies = {
 
   iac = {
     ingress_from = {
       identities = [
 
-        "user:admin@budita.dev",
         # Foundation sa
         "serviceAccount:org-terraform@prj-b-seed-6949.iam.gserviceaccount.com",
         # Project sa's
@@ -62,6 +61,24 @@ vpc_sc_ingress_policies = {
         "serviceAccount:project-service-account@prj-bu1-d-sample-base-9208.iam.gserviceaccount.com",
 
         # Cloud build will be impersonating above sa's for infra pipelines
+
+      ]
+
+      source_access_levels = ["*"]
+      identity_type        = null
+      source_resources     = null
+    }
+    ingress_to = {
+      operations = [{ method_selectors = [], service_name = "*" }]
+      resources  = ["*"]
+    }
+  }
+
+  console = {
+    ingress_from = {
+      identities = [
+
+        "user:admin@budita.dev",
 
       ]
 
@@ -99,8 +116,8 @@ vpc_sc_ingress_policies = {
 
 # Enable ingress policies on selected perimeters
 vpc_sc_perimeter_ingress_policies = {
-  dev    = ["iac"]
-  common = ["iac", "logsink"]
+  dev    = ["iac", "console"]
+  common = ["iac", "console", "logsink"]
 }
 
 vpc_sc_egress_policies = null
