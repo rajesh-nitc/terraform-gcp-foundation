@@ -52,8 +52,9 @@ vpc_sc_ingress_policies = {
       identities = [
 
         "user:admin@budita.dev",
+        # Foundation sa
         "serviceAccount:org-terraform@prj-b-seed-6949.iam.gserviceaccount.com",
-        # Project service accounts
+        # Project sa's
         "serviceAccount:project-service-account@prj-gke-d-clusters-3c96.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-data-d-landing-0816.iam.gserviceaccount.com",
         "serviceAccount:project-service-account@prj-data-d-loading-82c5.iam.gserviceaccount.com",
