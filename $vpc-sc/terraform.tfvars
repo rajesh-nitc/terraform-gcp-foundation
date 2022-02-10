@@ -44,9 +44,10 @@ vpc_sc_perimeter_access_levels = {
   common = ["home"]
 }
 
-# Running terraform locally, console access for admin user and access for logsink sa
+# Ingress policies
 vpc_sc_ingress_policies = {
 
+  # Allow running terraform locally
   iac = {
     ingress_from = {
       identities = [
@@ -75,6 +76,7 @@ vpc_sc_ingress_policies = {
     }
   }
 
+  # Allow console access
   console = {
     ingress_from = {
       identities = [
@@ -93,6 +95,7 @@ vpc_sc_ingress_policies = {
     }
   }
 
+  # Allow logsink
   logsink = {
     ingress_from = {
       identities = [
