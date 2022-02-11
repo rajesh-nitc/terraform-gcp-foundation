@@ -109,6 +109,7 @@ module "base_shared_vpc" {
 
   ad_domain_ip_range       = local.ad_domain_ip_range
   proxy_only_subnet_ranges = local.proxy_only_subnet_ranges
+
   allow_all_ingress_ranges = var.allow_all_ingress_ranges
   allow_all_egress_ranges  = var.allow_all_egress_ranges
 
