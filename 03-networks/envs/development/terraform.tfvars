@@ -91,7 +91,7 @@ subnets = [
 # GKE
 budita_usc1 = {
   master_ipv4_cidr_block = "100.64.129.0/28"
-  cluster_network_tag    = "gke-budita-d-us-central1"
+  network_tag            = "gke-budita-d-us-central1"
 }
 
 # Enable nat for acm repo on github

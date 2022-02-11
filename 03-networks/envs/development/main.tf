@@ -35,7 +35,7 @@ locals {
   # GKE
   budita_usc1_subnet_cidr = [for i in var.subnets : i.subnet_ip if i.team == "gke" && i.region == var.default_region1]
 
-  budita_usc1_ip_range_pods = [for i in var.subnets : i.secondary_ip_range["${var.budita_usc1["cluster_network_tag"]}-pod"] if i.team == "gke" && i.region == var.default_region1]
+  budita_usc1_ip_range_pods = [for i in var.subnets : i.secondary_ip_range["${var.budita_usc1["network_tag"]}-pod"] if i.team == "gke" && i.region == var.default_region1]
 
   secondary_ranges = { for i in var.subnets :
     "sb-${local.environment_code}-shared-base-${i.region}-${i.team}" => [for k, v in i.secondary_ip_range : {
@@ -99,8 +99,8 @@ module "base_shared_vpc" {
   # GKE
   gke_fw_rules = {
     budita-usc1 = {
-      network_tag            = var.budita_usc1["cluster_network_tag"]
-      master_ipv4_cidr_block = var.budita_usc1["cluster_network_tag"]
+      network_tag            = var.budita_usc1["network_tag"]
+      master_ipv4_cidr_block = var.budita_usc1["master_ipv4_cidr_block"]
       subnet_cidr            = local.budita_usc1_subnet_cidr[0]
       ip_range_pods          = local.budita_usc1_ip_range_pods[0]
     }
