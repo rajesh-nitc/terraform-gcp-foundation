@@ -15,7 +15,7 @@ variable "cluster_network_tag" {
   type = string
 }
 
-variable "cluster_endpoint_for_nodes" {
+variable "master_ipv4_cidr_block" {
   type = string
 }
 
@@ -36,4 +36,8 @@ variable "firewall_enable_logging" {
   type        = bool
   description = "Toggle firewall logging for VPC Firewalls."
   default     = true
+}
+
+variable "cluster_name" {
+  type = string
 }

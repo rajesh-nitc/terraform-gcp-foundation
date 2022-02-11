@@ -117,29 +117,9 @@ variable "allow_all_ingress_ranges" {
 }
 
 # GKE firewall rules
-variable "cluster_network_tag" {
-  type    = string
-  default = ""
-}
-
-variable "cluster_endpoint_for_nodes" {
-  type    = string
-  default = ""
-}
-
-variable "cluster_subnet_cidr" {
-  type    = string
-  default = ""
-}
-
-variable "cluster_ip_range_pods" {
-  type    = string
-  default = ""
-}
-
-variable "enable_gke_fw_rules" {
-  type    = bool
-  default = false
+variable "gke_fw_rules" {
+  type    = map(map(string))
+  default = {}
 }
 
 # dns zones

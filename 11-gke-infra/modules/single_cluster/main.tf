@@ -3,19 +3,21 @@ locals {
   folder_id         = data.google_active_folder.env.name
   project_id        = data.google_projects.gke_projects.projects[0].project_id
   host_project_id   = data.google_project.network_project.project_id
+  name              = "${var.app_name}-${local.environment_code}-${var.region}"
+  network_tag       = "gke-${local.name}"
   network_name      = data.google_compute_network.shared_vpc.name
   subnet_name       = data.google_compute_subnetwork.subnetwork.name
   network_self_link = data.google_compute_network.shared_vpc.self_link
   subnet_self_link  = data.google_compute_subnetwork.subnetwork.self_link
-  range_name_pod    = [for i in data.google_compute_subnetwork.subnetwork.secondary_ip_range : i.range_name if can(regex("pod", i.range_name))]
-  range_name_svc    = [for i in data.google_compute_subnetwork.subnetwork.secondary_ip_range : i.range_name if can(regex("svc", i.range_name))]
+  range_name_pod    = [for i in data.google_compute_subnetwork.subnetwork.secondary_ip_range : i.range_name if can(regex("${local.network_tag}-pod", i.range_name))]
+  range_name_svc    = [for i in data.google_compute_subnetwork.subnetwork.secondary_ip_range : i.range_name if can(regex("${local.network_tag}-svc", i.range_name))]
 }
 
 module "gke" {
   source                        = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
   version                       = "~> 16.0"
   project_id                    = local.project_id
-  name                          = "${var.app_name}-${local.environment_code}-${var.region}"
+  name                          = local.name
   regional                      = false
   zones                         = ["${var.region}-a"]
   network                       = local.network_name

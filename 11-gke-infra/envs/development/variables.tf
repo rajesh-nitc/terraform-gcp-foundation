@@ -11,3 +11,8 @@ variable "default_region" {
   type    = string
   default = "us-central1"
 }
+
+variable "master_ipv4_cidr_block" {
+  type        = string
+  description = "The primary IPv4 cidr block for the first GKE cluster."
+}

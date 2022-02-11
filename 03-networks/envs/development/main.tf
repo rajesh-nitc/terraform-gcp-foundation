@@ -33,18 +33,18 @@ locals {
   subnets = concat(local.team_subnets, local.proxy_only_subnets)
 
   # GKE
-  secondary_ranges = { for i in var.subnets :
+  budita_usc1_subnet_cidr = [for i in var.subnets : i.subnet_ip if i.team == "gke" && i.region == var.default_region1]
 
+  budita_usc1_ip_range_pods = [for i in var.subnets : i.secondary_ip_range["${var.budita_usc1["cluster_network_tag"]}-pod"] if i.team == "gke" && i.region == var.default_region1]
+
+  secondary_ranges = { for i in var.subnets :
     "sb-${local.environment_code}-shared-base-${i.region}-${i.team}" => [for k, v in i.secondary_ip_range : {
-      range_name    = "rn-${local.environment_code}-shared-base-${i.region}-gke-${k}"
+      range_name    = k
       ip_cidr_range = v
-      }
+      } if i.team == "gke"
 
     ]
   }
-
-  budita_cluster_uscentral1_subnet_cidr           = [for i in var.subnets : i.subnet_ip if i.team == "gke" && i.region == var.default_region1]
-  budita_cluster_uscentral1_cluster_ip_range_pods = [for i in var.subnets : i.secondary_ip_range["pod"] if i.team == "gke" && i.region == var.default_region1]
 
   # AD
   ad_domain_ip_range = [for i in var.subnets : i.subnet_ip if i.team == "ad" && i.region == var.default_region1]
@@ -91,20 +91,25 @@ module "base_shared_vpc" {
   enable_dns_zone_pkg_dev            = var.enable_dns_zone_pkg_dev
 
   # Enable all fw rules, they don't cost unless firewall insights api is enabled
-  enable_gke_fw_rules        = true
   enable_dataflow_fw_rule    = true
   windows_activation_enabled = true
   enable_ad_fw_rule          = true
   enable_proxy_only_fw_rule  = true
 
-  # Fw
-  cluster_network_tag        = var.budita_cluster_uscentral1_cluster_network_tag
-  cluster_endpoint_for_nodes = var.budita_cluster_uscentral1_cluster_endpoint_for_nodes
-  cluster_subnet_cidr        = local.budita_cluster_uscentral1_subnet_cidr[0]
-  cluster_ip_range_pods      = local.budita_cluster_uscentral1_cluster_ip_range_pods[0]
-  ad_domain_ip_range         = local.ad_domain_ip_range
-  proxy_only_subnet_ranges   = local.proxy_only_subnet_ranges
-  allow_all_ingress_ranges   = var.allow_all_ingress_ranges
-  allow_all_egress_ranges    = var.allow_all_egress_ranges
+  # GKE
+  gke_fw_rules = {
+    budita-usc1 = {
+      network_tag            = var.budita_usc1["cluster_network_tag"]
+      master_ipv4_cidr_block = var.budita_usc1["cluster_network_tag"]
+      subnet_cidr            = local.budita_usc1_subnet_cidr[0]
+      ip_range_pods          = local.budita_usc1_ip_range_pods[0]
+    }
+
+  }
+
+  ad_domain_ip_range       = local.ad_domain_ip_range
+  proxy_only_subnet_ranges = local.proxy_only_subnet_ranges
+  allow_all_ingress_ranges = var.allow_all_ingress_ranges
+  allow_all_egress_ranges  = var.allow_all_egress_ranges
 
 }

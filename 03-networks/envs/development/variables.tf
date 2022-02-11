@@ -93,12 +93,8 @@ variable "subnets" {
 
 }
 
-variable "budita_cluster_uscentral1_cluster_network_tag" {
-  type = string
-}
-
-variable "budita_cluster_uscentral1_cluster_endpoint_for_nodes" {
-  type = string
+variable "budita_usc1" {
+  type = map(string)
 }
 
 variable "enable_dns_zone_private_googleapis" {
