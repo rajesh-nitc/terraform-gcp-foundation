@@ -38,6 +38,6 @@ variable "firewall_enable_logging" {
   default     = true
 }
 
-variable "cluster_name" {
+variable "cluster_short_name" {
   type = string
 }

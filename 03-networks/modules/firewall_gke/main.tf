@@ -6,7 +6,7 @@
  *****************************************/
 
 resource "google_compute_firewall" "intra_egress" {
-  name        = "fw-${var.environment_code}-${var.cluster_name}-e-a-gke-intra-cluster-egress"
+  name        = "fw-${var.environment_code}-${var.cluster_short_name}-e-a-gke-intra-cluster-egress"
   description = "Managed by terraform gke module: Allow pods to communicate with each other and the master"
   project     = var.network_project_id
   network     = var.network
@@ -46,7 +46,7 @@ resource "google_compute_firewall" "intra_egress" {
   https://github.com/kubernetes/kubernetes/issues/79739
  *****************************************/
 resource "google_compute_firewall" "master_webhooks" {
-  name        = "fw-${var.environment_code}-${var.cluster_name}-i-a-gke-webhooks"
+  name        = "fw-${var.environment_code}-${var.cluster_short_name}-i-a-gke-webhooks"
   description = "Managed by terraform gke module: Allow master to hit pods for admission controllers/webhooks"
   project     = var.network_project_id
   network     = var.network
@@ -80,7 +80,7 @@ resource "google_compute_firewall" "master_webhooks" {
   traffic flow between the managed firewall rules
  *****************************************/
 resource "google_compute_firewall" "shadow_allow_pods" {
-  name        = "fw-${var.environment_code}-${var.cluster_name}-i-a-gke-shadow-all"
+  name        = "fw-${var.environment_code}-${var.cluster_short_name}-i-a-gke-shadow-all"
   description = "Managed by terraform gke module: A shadow firewall rule to match the default rule allowing pod communication."
   project     = var.network_project_id
   network     = var.network
@@ -111,7 +111,7 @@ resource "google_compute_firewall" "shadow_allow_pods" {
 }
 
 resource "google_compute_firewall" "shadow_allow_master" {
-  name        = "fw-${var.environment_code}-${var.cluster_name}-i-a-gke-shadow-master"
+  name        = "fw-${var.environment_code}-${var.cluster_short_name}-i-a-gke-shadow-master"
   description = "Managed by terraform GKE module: A shadow firewall rule to match the default rule allowing master nodes communication."
   project     = var.network_project_id
   network     = var.network
@@ -139,7 +139,7 @@ resource "google_compute_firewall" "shadow_allow_master" {
 }
 
 resource "google_compute_firewall" "shadow_allow_nodes" {
-  name        = "fw-${var.environment_code}-${var.cluster_name}-i-a-gke-shadow-vms"
+  name        = "fw-${var.environment_code}-${var.cluster_short_name}-i-a-gke-shadow-vms"
   description = "Managed by Terraform GKE module: A shadow firewall rule to match the default rule allowing worker nodes communication."
   project     = var.network_project_id
   network     = var.network
