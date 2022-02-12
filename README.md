@@ -47,6 +47,9 @@ Example repo showing how to build a secure foundation for quick prototyping and 
     - bu1 10.0.64.0/21
     - data 10.0.72.0/21
     - gke 10.0.80.0/21
+      - budita pod 100.64.64.0/18
+      - budita svc 100.64.128.0/24
+      - budita master 100.64.129.0/28
     - ad-mgmt 10.0.88.0/24
     - proxy-only 10.0.89.0/24
 - us-west1 10.1.0.0/16

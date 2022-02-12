@@ -34,9 +34,9 @@ subnets = [
       # budita-usc1 cluster
       # node cidr /24 : 29–60 nodes (host bits = 6)
       # pod cidr /32-(6+8) : 65–110 pods per node
-      # service cidr /26 : 33–64 ip addresses
+      # service cidr /24 : 129–256 ip addresses
       gke-budita-d-us-central1-pod = "100.64.64.0/18"  # {network_tag}-pod
-      gke-budita-d-us-central1-svc = "100.64.128.0/26" # {network_tag}-svc
+      gke-budita-d-us-central1-svc = "100.64.128.0/24" # {network_tag}-svc
     }
   },
   {
