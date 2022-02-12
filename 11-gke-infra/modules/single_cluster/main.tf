@@ -5,6 +5,7 @@ locals {
   host_project_id   = data.google_project.network_project.project_id
   name              = "${var.app_name}-${local.environment_code}-${var.region}"
   network_tag       = "gke-${local.name}"
+  node_sa           = format("%s@%s.iam.gserviceaccount.com", "sa-gke-node", local.project_id)
   network_name      = data.google_compute_network.shared_vpc.name
   subnet_name       = data.google_compute_subnetwork.subnetwork.name
   network_self_link = data.google_compute_network.shared_vpc.self_link
@@ -69,5 +70,5 @@ module "gke" {
     default-node-pool = []
   }
   create_service_account = false
-  service_account        = "node-sa@${local.project_id}.iam.gserviceaccount.com"
+  service_account        = local.node_sa
 }
