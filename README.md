@@ -62,7 +62,6 @@ Example repo showing how to build a secure foundation for quick prototyping and 
     - ad-mgmt 10.1.88.0/24
     - proxy-only 10.1.89.0/24
 - Dev Private Service 10.16.64.0/21
-  - ad-domain 10.16.64.0/24
 ```
 
 ## Org GKE Admins Repo
