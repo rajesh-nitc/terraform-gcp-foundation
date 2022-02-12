@@ -3,4 +3,6 @@ kind: ServiceAccount
 metadata:
   name: frontend
   annotations:
-    iam.gke.io/gcp-service-account: sa-frontend@prj-gke-d-clusters-3c96.iam.gserviceaccount.com
+    # sa-frontend@PROJECT_ID.iam.gserviceaccount.com will be created as part of 13-gke-workload-identity
+    # It's a placeholder here and will be replaced by env specific kustomize overlay as part of 14-gke-app-cicd
+    iam.gke.io/gcp-service-account: sa-frontend@PROJECT_ID.iam.gserviceaccount.com

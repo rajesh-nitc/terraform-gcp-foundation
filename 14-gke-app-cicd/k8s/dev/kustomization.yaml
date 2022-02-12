@@ -1,8 +1,8 @@
 patchesStrategicMerge:
 - patch_deployment.yaml
-# Pod ksa: frontend-dev
+# pod ksa: frontend-dev
 # gcp gsa: sa-frontend@prj-gke-d-clusters-3c96.iam.gserviceaccount.com
-# They must match with 13-gke-workload-identity to use workload identity
+# They must match with values set in 13-gke-workload-identity
 patches:
 - patch: |-
     - op: replace
