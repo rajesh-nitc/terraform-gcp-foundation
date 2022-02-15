@@ -48,7 +48,7 @@ Example repo showing how to build a secure foundation for quick prototyping and 
     - data 10.0.72.0/21
     - gke 10.0.80.0/21
       - budita
-        - node /24
+        - node 10.0.80.0/24
         - pod 100.64.64.0/18
         - svc 100.64.128.0/24
         - master 100.64.129.0/28
