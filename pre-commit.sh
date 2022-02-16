@@ -10,7 +10,6 @@ else
  echo "pre-commit tests failed!"
  git add .
 fi
-
 EOF
 
 chmod +x $PRECOMMIT_SCRIPT_PATH
