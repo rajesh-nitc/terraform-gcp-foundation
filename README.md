@@ -6,7 +6,7 @@ Example terraform repo showing how to build a secure foundation for quick protot
 - **onprem-connectivity**: sample infra and connectivity tests (9*)
 
 ### Overview
-This repo use Google's ```terraform-example-foundation``` as a starting point. The best source for getting started instructions / architecture diagrams is the official sources mentioned in the credits.  
+This repo use Google's ```terraform-example-foundation``` as a starting point. For getting started instructions / architecture diagrams etc., refer to the official sources mentioned in the credits.  
 
 ### Credits
 - [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core)
