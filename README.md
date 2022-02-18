@@ -5,13 +5,13 @@ Example terraform repo showing how to build a secure foundation for quick protot
 - **example-foundations**: core (0* and $vpc-sc), gke (1*), data (2*)
 - **onprem-connectivity**: sample infra and connectivity tests (9*)
 
+### Overview
+This repo use Google's ```terraform-example-foundation``` as a starting point. The best source for getting started instructions / architecture diagrams is the official sources mentioned in the credits.  
+
 ### Credits
 - [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core)
 - [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) (gke)
 - [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) (data, vpc-sc)
-
-### Getting Started
-The first step is ```terraform-example-foundation```
 
 ## Org Hierarchy
 ```
@@ -39,6 +39,8 @@ The first step is ```terraform-example-foundation```
  +-- 📁 fldr-onprem (261068120484)
      +-- 📦 prj-onprem-o-connectivity-53cd
 ```
+https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer
+
 ## Org IP Address Space
 
 ```
