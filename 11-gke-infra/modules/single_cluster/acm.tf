@@ -8,7 +8,7 @@ provider "kubernetes" {
 
 module "acm" {
   source  = "terraform-google-modules/kubernetes-engine/google//modules/acm"
-  version = "~> 16.0"
+  version = "~> 20.0"
 
   project_id       = local.project_id
   cluster_name     = module.gke.name
