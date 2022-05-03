@@ -5,10 +5,7 @@ Example repo showing how to build a secure cloud foundation for quick prototypin
 - **example-foundations**: core (0* and $vpc-sc), gke (1*), data (2*)
 - **onprem-connectivity**: sample infra and connectivity tests (9*)
 
-### Overview
-This repo use Google's ```terraform-example-foundation``` as a starting point. For getting started instructions / architecture diagrams etc., refer to sources in the credits.  
-
-### Credits
+## Credits
 - [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core)
 - [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) (gke)
 - [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) (data, vpc-sc)
