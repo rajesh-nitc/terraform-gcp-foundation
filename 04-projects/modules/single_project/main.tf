@@ -62,7 +62,7 @@ locals {
 
 module "project" {
   source                  = "terraform-google-modules/project-factory/google"
-  version                 = "~> 11.1"
+  version                 = "~> 13.1"
   random_project_id       = var.random_project_id
   activate_apis           = distinct(concat(var.activate_apis, local.default_apis, local.oslogin_api, local.iap_api))
   activate_api_identities = local.activate_api_identities
