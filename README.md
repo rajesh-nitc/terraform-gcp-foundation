@@ -1,6 +1,6 @@
 # gcp-foundation 
 
-Example repo showing how to build a secure cloud foundation for quick prototyping and testing. It is made up of following parts:
+Example repo showing how to build a secure cloud foundation / landing zone for quick prototyping and testing. It is made up of following parts:
 
 - **example-foundations**: core (0* and $vpc-sc), gke (1*), data (2*)
 - **onprem-connectivity**: sample infra and connectivity tests (9*)
