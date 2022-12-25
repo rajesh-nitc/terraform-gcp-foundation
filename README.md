@@ -114,4 +114,4 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 - Don't use hierarchical firewall policies
 - Don't use kms
 - Limit log sinks
-- Regular cleanup of artifact registry images in infra/cicd pipeline projects
+- Regular cleanup of artifact registry images in infra and cicd pipeline projects
