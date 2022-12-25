@@ -2,8 +2,11 @@
 
 Example repo showing how to build a secure cloud foundation / landing zone for quick prototyping and testing. It is made up of following parts:
 
-- **example-foundations**: core (0* and $vpc-sc), gke (1*), data (2*)
-- **onprem-connectivity**: sample infra and connectivity tests (9*)
+- **example-foundations**
+  - core (0* and $vpc-sc)
+  - gke (1*)
+  - data (2*)
+- **onprem-connectivity** (9*): set of repos to build simulated onprem environment on gcp and conduct basic connectivity tests
 
 ## Credits
 - [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core)
@@ -68,7 +71,7 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 - Dev Private Service 10.16.64.0/21
 ```
 
-## Org GKE Admins Repo
+## GKE Admins Repo
 
 ```
 🏢 budita.dev
@@ -98,21 +101,17 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 │           └── service.yaml
 └── README.md
 ```
-## Org Validations
+## Validations
 - Core foundation infra pipelines
-- Project-level infra/cicd pipelines
-- Sample app in private gke cluster
-- Sample dataflow pipelines
-- Sample onprem connectivity tests
+- Project-level infra and cicd pipelines
+- Basic python app deployed in a private gke cluster in shared vpc env
+- Basic dataflow pipelines showing etl flow in shared vpc env
+- Set up onprem connectivity via cloud ha vpn and conduct basic tests
 
-## Org Costs
-To keep costs near zero in personal org:  
-
-- Enable dns zones on demand
-- Disable container scanning api
-- Skip hierarchical firewall policies
-- Skip kms
-- Create log sink to send _only_ vpc-sc violations
-- Clean artifact registry images in infra/cicd pipeline projects
-
-**Warning**: Don't enable firewall insights api as it is a costly operation
+## To get $0 bill on foundation resources (0*)
+- Enable private dns zones on demand
+- Don't enable container scanning api
+- Don't use hierarchical firewall policies
+- Don't use kms
+- Limit log sinks
+- Regular cleanup of artifact registry images in infra/cicd pipeline projects
