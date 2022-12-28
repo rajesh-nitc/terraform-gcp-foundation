@@ -108,10 +108,11 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 - Basic dataflow pipelines showing etl flow in shared vpc env
 - Set up onprem connectivity via cloud ha vpn and conduct basic tests
 
-## To get $0 bill on foundation resources (0*)
+## Costs
+To get $0 bill on core foundation resources (0*)
 - Enable private dns zones on demand
 - Don't enable container scanning api
 - Don't use hierarchical firewall policies
 - Don't use kms
-- Limit log sinks
+- Limit/pause log sinks
 - Regular cleanup of artifact registry images in infra and cicd pipeline projects
