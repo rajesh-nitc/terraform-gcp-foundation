@@ -109,7 +109,7 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 - Set up onprem connectivity via cloud ha vpn and conduct basic tests
 
 ## Costs
-To get $0 bill on core foundation resources (0*)
+To get $0 bill on core foundation resources (0*):
 - Enable private dns zones on demand
 - Don't enable container scanning api
 - Don't use hierarchical firewall policies
