@@ -110,7 +110,7 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 
 ## Costs
 To get $0 bill on core foundation resources (0*):
-- Enable private dns zones on demand. Keep them disable if you are not doing any work.
+- Create private dns zones on demand. Destroy if you are not doing any work.
 - Disable container scanning api if it is enabled
 - Skip hierarchical firewall policies
 - Skip kms
