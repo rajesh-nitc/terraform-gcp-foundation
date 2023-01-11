@@ -110,7 +110,7 @@ Some validations to see if things work as expected:
 - Set up onprem connectivity via cloud ha vpn in hub shared vpc and conduct basic tests
 
 ## Costs
-We can get away with $0 bill on core foundation resources (0*):
+We can get away with $0 bill on foundation resources:
 - Create private dns zones on demand. Destroy if you are not doing any work.
 - Disable container scanning api if it is enabled
 - Skip hierarchical firewall policies
