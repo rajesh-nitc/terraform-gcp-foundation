@@ -106,13 +106,24 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 - Project-level infra and cicd pipelines
 - Basic python app deployed in a private gke cluster in shared vpc env
 - Basic dataflow pipelines showing etl flow in shared vpc env
-- Set up onprem connectivity via cloud ha vpn and conduct basic tests
+- Set up onprem connectivity via cloud ha vpn in hub shared vpc and conduct basic tests
 
 ## Costs
 To get $0 bill on core foundation resources (0*):
-- Enable private dns zones on demand
-- Don't enable container scanning api
-- Don't use hierarchical firewall policies
-- Don't use kms
-- Limit/pause log sinks
+- Enable private dns zones on demand. Keep them disable if you are not doing any work with shared vpcs.
+- Disable container scanning api if it is enabled
+- Skip hierarchical firewall policies
+- Skip kms
+- Limit use of log sinks
 - Regular cleanup of artifact registry images in infra and cicd pipeline projects
+
+## Errata summary
+Overview of the delta between this repo and the official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
+- This repo still use single terraform service account to deploy foundation resources while the official repo has migrated to stage level service accounts. Project level infra is deployed using project specific service account with least privilege.
+- Support only hub and spoke network typology
+- Terraform validator support is not implemented
+- No cloud source repos are created. Instead we use this Github repo as a monorepo and setup the cloudbuild triggers on respective folders
+- Hierarchical firewall policies are not implemented
+- Separate shared vpc for restricted apis is not implemented
+- vpc service controls are implemented in a dedicated repo (to be managed by security team)
+- Additional example foundations are included to show how official repo can be extended
