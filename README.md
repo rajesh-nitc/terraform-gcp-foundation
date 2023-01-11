@@ -13,7 +13,7 @@ Example repo showing how to build a secure cloud foundation / landing zone for q
 - [terraform-example-foundation-app](https://github.com/GoogleCloudPlatform/terraform-example-foundation-app) (gke)
 - [cloud-foundation-fabric](https://github.com/terraform-google-modules/cloud-foundation-fabric) (data, vpc-sc)
 
-## Org Hierarchy
+## Org hierarchy 
 ```
 🏢 budita.dev (157305482127)
  +-- 📁 fldr-bootstrap (818226860401)
@@ -41,7 +41,7 @@ Example repo showing how to build a secure cloud foundation / landing zone for q
 ```
 https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp-org-hierarchy-viewer
 
-## Org IP Address Space
+## Org IP address space
 
 ```
 🏢 budita.dev
@@ -71,7 +71,7 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 - Dev Private Service 10.16.64.0/21
 ```
 
-## GKE Admins Repo
+## GKE platform admins repo
 
 ```
 🏢 budita.dev
@@ -102,6 +102,7 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 └── README.md
 ```
 ## Validations
+Some validations to see if things work as expected:
 - Core foundation infra pipelines
 - Project-level infra and cicd pipelines
 - Basic python app deployed in a private gke cluster in shared vpc env
@@ -109,13 +110,13 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
 - Set up onprem connectivity via cloud ha vpn in hub shared vpc and conduct basic tests
 
 ## Costs
-To get $0 bill on core foundation resources (0*):
+We can get away with $0 bill on core foundation resources (0*):
 - Create private dns zones on demand. Destroy if you are not doing any work.
 - Disable container scanning api if it is enabled
 - Skip hierarchical firewall policies
 - Skip kms
 - Limit use of log sinks
-- Regular cleanup of artifact registry images in infra and cicd pipeline projects
+- Cleanup of artifact registry images in infra and cicd pipeline projects
 
 ## Errata summary
 Overview of the delta between this repo and the official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
