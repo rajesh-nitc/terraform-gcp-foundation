@@ -120,7 +120,7 @@ We can get away with $0 bill on foundation resources:
 
 ## Errata summary
 Overview of the delta between this repo and the official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
-- This repo still use single terraform service account to deploy foundation resources while the official repo has migrated to stage level service accounts. Project level infra is deployed using project specific service account with least privilege.
+- This repo still use single terraform service account to deploy foundation resources while the official repo has migrated to stage level service accounts
 - Support only hub and spoke network typology
 - Terraform validator support is not implemented
 - No cloud source repos are created. Instead we use this Github repo as a monorepo and setup the cloudbuild triggers on respective folders
