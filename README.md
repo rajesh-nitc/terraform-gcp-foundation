@@ -109,7 +109,7 @@ Some validations to see if things work as expected:
 
 ## Costs
 We can get away with $0 bill on foundation resources:
-- Create private dns zones on demand. Destroy if you are not doing any work.
+- Create private dns zones on demand. Destroy if not using.
 - Disable container scanning api if it is enabled
 - Skip hierarchical firewall policies
 - Skip kms
@@ -125,4 +125,3 @@ Overview of the delta between this repo and the official [terraform-example-foun
 - Hierarchical firewall policies are not implemented
 - Separate shared vpc for restricted apis is not implemented
 - vpc service controls are implemented in a dedicated repo (to be managed by security team)
-- Additional example foundations are included to show how official repo can be extended
