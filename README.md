@@ -1,12 +1,10 @@
 # gcp-foundation 
 
-Example repo showing how to build a secure cloud foundation / landing zone for quick prototyping and testing. It is made up of following parts:
-
-- **example-foundations**
-  - core (0* and $vpc-sc)
-  - gke (1*)
-  - data (2*)
-- **onprem-connectivity** (9*): set of repos to build simulated onprem environment on gcp and conduct basic connectivity tests
+Example repo showing how to build a secure cloud foundation. It is made up of following parts:
+- core (0* and $vpc-sc)
+- gke (1*)
+- data (2*)
+- onprem (9*): set of repos to build simulated onprem environment on gcp to test the connectivity with gcp
 
 ## Credits
 - [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core)
