@@ -1,6 +1,6 @@
-# gcp-foundation 
+# terraform-gcp-foundation 
 
-Example repo showing how to build a secure cloud foundation. It is made up of following parts:
+This is made up of following parts:
 - core (0* and $vpc-sc)
 - gke (1*)
 - data (2*)
