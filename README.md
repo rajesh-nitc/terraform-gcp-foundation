@@ -1,7 +1,7 @@
 # terraform-gcp-foundation 
 
 This is made up of following parts:
-- core (0* and 100-vpc-sc)
+- core (0* and 99-vpc-sc)
 - gke (1*)
 - data (2*) - Basic
 - onprem (9*)
