@@ -3,7 +3,7 @@
 This is made up of following parts:
 - core (0* and 99-vpc-sc)
 - gke (1*)
-- data (2*) - Basic
+- data (2*)
 - onprem (9*)
 
 ## Credits
