@@ -46,9 +46,6 @@ locals {
     ]
   }
 
-  # AD
-  ad_domain_ip_range = [for i in var.subnets : i.subnet_ip if i.team == "ad" && i.region == var.default_region1]
-
   # Proxy only
   proxy_only_subnet_ranges = [for i in var.subnets : i.subnet_ip if i.team == "proxy-only"]
 }
@@ -93,7 +90,6 @@ module "base_shared_vpc" {
   # Enable all fw rules, they don't cost unless firewall insights api is enabled
   enable_dataflow_fw_rule    = true
   windows_activation_enabled = true
-  enable_ad_fw_rule          = true
   enable_proxy_only_fw_rule  = true
 
   # GKE
@@ -107,7 +103,6 @@ module "base_shared_vpc" {
 
   }
 
-  ad_domain_ip_range       = local.ad_domain_ip_range
   proxy_only_subnet_ranges = local.proxy_only_subnet_ranges
 
   allow_all_ingress_ranges = var.allow_all_ingress_ranges

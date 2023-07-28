@@ -3,8 +3,8 @@
 This is made up of following parts:
 - core (0* and $vpc-sc)
 - gke (1*)
-- data (2*)
-- onprem (9*): set of repos to build simulated onprem environment on gcp to test the connectivity with gcp
+- data (2*) - Basic
+- onprem (9*)
 
 ## Credits
 - [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation) (core)
@@ -18,7 +18,6 @@ This is made up of following parts:
  |   +-- 📦 prj-b-seed-6949
  |   +-- 📦 prj-b-cicd-98fa
  +-- 📁 fldr-common (161434909087)
- |   +-- 📦 prj-m4ce-c-host-11c7
  |   +-- 📦 prj-c-base-net-hub-74f5
  |   +-- 📦 prj-gke-c-infra-pipeline-e6f5
  |   +-- 📦 prj-gke-c-cicd-pipeline-7989
@@ -29,7 +28,6 @@ This is made up of following parts:
  +-- 📁 fldr-development (267943501446)
  |   +-- 📦 prj-data-d-loading-82c5
  |   +-- 📦 prj-data-d-lake-l0-ffe8
- |   +-- 📦 prj-ad-d-mgmt-6b1d
  |   +-- 📦 prj-gke-d-clusters-3c96
  |   +-- 📦 prj-data-d-landing-0816
  |   +-- 📦 prj-bu1-d-sample-base-9208
@@ -55,7 +53,6 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
         - pod 100.64.64.0/18
         - svc 100.64.128.0/24
         - master 100.64.129.0/28
-    - ad-mgmt 10.0.88.0/24
     - proxy-only 10.0.89.0/24
 - us-west1 10.1.0.0/16
   - Hub 10.1.0.0/18
@@ -64,7 +61,6 @@ https://github.com/GoogleCloudPlatform/professional-services/tree/main/tools/gcp
     - bu1 10.1.64.0/21
     - data 10.1.72.0/21
     - gke 10.1.80.0/21
-    - ad-mgmt 10.1.88.0/24
     - proxy-only 10.1.89.0/24
 - Dev Private Service 10.16.64.0/21
 ```
@@ -109,7 +105,7 @@ Some validations to see if things work as expected:
 
 ## Costs
 We can get away with $0 bill on foundation resources:
-- Create private dns zones on demand. Destroy if not using.
+- Create private dns zones on demand. Destroy if not using. 
 - Disable container scanning api if it is enabled
 - Skip hierarchical firewall policies
 - Skip kms
