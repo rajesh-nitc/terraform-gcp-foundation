@@ -104,20 +104,17 @@ Some validations to see if things work as expected:
 - Set up onprem connectivity via cloud ha vpn in hub shared vpc and conduct basic tests
 
 ## Costs
-We can get away with $0 bill on foundation resources:
-- Create private dns zones on demand. Destroy if not using. 
+We get away with $0 bill on foundation resources:
+- Create private dns zones on demand. The current state of private dns zones for this foundation is listed below:
+```
+enable_dns_zone_private_googleapis = false
+enable_dns_zone_gcr                = false
+enable_dns_zone_pkg_dev            = false
+enable_dns_peering                 = false
+enable_dns_forwarding              = false
+```
 - Disable container scanning api if it is enabled
 - Skip hierarchical firewall policies
 - Skip kms
-- Limit use of log sinks
+- Limited use of log sinks
 - Cleanup of artifact registry images in infra and cicd pipeline projects
-
-## Errata summary
-Overview of the delta between this repo and the official [terraform-example-foundation](https://github.com/terraform-google-modules/terraform-example-foundation)
-- This repo still use single terraform service account to deploy foundation resources while the official repo has migrated to stage level service accounts
-- Support only hub and spoke network typology
-- Terraform validator support is not implemented
-- No cloud source repos are created. Instead we use this Github repo as a monorepo and setup the cloudbuild triggers on respective folders
-- Hierarchical firewall policies are not implemented
-- Separate shared vpc for restricted apis is not implemented
-- vpc service controls are implemented in a dedicated repo (to be managed by security team)
