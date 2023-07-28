@@ -39,12 +39,6 @@ subnets = [
       gke-budita-d-us-central1-svc = "100.64.128.0/24" # {network_tag}-svc
     }
   },
-  # {
-  #   team               = "ad"
-  #   subnet_ip          = "10.0.88.0/24"
-  #   region             = "us-central1"
-  #   secondary_ip_range = {}
-  # },
   {
     team               = "proxy-only"
     subnet_ip          = "10.0.89.0/24"
@@ -73,12 +67,6 @@ subnets = [
     region             = "us-west1"
     secondary_ip_range = {}
   },
-  # {
-  #   team               = "ad"
-  #   subnet_ip          = "10.1.88.0/24"
-  #   region             = "us-west1"
-  #   secondary_ip_range = {}
-  # },
   {
     team               = "proxy-only"
     subnet_ip          = "10.1.89.0/24"
