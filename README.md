@@ -1,6 +1,6 @@
 # terraform-gcp-foundation 
 
-This repo shows how to build a secure cloud foundation / landing zone on Gcp.
+This repo shows how to build a secure cloud foundation / landing zone on GCP.
 
 It is made up of following parts:
 - core (0* and 99-vpc-sc)
